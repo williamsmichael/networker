@@ -96,8 +96,9 @@ span.user {
 	padding: 1px 15px;
 	border-radius: 5px;
 }
-.anonymous-user {
-	color: inherit;
+.unauthorized {
+	color: initial;
+	/*background: red;*/
 }
 .errorlist li {
 	color: #CC6666;

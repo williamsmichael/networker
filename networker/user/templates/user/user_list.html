@@ -13,7 +13,9 @@
 		{% if user.user_extension.is_active == True %}
 		<ul>
 			<li>
-				<a href="{% url 'user_detail' user.user_extension.pk %}" class='list-item'>[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a>
+				<a href="{% url 'user_detail' user.user_extension.pk %}" class='list-item'>
+					[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }} <img src="{{ user.profile_image.url }}" width='25px'>
+				</a>
 
 			</li>
 		</ul>	

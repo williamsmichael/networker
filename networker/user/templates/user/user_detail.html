@@ -7,29 +7,35 @@
 
 <div>
 
+	{# ---------------------------------------------------------------image #}
 	{% if member.profile_image %}
 		<img src="{{ member.profile_image.url }}">
 	{% else %}
 		<img src="https://unsplash.it/150/150/?random">
 	{% endif %}
 
+	{# -----------------------------------------------------------full name #}
 	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 		<h2>
-			<a href="{% url 'update_main' pk=member.user_extension.pk %}">
-				{{ member.user_extension.first_name }}
-				{{ member.user_extension.last_name }}
-			</a>
+			{{ member.user_extension.first_name }}
+			{{ member.user_extension.last_name }}
 		</h2>
 	{% else %}
-		<h2 class="anonymous-user">
+		<h2 class="unauthorized">
 			{{ member.user_extension.first_name }}
 			{{ member.user_extension.last_name }}
 		</h2>
 	{% endif %}
 
-	<h4>
-		<a href="{% url 'update_main' pk=member.user_extension.pk %}">Main</a>
-	</h4>
+	{# ----------------------------------------------------------------main #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<h4>
+			<a href="{% url 'update_main' pk=member.user_extension.pk %}">Main</a>
+		</h4>
+	{% else %}
+		<h4 class="unauthorized">Main</h4>
+	{% endif %}
+
 	<ul>
 		<li>ids: {{ member.user_extension.id }} &vrtri; {{ member.id }} </li>
 		<li>username: {{ member.user_extension.username }}</li>
@@ -44,9 +50,15 @@
 		<li>date joined: {{ member.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
-	<h4>
-		<a href="{% url 'update_additional' pk=member.user_extension.pk %}">Additional</a>
-	</h4>
+	{# ----------------------------------------------------------additional #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<h4>
+			<a href="{% url 'update_additional' pk=member.user_extension.pk %}">Additional</a>
+		</h4>
+	{% else %}
+		<h4 class="unauthorized">Additional</h4>
+	{% endif %}
+
 	<ul>
 		<li>relationship to group: {{ member.relationship_to_group | default:"none" }}</li>
 		<li>nickname: {{ member.nickname | default:"none" }}</li>
@@ -55,21 +67,33 @@
 		<li>date of birth: {{ member.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
 	</ul>
 
+	{# ----------------------------------------------------------membership #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		<a href="{% url 'update_membership' pk=member.user_extension.pk %}">Membership</a>
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Membership</h4>
+	{% endif %}
+
 	<ul>
 		{% for group in member.user_extension.groups.values %}
 			<li>{{ group.name }}</li>	
 		{% endfor %}
 	</ul>
 
+	{# phone #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		<a href="{% url 'listing_phone' member.user_extension.pk %}">Phone</a>
 		<span>
 			<a href="{% url 'create_phone' member.user_extension.pk %}" class="create">add</a>
 		</span> 
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Phone</h4>
+	{% endif %}
+
 	<ul>
 		{% for phone in member.userphone_set.all %}
 			{% if phone.deactivate == False %}
@@ -80,12 +104,18 @@
 		{% endfor %}
 	</ul>
 
+	{# ---------------------------------------------------------------email #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		<a href="{% url 'listing_email' member.user_extension.pk %}">Email</a>
 		<span>
 			<a href="{% url 'create_email' member.user_extension.pk %}" class="create">add</a>
 		</span> 
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Email</h4>
+	{% endif %}
+
 	<ul>
 		{% for email in member.useremail_set.all %}
 			{% if email.deactivate == False %}
@@ -96,12 +126,18 @@
 		{% endfor %}
 	</ul>
 
+	{# -------------------------------------------------------------address #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		Address
 		<span>
 			<a href="{% url 'create_address' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Address</h4>
+	{% endif %}
+
 	<ul>
 		{% for address in member.useraddress_set.all %}
 			{% if address.deactivate == False %}
@@ -112,12 +148,18 @@
 		{% endfor %}
 	</ul>
 
+	{# --------------------------------------------------------social media #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		Social Profile
 		<span>
 			<a href="{% url 'create_social_media' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Social Profile</h4>
+	{% endif %}
+
 	<ul>
 		{% for social_media in member.usersocialmedia_set.all %}
 			{% if social_media.deactivate == False %}
@@ -128,12 +170,18 @@
 		{% endfor %}
 	</ul>
 
+	{# -----------------------------------------------------------------job #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		Job Profile
 		<span>
 			<a href="{% url 'create_job' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Job Profile</h4>
+	{% endif %}
+
 	<ul>
 		{% for job in member.userjob_set.all %}
 			{% if job.deactivate == False %}
@@ -144,12 +192,18 @@
 		{% endfor %}
 	</ul>
 
+	{# ---------------------------------------------------------------skill #}
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
 		Skill Profile
 		<span>
 			<a href="{% url 'create_skill' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
+	{% else %}
+		<h4 class="unauthorized">Skill Profile</h4>
+	{% endif %}
+
 	<ul>
 		{% for skill in member.userskill_set.all %}
 			{% if skill.deactivate == False %}
