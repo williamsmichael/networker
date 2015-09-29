@@ -18,7 +18,25 @@ class User(models.Model):
 
 class Skill_Category(model.Model):
 	""" This is a helper table for User_Skills """
-		skill = models.CharField(max_length=50)
+		SKILL_CATEGORY_CHOICES = (
+				(ADMINISTRATIVE, 'Administrative'),
+				(CLERICAL, 'Clerical'),
+				(COMMUNICATION, 'Communication'),
+				(COUNSELING, 'Counseling'),
+				(CREATIVE, 'Development'),
+				(FINANCIAL, 'Finanicial'),
+        (INTERPERSONAL, 'Interpersonal'),
+        (MANAGEMENT, 'Management'),
+        (PROBLEM_SOLVING, 'Problem Solving'),
+        (ORGANIZATIONAL, 'Organizational'),
+        (RESEARCH, 'Research')
+        (TECHNICAL, 'Technical'),
+        (TIME_MANAGEMENT, 'Time Management'),
+        (TRAINING, 'Training'),
+        (SALES, 'Sales'),
+    )
+    skill_category = models.CharField(max_length=25,
+                                      choices=SKILL_CATEGORY_CHOICES)
 
 class User_Skill(model.Model):
 	""" This is a sub-table for User storing Skills """
