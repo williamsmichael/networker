@@ -170,9 +170,36 @@ class User_Job(models.Model):
 		company_name = models.CharField(max_length=50, blank=True)
 		company_state_province = models.CharField(max_length=50, blank=True)
 		company_country = models.CharField(max_length=50, blank=True)
-		year_started = models.DateField(blank=True)
-		year_ended = models.DateField(blank=True)
+		company_year_started = models.DateField(blank=True)
+		company_year_ended = models.DateField(blank=True)
 
+class Education_Category(models.Model):
+		""" This is a helper table for User_Education """
+		Education_CATEGORY_CHOICES = (
+				(K12, 'K-12'),
+				(HIGHSCHOOL, 'High School Diploma'),
+				(SOME_COLLEGE, 'Some College, non-degree'),
+				(POSTSECONDARY, 'Postsecondary, non-degree'),
+				(ASSOCIATES, 'Associates Degree')
+				(BACHELORS, 'Bachelors Degree'),
+				(GRADUATE, 'Graduate Degree'),
+				(DOCTORAL, 'Doctoral Degree'),
+				(CERTIFICATE, 'Certificate'),
+				(LICENSE, 'License'),
+				(PROFESSIONAL_DEVELOPMENT, 'Professional Development')
+    )
+    education_category = models.CharField(max_length=50,
+                                      choices=EDUCATION_CATEGORY_CHOICES)
+
+class User_Education(models.Model):
+		""" This is a sub-table for the User: Education """
+		user_id = models.ForeignKey(User)
+		education_category_id = models.ForeignKey(Education_Category)
+		education_description = models.TextField(max_length=255, blank=True)
+		school_name = models.CharField(max_length=50, blank=True)
+		graduation_status = models.BooleanField(default=False)
+		school_year_started = models.DateField(blank=True)
+		school_year_ended = models.DateField(blank=True)
 
 
 
