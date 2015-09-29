@@ -44,17 +44,17 @@ class User_Skill(models.Model):
 		""" This is a sub-table for the User: Skill """
 		user_id = models.ForeignKey(User)
 		skill_category_id = models.ForeignKey(Skill_Category)
-		skill_description = models.TextField(max_length=255)
+		skill_description = models.TextField(max_length=255, blank=True)
 
 class Address_Category(models.Model):
 		""" This is a helper table for User_Address + User_Email """
-		EMAIL_CATEGORY_CHOICES = (
+		ADDRESS_CATEGORY_CHOICES = (
 				(HOME, 'Home'),
 				(WORK, 'Work'),
 				(OTHER, 'Other'),
     )
-    email_category = models.CharField(max_length=10,
-                                      choices=EMAIL_CATEGORY_CHOICES)
+    address_category = models.CharField(max_length=10,
+                                      choices=ADDRESS_CATEGORY_CHOICES)
 
 class User_Address(models.Model):
 		""" This is a sub-table for the User: Address """
@@ -73,7 +73,7 @@ class User_Email(models.Model):
 		""" This is a sub-table for the User: Email """
 		user_id = models.ForeignKey(User)
 		email_category_id = models.ForeignKey(Address_Category)
-		email = models.CharField(max_length=50)
+		email = models.CharField(max_length=50, blank=True)
 
 class Phone_Category(models.Model):
 		""" This is a helper table for User_Phone """
@@ -91,8 +91,8 @@ class User_Phone(models.Model):
 		""" This is a sub-table for the User: Phone """
 		user_id = models.ForeignKey(User)
 		phone_category_id = models.ForeignKey(Phone_Category)
-		country_code = models.PositiveSmallIntegerField(max_length=3)
-		phone_number = models.PositiveSmallIntegerField(max_length=15)
+		country_code = models.PositiveSmallIntegerField(max_length=3, blank=True)
+		phone_number = models.PositiveSmallIntegerField(max_length=15, blank=True)
 
 class Social_Media_Category(models.Model):
 		""" This is a helper table for User_Social_Media """
@@ -114,10 +114,68 @@ class Social_Media_Category(models.Model):
                                       choices=SOCIAL_MEDIA_CATEGORY_CHOICES)
 
 class User_Social_Media(models.Model):
-		""" This is a sub-table for the User: Phone """
+		""" This is a sub-table for the User: Social Media """
 		user_id = models.ForeignKey(User)
 		social_media_category_id = models.ForeignKey(Social_Media_Category)
-		social_media_url = models.CharField(max_length=50)
+		social_media_url = models.CharField(max_length=50, blank=True)
+
+class Job_Category(models.Model):
+		""" This is a helper table for User_Job """
+		JOB_CATEGORY_CHOICES = (
+				(ACCOUNTING, 'Accounting'),
+				(ACCOUNTING_CLERICAL, 'Administrative/Clerical')
+				(ARTS_ENTERTAINMENT_MEDIA, 'Arts/Entertainment/Media'),
+				(AGRICULTURE_FORESTRY_FISHING, 'Agriculture/Forestry/Fishing'),
+				(AUTOMOTIVE, 'Automotive'),
+				(BIOTECHNOLOGY, 'Biotechnology'),
+				(BUSINESS, 'Business'),
+				(COMPUTERS, 'Computers'),
+				(CONSTRUCTION, 'Construction'),
+				(CONSULTING, 'Consulting')
+				(CUSTOMER_SERVICE, 'Customer Service'),
+				(EDUCATION, 'Education'),
+				(ENGINEERING, 'Engineering'),
+				(EXECUTIVE, 'Executive'),
+				(FACILITIES, 'Facilities'),
+				(FINANCIAL_SERVICES, 'Financial Services'),
+				(GOVERNMENT, 'Government'),
+				(HEALTHCARE, 'Healthcare'),
+				(HOSPITALITY, 'Hospitality'),
+				(HUMAN_RESOURCES, 'Human Resources'),
+				(INFORMATION_TECHNOLOGY, 'Information Technology'),
+				(INSURANCE, 'Insurance'),
+				(LAW_ENFORCEMENT_FIRE_SECURITY, 'Law Enforcement/Fire/Security'),
+				(LEGAL, 'Legal'),
+				(MANUFACTURING_PRODUCTION, 'Manufacturing/Production'),
+				(MARKETING, 'Marketing'),
+				(MEDIA, 'Media'),
+				(REAL_ESTATE, 'Real Estate'),
+				(RESTAURANT_FOOD_SERVICES, 'Restaurant/Food Services'),
+				(RETAIL_WHOLESALE, 'Retail/Wholesale'),
+				(SALES, 'Sales'),
+				(SCIENCE_RESEARCH, 'Science/Research'),
+				(TELECOMMUNICATIONS, 'Telecommunications'),
+				(TECHNOLOGY, 'Techology')
+				(TRANSPORTATION, 'Transportation/Warehouse'),
+				(OTHER, 'Other'),
+    )
+    job_category = models.CharField(max_length=50,
+                                      choices=JOB_CATEGORY_CHOICES)
+
+class User_Job(models.Model):
+		""" This is a sub-table for the User: Job """
+		user_id = models.ForeignKey(User)
+		job_category_id = models.ForeignKey(Job_Category)
+		job_description = models.TextField(max_length=255, blank=True)
+		company_name = models.CharField(max_length=50, blank=True)
+		company_state_province = models.CharField(max_length=50, blank=True)
+		company_country = models.CharField(max_length=50, blank=True)
+		year_started = models.DateField(blank=True)
+		year_ended = models.DateField(blank=True)
+
+
+
+
 
 
 
