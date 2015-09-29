@@ -3,23 +3,23 @@ from datetime import datetime
 from django.utils import timezone
 
 class User(models.Model):
-    """ Main table for User """
-    username = models.CharField(max_length=50)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    relationship_to_group = models.CharField(max_length=50)
-    profile_image = ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-    primary_email = models.CharField(max_length=50, unique=True)
-    date_of_birth = models.DateTimeField()
-    created_dateTime = models.DateTimeField(auto_now_add=True)
-    last_login_dateTime = models.DateTimeField(default=datetime.now())
-    user_timezone = timezone.now()
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+	""" Main table for User """
+	username = models.CharField(max_length=50)
+	first_name = models.CharField(max_length=50)
+	last_name = models.CharField(max_length=50)
+	relationship_to_group = models.CharField(max_length=50)
+	# profile_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+	primary_email = models.CharField(max_length=50, unique=True)
+	date_of_birth = models.DateTimeField()
+	created_dateTime = models.DateTimeField(auto_now_add=True)
+	last_login_dateTime = models.DateTimeField(default=datetime.now())
+	user_timezone = timezone.now()
+	is_active = models.BooleanField(default=True)
+	is_admin = models.BooleanField(default=False)
 
 class Skill_Category(models.Model):
 	""" Helper table for User_Skill """
-    skill_category = models.CharField(max_length=20)
+	skill_category = models.CharField(max_length=20)
 
 class User_Skill(models.Model):
 	""" Sub-table for the User: Skill """
@@ -29,7 +29,7 @@ class User_Skill(models.Model):
 
 class Address_Category(models.Model):
 	""" Helper table for User_Address """
-    address_category = models.CharField(max_length=10)
+	address_category = models.CharField(max_length=10)
 
 class User_Address(models.Model):
 	""" Sub-table for the User: Address """
@@ -46,7 +46,7 @@ class User_Address(models.Model):
 
 class Email_Category(models.Model):
 	""" Helper table for User_Email """
-    email_category = models.CharField(max_length=10)
+	email_category = models.CharField(max_length=10)
 
 class User_Email(models.Model):
 	""" Sub-table for the User: Email """
@@ -56,14 +56,14 @@ class User_Email(models.Model):
 
 class Phone_Category(models.Model):
 	""" Helper table for User_Phone """
-    phone_category = models.CharField(max_length=10)
+	phone_category = models.CharField(max_length=10)
 
 class User_Phone(models.Model):
 	""" Sub-table for the User: Phone """
 	user_id = models.ForeignKey(User)
 	phone_category_id = models.ForeignKey(Phone_Category)
-	country_code = models.PositiveSmallIntegerField(max_length=3, blank=True)
-	phone_number = models.PositiveSmallIntegerField(max_length=15, blank=True)
+	country_code = models.PositiveSmallIntegerField(blank=True)
+	phone_number = models.PositiveSmallIntegerField(blank=True)
 
 class Social_Media_Category(models.Model):
 	""" Helper table for User_Social_Media """
