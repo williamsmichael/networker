@@ -2,20 +2,28 @@ from django.db import models
 from datetime import datetime
 from django.utils import timezone
 
-class User(models.Model):
+class Networker_User(models.Model):
 	""" Main table for User """
-	username = models.CharField(max_length=50)
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
+
+	# default Django User
+	# --------------------------
+	# username
+	# password
+	# email 
+	# first_name
+	# last_name
+
+	# custom User
+	# --------------------------
 	relationship_to_group = models.CharField(max_length=50)
 	# profile_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-	primary_email = models.CharField(max_length=50, unique=True)
+	other_email = models.CharField(max_length=50, unique=True)
 	date_of_birth = models.DateTimeField()
-	created_dateTime = models.DateTimeField(auto_now_add=True)
-	last_login_dateTime = models.DateTimeField(default=datetime.now())
-	user_timezone = timezone.now()
+	user_timezone = models.DateField(default=timezone.now)
 	is_active = models.BooleanField(default=True)
 	is_admin = models.BooleanField(default=False)
+	created_dateTime = models.DateTimeField(auto_now_add=True)
+	last_login_dateTime = models.DateTimeField(auto_now=True)
 
 class Skill_Category(models.Model):
 	""" Helper table for User_Skill """
@@ -23,7 +31,7 @@ class Skill_Category(models.Model):
 
 class User_Skill(models.Model):
 	""" Sub-table for the User: Skill """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	skill_category_id = models.ForeignKey(Skill_Category)
 	skill_description = models.TextField(max_length=255, blank=True)
 
@@ -33,7 +41,7 @@ class Address_Category(models.Model):
 
 class User_Address(models.Model):
 	""" Sub-table for the User: Address """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	address_category_id = models.ForeignKey(Address_Category)
 	street_address_1 = models.CharField(max_length=50)
 	street_address_2 = models.CharField(max_length=50)
@@ -50,7 +58,7 @@ class Email_Category(models.Model):
 
 class User_Email(models.Model):
 	""" Sub-table for the User: Email """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	email_category_id = models.ForeignKey(Address_Category)
 	email = models.CharField(max_length=50, blank=True)
 
@@ -60,7 +68,7 @@ class Phone_Category(models.Model):
 
 class User_Phone(models.Model):
 	""" Sub-table for the User: Phone """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	phone_category_id = models.ForeignKey(Phone_Category)
 	country_code = models.PositiveSmallIntegerField(blank=True)
 	phone_number = models.PositiveSmallIntegerField(blank=True)
@@ -71,7 +79,7 @@ class Social_Media_Category(models.Model):
 
 class User_Social_Media(models.Model):
 	""" Sub-table for the User: Social Media """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	social_media_category_id = models.ForeignKey(Social_Media_Category)
 	social_media_url = models.URLField(blank=True)
 
@@ -81,7 +89,7 @@ class Job_Category(models.Model):
 
 class User_Job(models.Model):
 	""" Sub-table for the User: Job """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	job_category_id = models.ForeignKey(Job_Category)
 	job_description = models.TextField(max_length=255, blank=True)
 	company_name = models.CharField(max_length=50, blank=True)
@@ -96,7 +104,7 @@ class Education_Category(models.Model):
 
 class User_Education(models.Model):
 	""" Sub-table for the User: Education """
-	user_id = models.ForeignKey(User)
+	user_id = models.ForeignKey(Networker_User)
 	education_category_id = models.ForeignKey(Education_Category)
 	education_description = models.TextField(max_length=255, blank=True)
 	school_name = models.CharField(max_length=255, blank=True)
