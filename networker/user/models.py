@@ -20,24 +20,7 @@ class User(models.Model):
 
 class Skill_Category(models.Model):
 	""" This is a helper table for User_Skill """
-	SKILL_CATEGORY_CHOICES = (
-		(ADMINISTRATIVE, 'Administrative'),
-		(CLERICAL, 'Clerical'),
-		(COMMUNICATION, 'Communication'),
-		(COUNSELING, 'Counseling'),
-		(CREATIVE, 'Development'),
-		(FINANCIAL, 'Finanicial'),
-	    (INTERPERSONAL, 'Interpersonal'),
-	    (MANAGEMENT, 'Management'),
-	    (PROBLEM_SOLVING, 'Problem Solving'),
-	    (ORGANIZATIONAL, 'Organizational'),
-	    (RESEARCH, 'Research'),
-	    (TECHNICAL, 'Technical'),
-	    (TIME_MANAGEMENT, 'Time Management'),
-	    (TRAINING, 'Training'),
-	    (SALES, 'Sales'),
-    )
-    skill_category = models.CharField(max_length=20, choices=SKILL_CATEGORY_CHOICES)
+    skill_category = models.CharField(max_length=20)
 
 class User_Skill(models.Model):
 	""" This is a sub-table for the User: Skill """
@@ -46,13 +29,8 @@ class User_Skill(models.Model):
 	skill_description = models.TextField(max_length=255, blank=True)
 
 class Address_Category(models.Model):
-	""" This is a helper table for User_Address + User_Email """
-	ADDRESS_CATEGORY_CHOICES = (
-		(HOME, 'Home'),
-		(WORK, 'Work'),
-		(OTHER, 'Other'),
-    )
-    address_category = models.CharField(max_length=10, choices=ADDRESS_CATEGORY_CHOICES)
+	""" This is a helper table for User_Address """
+    address_category = models.CharField(max_length=10)
 
 class User_Address(models.Model):
 	""" This is a sub-table for the User: Address """
@@ -67,6 +45,10 @@ class User_Address(models.Model):
 	latitude_api = models.CharField(max_length=25)
 	longitude_api = models.CharField(max_length=25)
 
+class Email_Category(models.Model):
+	""" This is a helper table for User_Email """
+    email_category = models.CharField(max_length=10)
+
 class User_Email(models.Model):
 	""" This is a sub-table for the User: Email """
 	user_id = models.ForeignKey(User)
@@ -75,14 +57,7 @@ class User_Email(models.Model):
 
 class Phone_Category(models.Model):
 	""" This is a helper table for User_Phone """
-	PHONE_CATEGORY_CHOICES = (
-		(MOBILE, 'Mobile'),
-		(WORK, 'Work'),
-		(HOME, 'Home'),
-		(FAX, 'Fax'),
-		(OTHER, 'Other'),
-    )
-    phone_category = models.CharField(max_length=10, choices=PHONE_CATEGORY_CHOICES)
+    phone_category = models.CharField(max_length=10)
 
 class User_Phone(models.Model):
 	""" This is a sub-table for the User: Phone """
@@ -93,21 +68,7 @@ class User_Phone(models.Model):
 
 class Social_Media_Category(models.Model):
 	""" This is a helper table for User_Social_Media """
-	SOCIAL_MEDIA_CATEGORY_CHOICES = (
-		(FACEBOOK, 'Facebook'),
-		(FOURSQUARE, 'Foursquare'),
-		(INSTAGRAM, 'Instagram'),
-		(KIK_MESSENGER, 'Kik Messenger'),
-		(LINKEDIN, 'LinkedIn'),
-		(OOVOO, 'ooVoo'),
-		(PINTEREST, 'Pinterest'),
-		(SKYPE, 'Skype'),
-		(TUMBLR, 'Tumblr'),
-		(TWITTER, 'Twitter'),
-		(VINE, 'Vine'),
-		(WHATSAPP, 'Whatsapp'),
-    )
-    social_media_category = models.CharField(max_length=20, choices=SOCIAL_MEDIA_CATEGORY_CHOICES)
+	social_media_category = models.CharField(max_length=50)
 
 class User_Social_Media(models.Model):
 	""" This is a sub-table for the User: Social Media """
@@ -117,45 +78,7 @@ class User_Social_Media(models.Model):
 
 class Job_Category(models.Model):
 	""" This is a helper table for User_Job """
-	JOB_CATEGORY_CHOICES = (
-		(ACCOUNTING, 'Accounting'),
-		(ACCOUNTING_CLERICAL, 'Administrative/Clerical')
-		(ARTS_ENTERTAINMENT_MEDIA, 'Arts/Entertainment/Media'),
-		(AGRICULTURE_FORESTRY_FISHING, 'Agriculture/Forestry/Fishing'),
-		(AUTOMOTIVE, 'Automotive'),
-		(BIOTECHNOLOGY, 'Biotechnology'),
-		(BUSINESS, 'Business'),
-		(COMPUTERS, 'Computers'),
-		(CONSTRUCTION, 'Construction'),
-		(CONSULTING, 'Consulting')
-		(CUSTOMER_SERVICE, 'Customer Service'),
-		(EDUCATION, 'Education'),
-		(ENGINEERING, 'Engineering'),
-		(EXECUTIVE, 'Executive'),
-		(FACILITIES, 'Facilities'),
-		(FINANCIAL_SERVICES, 'Financial Services'),
-		(GOVERNMENT, 'Government'),
-		(HEALTHCARE, 'Healthcare'),
-		(HOSPITALITY, 'Hospitality'),
-		(HUMAN_RESOURCES, 'Human Resources'),
-		(INFORMATION_TECHNOLOGY, 'Information Technology'),
-		(INSURANCE, 'Insurance'),
-		(LAW_ENFORCEMENT_FIRE_SECURITY, 'Law Enforcement/Fire/Security'),
-		(LEGAL, 'Legal'),
-		(MANUFACTURING_PRODUCTION, 'Manufacturing/Production'),
-		(MARKETING, 'Marketing'),
-		(MEDIA, 'Media'),
-		(REAL_ESTATE, 'Real Estate'),
-		(RESTAURANT_FOOD_SERVICES, 'Restaurant/Food Services'),
-		(RETAIL_WHOLESALE, 'Retail/Wholesale'),
-		(SALES, 'Sales'),
-		(SCIENCE_RESEARCH, 'Science/Research'),
-		(TELECOMMUNICATIONS, 'Telecommunications'),
-		(TECHNOLOGY, 'Techology')
-		(TRANSPORTATION, 'Transportation/Warehouse'),
-		(OTHER, 'Other'),
-    )
-    job_category = models.CharField(max_length=50, choices=JOB_CATEGORY_CHOICES)
+	job_category = models.CharField(max_length=50)
 
 class User_Job(models.Model):
 	""" This is a sub-table for the User: Job """
@@ -170,20 +93,7 @@ class User_Job(models.Model):
 
 class Education_Category(models.Model):
 	""" This is a helper table for User_Education """
-	Education_CATEGORY_CHOICES = (
-		(K12, 'K-12'),
-		(HIGHSCHOOL, 'High School Diploma'),
-		(SOME_COLLEGE, 'Some College, non-degree'),
-		(POSTSECONDARY, 'Postsecondary, non-degree'),
-		(ASSOCIATES, 'Associates Degree')
-		(BACHELORS, 'Bachelors Degree'),
-		(GRADUATE, 'Graduate Degree'),
-		(DOCTORAL, 'Doctoral Degree'),
-		(CERTIFICATE, 'Certificate'),
-		(LICENSE, 'License'),
-		(PROFESSIONAL_DEVELOPMENT, 'Professional Development')
-    )
-    education_category = models.CharField(max_length=50, choices=EDUCATION_CATEGORY_CHOICES)
+	education_category = models.CharField(max_length=50)
 
 class User_Education(models.Model):
 	""" This is a sub-table for the User: Education """
