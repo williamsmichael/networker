@@ -1,31 +1,31 @@
 from django.db import models
 from datetime import datetime
-from user.models import User
+from user.models import NetworkerUser
 
-class Group(models.Model):
+class NetworkerGroup(models.Model):
 	""" Main table for Group """
-	group_organizer = models.ForeignKey(User)
+	group_organizer = models.ForeignKey(NetworkerUser)
 	group_name = models.CharField(max_length=255)
 	group_description = models.TextField(max_length=255, blank=True)
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
-class Group_User(models.Model):
+class GroupUser(models.Model):
 	""" Relationship table for message system and user """
-	group_id = models.ForeignKey(Group)
-	user_id = models.ForeignKey(User)
-	last_message_dateTime = models.DateTimeField(default=datetime.now())
+	group_id = models.ForeignKey(NetworkerGroup)
+	user_id = models.ForeignKey(NetworkerUser)
+	last_message_dateTime = models.DateTimeField(auto_now=True)
 
-class Message_System_Topic(models.Model):
+class MessageSystemTopic(models.Model):
 	""" Topic table for message system """
-	group_id = models.ForeignKey(Group)
-	originator_id = models.ForeignKey(Group_User)
-	topic_name = models.TextField()
+	group_id = models.ForeignKey(NetworkerGroup)
+	originator_id = models.ForeignKey(GroupUser)
+	topic_name = models.CharField(max_length=255)
 	topic_description = models.TextField()
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
-class Message_System_Message(models.Model):
-	message_system_topic_id = models.ForeignKey(Message_System_Topic)
-	group_user_id = models.ForeignKey(Group_User)
+class MessageSystemMessage(models.Model):
+	message_system_topic_id = models.ForeignKey(MessageSystemTopic)
+	group_user_id = models.ForeignKey(GroupUser)
 	message = models.TextField()
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
