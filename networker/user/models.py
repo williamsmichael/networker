@@ -14,14 +14,8 @@ class NetworkerUser(models.Model):
 	# --------------------------
 	user_extension = models.OneToOneField(User)
 	relationship_to_group = models.CharField(max_length=50)
-	profile_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-	other_email = models.CharField(max_length=50, unique=True)
+	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100)
 	date_of_birth = models.DateTimeField()
-	user_timezone = models.DateField(default=timezone.now)
-	is_active = models.BooleanField(default=True)
-	is_admin = models.BooleanField(default=False)
-	created_dateTime = models.DateTimeField(auto_now_add=True)
-	last_login_dateTime = models.DateTimeField(auto_now=True)
 
 class SkillCategory(models.Model):
 	""" Helper table for User_Skill """
