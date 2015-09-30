@@ -7,68 +7,68 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0003_auto_20150929_2219'),
+        ('user', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Group_User',
+            name='GroupUser',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('last_message_dateTime', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Message_System_Message',
+            name='MessageSystemMessage',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('message', models.TextField()),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
-                ('group_user_id', models.ForeignKey(to='group.Group_User')),
+                ('group_user_id', models.ForeignKey(to='group.GroupUser')),
             ],
         ),
         migrations.CreateModel(
-            name='Message_System_Topic',
+            name='MessageSystemTopic',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('topic_name', models.CharField(max_length=255)),
                 ('topic_description', models.TextField()),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Networker_Group',
+            name='NetworkerGroup',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('group_name', models.CharField(max_length=255)),
-                ('group_description', models.TextField(blank=True, max_length=255)),
+                ('group_description', models.TextField(max_length=255, blank=True)),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
-                ('group_organizer', models.ForeignKey(to='user.Networker_User')),
+                ('group_organizer', models.ForeignKey(to='user.NetworkerUser')),
             ],
         ),
         migrations.AddField(
-            model_name='message_system_topic',
+            model_name='messagesystemtopic',
             name='group_id',
-            field=models.ForeignKey(to='group.Networker_Group'),
+            field=models.ForeignKey(to='group.NetworkerGroup'),
         ),
         migrations.AddField(
-            model_name='message_system_topic',
+            model_name='messagesystemtopic',
             name='originator_id',
-            field=models.ForeignKey(to='group.Group_User'),
+            field=models.ForeignKey(to='group.GroupUser'),
         ),
         migrations.AddField(
-            model_name='message_system_message',
+            model_name='messagesystemmessage',
             name='message_system_topic_id',
-            field=models.ForeignKey(to='group.Message_System_Topic'),
+            field=models.ForeignKey(to='group.MessageSystemTopic'),
         ),
         migrations.AddField(
-            model_name='group_user',
+            model_name='groupuser',
             name='group_id',
-            field=models.ForeignKey(to='group.Networker_Group'),
+            field=models.ForeignKey(to='group.NetworkerGroup'),
         ),
         migrations.AddField(
-            model_name='group_user',
+            model_name='groupuser',
             name='user_id',
-            field=models.ForeignKey(to='user.Networker_User'),
+            field=models.ForeignKey(to='user.NetworkerUser'),
         ),
     ]
