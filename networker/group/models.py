@@ -7,6 +7,8 @@ class NetworkerGroup(models.Model):
 	group_organizer = models.ForeignKey(NetworkerUser)
 	group_name = models.CharField(max_length=255)
 	group_description = models.TextField(max_length=255, blank=True)
+	welcome_message = models.TextField(max_length=255, blank=True)
+	group_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100)
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
 class GroupUser(models.Model):
