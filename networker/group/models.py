@@ -23,7 +23,13 @@ class MessageSystemTopic(models.Model):
 	topic_description = models.TextField()
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
+class MessageSystemTopicTag(models.Model):
+	""" Topic Tag table for the message system """
+	message_system_topic_tag_id = models.ForeignKey(MessageSystemTopic)
+	tag = models.CharField(max_length=25, blank=True)
+
 class MessageSystemMessage(models.Model):
+	""" Message table for the message system """
 	message_system_topic_id = models.ForeignKey(MessageSystemTopic)
 	group_user_id = models.ForeignKey(GroupUser)
 	message = models.TextField()
