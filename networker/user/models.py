@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 class NetworkerUser(models.Model):
 	""" Main table for User """
@@ -18,7 +19,7 @@ class NetworkerUser(models.Model):
 	date_of_birth = models.DateField()
 
 	def __str__(self):
-		return self.user_extension.first_name + " " + self.user_extension.last_name
+		return "[{}] {}-{} {}".format(self.user_extension.id, self.user_extension.username, self.user_extension.first_name, self.user_extension.last_name)
 
 class SkillCategory(models.Model):
 	""" Helper table for User_Skill """
@@ -33,6 +34,9 @@ class UserSkill(models.Model):
 	skill_category_id = models.ForeignKey(SkillCategory)
 	skill_description = models.TextField(max_length=255, blank=True)
 
+	def __str__(self):
+		return "{}, {} ({})".format(self.user_id, self.skill_description, self.skill_category_id)
+
 class AddressCategory(models.Model):
 	""" Helper table for User_Address """
 	address_category = models.CharField(max_length=10)
@@ -45,13 +49,16 @@ class UserAddress(models.Model):
 	user_id = models.ForeignKey(NetworkerUser)
 	address_category_id = models.ForeignKey(AddressCategory)
 	street_address_1 = models.CharField(max_length=50)
-	street_address_2 = models.CharField(max_length=50)
+	street_address_2 = models.CharField(max_length=50, blank=True)
 	city_town = models.CharField(max_length=50)
 	state_province = models.CharField(max_length=50)
 	country = models.CharField(max_length=50)
 	postal_code = models.CharField(max_length=25)
 	latitude_api = models.FloatField()
 	longitude_api = models.FloatField()
+
+	def __str__(self):
+		return "{}, {}, {}, {} ({})".format(self.user_id, self.street_address_1, self.postal_code, self.country, self.address_category_id)
 
 class EmailCategory(models.Model):
 	""" Helper table for User_Email """
@@ -66,6 +73,9 @@ class UserEmail(models.Model):
 	email_category_id = models.ForeignKey(EmailCategory)
 	email = models.CharField(max_length=50, blank=True)
 
+	def __str__(self):
+		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id, )
+
 class PhoneCategory(models.Model):
 	""" Helper table for User_Phone """
 	phone_category = models.CharField(max_length=10)
@@ -77,8 +87,11 @@ class UserPhone(models.Model):
 	""" Sub-table for the User: Phone """
 	user_id = models.ForeignKey(NetworkerUser)
 	phone_category_id = models.ForeignKey(PhoneCategory)
-	country_code = models.PositiveSmallIntegerField(blank=True)
-	phone_number = models.PositiveSmallIntegerField(blank=True)
+	# country_code = models.PositiveSmallIntegerField(blank=True)
+	phone_number = PhoneNumberField()
+
+	def __str__(self):
+		return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
 
 class SocialMediaCategory(models.Model):
 	""" Helper table for User_Social_Media """
@@ -92,6 +105,9 @@ class UserSocialMedia(models.Model):
 	user_id = models.ForeignKey(NetworkerUser)
 	social_media_category_id = models.ForeignKey(SocialMediaCategory)
 	social_media_url = models.URLField(blank=True)
+
+	def __str__(self):
+		return "{}, {} ({})".format(self.user_id, self.social_media_url, self.social_media_category_id)
 
 class JobCategory(models.Model):
 	""" Helper table for User_Job """
@@ -108,8 +124,12 @@ class UserJob(models.Model):
 	company_name = models.CharField(max_length=50, blank=True)
 	company_state_province = models.CharField(max_length=50, blank=True)
 	company_country = models.CharField(max_length=50, blank=True)
-	company_year_started = models.DateField(blank=True)
-	company_year_ended = models.DateField(blank=True)
+	is_current = models.BooleanField(default=True)
+	company_year_started = models.DateField(default=timezone.now)
+	company_year_ended = models.DateField(default=timezone.now)
+
+	def __str__(self):
+		return "{}, {}, current={} [{}]".format(self.user_id, self.company_name, self.is_current, self.job_category_id) 
 
 class EducationCategory(models.Model):
 	""" Helper table for User_Education """
@@ -124,9 +144,12 @@ class UserEducation(models.Model):
 	education_category_id = models.ForeignKey(EducationCategory)
 	education_description = models.TextField(max_length=255, blank=True)
 	school_name = models.CharField(max_length=255, blank=True)
-	graduation_status = models.BooleanField(default=False)
-	school_year_started = models.DateField(blank=True)
-	school_year_ended = models.DateField(blank=True)
+	is_completed = models.BooleanField(default=False)
+	school_year_started = models.DateField(default=timezone.now)
+	school_year_ended = models.DateField(default=timezone.now)
+
+	def __str__(self):
+		return "{}, {}, passed={} ({})".format(self.user_id, self.school_name, self.is_completed, self.education_category_id) 
 
 
 
