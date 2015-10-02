@@ -24,6 +24,9 @@ class SkillCategory(models.Model):
 	""" Helper table for User_Skill """
 	skill_category = models.CharField(max_length=20)
 
+	def __str__(self):
+		return self.skill_category
+
 class UserSkill(models.Model):
 	""" Sub-table for the User: Skill """
 	user_id = models.ForeignKey(NetworkerUser)
@@ -33,6 +36,9 @@ class UserSkill(models.Model):
 class AddressCategory(models.Model):
 	""" Helper table for User_Address """
 	address_category = models.CharField(max_length=10)
+
+	def __str__(self):
+		return self.address_category
 
 class UserAddress(models.Model):
 	""" Sub-table for the User: Address """
@@ -44,12 +50,15 @@ class UserAddress(models.Model):
 	state_province = models.CharField(max_length=50)
 	country = models.CharField(max_length=50)
 	postal_code = models.CharField(max_length=25)
-	latitude_api = models.CharField(max_length=50)
-	longitude_api = models.CharField(max_length=50)
+	latitude_api = models.FloatField()
+	longitude_api = models.FloatField()
 
 class EmailCategory(models.Model):
 	""" Helper table for User_Email """
 	email_category = models.CharField(max_length=10)
+
+	def __str__(self):
+		return self.email_category
 
 class UserEmail(models.Model):
 	""" Sub-table for the User: Email """
@@ -60,6 +69,9 @@ class UserEmail(models.Model):
 class PhoneCategory(models.Model):
 	""" Helper table for User_Phone """
 	phone_category = models.CharField(max_length=10)
+
+	def __str__(self):
+		return self.phone_category
 
 class UserPhone(models.Model):
 	""" Sub-table for the User: Phone """
@@ -72,6 +84,9 @@ class SocialMediaCategory(models.Model):
 	""" Helper table for User_Social_Media """
 	social_media_category = models.CharField(max_length=50)
 
+	def __str__(self):
+		return self.social_media_category
+
 class UserSocialMedia(models.Model):
 	""" Sub-table for the User: Social Media """
 	user_id = models.ForeignKey(NetworkerUser)
@@ -81,6 +96,9 @@ class UserSocialMedia(models.Model):
 class JobCategory(models.Model):
 	""" Helper table for User_Job """
 	job_category = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.job_category
 
 class UserJob(models.Model):
 	""" Sub-table for the User: Job """
@@ -96,6 +114,9 @@ class UserJob(models.Model):
 class EducationCategory(models.Model):
 	""" Helper table for User_Education """
 	education_category = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.education_category
 
 class UserEducation(models.Model):
 	""" Sub-table for the User: Education """
