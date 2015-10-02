@@ -1,9 +1,11 @@
 from django.db import models
 from datetime import datetime
 from user.models import NetworkerUser
+from django.contrib.auth.models import Group
 
 class NetworkerGroup(models.Model):
 	""" Main table for Group """
+	group_extension = models.ManyToManyField(Group)
 	group_organizer = models.ForeignKey(NetworkerUser)
 	group_name = models.CharField(max_length=255)
 	group_description = models.TextField(max_length=255, blank=True)
