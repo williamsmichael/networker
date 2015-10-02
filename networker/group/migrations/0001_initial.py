@@ -8,20 +8,21 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('user', '0001_initial'),
+        ('auth', '0006_require_contenttypes_0002'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='GroupUser',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
                 ('last_message_dateTime', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
             name='MessageSystemMessage',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
                 ('message', models.TextField()),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
                 ('group_user_id', models.ForeignKey(to='group.GroupUser')),
@@ -30,19 +31,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MessageSystemTopic',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
                 ('topic_name', models.CharField(max_length=255)),
                 ('topic_description', models.TextField()),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
+            name='MessageSystemTopicTag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('tag', models.CharField(blank=True, max_length=25)),
+                ('message_system_topic_tag_id', models.ForeignKey(to='group.MessageSystemTopic')),
+            ],
+        ),
+        migrations.CreateModel(
             name='NetworkerGroup',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('group_name', models.CharField(max_length=255)),
-                ('group_description', models.TextField(max_length=255, blank=True)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('group_description', models.TextField(blank=True, max_length=255)),
+                ('welcome_message', models.TextField(blank=True, max_length=255)),
+                ('group_image', models.ImageField(upload_to='static/images')),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
+                ('group_extension', models.OneToOneField(to='auth.Group')),
                 ('group_organizer', models.ForeignKey(to='user.NetworkerUser')),
             ],
         ),
