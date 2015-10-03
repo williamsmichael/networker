@@ -128,7 +128,7 @@ class Migration(migrations.Migration):
             name='UserPhone',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
-                ('country_code', models.PositiveSmallIntegerField(blank=True)),
+                # ('country_code', models.PositiveSmallIntegerField(blank=True)),
                 ('phone_number', models.PositiveSmallIntegerField(blank=True)),
                 ('phone_category_id', models.ForeignKey(to='user.PhoneCategory')),
                 ('user_id', models.ForeignKey(to='user.NetworkerUser')),

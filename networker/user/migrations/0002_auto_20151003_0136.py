@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import phonenumber_field.modelfields
 import django.utils.timezone
+import phonenumber_field.modelfields
 
 
 class Migration(migrations.Migration):
@@ -13,14 +13,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='userphone',
-            name='country_code',
-        ),
         migrations.AlterField(
             model_name='useraddress',
             name='street_address_2',
-            field=models.CharField(blank=True, max_length=50),
+            field=models.CharField(max_length=50, blank=True),
         ),
         migrations.AlterField(
             model_name='usereducation',

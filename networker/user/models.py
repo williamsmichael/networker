@@ -3,6 +3,7 @@ from datetime import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+from django_countries.fields import CountryField
 
 class NetworkerUser(models.Model):
 	""" Main table for User """
