@@ -2,8 +2,6 @@ from django.db import models
 from datetime import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
-from phonenumber_field.modelfields import PhoneNumberField
-from django_countries.fields import CountryField
 
 class NetworkerUser(models.Model):
 	""" Main table for User """
@@ -72,14 +70,14 @@ class UserEmail(models.Model):
 	""" Sub-table for the User: Email """
 	user_id = models.ForeignKey(NetworkerUser)
 	email_category_id = models.ForeignKey(EmailCategory)
-	email = models.CharField(max_length=50, blank=True)
+	email = models.CharField(max_length=50)
 
 	def __str__(self):
 		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id, )
 
 class PhoneCategory(models.Model):
 	""" Helper table for User_Phone """
-	phone_category = models.CharField(max_length=10)
+	phone_category = models.CharField(max_length=15)
 
 	def __str__(self):
 		return self.phone_category
@@ -89,7 +87,7 @@ class UserPhone(models.Model):
 	user_id = models.ForeignKey(NetworkerUser)
 	phone_category_id = models.ForeignKey(PhoneCategory)
 	# country_code = models.PositiveSmallIntegerField(blank=True)
-	phone_number = PhoneNumberField()
+	phone_number = models.CharField(max_length=15)
 
 	def __str__(self):
 		return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
@@ -105,7 +103,7 @@ class UserSocialMedia(models.Model):
 	""" Sub-table for the User: Social Media """
 	user_id = models.ForeignKey(NetworkerUser)
 	social_media_category_id = models.ForeignKey(SocialMediaCategory)
-	social_media_url = models.URLField(blank=True)
+	social_media_url = models.URLField()
 
 	def __str__(self):
 		return "{}, {} ({})".format(self.user_id, self.social_media_url, self.social_media_category_id)
