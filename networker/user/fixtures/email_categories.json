@@ -1,0 +1,23 @@
+[
+{
+    "fields": {
+        "email_category": "Main"
+    },
+    "pk": 1,
+    "model": "user.emailcategory"
+},
+{
+    "fields": {
+        "email_category": "Work"
+    },
+    "pk": 2,
+    "model": "user.emailcategory"
+},
+{
+    "fields": {
+        "email_category": "Other"
+    },
+    "pk": 3,
+    "model": "user.emailcategory"
+}
+]

@@ -1,0 +1,107 @@
+[
+{
+    "pk": 1,
+    "fields": {
+        "skill_category": "Administrative"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 2,
+    "fields": {
+        "skill_category": "Clerical"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 3,
+    "fields": {
+        "skill_category": "Communication"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 4,
+    "fields": {
+        "skill_category": "Counseling"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 5,
+    "fields": {
+        "skill_category": "Development"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 6,
+    "fields": {
+        "skill_category": "Financial"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 7,
+    "fields": {
+        "skill_category": "Interpersonal"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 8,
+    "fields": {
+        "skill_category": "Management"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 9,
+    "fields": {
+        "skill_category": "Problem Solving"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 10,
+    "fields": {
+        "skill_category": "Organizational"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 11,
+    "fields": {
+        "skill_category": "Research"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 12,
+    "fields": {
+        "skill_category": "Technical"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 13,
+    "fields": {
+        "skill_category": "Time Management"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 14,
+    "fields": {
+        "skill_category": "Training"
+    },
+    "model": "user.skillcategory"
+},
+{
+    "pk": 15,
+    "fields": {
+        "skill_category": "Sales"
+    },
+    "model": "user.skillcategory"
+}
+]
