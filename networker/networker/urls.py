@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 
 from . import views
 
 urlpatterns = [
 
-    url(r'^user/', include('user.urls')),
+    url(r'^users/', include('user.urls')),
 
     # new url patterns should be coded above
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.home),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

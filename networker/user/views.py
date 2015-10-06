@@ -6,6 +6,7 @@ from .models import NetworkerUser
 
 # Create your views here.
 def user_list(request):
-	users = User.objects.all()
+	# users = User.objects.all()
+	users = NetworkerUser.objects.all()
 
 	return render(request, 'user/user_list.html', {'users': users})

@@ -3,6 +3,10 @@ from datetime import datetime, date
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+# helper function for uploading files to username path
+def upload_to(instance, filename):
+    return 'images/{}/{}'.format(instance.user_extension.username, filename)
+
 class NetworkerUser(models.Model):
 	""" Main table for User """
 
@@ -14,7 +18,7 @@ class NetworkerUser(models.Model):
 	# --------------------------
 	user_extension = models.OneToOneField(User)
 	relationship_to_group = models.CharField(max_length=255)
-	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=255, blank=True)
+	profile_image = models.ImageField(upload_to=upload_to, blank=True, null=True)
 	nickname = models.CharField(max_length=255, blank=True)
 	website = models.URLField(blank=True)
 	place_of_birth = models.CharField(max_length=255, blank=True)
