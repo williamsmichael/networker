@@ -34,7 +34,7 @@ class UserSkill(models.Model):
 	""" Sub-table for the User: Skill """
 	user_id = models.ForeignKey(NetworkerUser)
 	skill_category_id = models.ForeignKey(SkillCategory)
-	skill_description = models.TextField(max_length=255, blank=True)
+	skill_description = models.TextField(blank=True)
 
 	def __str__(self):
 		return "{}, {} ({})".format(self.user_id, self.skill_description, self.skill_category_id)
@@ -123,7 +123,7 @@ class UserJob(models.Model):
 	user_id = models.ForeignKey(NetworkerUser)
 	job_category_id = models.ForeignKey(JobCategory)
 	job_title = models.CharField(max_length=255, blank=True)
-	job_description = models.TextField(max_length=255, blank=True)
+	job_description = models.TextField(blank=True)
 	company_name = models.CharField(max_length=255, blank=True)
 	company_state_province = models.CharField(max_length=255, blank=True)
 	company_country = models.CharField(max_length=255, blank=True)
@@ -146,7 +146,7 @@ class UserEducation(models.Model):
 	user_id = models.ForeignKey(NetworkerUser)
 	education_category_id = models.ForeignKey(EducationCategory)
 	education_title = models.CharField(max_length=255, blank=True)
-	education_description = models.TextField(max_length=255, blank=True)
+	education_description = models.TextField(blank=True)
 	school_name = models.CharField(max_length=255, blank=True)
 	is_completed = models.BooleanField(default=False)
 	school_year_started = models.DateField(default=timezone.now)
