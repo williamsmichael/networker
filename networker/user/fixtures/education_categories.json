@@ -1,0 +1,72 @@
+[
+{
+    "pk": 1,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "K12"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Post Secondary"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Associates Degree"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Bachelors Degree"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Graduate Degree"
+    }
+},
+{
+    "pk": 6,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Doctoral Degree"
+    }
+},
+{
+    "pk": 7,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Certification"
+    }
+},
+{
+    "pk": 8,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "License"
+    }
+},
+{
+    "pk": 9,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Professional Development"
+    }
+},
+{
+    "pk": 10,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Other"
+    }
+}
+]
