@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, date
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -14,7 +14,9 @@ class NetworkerUser(models.Model):
 	# --------------------------
 	user_extension = models.OneToOneField(User)
 	relationship_to_group = models.CharField(max_length=50)
-	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100)
+	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100, blank=True)
+	nickname = models.CharField(max_length=50, blank=True)
+	place_of_birth = models.CharField(max_length=50, blank=True)
 	date_of_birth = models.DateField()
 
 	def __str__(self):
@@ -119,6 +121,7 @@ class UserJob(models.Model):
 	""" Sub-table for the User: Job """
 	user_id = models.ForeignKey(NetworkerUser)
 	job_category_id = models.ForeignKey(JobCategory)
+	job_title = models.CharField(max_length=50, blank=True)
 	job_description = models.TextField(max_length=255, blank=True)
 	company_name = models.CharField(max_length=50, blank=True)
 	company_state_province = models.CharField(max_length=50, blank=True)
@@ -141,6 +144,7 @@ class UserEducation(models.Model):
 	""" Sub-table for the User: Education """
 	user_id = models.ForeignKey(NetworkerUser)
 	education_category_id = models.ForeignKey(EducationCategory)
+	education_title = models.CharField(max_length=50, blank=True)
 	education_description = models.TextField(max_length=255, blank=True)
 	school_name = models.CharField(max_length=255, blank=True)
 	is_completed = models.BooleanField(default=False)

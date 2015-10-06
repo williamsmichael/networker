@@ -1,0 +1,14 @@
+[
+{
+    "pk": 2,
+    "fields": {
+        "nickname": "mple",
+        "place_of_birth": "Newark, Ohio, USA",
+        "relationship_to_group": "Founder",
+        "user_extension": 1,
+        "profile_image": "static/images/Me_128x128px.JPG",
+        "date_of_birth": "1978-11-01"
+    },
+    "model": "user.networkeruser"
+}
+]
