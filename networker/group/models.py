@@ -7,9 +7,9 @@ class NetworkerGroup(models.Model):
 	""" Main table for Group """
 	group_extension = models.OneToOneField(Group)
 	group_organizer = models.ForeignKey(NetworkerUser)
-	group_description = models.TextField(max_length=255, blank=True)
-	welcome_message = models.TextField(max_length=255, blank=True)
-	group_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100, blank=True)
+	group_description = models.TextField(blank=True)
+	welcome_message = models.TextField(blank=True)
+	group_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=255, blank=True)
 	website = models.URLField(blank=True)
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
@@ -33,7 +33,7 @@ class MessageSystemTopic(models.Model):
 class MessageSystemTopicTag(models.Model):
 	""" Topic Tag table for the message system """
 	message_system_topic_tag_id = models.ForeignKey(MessageSystemTopic)
-	tag = models.CharField(max_length=25, blank=True)
+	tag = models.CharField(max_length=255, blank=True)
 
 class MessageSystemMessage(models.Model):
 	""" Message table for the message system """

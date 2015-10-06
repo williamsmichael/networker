@@ -13,11 +13,11 @@ class NetworkerUser(models.Model):
 	# User extended
 	# --------------------------
 	user_extension = models.OneToOneField(User)
-	relationship_to_group = models.CharField(max_length=50)
-	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100, blank=True)
-	nickname = models.CharField(max_length=50, blank=True)
+	relationship_to_group = models.CharField(max_length=255)
+	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=255, blank=True)
+	nickname = models.CharField(max_length=255, blank=True)
 	website = models.URLField(blank=True)
-	place_of_birth = models.CharField(max_length=50, blank=True)
+	place_of_birth = models.CharField(max_length=255, blank=True)
 	date_of_birth = models.DateField()
 
 	def __str__(self):
@@ -25,7 +25,7 @@ class NetworkerUser(models.Model):
 
 class SkillCategory(models.Model):
 	""" Helper table for User_Skill """
-	skill_category = models.CharField(max_length=20)
+	skill_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.skill_category
@@ -41,7 +41,7 @@ class UserSkill(models.Model):
 
 class AddressCategory(models.Model):
 	""" Helper table for User_Address """
-	address_category = models.CharField(max_length=10)
+	address_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.address_category
@@ -50,12 +50,12 @@ class UserAddress(models.Model):
 	""" Sub-table for the User: Address """
 	user_id = models.ForeignKey(NetworkerUser)
 	address_category_id = models.ForeignKey(AddressCategory)
-	street_address_1 = models.CharField(max_length=50)
-	street_address_2 = models.CharField(max_length=50, blank=True)
-	city_town = models.CharField(max_length=50)
-	state_province = models.CharField(max_length=50)
-	country = models.CharField(max_length=50)
-	postal_code = models.CharField(max_length=25)
+	street_address_1 = models.CharField(max_length=255)
+	street_address_2 = models.CharField(max_length=255, blank=True)
+	city_town = models.CharField(max_length=255)
+	state_province = models.CharField(max_length=255)
+	country = models.CharField(max_length=255)
+	postal_code = models.CharField(max_length=255)
 	latitude_api = models.FloatField()
 	longitude_api = models.FloatField()
 
@@ -64,7 +64,7 @@ class UserAddress(models.Model):
 
 class EmailCategory(models.Model):
 	""" Helper table for User_Email """
-	email_category = models.CharField(max_length=10)
+	email_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.email_category
@@ -73,14 +73,14 @@ class UserEmail(models.Model):
 	""" Sub-table for the User: Email """
 	user_id = models.ForeignKey(NetworkerUser)
 	email_category_id = models.ForeignKey(EmailCategory)
-	email = models.CharField(max_length=50)
+	email = models.EmailField()
 
 	def __str__(self):
 		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id, )
 
 class PhoneCategory(models.Model):
 	""" Helper table for User_Phone """
-	phone_category = models.CharField(max_length=15)
+	phone_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.phone_category
@@ -90,14 +90,14 @@ class UserPhone(models.Model):
 	user_id = models.ForeignKey(NetworkerUser)
 	phone_category_id = models.ForeignKey(PhoneCategory)
 	country_code = models.PositiveSmallIntegerField(null=True)
-	phone_number = models.CharField(max_length=15)
+	phone_number = models.CharField(max_length=255)
 
 	def __str__(self):
 		return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
 
 class SocialMediaCategory(models.Model):
 	""" Helper table for User_Social_Media """
-	social_media_category = models.CharField(max_length=50)
+	social_media_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.social_media_category
@@ -113,7 +113,7 @@ class UserSocialMedia(models.Model):
 
 class JobCategory(models.Model):
 	""" Helper table for User_Job """
-	job_category = models.CharField(max_length=50)
+	job_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.job_category
@@ -122,11 +122,11 @@ class UserJob(models.Model):
 	""" Sub-table for the User: Job """
 	user_id = models.ForeignKey(NetworkerUser)
 	job_category_id = models.ForeignKey(JobCategory)
-	job_title = models.CharField(max_length=50, blank=True)
+	job_title = models.CharField(max_length=255, blank=True)
 	job_description = models.TextField(max_length=255, blank=True)
-	company_name = models.CharField(max_length=50, blank=True)
-	company_state_province = models.CharField(max_length=50, blank=True)
-	company_country = models.CharField(max_length=50, blank=True)
+	company_name = models.CharField(max_length=255, blank=True)
+	company_state_province = models.CharField(max_length=255, blank=True)
+	company_country = models.CharField(max_length=255, blank=True)
 	is_current = models.BooleanField(default=True)
 	company_year_started = models.DateField(default=timezone.now)
 	company_year_ended = models.DateField(default=timezone.now)
@@ -136,7 +136,7 @@ class UserJob(models.Model):
 
 class EducationCategory(models.Model):
 	""" Helper table for User_Education """
-	education_category = models.CharField(max_length=50)
+	education_category = models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.education_category
@@ -145,7 +145,7 @@ class UserEducation(models.Model):
 	""" Sub-table for the User: Education """
 	user_id = models.ForeignKey(NetworkerUser)
 	education_category_id = models.ForeignKey(EducationCategory)
-	education_title = models.CharField(max_length=50, blank=True)
+	education_title = models.CharField(max_length=255, blank=True)
 	education_description = models.TextField(max_length=255, blank=True)
 	school_name = models.CharField(max_length=255, blank=True)
 	is_completed = models.BooleanField(default=False)

@@ -1,19 +1,5 @@
 from django.contrib import admin
-from .models import NetworkerUser
-from .models import SkillCategory
-from .models import UserSkill
-from .models import AddressCategory
-from .models import UserAddress
-from .models import EmailCategory
-from .models import UserEmail
-from .models import PhoneCategory
-from .models import UserPhone
-from .models import SocialMediaCategory
-from .models import UserSocialMedia
-from .models import JobCategory
-from .models import UserJob
-from .models import EducationCategory
-from .models import UserEducation
+from .models import NetworkerUser, SkillCategory, UserSkill, AddressCategory, UserAddress, EmailCategory, UserEmail, PhoneCategory, UserPhone, SocialMediaCategory, UserSocialMedia, JobCategory, UserJob, EducationCategory, UserEducation
 
 # Register your models here.
 admin.site.register(NetworkerUser)
