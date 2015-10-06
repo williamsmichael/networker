@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} users {% endblock %}
+
+{% block header %}  Networker Users {% endblock %}
+
+{% block content %}
+
+	{% for networker_user in networker_users %}
+
+		<h2>{{ networker_user.first_name }} {{ networker_user.last_name }}</h2>
+		<ul>
+			<li>username: {{ networker_user.username }}</li>
+			<li>primary email: {{ networker_user.email }}</li>
+			<li>password: {{ networker_user.password }}</li>
+			<li>groups: {{ networker_user.groups }}</li>
+			<li>staff status: {{ networker_user.is_staff }}</li>
+			<li>active status: {{ networker_user.is_active }}</li>
+			<li>superuser status: {{ networker_user.is_superuser }}</li>
+			<li>last login: {{ networker_user.last_login }}</li>
+			<li>date joined: {{ networker_user.date_joined }}</li>
+		</ul>
+
+	{% endfor %}
+
+{% endblock %}
