@@ -16,6 +16,7 @@ class NetworkerUser(models.Model):
 	relationship_to_group = models.CharField(max_length=50)
 	profile_image = models.ImageField(upload_to='static/images', height_field=None, width_field=None, max_length=100, blank=True)
 	nickname = models.CharField(max_length=50, blank=True)
+	website = models.URLField(blank=True)
 	place_of_birth = models.CharField(max_length=50, blank=True)
 	date_of_birth = models.DateField()
 
@@ -88,7 +89,7 @@ class UserPhone(models.Model):
 	""" Sub-table for the User: Phone """
 	user_id = models.ForeignKey(NetworkerUser)
 	phone_category_id = models.ForeignKey(PhoneCategory)
-	# country_code = models.PositiveSmallIntegerField(blank=True)
+	country_code = models.PositiveSmallIntegerField(null=True)
 	phone_number = models.CharField(max_length=15)
 
 	def __str__(self):
