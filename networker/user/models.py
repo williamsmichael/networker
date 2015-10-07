@@ -80,7 +80,7 @@ class UserEmail(models.Model):
 	email = models.EmailField()
 
 	def __str__(self):
-		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id, )
+		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id)
 
 class PhoneCategory(models.Model):
 	""" Helper table for User_Phone """
@@ -93,7 +93,7 @@ class UserPhone(models.Model):
 	""" Sub-table for the User: Phone """
 	user_id = models.ForeignKey(NetworkerUser)
 	phone_category_id = models.ForeignKey(PhoneCategory)
-	country_code = models.PositiveSmallIntegerField(null=True)
+	country_code = models.PositiveSmallIntegerField(blank=True, null=True)
 	phone_number = models.CharField(max_length=255)
 
 	def __str__(self):

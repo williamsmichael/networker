@@ -20,6 +20,7 @@ h4 {
 }
 img {
 	max-width: 100px;
+	margin-bottom: 20px;
 }
 ul {
 	list-style: none;
@@ -28,6 +29,10 @@ ul {
 }
 ul > ul {
 	margin-bottom: 10px;
+}
+li.id {
+	color: #CC6666;
+	font-weight: bolder;
 }
 footer {
 	text-align: right;
