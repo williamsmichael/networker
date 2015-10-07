@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} users {% endblock %}
+
+{% block header %}  Networker Users {% endblock %}
+
+{% block content %}
+
+<div>
+	<h2>{{ user.user_extension.first_name }} {{ user.user_extension.last_name }}</h2>
+	
+	<ul>
+
+	{% for step in email.step_set.all %}
+		<li>{{ step.email_category_id }}</li>	
+
+	{% endfor %}
+	</ul>
+
+	{{ usr }}
+
+{% endblock %}

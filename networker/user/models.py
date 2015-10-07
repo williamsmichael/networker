@@ -27,21 +27,38 @@ class NetworkerUser(models.Model):
 	def __str__(self):
 		return "[{}] {}-{} {}".format(self.user_extension.id, self.user_extension.username, self.user_extension.first_name, self.user_extension.last_name)
 
-class SkillCategory(models.Model):
-	""" Helper table for User_Skill """
-	skill_category = models.CharField(max_length=255)
+class PhoneCategory(models.Model):
+	""" Helper table for User_Phone """
+	phone_category = models.CharField(max_length=255)
 
 	def __str__(self):
-		return self.skill_category
+		return self.phone_category
 
-class UserSkill(models.Model):
-	""" Sub-table for the User: Skill """
+class UserPhone(models.Model):
+	""" Sub-table for the User: Phone """
 	user_id = models.ForeignKey(NetworkerUser)
-	skill_category_id = models.ForeignKey(SkillCategory)
-	skill_description = models.TextField(blank=True)
+	phone_category_id = models.ForeignKey(PhoneCategory)
+	country_code = models.PositiveSmallIntegerField(blank=True, null=True)
+	phone_number = models.CharField(max_length=255)
 
 	def __str__(self):
-		return "{}, {} ({})".format(self.user_id, self.skill_description, self.skill_category_id)
+		return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
+
+class EmailCategory(models.Model):
+	""" Helper table for User_Email """
+	email_category = models.CharField(max_length=255)
+
+	def __str__(self):
+		return self.email_category
+
+class UserEmail(models.Model):
+	""" Sub-table for the User: Email """
+	user_id = models.ForeignKey(NetworkerUser)
+	email_category_id = models.ForeignKey(EmailCategory)
+	email = models.EmailField()
+
+	def __str__(self):
+		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id)
 
 class AddressCategory(models.Model):
 	""" Helper table for User_Address """
@@ -65,39 +82,6 @@ class UserAddress(models.Model):
 
 	def __str__(self):
 		return "{}, {}, {}, {} ({})".format(self.user_id, self.street_address_1, self.postal_code, self.country, self.address_category_id)
-
-class EmailCategory(models.Model):
-	""" Helper table for User_Email """
-	email_category = models.CharField(max_length=255)
-
-	def __str__(self):
-		return self.email_category
-
-class UserEmail(models.Model):
-	""" Sub-table for the User: Email """
-	user_id = models.ForeignKey(NetworkerUser)
-	email_category_id = models.ForeignKey(EmailCategory)
-	email = models.EmailField()
-
-	def __str__(self):
-		return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id)
-
-class PhoneCategory(models.Model):
-	""" Helper table for User_Phone """
-	phone_category = models.CharField(max_length=255)
-
-	def __str__(self):
-		return self.phone_category
-
-class UserPhone(models.Model):
-	""" Sub-table for the User: Phone """
-	user_id = models.ForeignKey(NetworkerUser)
-	phone_category_id = models.ForeignKey(PhoneCategory)
-	country_code = models.PositiveSmallIntegerField(blank=True, null=True)
-	phone_number = models.CharField(max_length=255)
-
-	def __str__(self):
-		return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
 
 class SocialMediaCategory(models.Model):
 	""" Helper table for User_Social_Media """
@@ -159,6 +143,21 @@ class UserEducation(models.Model):
 	def __str__(self):
 		return "{}, {}, passed={} ({})".format(self.user_id, self.school_name, self.is_completed, self.education_category_id) 
 
+class SkillCategory(models.Model):
+	""" Helper table for User_Skill """
+	skill_category = models.CharField(max_length=255)
+
+	def __str__(self):
+		return self.skill_category
+
+class UserSkill(models.Model):
+	""" Sub-table for the User: Skill """
+	user_id = models.ForeignKey(NetworkerUser)
+	skill_category_id = models.ForeignKey(SkillCategory)
+	skill_description = models.TextField(blank=True)
+
+	def __str__(self):
+		return "{}, {} ({})".format(self.user_id, self.skill_description, self.skill_category_id)
 
 
 
