@@ -11,12 +11,12 @@ def user_list(request):
 	# import pdb; pdb.set_trace()
 	return render(request, 'user/user_list.html', {'users': users})
 
-def email_list(request, pk):
-	email = NetworkerUser.objects.get(pk=pk)
-	# email_list = []
-	usr = NetworkerUser.objects.get(pk=pk).select_related()
-	print(usr)
+# def email_list(request, pk):
+# 	email = NetworkerUser.objects.get(pk=pk)
+# 	# email_list = []
+# 	usr = NetworkerUser.objects.get(pk=pk).select_related()
+# 	print(usr)
 
-	return render(request, 'user/email_list.html', {'email': email, "usr": usr})
+# 	return render(request, 'user/email_list.html', {'email': email, "usr": usr})
 
 
