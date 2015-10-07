@@ -8,28 +8,36 @@
 {% block content %}
 
 	{% for user in users %}
-
+	<div>
 		<h2>{{ user.user_extension.first_name }} {{ user.user_extension.last_name }}</h2>
+		
 		<ul>
+
 			<li><img src="{{ user.profile_image.url }}"></li>
 			<li>username: {{ user.user_extension.username }}</li>
 			<li>primary email: {{ user.user_extension.email }}</li>
-			<li>password: {{ user.user_extension.password }}</li>
-			<li>groups: {{ user.user_extension.groups.values }}</li>
+			<!-- <li>password: {{ user.user_extension.password }}</li> -->
+			<h4>Groups</h4>
+			<ul>
+
+				{% for group in user.user_extension.groups.values %}
+				<li>({{group.id}}) {{ group.name }}</li>	
+				{% endfor %}
+			</ul>
+
 			<li>active status: {{ user.user_extension.is_active }}</li>
 			<li>staff status: {{ user.user_extension.is_staff }}</li>
 			<li>superuser status: {{ user.user_extension.is_superuser }}</li>
 			<li>last login: {{ user.user_extension.last_login | date:"F d, Y f A e" }}</li>
 			<li>date joined: {{ user.user_extension.date_joined }}</li>
-			<li><h4>{{ user.user_extension.first_name }}'s extended data:</h4></li>
+			<li><h3>{{ user.user_extension.first_name }}'s extended data:</h3></li>
 			<li>relationship to group: {{ user.relationship_to_group }}</li>
 			<li>nickname: {{ user.nickname | default:"none" }}</li>
 			<li>website: {{ user.website | default:"none" }}</li>
 			<li>place of birth: {{ user.place_of_birth |  default:"none" }}</li>
 			<li>date of birth: {{ user.date_of_birth | date:"F d, Y" }}</li>
-			
-
 		</ul>
+	</div>
 
 	{% endfor %}
 

@@ -8,5 +8,5 @@ from .models import NetworkerUser
 def user_list(request):
 	# users = User.objects.all()
 	users = NetworkerUser.objects.all()
-
+	# import pdb; pdb.set_trace()
 	return render(request, 'user/user_list.html', {'users': users})
