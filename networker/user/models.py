@@ -24,6 +24,9 @@ class NetworkerUser(models.Model):
 	place_of_birth = models.CharField(max_length=255, blank=True)
 	date_of_birth = models.DateField()
 
+	class Meta:
+		ordering = ['id',]
+
 	def __str__(self):
 		return "[{}] {}-{} {}".format(self.user_extension.id, self.user_extension.username, self.user_extension.first_name, self.user_extension.last_name)
 

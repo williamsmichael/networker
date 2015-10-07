@@ -22,11 +22,13 @@ from . import views
 
 urlpatterns = [
 
+    # url(r'^groups/', include('group.urls')),
     url(r'^users/', include('user.urls')),
 
     # new url patterns should be coded above
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.home),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
