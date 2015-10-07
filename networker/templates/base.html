@@ -1,0 +1,21 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<head>
+	<title>{% block title %}{% endblock %} | networker by michael williams | making peoples lives easier MPLE</title>
+	<meta charset="UTF-8">
+
+	<!-- temp styles, remove ASAP -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+	
+</head>
+<body>
+	<h1>{% block header %}{% endblock %}</h1>
+
+	<div>{% block content %}{% endblock %}</div>
+
+	<footer>
+	    <p>&copy; 2015 networker by michael williams</p>
+  </footer>
+</body>
+</html>

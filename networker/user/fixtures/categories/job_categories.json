@@ -1,0 +1,247 @@
+[
+{
+    "fields": {
+        "job_category": "Accounting"
+    },
+    "pk": 1,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Administrative/Clerical"
+    },
+    "pk": 2,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Arts/Entertainment/Media"
+    },
+    "pk": 3,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Agriculture/Forestry/Fishing"
+    },
+    "pk": 4,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Automotive"
+    },
+    "pk": 5,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Biotechnology"
+    },
+    "pk": 6,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Business"
+    },
+    "pk": 7,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Computers"
+    },
+    "pk": 8,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Consulting"
+    },
+    "pk": 9,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Customer Service"
+    },
+    "pk": 10,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Education"
+    },
+    "pk": 11,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Engineering"
+    },
+    "pk": 12,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Executive/Leadership"
+    },
+    "pk": 13,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Facilities"
+    },
+    "pk": 14,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Financial Services"
+    },
+    "pk": 15,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Government"
+    },
+    "pk": 16,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Healthcare"
+    },
+    "pk": 17,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Hospitality"
+    },
+    "pk": 18,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Human Resources"
+    },
+    "pk": 19,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Information Technology"
+    },
+    "pk": 20,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Insurance"
+    },
+    "pk": 21,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Law Enforcement/Fire/Security"
+    },
+    "pk": 22,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Legal"
+    },
+    "pk": 23,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Manufacturing/Production"
+    },
+    "pk": 24,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Marketing"
+    },
+    "pk": 25,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Military"
+    },
+    "pk": 26,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Real Estate"
+    },
+    "pk": 27,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Restaurant/Food Services"
+    },
+    "pk": 28,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Retail/Wholesale"
+    },
+    "pk": 29,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Sales"
+    },
+    "pk": 30,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Science/Research"
+    },
+    "pk": 31,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Telecommunications"
+    },
+    "pk": 32,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Technology"
+    },
+    "pk": 33,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Transportation/Warehouse"
+    },
+    "pk": 34,
+    "model": "user.jobcategory"
+},
+{
+    "fields": {
+        "job_category": "Other"
+    },
+    "pk": 35,
+    "model": "user.jobcategory"
+}
+]

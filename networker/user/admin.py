@@ -1,35 +1,55 @@
 from django.contrib import admin
-from .models import NetworkerUser
-from .models import SkillCategory
-from .models import UserSkill
-from .models import AddressCategory
-from .models import UserAddress
-from .models import EmailCategory
-from .models import UserEmail
-from .models import PhoneCategory
-from .models import UserPhone
-from .models import SocialMediaCategory
-from .models import UserSocialMedia
-from .models import JobCategory
-from .models import UserJob
-from .models import EducationCategory
-from .models import UserEducation
+
+from .models import NetworkerUser, SkillCategory, UserSkill, AddressCategory, UserAddress, EmailCategory, UserEmail, PhoneCategory, UserPhone, SocialMediaCategory, UserSocialMedia, JobCategory, UserJob, EducationCategory, UserEducation
+
+
+class CategoriesInline_1(admin.StackedInline):
+    model = UserAddress
+    extra = 0
+
+class CategoriesInline_2(admin.TabularInline):
+	model = UserPhone
+	extra = 0
+
+class CategoriesInline_3(admin.TabularInline):
+    model = UserEmail
+    extra = 0
+
+class CategoriesInline_4(admin.StackedInline):
+    model = UserJob
+    extra = 0
+
+class CategoriesInline_5(admin.StackedInline):
+    model = UserEducation
+    extra = 0
+
+class CategoriesInline_6(admin.TabularInline):
+    model = UserSkill
+    extra = 0
+
+class CategoriesInline_7(admin.TabularInline):
+    model = UserSocialMedia
+    extra = 0
+
+class UsersAdmin(admin.ModelAdmin):
+	inlines = [
+		CategoriesInline_1,
+		CategoriesInline_2,
+		CategoriesInline_3,
+		CategoriesInline_4,
+		CategoriesInline_5,
+		CategoriesInline_6,
+		CategoriesInline_7,
+	]
 
 # Register your models here.
-admin.site.register(NetworkerUser)
+admin.site.register(NetworkerUser, UsersAdmin)
 admin.site.register(SkillCategory)
-admin.site.register(UserSkill)
 admin.site.register(AddressCategory)
-admin.site.register(UserAddress)
 admin.site.register(EmailCategory)
-admin.site.register(UserEmail)
 admin.site.register(PhoneCategory)
-admin.site.register(UserPhone)
 admin.site.register(SocialMediaCategory)
-admin.site.register(UserSocialMedia)
 admin.site.register(JobCategory)
-admin.site.register(UserJob)
 admin.site.register(EducationCategory)
-admin.site.register(UserEducation)
 
 

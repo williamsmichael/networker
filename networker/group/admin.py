@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import NetworkerGroup
-from .models import GroupUser
-from .models import MessageSystemTopic
-from .models import MessageSystemMessage
+from .models import NetworkerGroup, GroupUser, MessageSystemTopic, MessageSystemMessage
 
 # Register your models here.
 admin.site.register(NetworkerGroup)
