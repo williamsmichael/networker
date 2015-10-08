@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User, Group
+# from django.contrib.auth.models import User, Group
 
 from .models import NetworkerUser
 

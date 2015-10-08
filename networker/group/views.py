@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User, Group
+# from django.contrib.auth.models import User, Group
 
 from .models import NetworkerGroup, Group
 
@@ -7,8 +7,10 @@ from .models import NetworkerGroup, Group
 def group_list(request):
 
 	groups = NetworkerGroup.objects.all()
-	# users = groups.user_set.all()
+	# group = NetworkerGroup.objects.get(group_extension__name="Synergy Consultants, LLC")
+	# users = group.group_extension.user_set.all()
+	# print(users)
 
 	# import pdb; pdb.set_trace()
 
-	return render(request, 'group/group_list.html', {'groups': groups})
+	return render(request, 'group/group_list.html', { 'groups': groups })

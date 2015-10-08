@@ -22,9 +22,9 @@
 	</ul>
 	<h4>Members</h4>
 	<ul>
-<!-- 		{% for member in users.group.group_extension %}
-		<li>{{ member }}</li>	
-		{% endfor %} -->
+		{% for member in group.group_extension.user_set.all %}
+		<li>{{ member }}, {{ member.email }}</li>	
+		{% endfor %}
 	</ul>
 
 
