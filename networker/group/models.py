@@ -15,7 +15,7 @@ class NetworkerGroup(models.Model):
 	welcome_message = models.TextField(blank=True)
 	group_image = models.ImageField(upload_to=upload_to, blank=True, null=True)
 	website = models.URLField(blank=True)
-	created_dateTime = models.DateTimeField(auto_now_add=True)
+	created_dateTime = models.DateTimeField(auto_now_add=True, auto_now=False)
 
 	class Meta:
 		ordering = ['id',]
@@ -27,7 +27,7 @@ class GroupUser(models.Model):
 	""" Relationship table for message system and user """
 	group_id = models.ForeignKey(NetworkerGroup)
 	user_id = models.ForeignKey(NetworkerUser)
-	last_message_dateTime = models.DateTimeField(auto_now=True)
+	last_message_dateTime = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 class MessageSystemTopic(models.Model):
 	""" Topic table for message system """
@@ -35,7 +35,7 @@ class MessageSystemTopic(models.Model):
 	originator_id = models.ForeignKey(GroupUser)
 	topic_name = models.CharField(max_length=255)
 	topic_description = models.TextField()
-	created_dateTime = models.DateTimeField(auto_now_add=True)
+	created_dateTime = models.DateTimeField(auto_now_add=True, auto_now=False)
 
 class MessageSystemTopicTag(models.Model):
 	""" Topic Tag table for the message system """
@@ -47,7 +47,7 @@ class MessageSystemMessage(models.Model):
 	message_system_topic_id = models.ForeignKey(MessageSystemTopic)
 	group_user_id = models.ForeignKey(GroupUser)
 	message = models.TextField()
-	created_dateTime = models.DateTimeField(auto_now_add=True)
+	created_dateTime = models.DateTimeField(auto_now_add=True, auto_now=False)
 
 
 
