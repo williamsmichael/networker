@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
 
-    # url(r'^groups/', include('group.urls')),
+    url(r'^groups/', include('group.urls')),
     url(r'^users/', include('user.urls')),
 
     # new url patterns should be coded above

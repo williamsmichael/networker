@@ -17,6 +17,9 @@ class NetworkerGroup(models.Model):
 	website = models.URLField(blank=True)
 	created_dateTime = models.DateTimeField(auto_now_add=True)
 
+	class Meta:
+		ordering = ['id',]
+		
 	def __str__(self):
 		return self.group_extension.name
 
