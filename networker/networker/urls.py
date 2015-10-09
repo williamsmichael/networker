@@ -27,7 +27,7 @@ urlpatterns = [
 
     # new url patterns should be coded above
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.home),
+    url(r'^$', views.home, name='home'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

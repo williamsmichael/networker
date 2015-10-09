@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from user.models import NetworkerUser
+from .models import NetworkerUser
 
 class UserForm(forms.ModelForm):
 

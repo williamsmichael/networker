@@ -33,7 +33,7 @@
 		<li>staff status: {{ user.user_extension.is_staff }}</li>
 		<li>superuser status: {{ user.user_extension.is_superuser }}</li>
 		<li>last login: {{ user.user_extension.last_login | date:"F d, Y f A e" }}</li>
-		<li>date joined: {{ user.user_extension.date_joined }}</li>
+		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
 	<h4>Membership</h4>
