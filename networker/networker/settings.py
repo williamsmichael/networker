@@ -123,7 +123,10 @@ try:
 except ImportError:
     pass
 
-
+#####################
+# REDIRECT TO LOGIN #
+#####################
+LOGIN_URL = '/users/login/'
 
 
 

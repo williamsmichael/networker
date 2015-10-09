@@ -15,8 +15,10 @@
 
 <ul>
 	{% if user.is_authenticated %}
-		<li><a href="/users/">Networker Users</a></li>
-		<li><a href="/groups/">Networker Groups</a></li>
+		<li><a href="/users/">Users</a></li>
+		<li><a href="/groups/">Groups</a></li>
+		<li><a href="/users/restricted">Restricted</a></li>
+		<li><a href="/users/logout">Logout</a></li>
 	{% else %}
 		<li><a href="/users/login/">Login</a></li>
 		<li><a href="/users/register/">Sign Up for Free</a></li>
