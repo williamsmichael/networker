@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import NetworkerUser
+from user.models import NetworkerUser
 
 class UserForm(forms.ModelForm):
 
@@ -16,4 +16,4 @@ class NetworkerUserForm(forms.ModelForm):
 	class Meta:
 
 		model = NetworkerUser
-		fields = ('date_of_birth', 'profile_image')
+		fields = ('website', 'profile_image',)

@@ -22,7 +22,7 @@ class NetworkerUser(models.Model):
 	nickname = models.CharField(max_length=255, blank=True)
 	website = models.URLField(blank=True)
 	place_of_birth = models.CharField(max_length=255, blank=True)
-	date_of_birth = models.DateField()
+	date_of_birth = models.DateField(blank=True, null=True)
 
 	class Meta:
 		ordering = ['id',]

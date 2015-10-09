@@ -2,7 +2,7 @@ from django.shortcuts import render
 # from django.contrib.auth.models import User, Group
 
 from .models import NetworkerUser
-from .forms import UserForm, NetworkerUserForm
+from user.forms import UserForm, NetworkerUserForm
 
 
 def user_list(request):
@@ -38,11 +38,12 @@ def register(request):
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
+            # We also establish a link between the two model instances that we create. After creating a new User model instance, we reference it in the UserProfile instance with the line profile.user_extension = user. This is where we populate the user attribute of the UserProfileForm form
             profile = networker_user_form.save(commit=False)
-            profile.user = user
+            profile.user_extension = user
 
-            # Did the user provide a profile picture?
-            # If so, we need to get it from the input form and put it in the UserProfile model.
+            # # Did the user provide a profile picture?
+            # # If so, we need to get it from the input form and put it in the UserProfile model.
             if 'profile_image' in request.FILES:
 
                 profile.profile_image = request.FILES['profile_image']
@@ -66,6 +67,6 @@ def register(request):
         networker_user_form = NetworkerUserForm()
 
     # Render the template depending on the context.
-    return render(request, 'user/register.html', {'user_form': user_form, 'networker_user_form': networker_user_form})
+    return render(request, 'user/register.html', { 'user_form': user_form, 'networker_user_form': networker_user_form, 'registered': registered })
 
 

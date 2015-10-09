@@ -12,13 +12,18 @@
 <div>
 	<h2>{{ user.user_extension.first_name }} {{ user.user_extension.last_name }}</h2>
 	<ul>
-		<li><img src="{{ user.profile_image.url }}"></li>
+		{% if user.profile_image %}
+			<li><img src="{{ user.profile_image.url }}"></li>
+		{% else %}
+			<li><img src="https://unsplash.it/150/150/?random"></li>
+		{% endif %}
+
 		<li class='id'>id: {{ user.user_extension.id }}</li>
 		<li>username: {{ user.user_extension.username }}</li>
-		<li>relationship to group: {{ user.relationship_to_group }}</li>
-		<li>nickname: {{ user.nickname | default:"none" }}</li>
-		<li>website: {{ user.website | default:"none" }}</li>
-		<li>place of birth: {{ user.place_of_birth |  default:"none" }}</li>
+		<li>relationship to group: {{ user.relationship_to_group | default:"none set" }}</li>
+		<li>nickname: {{ user.nickname | default:"none set" }}</li>
+		<li>website: {{ user.website | default:"none set" }}</li>
+		<li>place of birth: {{ user.place_of_birth |  default:"none set" }}</li>
 		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" }}</li>
 	</ul>
 
@@ -34,51 +39,50 @@
 	<h4>Membership</h4>
 	<ul>
 		{% for group in user.user_extension.groups.values %}
-		<li>{{ group.name }}</li>	
-
+			<li>{{ group.name }}</li>	
 		{% endfor %}
 	</ul>
 
 	<h4>Phone</h4>
 	<ul>
 		{% for phone in user.userphone_set.all %}
-		<li>({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</li>	
+			<li>({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</li>	
 		{% endfor %}
 	</ul>
 
 	<h4>Email</h4>
 	<ul>
-		<li>(Primary) {{ user.user_extension.email }}</li>
+		<li>(Main) {{ user.user_extension.email }}</li>
 		{% for email in user.useremail_set.all %}
-		<li>({{ email.email_category_id.email_category }}) {{ email.email }}</li>	
+			<li>({{ email.email_category_id.email_category }}) {{ email.email }}</li>	
 		{% endfor %}
 	</ul>
 
 	<h4>Address</h4>
 	<ul>
 		{% for address in user.useraddress_set.all %}
-		<li>({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</li>	
+			<li>({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</li>	
 		{% endfor %}
 	</ul>
 
 	<h4>Social Profile</h4>
 	<ul>
 		{% for social_media in user.usersocialmedia_set.all %}
-		<li>({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</li>	
+			<li>({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</li>	
 		{% endfor %}
 	</ul>
 
 	<h4>Job Profile</h4>
 	<ul>
 		{% for job in user.userjob_set.all %}
-		<li>{{ job.job_title }}, {{ job.company_name }}</li>	
+			<li>{{ job.job_title }}, {{ job.company_name }}</li>	
 		{% endfor %}
 	</ul>
 
 	<h4>Skill Profile</h4>
 	<ul>
 		{% for skill in user.userskill_set.all %}
-		<li>{{ skill.skill_category_id.skill_category }} {{ skill.skill_description | default:"" }}</li>	
+			<li>{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</li>	
 		{% endfor %}
 	</ul>
 

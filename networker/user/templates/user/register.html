@@ -10,14 +10,14 @@
 	{# variable registered established in views.py #}
 	{# variable registered=False displays the form #}
 	{% if registered %}
-	<p>Networker says: <strong>thank you for registering!</strong></p>
-	<a href="/user/">Return to the homepage.</a>
+	<p><strong>Thank you for registering!</strong></p>
+	<a href="/users/">Return to the homepage.</a>
 	
 	{% else %}
-	<p>Networker says: <strong>register here!</strong></p>
+	<p><strong>Register here!</strong></p>
 
 	{# When you make a POST request, you have to encode the data that forms the body of the request in some way, hence enctype. #}
-	<form id="user_form" method="post" action="/user/register/" enctype="multipart/form-data">
+	<form id="user_form" method="post" action="/users/register/" enctype="multipart/form-data">
 
 		{% csrf_token %}
 
