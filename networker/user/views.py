@@ -13,7 +13,6 @@ def index(request):
 
 def user_list(request):
     """ List of all users """
-
     users = NetworkerUser.objects.all()
     return render(request, 'user/user_list.html', {'users': users})
 
@@ -103,7 +102,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/users/')
+                return HttpResponseRedirect('/')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse('Your Networker account is disabled.')
@@ -131,6 +130,6 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage
-    return HttpResponseRedirect('/users/')
+    return HttpResponseRedirect('/')
 
 

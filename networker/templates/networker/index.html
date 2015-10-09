@@ -3,27 +3,9 @@
 
 {% block title %} about {% endblock %}
 
-{% block header %}
-	{% if user.is_authenticated %}
-		Networker says ... hej {{ user.username }}!
-	{% else %}
-		Networker says ... hej world!
-	{% endif %}
-{% endblock %}
+{% block header %}{% endblock %}
 
 {% block content %}
-
-<ul>
-	{% if user.is_authenticated %}
-		<li><a href="/users/">Users</a></li>
-		<li><a href="/groups/">Groups</a></li>
-		<li><a href="/users/restricted">Restricted</a></li>
-		<li><a href="/users/logout">Logout</a></li>
-	{% else %}
-		<li><a href="/users/login/">Login</a></li>
-		<li><a href="/users/register/">Sign Up for Free</a></li>
-	{% endif %}
-</ul>
 
 <p>Networker is a secure, responsive web application for constructing private groups. The user group for this project will be a “mock family network”. The application will provide the opportunities to login into a secure environment, build a phone book, track user locations of residency,  observe analytics based on the user group profiles, communicate through project-based message system. The project-based message system will allow for the users to collaborate on specific goals and communicate through posts and uploads. 
 </p>

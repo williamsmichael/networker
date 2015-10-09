@@ -3,11 +3,11 @@
 
 {% block title %} login {% endblock %}
 
-{% block header %}  Networker Login {% endblock %}
+{% block heading %} Networker Login {% endblock %}
 
 {% block content %}
 
-	<form id="login_form" method="post" action="/users/login/">
+	<form id="login_form" method="post" action="/login/">
 		
 		{% csrf_token %}	
 

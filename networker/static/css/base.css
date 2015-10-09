@@ -10,6 +10,12 @@ body {
 main {
 
 }
+span:nth-child(1) {
+	background-color: #669966;
+	color: #eee;
+	display: inline-block;
+	padding: 1px 15px;
+}
 h1 {
 	text-align: center;
 }

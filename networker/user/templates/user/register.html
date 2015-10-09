@@ -3,7 +3,7 @@
 
 {% block title %} register {% endblock %}
 
-{% block header %}  Networker Registration {% endblock %}
+{% block heading %} Networker Registeration {% endblock %}
 
 {% block content %}
 	
@@ -11,13 +11,13 @@
 	{# variable registered=False displays the form #}
 	{% if registered %}
 	<p><strong>Thank you for registering!</strong></p>
-	<a href="/users/">Return to the homepage.</a>
+	<a href="/">Return to the homepage.</a>
 	
 	{% else %}
 	<p><strong>Register here!</strong></p>
 
 	{# When you make a POST request, you have to encode the data that forms the body of the request in some way, hence enctype. #}
-	<form id="user_form" method="post" action="/users/register/" enctype="multipart/form-data">
+	<form id="user_form" method="post" action="/register/" enctype="multipart/form-data">
 
 		{% csrf_token %}
 
