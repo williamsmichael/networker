@@ -17,7 +17,7 @@ class NetworkerUser(models.Model):
 	# User extended
 	# --------------------------
 	user_extension = models.OneToOneField(User)
-	relationship_to_group = models.CharField(max_length=255)
+	relationship_to_group = models.CharField(max_length=255, blank=True)
 	profile_image = models.ImageField(upload_to=upload_to, blank=True, null=True)
 	nickname = models.CharField(max_length=255, blank=True)
 	website = models.URLField(blank=True)

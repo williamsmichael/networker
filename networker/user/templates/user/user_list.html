@@ -10,7 +10,7 @@
 {% for user in users %}
 
 <div>
-	<h2>{{ user.user_extension.first_name }} {{ user.user_extension.last_name }}</h2>
+	<h2>{{ user.user_extension.username }}</h2>
 	<ul>
 		{% if user.profile_image %}
 			<li><img src="{{ user.profile_image.url }}"></li>
@@ -19,12 +19,12 @@
 		{% endif %}
 
 		<li class='id'>id: {{ user.user_extension.id }}</li>
-		<li>username: {{ user.user_extension.username }}</li>
-		<li>relationship to group: {{ user.relationship_to_group | default:"none set" }}</li>
-		<li>nickname: {{ user.nickname | default:"none set" }}</li>
-		<li>website: {{ user.website | default:"none set" }}</li>
-		<li>place of birth: {{ user.place_of_birth |  default:"none set" }}</li>
-		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" }}</li>
+		<li>full name: {{ user.user_extension.first_name }} {{ user.user_extension.last_name | default:"none" }}</li>
+		<li>relationship to group: {{ user.relationship_to_group | default:"none" }}</li>
+		<li>nickname: {{ user.nickname | default:"none" }}</li>
+		<li>website: {{ user.website | default:"none" }}</li>
+		<li>place of birth: {{ user.place_of_birth |  default:"none" }}</li>
+		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
 	</ul>
 
 	<h4>Status</h4>
