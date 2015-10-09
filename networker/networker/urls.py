@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from . import views
+# from . import views
 
 urlpatterns = [
 
@@ -27,7 +27,7 @@ urlpatterns = [
 
     # new url patterns should be coded above
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.home, name='home'),
+    url(r'^$', 'user.views.index', name='index'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

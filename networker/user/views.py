@@ -7,6 +7,10 @@ from .models import NetworkerUser
 from .forms import UserForm, NetworkerUserForm
 
 
+def index(request):
+    """ Navigates to the index or home page """
+    return render(request, 'networker/index.html', {})
+
 def user_list(request):
     """ List of all users """
 
