@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^restricted/$', 'user.views.restricted', name='restricted'),
     url(r'^logout/$', 'user.views.user_logout', name='logout'),
     url(r'^groups/$', include('group.urls')),
-    url(r'^users/$', include('user.urls')),
+    url(r'^users/', include('user.urls')),
     
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

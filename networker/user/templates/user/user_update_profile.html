@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ user}} {% endblock %}
+
+{% block heading %} {{ user}} Update Profile {% endblock %}
+
+{{ status }}
+
+{% block content %}
+	
+	<form method="POST" action=''>{% csrf_token %}
+
+		{{ form.as_p }}
+		<input type="submit" value="Update">
+	</form>
+
+
+{% endblock %}
+
+

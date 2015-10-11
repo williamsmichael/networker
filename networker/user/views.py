@@ -4,21 +4,22 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from .models import NetworkerUser
-from .forms import UserForm, NetworkerUserForm
+from .forms import *
 
 
 def index(request):
     """ Navigates to the index or home page """
-    return render(request, 'networker/index.html', {})
+    return render(request, 'index.html', {})
+
 
 def user_list(request):
     """ List of all users """
     users = NetworkerUser.objects.all()
     return render(request, 'user/user_list.html', {'users': users})
 
+
 def register(request):
     """ Register a user """
-
 	# A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
     registered = False
@@ -76,6 +77,7 @@ def register(request):
     # Render the template depending on the context.
     return render(request, 'user/register.html', { 'user_form': user_form, 'networker_user_form': networker_user_form, 'registered': registered })
 
+
 def user_login(request):
     """ Login for a user """
 
@@ -118,18 +120,46 @@ def user_login(request):
         # blank dictionary object 
         return render(request, 'user/login.html', {})
 
+
 @login_required
 def restricted(request):
     """ Restricting Access with a Decorator """
     return HttpResponse("Since you are logged in, you can see this text!")
 
+
 # Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
 def user_logout(request):
+    """ Logout functionality """
     # Since we know the user is logged in, we can now just log them out
     logout(request)
 
     # Take the user back to the homepage
     return HttpResponseRedirect('/')
+
+
+def user_profile(request):
+    """ Updates a user profile """
+    # status = "profile can now be modified"
+    form = UserUpdateProfileForm(request.POST or None)
+    form.fields["first_name"].queryset = NetworkerUser.objects.filter(user=request.user)
+    context = RequestContext(request, {
+        "status": status,
+        "form": form,
+        "user": request.user
+    })
+
+    # if form.is_valid():
+    #     instance = form.save(commit=False)
+    #     #  conditionals go here
+    #     instance.first_name = 'first_name'
+    #     instance.save()
+    #     context = {
+    #         "status": "Profile Updated"
+    #     }
+
+    return render(request, "user/user_update_profile.html", context)
+
+
 
 

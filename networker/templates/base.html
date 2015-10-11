@@ -13,13 +13,15 @@
 	<div class="container">
 
 		{% block header %}
-			<h1>
-				{% if user.is_authenticated %}
-					hej <span>{{ user.username }}</span>!
-				{% else %}
-					Networker says ... hej world!
-				{% endif %}
-			</h1>
+			<a href="{% url 'index' %}">			
+				<h1>
+					{% if user.is_authenticated %}
+						hej <span>{{ user.username }}</span>!
+					{% else %}
+						networker says hej!
+					{% endif %}
+				</h1>
+			</a>
 
 			<ul>
 				{% if user.is_authenticated %}
