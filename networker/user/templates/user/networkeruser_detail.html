@@ -22,15 +22,15 @@
 		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
-	<h4>Main</h4>
+	<h4><a href="{% url 'update_main' pk=user.pk %}">Main</a></h4>
 	<ul>
 		<li>username: {{ user.user_extension.username }}</li>
-		<li>password: {{ user.user_extension.password }}</li>
+		{# <li>password: {{ user.user_extension.password }}</li> #}
 		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 
 		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
 	</ul>
 
-	<h4>Additional</h4>
+	<h4><a href="{% url 'update' pk=user.pk %}">Additional</a></h4>
 	<ul>
 		<li>relationship to group: {{ user.relationship_to_group | default:"none" }}</li>
 		<li>nickname: {{ user.nickname | default:"none" }}</li>
@@ -39,14 +39,14 @@
 		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
 	</ul>
 
-	<h4>Membership</h4>
+	<h4><a href="{% url 'update_membership' pk=user.pk %}">Membership</a></h4>
 	<ul>
 		{% for group in user.user_extension.groups.values %}
 			<li>{{ group.name }}</li>	
 		{% endfor %}
 	</ul>
 
-	<h4>Phone</h4>
+	<h4><a href="{% url 'update_phone' pk=user.pk %}">Phone</a></h4>
 	<ul>
 		{% for phone in user.userphone_set.all %}
 			<li>({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</li>	

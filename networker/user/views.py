@@ -4,8 +4,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
-from .models import NetworkerUser
+from .models import *
 from .forms import *
 
 
@@ -20,14 +21,14 @@ class UserListing(ListView):
 
 
 class UserCreate(CreateView):
-    """ Create a user """ 
+    """ Creates a user """ 
     model = NetworkerUser
     fields = '__all__'
     success_url = '/users/'
 
 
 def UserDetail(request, pk):
-    """ Details of a user ALL """
+    """ Details of a user """
 
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
@@ -44,7 +45,7 @@ def UserDetail(request, pk):
 
 
 class UserUpdate(UpdateView):
-    """ Update details of a user """
+    """ Update networker-user-extension details of a user """
     model = NetworkerUser
     fields = '__all__'
     success_url = '/users/'
@@ -52,7 +53,42 @@ class UserUpdate(UpdateView):
     def get_success_url(self):
         return reverse('detail', kwargs={
             'pk': self.object.pk,
-        })
+    })
+
+class UserUpdateMain(UpdateView):
+    """ Update auth-user details of a user """
+    model = User
+    fields = ['username', 'first_name', 'last_name']
+    success_url = '/users/'
+
+    def get_success_url(self):
+        return reverse('detail', kwargs={
+            'pk': self.object.pk,
+    })
+
+
+class UserUpdateMembership(UpdateView):
+    """ Update membership details of a user """
+    model = User
+    fields = ['groups']
+    success_url = '/users/'
+
+    def get_success_url(self):
+        return reverse('detail', kwargs={
+            'pk': self.object.pk,
+    })
+
+
+class UserUpdatePhone(UpdateView):
+    """ Update phone details of a user """
+    model = UserPhone
+    fields = ['phone_category_id', 'country_code', 'phone_number']
+    success_url = '/users/'
+
+    def get_success_url(self):
+        return reverse('detail', kwargs={
+            'pk': self.object.pk,
+    })
 
 
 class UserDelete(DeleteView):
@@ -222,42 +258,42 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 
-def user_new(request):
-    """ Makes a new user profile """
-    if request.method == "POST":
-        print(request.POST, 'before validation')
-        form = UserNewForm(request.POST or None)
+# def user_new(request):
+#     """ Makes a new user profile """
+#     if request.method == "POST":
+#         print(request.POST, 'before validation')
+#         form = UserNewForm(request.POST or None)
 
-        if form.is_valid():
-            updated_data = form.save(commit=False)
+#         if form.is_valid():
+#             updated_data = form.save(commit=False)
 
-            updated_data.save() # actually saves it
-            print(updated_data, "after validation")
-            return redirect('/users/', pk=updated_data.pk)
+#             updated_data.save() # actually saves it
+#             print(updated_data, "after validation")
+#             return redirect('/users/', pk=updated_data.pk)
 
-    else:
-        form = UserNewForm()
+#     else:
+#         form = UserNewForm()
 
-    return render(request, 'user/user_new.html', {'form': form})
+#     return render(request, 'user/user_new.html', {'form': form})
 
 
-def user_edit(request, pk):
-    """ Makes a new user profile """
-    updated_data = get_object_or_404(Updated_Data, pk=pk)
-    if request.method == "POST":
-        print(request.POST, 'before validation')
-        form = UserNewForm(request.POST or None, instance=updated_data)
+# def user_edit(request, pk):
+#     """ Makes a new user profile """
+#     updated_data = get_object_or_404(Updated_Data, pk=pk)
+#     if request.method == "POST":
+#         print(request.POST, 'before validation')
+#         form = UserNewForm(request.POST or None, instance=updated_data)
 
-        if form.is_valid():
-            updated_data = form.save(commit=False)
+#         if form.is_valid():
+#             updated_data = form.save(commit=False)
 
-            updated_data.save() # actually saves it
-            print(updated_data, "after validation")
-            return redirect('/users/', pk=updated_data.pk)
+#             updated_data.save() # actually saves it
+#             print(updated_data, "after validation")
+#             return redirect('/users/', pk=updated_data.pk)
 
-    else:
-        form = UserNewForm(instance=updated_data)
+#     else:
+#         form = UserNewForm(instance=updated_data)
 
-    return render(request, "user/user_new.html", {'form': form})
+#     return render(request, "user/user_new.html", {'form': form})
     
 

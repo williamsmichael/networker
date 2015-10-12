@@ -3,9 +3,21 @@
 
 {% block title %} update {% endblock %}
 
+{% block nav_addon %} 
+
+	<a href="{% url 'update_main' pk=user.pk %}">Main</a> 
+	<a href="{% url 'update' pk=user.pk %}">Additional</a> 
+	<a href="{% url 'update_membership' pk=user.pk %}">Membership</a>
+		<a href="{% url 'update_phone' pk=user.pk %}">Phone</a>  
+
+{% endblock nav_addon %}
+
 {% block content %}
 
 <div>
+	{% block content_header %}
+		<h4>Additional</h4>
+	{% endblock content_header %}
 
 	<form action="" method="POST">
 

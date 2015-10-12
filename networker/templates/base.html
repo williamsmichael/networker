@@ -27,8 +27,10 @@
 				{% if user.is_authenticated %}
 					<li><a href="/users/">Users</a></li>
 					<li><a href="/groups/">Groups</a></li>
-					<li><a href="/restricted/">Restricted</a></li>
+					{# <li><a href="/restricted/">Restricted</a></li> #}
 					<li><a href="/logout/">Logout</a></li>
+					<br>
+					{% block nav_addon %}{% endblock nav_addon %}
 				{% else %}
 					<li><a href="/login/">Login</a></li>
 					<li><a href="/register/">Sign Up for Free</a></li>
@@ -40,7 +42,8 @@
 
 			<h1>{% block heading %}{% endblock %}</h1>
 
-			<div>{% block content %}{% endblock %}</div>
+			<div>{% block content %}{% endblock content %}
+			</div>
 		</main>
 
 		{% block footer %}
