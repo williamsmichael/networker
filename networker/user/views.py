@@ -30,6 +30,13 @@ class UserListing(ListView):
 #     model = NetworkerUser
 
 
+class UserUpdate(UpdateView):
+    """ Update details of a user """
+    model = NetworkerUser
+    fields = '__all__'
+    success_url = '/users/'
+
+
 # def user_listing(request):
 #     """ Simple list of all users """ 
 
