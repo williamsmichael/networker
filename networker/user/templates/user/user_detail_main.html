@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ request.user }} profile {% endblock %}
+
+{% block content %}
+
+<div>
+	<h2><a href="{% url 'user_detail' pk=user.pk %}">{{ user.user_extension.username }}</a></h2>
+	<ul>
+		{% if user.profile_image %}
+			<li><img src="{{ user.profile_image.url }}"></li>
+		{% else %}
+			<li><img src="https://unsplash.it/150/150/?random"></li>
+		{% endif %}
+	</ul>
+
+	<h4>Main</h4>
+	<ul>
+		<li>username: {{ user.user_extension.username }}</li>
+		<li>password: {{ user.user_extension.username }}</li>
+		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 
+		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
+	</ul>
+</div>
+
+{% endblock %}

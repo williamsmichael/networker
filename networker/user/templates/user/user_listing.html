@@ -11,7 +11,7 @@
 
 <div>
 	<ul>
-		<li><a href="{% url 'user_list' pk=user.pk %}">{{ user.user_extension.id }} {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a></li>
+		<li><a href="{% url 'user_detail' pk=user.pk %}">[{{ user.user_extension.id }}] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a></li>
 	</ul>	
 
 </div>

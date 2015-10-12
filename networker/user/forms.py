@@ -5,24 +5,28 @@ from .models import *
 
 class UserForm(forms.ModelForm):
 	""" Register Auth-User form """
-
 	password = forms.CharField(widget=forms.PasswordInput())
 	class Meta:
-
 		model = User
 		fields = ('username', 'email', 'password')
+
 
 class NetworkerUserForm(forms.ModelForm):
 	""" Register Networker User form """ 
 	class Meta:
-
 		model = NetworkerUser
 		fields = ('website', 'profile_image',)
 
 
+class UserDetailMainForm(forms.ModelForm):
+	""" Update a Networker User section=Main of profile"""
+	class Meta:
+		model = User
+		fields = ('username', 'password', 'first_name', 'last_name',)
+
+
 class UserNewForm(forms.ModelForm):
 	""" Update a Networker User profile form """
-	
 	class Meta: 
 		model = User
 		# fields = '__all__'

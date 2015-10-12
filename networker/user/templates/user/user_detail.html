@@ -1,39 +1,41 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} users {% endblock %}
-
-{# {% block heading %}  Networker Users {% endblock %} #}
+{% block title %} {{ request.user }} profile {% endblock %}
 
 {% block content %}
 
-{% for user in users %}
-
 <div>
-	<h2><a href="{% url 'user_edit' pk=updated_data.pk}">{{ user.user_extension.username }}</a></h2>
+	<h2>{{ user.user_extension.username }}</h2>
 	<ul>
 		{% if user.profile_image %}
 			<li><img src="{{ user.profile_image.url }}"></li>
 		{% else %}
 			<li><img src="https://unsplash.it/150/150/?random"></li>
 		{% endif %}
-
 		<li class='id'>id: {{ user.user_extension.id }}</li>
-		<li>full name: {{ user.user_extension.first_name }} {{ user.user_extension.last_name | default:"none" }}</li>
+		<li>active status: {{ user.user_extension.is_active }}</li>
+		<li>staff status: {{ user.user_extension.is_staff }}</li>
+		<li>superuser status: {{ user.user_extension.is_superuser }}</li>
+		<li>last login: {{ user.user_extension.last_login | timesince }}</li>
+		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
+	</ul>
+
+	<h4><a href="{% url 'user_detail_main' pk=user.pk %}">Main</a></h4>
+	<ul>
+		<li>username: {{ user.user_extension.username }}</li>
+		<li>password: {{ user.user_extension.username }}</li>
+		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 
+		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
+	</ul>
+
+	<h4>Additional</h4>
+	<ul>
 		<li>relationship to group: {{ user.relationship_to_group | default:"none" }}</li>
 		<li>nickname: {{ user.nickname | default:"none" }}</li>
 		<li>website: {{ user.website | default:"none" }}</li>
 		<li>place of birth: {{ user.place_of_birth |  default:"none" }}</li>
 		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
-	</ul>
-
-	<h4>Status</h4>
-	<ul>
-		<li>active status: {{ user.user_extension.is_active }}</li>
-		<li>staff status: {{ user.user_extension.is_staff }}</li>
-		<li>superuser status: {{ user.user_extension.is_superuser }}</li>
-		<li>last login: {{ user.user_extension.last_login | date:"F d, Y f A e" }}</li>
-		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
 	<h4>Membership</h4>
@@ -87,7 +89,6 @@
 	</ul>
 
 </div>
-{% endfor %}
 {% endblock %}
 
 {% block footer %}{% endblock %}

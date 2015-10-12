@@ -19,8 +19,8 @@ def user_listing(request):
     return render(request, 'user/user_listing.html', {'users': users})
 
 
-def user_list(request):
-    """ Details of a user """
+def user_detail(request, pk):
+    """ Details of a user ALL """
 
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
@@ -28,12 +28,18 @@ def user_list(request):
         # for networker_user in NetworkerUser.objects.all():
         #     print(networker_user.user_extension.first_name)
         # users = NetworkerUser.objects.all()
-        # return render(request, 'user/user_list.html', {'users': users})
+        # return render(request, 'user/user_detail.html', {'users': users})
     # else:
     #     return HttpResponse("Unauthorized, get out of here!")
 
-    users = NetworkerUser.objects.get(pk=pk)
-    return render(request, 'user/user_list.html', {'users': users})
+    user = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/user_detail.html', {'user': user})
+
+
+def user_detail_main(request, pk):
+    """ Details of a user section=MAIN """
+    user = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/user_detail_main.html', {'user': user})
 
 
 def register(request):
