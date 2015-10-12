@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.core.urlresolvers import reverse
 
 from .models import NetworkerUser
 from .forms import *
@@ -35,6 +36,11 @@ class UserUpdate(UpdateView):
     model = NetworkerUser
     fields = '__all__'
     success_url = '/users/'
+
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+        })
 
 
 # def user_listing(request):
