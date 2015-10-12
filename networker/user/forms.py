@@ -19,13 +19,14 @@ class NetworkerUserForm(forms.ModelForm):
 		model = NetworkerUser
 		fields = ('website', 'profile_image',)
 
-class UserUpdateProfileForm(forms.ModelForm):
+
+class UserNewForm(forms.ModelForm):
 	""" Update a Networker User profile form """
 	
 	class Meta: 
 		model = User
 		# fields = '__all__'
-		exclude = ['is_superuser', 'user_permissions', 'is_staff', 'is_active', 'date_joined', 'last_login']
+		exclude = ['is_superuser', 'user_permissions', 'is_staff', 'is_active', 'date_joined', 'last_login', 'groups']
 
 
 

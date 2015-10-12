@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -12,9 +12,27 @@ def index(request):
     return render(request, 'index.html', {})
 
 
-def user_list(request):
-    """ List of all users """
+def user_listing(request):
+    """ Simple list of all users """ 
+
     users = NetworkerUser.objects.all()
+    return render(request, 'user/user_listing.html', {'users': users})
+
+
+def user_list(request):
+    """ Details of a user """
+
+    # """ is_staff: List of all users """
+    # if request.user.is_authenticated() and request.user.is_staff:
+        # print(NetworkerUser.objects.all())
+        # for networker_user in NetworkerUser.objects.all():
+        #     print(networker_user.user_extension.first_name)
+        # users = NetworkerUser.objects.all()
+        # return render(request, 'user/user_list.html', {'users': users})
+    # else:
+    #     return HttpResponse("Unauthorized, get out of here!")
+
+    users = NetworkerUser.objects.get(pk=pk)
     return render(request, 'user/user_list.html', {'users': users})
 
 
@@ -138,28 +156,42 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 
-def user_profile(request):
-    """ Updates a user profile """
-    # status = "profile can now be modified"
-    form = UserUpdateProfileForm(request.POST or None)
-    form.fields["first_name"].queryset = NetworkerUser.objects.filter(user=request.user)
-    context = RequestContext(request, {
-        "status": status,
-        "form": form,
-        "user": request.user
-    })
+def user_new(request):
+    """ Makes a new user profile """
+    if request.method == "POST":
+        print(request.POST, 'before validation')
+        form = UserNewForm(request.POST or None)
 
-    # if form.is_valid():
-    #     instance = form.save(commit=False)
-    #     #  conditionals go here
-    #     instance.first_name = 'first_name'
-    #     instance.save()
-    #     context = {
-    #         "status": "Profile Updated"
-    #     }
+        if form.is_valid():
+            updated_data = form.save(commit=False)
 
-    return render(request, "user/user_update_profile.html", context)
+            updated_data.save() # actually saves it
+            print(updated_data, "after validation")
+            return redirect('/users/', pk=updated_data.pk)
+
+    else:
+        form = UserNewForm()
+
+    return render(request, 'user/user_new.html', {'form': form})
 
 
+def user_edit(request, pk):
+    """ Makes a new user profile """
+    updated_data = get_object_or_404(Updated_Data, pk=pk)
+    if request.method == "POST":
+        print(request.POST, 'before validation')
+        form = UserNewForm(request.POST or None, instance=updated_data)
 
+        if form.is_valid():
+            updated_data = form.save(commit=False)
+
+            updated_data.save() # actually saves it
+            print(updated_data, "after validation")
+            return redirect('/users/', pk=updated_data.pk)
+
+    else:
+        form = UserNewForm(instance=updated_data)
+
+    return render(request, "user/user_new.html", {'form': form})
+    
 

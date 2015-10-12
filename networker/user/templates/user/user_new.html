@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} {{ user}} {% endblock %}
-
-{% block heading %} {{ user}} Update Profile {% endblock %}
+{% block title %} {{ request.user }} {% endblock %}
 
 {{ status }}
 
 {% block content %}
-	
+	<p><span>{{ request.user.first_name }}</span> Update Profile</p>
 	<form method="POST" action=''>{% csrf_token %}
 
 		{{ form.as_p }}
