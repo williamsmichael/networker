@@ -30,7 +30,7 @@
 		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
 	</ul>
 
-	<h4><a href="{% url 'update' pk=user.pk %}">Additional</a></h4>
+	<h4><a href="{% url 'update_additional' pk=user.pk %}">Additional</a></h4>
 	<ul>
 		<li>relationship to group: {{ user.relationship_to_group | default:"none" }}</li>
 		<li>nickname: {{ user.nickname | default:"none" }}</li>

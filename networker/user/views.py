@@ -44,10 +44,10 @@ def UserDetail(request, pk):
     return render(request, 'user/networkeruser_detail.html', {'user': user})
 
 
-class UserUpdate(UpdateView):
-    """ Update networker-user-extension details of a user """
-    model = NetworkerUser
-    fields = '__all__'
+class UserUpdateMain(UpdateView):
+    """ Update auth-user details of a user """
+    model = User
+    fields = ['username', 'first_name', 'last_name']
     success_url = '/users/'
 
     def get_success_url(self):
@@ -55,10 +55,11 @@ class UserUpdate(UpdateView):
             'pk': self.object.pk,
     })
 
-class UserUpdateMain(UpdateView):
-    """ Update auth-user details of a user """
-    model = User
-    fields = ['username', 'first_name', 'last_name']
+
+class UserUpdateAdditional(UpdateView):
+    """ Update networker-user-extension details of a user """
+    model = NetworkerUser
+    fields = '__all__'
     success_url = '/users/'
 
     def get_success_url(self):

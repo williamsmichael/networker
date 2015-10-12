@@ -5,10 +5,10 @@
 
 {% block nav_addon %} 
 
-	<a href="{% url 'update_main' pk=user.pk %}">Main</a> 
-	<a href="{% url 'update' pk=user.pk %}">Additional</a> 
-	<a href="{% url 'update_membership' pk=user.pk %}">Membership</a>
-		<a href="{% url 'update_phone' pk=user.pk %}">Phone</a>  
+	<a href="{% url 'update_main' pk=object.pk %}">Main</a> 
+	<a href="{% url 'update_additional' pk=object.pk %}">Additional</a> 
+	<a href="{% url 'update_membership' pk=object.pk %}">Membership</a>
+	<a href="{% url 'update_phone' pk=object.pk %}">Phone</a>  
 
 {% endblock nav_addon %}
 
@@ -16,7 +16,7 @@
 
 <div>
 	{% block content_header %}
-		<h4>Additional</h4>
+{# 		<h4>Additional</h4> #}
 	{% endblock content_header %}
 
 	<form action="" method="POST">

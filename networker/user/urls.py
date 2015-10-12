@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^create/', views.UserCreate.as_view(), name='create'),
     # url(r'^(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/$', views.UserDetail, name='detail'),
-    url(r'^(?P<pk>\d+)/update/$', views.UserUpdate.as_view(), name='update'),
+    url(r'^(?P<pk>\d+)/update/additional$', views.UserUpdateAdditional.as_view(), name='update_additional'),
 	url(r'^(?P<pk>\d+)/update/main$', views.UserUpdateMain.as_view(template_name='user/networkeruser_form.html'), name='update_main'),
 	url(r'^(?P<pk>\d+)/update/membership$', views.UserUpdateMembership.as_view(template_name='user/networkeruser_form.html'), name='update_membership'),
 	url(r'^(?P<pk>\d+)/update/phone$', views.UserUpdatePhone.as_view(template_name='user/networkeruser_form.html'), name='update_phone'),
