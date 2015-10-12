@@ -19,38 +19,14 @@ class UserListing(ListView):
     model = NetworkerUser
 
 
-# class UserCreate(CreateView):
-#     """ Create a user """ 
-#     model = NetworkerUser
-#     fields = '__all__'
-#     success_url = '/users/'
-
-
-# class UserDetail(DetailView):
-#     """ Details of a user """
-#     model = NetworkerUser
-
-
-class UserUpdate(UpdateView):
-    """ Update details of a user """
+class UserCreate(CreateView):
+    """ Create a user """ 
     model = NetworkerUser
     fields = '__all__'
     success_url = '/users/'
 
-    def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
-        })
 
-
-# def user_listing(request):
-#     """ Simple list of all users """ 
-
-#     users = NetworkerUser.objects.all()
-#     return render(request, 'user/user_listing.html', {'users': users})
-
-
-def user_detail(request, pk):
+def UserDetail(request, pk):
     """ Details of a user ALL """
 
     # """ is_staff: List of all users """
@@ -64,7 +40,32 @@ def user_detail(request, pk):
     #     return HttpResponse("Unauthorized, get out of here!")
 
     user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/user_detail.html', {'user': user})
+    return render(request, 'user/networkeruser_detail.html', {'user': user})
+
+
+class UserUpdate(UpdateView):
+    """ Update details of a user """
+    model = NetworkerUser
+    fields = '__all__'
+    success_url = '/users/'
+
+    def get_success_url(self):
+        return reverse('detail', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class UserDelete(DeleteView):
+    model = NetworkerUser
+    success_url = '/users/'
+
+
+# def user_listing(request):
+#     """ Simple list of all users """ 
+
+#     users = NetworkerUser.objects.all()
+#     return render(request, 'user/user_listing.html', {'users': users})
+
 
 
 # class UpdateContactView(UpdateView):

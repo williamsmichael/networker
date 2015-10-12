@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} {{ request.user }} profile {% endblock %}
+{% block title %} profile {% endblock %}
 
 {% block content %}
 
 <div>
 	<h2>{{ user.user_extension.username }}</h2>
+
 	<ul>
 		{% if user.profile_image %}
 			<li><img src="{{ user.profile_image.url }}"></li>
