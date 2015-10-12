@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} users {% endblock %}
+{% block title %} users listing {% endblock %}
 
 {# {% block heading %}  Networker Users {% endblock %} #}
 
 {% block content %}
 
-{% for user in object_list %}
+{% for user in networkeruser_list %}
 
 <div>
+
 	<ul>
+
 		<li>
-			[{{ user.user_extension.id }}] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}
+			<a href="{% url 'user_detail' pk=user.pk %}">[{{ user.user_extension.id }}] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a>
 		</li>
 	</ul>	
 

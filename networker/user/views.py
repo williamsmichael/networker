@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from .models import NetworkerUser
 from .forms import *
@@ -14,7 +14,20 @@ def index(request):
 
 
 class UserListing(ListView):
+    """ Simple list of all users """ 
     model = NetworkerUser
+
+
+# class UserCreate(CreateView):
+#     """ Create a user """ 
+#     model = NetworkerUser
+#     fields = '__all__'
+#     success_url = '/users/'
+
+
+# class UserDetail(DetailView):
+#     """ Details of a user """
+#     model = NetworkerUser
 
 
 # def user_listing(request):
@@ -24,21 +37,21 @@ class UserListing(ListView):
 #     return render(request, 'user/user_listing.html', {'users': users})
 
 
-# def user_detail(request, pk):
-#     """ Details of a user ALL """
+def user_detail(request, pk):
+    """ Details of a user ALL """
 
-#     # """ is_staff: List of all users """
-#     # if request.user.is_authenticated() and request.user.is_staff:
-#         # print(NetworkerUser.objects.all())
-#         # for networker_user in NetworkerUser.objects.all():
-#         #     print(networker_user.user_extension.first_name)
-#         # users = NetworkerUser.objects.all()
-#         # return render(request, 'user/user_detail.html', {'users': users})
-#     # else:
-#     #     return HttpResponse("Unauthorized, get out of here!")
+    # """ is_staff: List of all users """
+    # if request.user.is_authenticated() and request.user.is_staff:
+        # print(NetworkerUser.objects.all())
+        # for networker_user in NetworkerUser.objects.all():
+        #     print(networker_user.user_extension.first_name)
+        # users = NetworkerUser.objects.all()
+        # return render(request, 'user/user_detail.html', {'users': users})
+    # else:
+    #     return HttpResponse("Unauthorized, get out of here!")
 
-#     user = get_object_or_404(NetworkerUser, pk=pk)
-#     return render(request, 'user/user_detail.html', {'user': user})
+    user = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/user_detail.html', {'user': user})
 
 
 # class UpdateContactView(UpdateView):
