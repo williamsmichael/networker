@@ -24,6 +24,10 @@ class UserDetailMainForm(forms.ModelForm):
 		model = User
 		fields = ('username', 'password', 'first_name', 'last_name',)
 
+	def __init__(self, *args, **kwargs):
+		self.user = kwargs.pop('user', None)
+		super(UserDetailMainForm, self).__init__(*args, **kwargs)
+
 
 class UserNewForm(forms.ModelForm):
 	""" Update a Networker User profile form """

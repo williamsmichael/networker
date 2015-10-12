@@ -7,6 +7,7 @@
 
 <div>
 	<h2>{{ user.user_extension.username }}</h2>
+	(<a href="{% url "contacts-edit" pk=user.id %}">edit</a>)
 	<ul>
 		{% if user.profile_image %}
 			<li><img src="{{ user.profile_image.url }}"></li>
@@ -21,10 +22,10 @@
 		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
-	<h4><a href="{% url 'user_detail_main' pk=user.pk %}">Main</a></h4>
+	<h4>Main</h4>
 	<ul>
 		<li>username: {{ user.user_extension.username }}</li>
-		<li>password: {{ user.user_extension.username }}</li>
+		<li>password: {{ user.user_extension.password }}</li>
 		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 
 		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
 	</ul>

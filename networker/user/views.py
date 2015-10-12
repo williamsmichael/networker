@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
 from .models import NetworkerUser
 from .forms import *
@@ -12,34 +13,66 @@ def index(request):
     return render(request, 'index.html', {})
 
 
-def user_listing(request):
-    """ Simple list of all users """ 
-
-    users = NetworkerUser.objects.all()
-    return render(request, 'user/user_listing.html', {'users': users})
+class UserListing(ListView):
+    model = NetworkerUser
 
 
-def user_detail(request, pk):
-    """ Details of a user ALL """
+# def user_listing(request):
+#     """ Simple list of all users """ 
 
-    # """ is_staff: List of all users """
-    # if request.user.is_authenticated() and request.user.is_staff:
-        # print(NetworkerUser.objects.all())
-        # for networker_user in NetworkerUser.objects.all():
-        #     print(networker_user.user_extension.first_name)
-        # users = NetworkerUser.objects.all()
-        # return render(request, 'user/user_detail.html', {'users': users})
-    # else:
-    #     return HttpResponse("Unauthorized, get out of here!")
-
-    user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/user_detail.html', {'user': user})
+#     users = NetworkerUser.objects.all()
+#     return render(request, 'user/user_listing.html', {'users': users})
 
 
-def user_detail_main(request, pk):
-    """ Details of a user section=MAIN """
-    user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/user_detail_main.html', {'user': user})
+# def user_detail(request, pk):
+#     """ Details of a user ALL """
+
+#     # """ is_staff: List of all users """
+#     # if request.user.is_authenticated() and request.user.is_staff:
+#         # print(NetworkerUser.objects.all())
+#         # for networker_user in NetworkerUser.objects.all():
+#         #     print(networker_user.user_extension.first_name)
+#         # users = NetworkerUser.objects.all()
+#         # return render(request, 'user/user_detail.html', {'users': users})
+#     # else:
+#     #     return HttpResponse("Unauthorized, get out of here!")
+
+#     user = get_object_or_404(NetworkerUser, pk=pk)
+#     return render(request, 'user/user_detail.html', {'user': user})
+
+
+# class UpdateContactView(UpdateView):
+#     model = NetworkerUser
+#     template_name = 'user_edit.html'
+
+#     def get_success_url(self):
+#         return reverse('user_listing')
+
+#     def get_context_data(self, **kwargs):
+#         context = super(UpdateContactView, self).get_context_data(**kwargs)
+#         context['action'] = reverse('user-edit', kwargs={'pk': self.get_object().id})
+#         return context
+
+
+# def user_detail_main(request, pk):
+#     """ Details of a user section=MAIN """
+#     user = get_object_or_404(NetworkerUser, pk=pk)
+#     return render(request, 'user/user_detail_main.html', {'user': user})
+
+
+# def user_detail_main_edit(request, pk):
+#     """ Update user section=MAIN """
+#     user = get_object_or_404(NetworkerUser, pk=pk)
+#     if request.method == "POST":
+#         form = UserDetailMainForm(request.POST, user=request.user)
+#         if form.is_valid():
+#             user = form.save()
+#             return redirect('views.user_detail', pk=NetworkerUser.post)
+
+#     else:
+#         form = UserDetailMainForm(user=request.user)
+
+#     return render(request, 'user/user_detail_main_edit.html', {'form': form})
 
 
 def register(request):

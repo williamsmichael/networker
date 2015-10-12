@@ -6,22 +6,25 @@
 {% block content %}
 
 <div>
-	<h2><a href="{% url 'user_detail' pk=user.pk %}">{{ user.user_extension.username }}</a></h2>
+	<h2>{{ user.user_extension.username }}</h2>
 	<ul>
 		{% if user.profile_image %}
 			<li><img src="{{ user.profile_image.url }}"></li>
 		{% else %}
 			<li><img src="https://unsplash.it/150/150/?random"></li>
 		{% endif %}
+		<li class='id'>id: {{ user.user_extension.id }}</li>
+		<li>active status: {{ user.user_extension.is_active }}</li>
+		<li>staff status: {{ user.user_extension.is_staff }}</li>
+		<li>superuser status: {{ user.user_extension.is_superuser }}</li>
+		<li>last login: {{ user.user_extension.last_login | timesince }}</li>
+		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
-	<h4>Main</h4>
+	<h4><a href="{% url 'user_detail_main' pk=user.pk %}">Main</a></h4>
 	<ul>
 		<li>username: {{ user.user_extension.username }}</li>
 		<li>password: {{ user.user_extension.username }}</li>
 		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 
 		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
 	</ul>
-</div>
-
-{% endblock %}
