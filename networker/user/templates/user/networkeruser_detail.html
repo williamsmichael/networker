@@ -35,7 +35,9 @@
 		<li>date joined: {{ user.user_extension.date_joined | date:"F d, Y f A e" }}</li>
 	</ul>
 
-	<h4><a href="{% url 'update_additional' pk=user.pk %}">Additional</a></h4>
+	<h4>
+		<a href="{% url 'update_additional' pk=user.pk %}">Additional</a>
+	</h4>
 	<ul>
 		<li>relationship to group: {{ user.relationship_to_group | default:"none" }}</li>
 		<li>nickname: {{ user.nickname | default:"none" }}</li>
@@ -44,14 +46,17 @@
 		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
 	</ul>
 
-	<h4><a href="{% url 'update_membership' pk=user.user_extension.pk %}">Membership</a></h4>
+	<h4>
+		<a href="{% url 'update_membership' pk=user.user_extension.pk %}">Membership</a>
+	</h4>
 	<ul>
 		{% for group in user.user_extension.groups.values %}
 			<li>{{ group.name }}</li>	
 		{% endfor %}
 	</ul>
 
-	<h4>Phone 
+	<h4>
+		Phone 
 		<span><a href="{% url 'create_phone' pk=user.pk %}">add</a></span> 
 	</h4>
 	<ul>
@@ -63,11 +68,20 @@
 		{% endfor %}
 	</ul>
 
-	<h4>Email</h4>
+	<h4>
+		Email
+		<span><a href="{% url 'create_email' pk=user.pk %}">add</a></span> 
+	</h4>
 	<ul>
-		<li>(Main) {{ user.user_extension.email }}</li>
+		<li>
+			<a href="{% url 'update_email' pk=user.pk %}">(Main) {{ user.user_extension.email }}</a>
+			<span><a href="{% url 'delete_email' pk=user.pk %}">delete</a></span>
+		</li>
 		{% for email in user.useremail_set.all %}
-			<li>({{ email.email_category_id.email_category }}) {{ email.email }}</li>	
+			<li>
+				<a href="{% url 'update_email' email.pk %}">({{ email.email_category_id.email_category }}) {{ email.email }}</a>
+				<span><a href="{% url 'delete_email' email.pk %}">delete</a></span>
+			</li>	
 		{% endfor %}
 	</ul>
 

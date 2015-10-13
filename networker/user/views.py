@@ -40,10 +40,37 @@ class CreatePhone(CreateView):
     })
 
 
+class CreateEmail(CreateView):
+    """ Creates a email number for user """ 
+    model = UserEmail
+    fields = '__all__'
+    # success_url = '/users/'
+    section = 'Add'
+    title = 'add'
+    button = 'add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('update_email', kwargs={
+            'pk': self.object.pk,
+    })
+
+
 class DeletePhone(DeleteView):
     model = UserPhone
     success_url = '/users/'
-    section = "Confirm Delete"
+    section = "Confirm"
+    button = "delete"
+
+
+class DeleteEmail(DeleteView):
+    model = UserEmail
+    success_url = '/users/'
+    section = "Confirm"
     button = "delete"
 
 
@@ -114,6 +141,21 @@ class UserUpdatePhone(UpdateView):
     fields = ['phone_category_id', 'country_code', 'phone_number']
     # success_url = '/users/'
     section = "Phone"
+    title = 'update'
+    button = 'update'
+
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+    })
+
+
+class UserUpdateEmail(UpdateView):
+    """ Update email details of a user """
+    model = UserEmail
+    fields = ['email_category_id', 'email']
+    # success_url = '/users/'
+    section = "Email"
     title = 'update'
     button = 'update'
 
