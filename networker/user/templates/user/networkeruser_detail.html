@@ -14,7 +14,7 @@
 		{% else %}
 			<li><img src="https://unsplash.it/150/150/?random"></li>
 		{% endif %}
-		<li class='id'>id: {{ user.user_extension.id }}</li>
+		<li>id: {{ user.user_extension.id }}</li>
 		<li>username: {{ user.user_extension.username }}</li>
 		{# <li>password: {{ user.user_extension.password }}</li> #}
 		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 

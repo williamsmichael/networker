@@ -38,7 +38,7 @@ def UserDetail(request, pk):
         # users = NetworkerUser.objects.all()
         # return render(request, 'user/user_detail.html', {'users': users})
     # else:
-    #     return HttpResponse("Unauthorized, get out of here!")
+    #     return HttpResponse("Unauthorized Access!")
 
     user = get_object_or_404(NetworkerUser, pk=pk)
     return render(request, 'user/networkeruser_detail.html', {'user': user})
@@ -47,9 +47,10 @@ def UserDetail(request, pk):
 class UserUpdateMain(UpdateView):
     """ Update auth-user details of a user """
     model = User
-    fields = ['username', 'first_name', 'last_name']
+    fields = ['username', 'first_name', 'last_name', 'is_active']
     success_url = '/users/'
     section = "Main"
+    button = "update"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -63,6 +64,7 @@ class UserUpdateAdditional(UpdateView):
     fields = '__all__'
     success_url = '/users/'
     section = "Additional"
+    button = "update"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -76,6 +78,7 @@ class UserUpdateMembership(UpdateView):
     fields = ['groups']
     success_url = '/users/'
     section = "Membership"
+    button = "update"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -89,6 +92,7 @@ class UserUpdatePhone(UpdateView):
     fields = ['phone_category_id', 'country_code', 'phone_number']
     success_url = '/users/'
     section = "Phone"
+    button = "update"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -99,6 +103,8 @@ class UserUpdatePhone(UpdateView):
 class UserDelete(DeleteView):
     model = NetworkerUser
     success_url = '/users/'
+    section = "Confirm Delete"
+    button = "delete"
 
 
 # def user_listing(request):

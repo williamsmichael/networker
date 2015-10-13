@@ -61,10 +61,6 @@ ul {
 ul > ul {
 	margin-bottom: 10px;
 }
-li.id {
-	color: #CC6666;
-	font-weight: bolder;
-}
 footer {
 	text-align: right;
 	display: inline-block;

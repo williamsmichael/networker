@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import NetworkerGroup, Group
 
 
-def group_list(request):
+def group_listing(request):
 
 	groups = NetworkerGroup.objects.all()
 	# group = NetworkerGroup.objects.get(group_extension__name="Synergy Consultants, LLC")
@@ -13,4 +13,4 @@ def group_list(request):
 
 	# import pdb; pdb.set_trace()
 
-	return render(request, 'group/group_list.html', { 'groups': groups })
+	return render(request, 'group/networkergroup_list.html', { 'groups': groups })

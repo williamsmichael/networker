@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <head>
-	<title>{% block title %}{% endblock %} | networker by michael williams | making peoples lives easier MPLE</title>
+	<title>{% block title %}{% endblock title %} | networker by michael williams | making peoples lives easier MPLE</title>
 	<meta charset="UTF-8">
 
 	<!-- temp styles, remove ASAP -->
@@ -26,7 +26,7 @@
 			<ul>
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'user_listing' %}">Users</a></li>
-					<li><a href="{% url 'group_list' %}">Groups</a></li>
+					<li><a href="{% url 'group_listing' %}">Groups</a></li>
 					{# <li><a href="/restricted/">Restricted</a></li> #}
 					<li><a href="{% url 'logout' %}">Logout</a></li>
 					<br>
@@ -40,7 +40,7 @@
 
 		<main>
 
-			<h1>{% block heading %}{% endblock %}</h1>
+			<h1>{% block heading %}{% endblock heading %}</h1>
 
 			<div>{% block content %}{% endblock content %}
 			</div>
