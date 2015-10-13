@@ -27,12 +27,17 @@ class CreatePhone(CreateView):
     success_url = '/users/'
     section = 'Add'
     title = 'add'
-    button = 'update'
+    button = 'add'
 
     def get_initial(self):
         return {
             'user_id': self.request.user
         }
+
+    def get_success_url(self):
+        return reverse('update_phone', kwargs={
+            'pk': self.object.pk,
+    })
 
 
 def UserDetail(request, pk):
@@ -61,7 +66,7 @@ class UserUpdateMain(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('detail', kwargs={
+        return reverse('user_detail', kwargs={
             'pk': self.object.pk,
     })
 
@@ -76,7 +81,7 @@ class UserUpdateAdditional(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('detail', kwargs={
+        return reverse('user_detail', kwargs={
             'pk': self.object.pk,
     })
 
@@ -91,7 +96,7 @@ class UserUpdateMembership(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('detail', kwargs={
+        return reverse('user_detail', kwargs={
             'pk': self.object.pk,
     })
 
@@ -106,7 +111,7 @@ class UserUpdatePhone(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('detail', kwargs={
+        return reverse('user_detail', kwargs={
             'pk': self.object.pk,
     })
 

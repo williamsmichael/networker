@@ -25,7 +25,7 @@ a:focus {
 	text-decoration: #333;
 	color: #669966;
 }
-a[href*=create] {
+span a[href*=create] {
 	background-color: #3399CC;
 	color: #eee;
 	margin-left: 5px;
@@ -33,7 +33,7 @@ a[href*=create] {
 	border-radius: 3px;
 	font-size: .5em;
 }
-span:nth-child(1) {
+span.user {
 	background-color: #669966;
 	color: #eee;
 	padding: 1px 15px;
@@ -41,10 +41,13 @@ span:nth-child(1) {
 }
 h1 {
 	text-align: center;
+	margin-top: 0;
 }
 h2 {
 	color: #0066CC;
-	margin-top: 0;
+}
+.anonymous-user {
+	color: inherit;
 }
 div	> div {
 	background-color: #fff;
