@@ -55,7 +55,7 @@
 	<ul>
 		{% for phone in user.userphone_set.all %}
 			<li>
-				<a href="{% url 'update_phone' pk=user.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+				<a href="{% url 'update_phone' phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
 			</li>	
 		{% endfor %}
 	</ul>
