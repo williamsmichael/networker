@@ -20,16 +20,23 @@ class UserListing(ListView):
     model = NetworkerUser
 
 
-class UserCreate(CreateView):
-    """ Creates a user """ 
-    model = NetworkerUser
+class CreatePhone(CreateView):
+    """ Creates a phone number for user """ 
+    model = UserPhone
     fields = '__all__'
     success_url = '/users/'
+    section = 'Add'
+    title = 'add'
+    button = 'update'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
 
 
 def UserDetail(request, pk):
     """ Details of a user """
-
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
         # print(NetworkerUser.objects.all())
@@ -50,7 +57,8 @@ class UserUpdateMain(UpdateView):
     fields = ['username', 'first_name', 'last_name', 'is_active']
     success_url = '/users/'
     section = "Main"
-    button = "update"
+    title = 'update'
+    button = 'update'
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -63,8 +71,9 @@ class UserUpdateAdditional(UpdateView):
     model = NetworkerUser
     fields = '__all__'
     success_url = '/users/'
-    section = "Additional"
-    button = "update"
+    section = 'Additional'
+    title = 'update'
+    button = 'update'
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -78,7 +87,8 @@ class UserUpdateMembership(UpdateView):
     fields = ['groups']
     success_url = '/users/'
     section = "Membership"
-    button = "update"
+    title = 'update'
+    button = 'update'
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -92,7 +102,8 @@ class UserUpdatePhone(UpdateView):
     fields = ['phone_category_id', 'country_code', 'phone_number']
     success_url = '/users/'
     section = "Phone"
-    button = "update"
+    title = 'update'
+    button = 'update'
 
     def get_success_url(self):
         return reverse('detail', kwargs={

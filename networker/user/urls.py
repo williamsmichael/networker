@@ -8,7 +8,6 @@ urlpatterns = [
 
 	# ------------------------------------------------------------user general
     url(r'^$', views.UserListing.as_view(), name='user_listing'),
-    url(r'^create/', views.UserCreate.as_view(), name='create'),
     url(r'^(?P<pk>[0-9]+)/delete/$', views.UserDelete.as_view(), name='delete'),
 
     # -----------------------------------------------------------user specific
@@ -18,6 +17,9 @@ urlpatterns = [
 	url(r'^(?P<pk>[0-9]+)/update/main$', views.UserUpdateMain.as_view(template_name='user/networkeruser_form.html'), name='update_main'),
 	url(r'^(?P<pk>[0-9]+)/update/membership$', views.UserUpdateMembership.as_view(template_name='user/networkeruser_form.html'), name='update_membership'),
 	url(r'^(?P<pk>[0-9]+)/update/phone$', views.UserUpdatePhone.as_view(template_name='user/networkeruser_form.html'), name='update_phone'),
+
+    # --------------------------------------------------create from categories
+    url(r'^(?P<pk>[0-9]+)/create/phone$', views.CreatePhone.as_view(template_name='user/networkeruser_form.html'), name='create_phone'),
 
     # ------------------------------------------------------------------unused
     # url(r'^$', views.user_listing, name='user_listing'),

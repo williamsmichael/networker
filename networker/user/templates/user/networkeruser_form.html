@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} update {% endblock %}
+{% block title %} {{ view.title }} {% endblock %}
 
 {% block nav_addon %} 
 
-	<a href="{% url 'update_main' pk=object.pk %}">Main</a> 
-	<a href="{% url 'update_additional' pk=object.pk %}">Additional</a> 
-	<a href="{% url 'update_membership' pk=object.pk %}">Membership</a>
-	<a href="{% url 'update_phone' pk=object.pk %}">Phone</a>  
+	<a href="{% url 'update_main' pk=user.pk %}">Main</a> 
+	<a href="{% url 'update_additional' pk=user.pk %}">Additional</a> 
+	<a href="{% url 'update_membership' pk=user.pk %}">Membership</a>
+	<a href="{% url 'update_phone' pk=user.pk %}">Phone</a>  
 
 {% endblock nav_addon %}
 
@@ -22,6 +22,7 @@
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="{{ view.button }}">
+		
 	</form>
 </div>
 

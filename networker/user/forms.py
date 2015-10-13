@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 from .models import *
 
+
 class UserForm(forms.ModelForm):
 	""" Register Auth-User form """
 	password = forms.CharField(widget=forms.PasswordInput())

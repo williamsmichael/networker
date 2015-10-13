@@ -25,6 +25,14 @@ a:focus {
 	text-decoration: #333;
 	color: #669966;
 }
+a[href*=create] {
+	background-color: #3399CC;
+	color: #eee;
+	margin-left: 5px;
+	padding: 3px 15px;
+	border-radius: 3px;
+	font-size: .5em;
+}
 span:nth-child(1) {
 	background-color: #669966;
 	color: #eee;
