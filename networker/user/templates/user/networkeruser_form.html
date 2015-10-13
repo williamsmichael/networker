@@ -5,10 +5,10 @@
 
 {% block nav_addon %} 
 
-	<a href="{% url 'update_main' user.pk %}">Main</a> 
-	<a href="{% url 'update_additional' user.pk %}">Additional</a> 
-	<a href="{% url 'update_membership' user.pk %}">Membership</a>
-	<a href="{% url 'update_phone' user.pk %}">Phone</a>  
+	<a href="{% url 'update_main' pk=user.pk %}">Main</a> 
+	<a href="{% url 'update_additional' pk=user.pk %}">Additional</a> 
+	<a href="{% url 'update_membership' pk=user.pk %}">Membership</a>
+	<a href="{% url 'update_phone' pk=user.pk %}">Phone</a>  
 
 {% endblock nav_addon %}
 
@@ -22,7 +22,6 @@
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="{{ view.button }}">
-
 	</form>
 </div>
 

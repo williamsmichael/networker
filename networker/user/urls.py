@@ -21,6 +21,9 @@ urlpatterns = [
     # --------------------------------------------------create from categories
     url(r'^(?P<pk>[0-9]+)/create/phone$', views.CreatePhone.as_view(template_name='user/networkeruser_form.html'), name='create_phone'),
 
+    # --------------------------------------------------------delete instances
+    url(r'^(?P<pk>[0-9]+)/delete/phone$', views.DeletePhone.as_view(template_name='user/networkeruser_confirm_delete.html'), name='delete_phone'),
+
     # ------------------------------------------------------------------unused
     # url(r'^$', views.user_listing, name='user_listing'),
     # url(r'^detail/(?P<pk>[0-9]+)/$', views.user_detail, name='user_detail'),

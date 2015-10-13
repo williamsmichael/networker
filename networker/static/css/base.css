@@ -25,13 +25,17 @@ a:focus {
 	text-decoration: #333;
 	color: #669966;
 }
-span a[href*=create] {
+a[href*=create], a[href*=delete] {
 	background-color: #3399CC;
 	color: #eee;
 	margin-left: 5px;
-	padding: 3px 15px;
+	padding: 3px 10px;
 	border-radius: 3px;
 	font-size: .5em;
+}
+a[href*=delete] {
+	background-color: #CC6666;
+	padding: 3px 5px;
 }
 span.user {
 	background-color: #669966;

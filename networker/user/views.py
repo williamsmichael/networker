@@ -24,7 +24,7 @@ class CreatePhone(CreateView):
     """ Creates a phone number for user """ 
     model = UserPhone
     fields = '__all__'
-    success_url = '/users/'
+    # success_url = '/users/'
     section = 'Add'
     title = 'add'
     button = 'add'
@@ -38,6 +38,13 @@ class CreatePhone(CreateView):
         return reverse('update_phone', kwargs={
             'pk': self.object.pk,
     })
+
+
+class DeletePhone(DeleteView):
+    model = UserPhone
+    success_url = '/users/'
+    section = "Confirm Delete"
+    button = "delete"
 
 
 def UserDetail(request, pk):
@@ -60,7 +67,7 @@ class UserUpdateMain(UpdateView):
     """ Update auth-user details of a user """
     model = User
     fields = ['username', 'first_name', 'last_name', 'is_active']
-    success_url = '/users/'
+    # success_url = '/users/'
     section = "Main"
     title = 'update'
     button = 'update'
@@ -75,7 +82,7 @@ class UserUpdateAdditional(UpdateView):
     """ Update networker-user-extension details of a user """
     model = NetworkerUser
     fields = '__all__'
-    success_url = '/users/'
+    # success_url = '/users/'
     section = 'Additional'
     title = 'update'
     button = 'update'
@@ -90,7 +97,7 @@ class UserUpdateMembership(UpdateView):
     """ Update membership details of a user """
     model = User
     fields = ['groups']
-    success_url = '/users/'
+    # success_url = '/users/'
     section = "Membership"
     title = 'update'
     button = 'update'
@@ -105,7 +112,7 @@ class UserUpdatePhone(UpdateView):
     """ Update phone details of a user """
     model = UserPhone
     fields = ['phone_category_id', 'country_code', 'phone_number']
-    success_url = '/users/'
+    # success_url = '/users/'
     section = "Phone"
     title = 'update'
     button = 'update'
@@ -121,6 +128,11 @@ class UserDelete(DeleteView):
     success_url = '/users/'
     section = "Confirm Delete"
     button = "delete"
+
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+    })
 
 
 # def user_listing(request):

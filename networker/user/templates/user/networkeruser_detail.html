@@ -6,13 +6,13 @@
 {% block content %}
 
 <div>
-	{% if user.is_authenticated %}
-	<h2>
-		<a href="{% url 'update_main' pk=user.pk %}">{{ user.user_extension.username }}</a>
-	</h2>
-	{% else %}
-	<h2 class="anonymous-user">{{ user.user_extension.username }}</h2>
-	{% endif %}
+	{# {% if user.is_authenticated %} #}
+		<h2>
+			<a href="{% url 'update_main' pk=user.user_extension.pk %}">{{ user.user_extension.username }}</a>
+		</h2>
+	{# {% else %} #}
+		{# <h2 class="anonymous-user">{{ user.user_extension.username }}</h2> #}
+	{# {% endif %} #}
 	
 
 	<ul>
@@ -21,12 +21,14 @@
 		{% else %}
 			<li><img src="https://unsplash.it/150/150/?random"></li>
 		{% endif %}
-		<li>id: {{ user.user_extension.id }}</li>
+		<li>ids: {{ user.user_extension.id }} | {{ user.id }} </li>
 		<li>username: {{ user.user_extension.username }}</li>
 		{# <li>password: {{ user.user_extension.password }}</li> #}
 		<li>first name: {{ user.user_extension.first_name | default:"none" }}</li> 
 		<li>last name: {{ user.user_extension.last_name | default:"none" }}</li>
-		<li>active status: {{ user.user_extension.is_active }}</li>
+		{% if user.is_superuser %}
+			<li>active status: {{ user.user_extension.is_active }}</li>
+		{% endif %}
 		<li>staff status: {{ user.user_extension.is_staff }}</li>
 		<li>superuser status: {{ user.user_extension.is_superuser }}</li>
 		<li>last login: {{ user.user_extension.last_login | timesince }}</li>
@@ -42,7 +44,7 @@
 		<li>date of birth: {{ user.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
 	</ul>
 
-	<h4><a href="{% url 'update_membership' pk=user.pk %}">Membership</a></h4>
+	<h4><a href="{% url 'update_membership' pk=user.user_extension.pk %}">Membership</a></h4>
 	<ul>
 		{% for group in user.user_extension.groups.values %}
 			<li>{{ group.name }}</li>	
@@ -56,6 +58,7 @@
 		{% for phone in user.userphone_set.all %}
 			<li>
 				<a href="{% url 'update_phone' phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+				<span><a href="{% url 'delete_phone' phone.pk %}">delete</a></span>
 			</li>	
 		{% endfor %}
 	</ul>
