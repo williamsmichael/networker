@@ -1,0 +1,62 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "date_joined": "2015-10-06T03:23:39Z",
+        "groups": [
+            2
+        ],
+        "is_staff": true,
+        "last_name": "Williams",
+        "first_name": "Michael",
+        "last_login": "2015-10-13T00:57:26.184Z",
+        "is_superuser": true,
+        "password": "pbkdf2_sha256$20000$ZCJETPdBNVpS$EEOQGpVRA+1n1+irbHps94CGZ0YaNAGe6qPWwaNGVPY=",
+        "is_active": true,
+        "email": "michaelwilliams.contact@gmail.com",
+        "user_permissions": [],
+        "username": "mw"
+    },
+    "pk": 1
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "date_joined": "2015-10-06T03:50:27Z",
+        "groups": [
+            1
+        ],
+        "is_staff": false,
+        "last_name": "Burton",
+        "first_name": "Katherine",
+        "last_login": "2015-10-06T05:40:43Z",
+        "is_superuser": false,
+        "password": "pbkdf2_sha256$20000$UU4VGmXnDhQo$EsM4Or08gZBDV3abUcFVXUBI6LmSeKAUjTXuOkQZz00=",
+        "is_active": true,
+        "email": "katherineburton@gmail.com",
+        "user_permissions": [],
+        "username": "burton"
+    },
+    "pk": 2
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "date_joined": "2015-10-06T03:50:27Z",
+        "groups": [
+            1
+        ],
+        "is_staff": false,
+        "last_name": "Christman",
+        "first_name": "James",
+        "last_login": "2015-10-06T05:40:43Z",
+        "is_superuser": false,
+        "password": "pbkdf2_sha256$20000$UU4VGmXnDhQo$EsM4Or08gZBDV3abUcFVXUBI6LmSeKAUjTXuOkQZz00=",
+        "is_active": true,
+        "email": "jameschristman@gmail.com",
+        "user_permissions": [],
+        "username": "christman"
+    },
+    "pk": 3
+}
+]

@@ -10,7 +10,7 @@ urlpatterns = [
     # url(r'^detail/main/(?P<pk>[0-9]+)/$', views.user_detail_main, name='user_detail_main'),
     # url(r'^detail/main/(?P<pk>[0-9]+)/edit/$', views.user_detail_main_edit, name='user_detail_main_edit'),
 
-    url(r'^$', views.UserListing.as_view(), name='listing'),
+    url(r'^$', views.UserListing.as_view(), name='user_listing'),
     url(r'^create/', views.UserCreate.as_view(), name='create'),
     # url(r'^(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/$', views.UserDetail, name='detail'),

@@ -15,11 +15,9 @@
 {% block content %}
 
 <div>
-	{% block content_header %}
-{# 		<h4>Additional</h4> #}
-	{% endblock content_header %}
+	<h4><span>{{ user.username }}</span> {{ view.section }}</h4>	
 
-	<form action="" method="POST">
+	<form action="" method="POST" enctype="multipart/form-data">
 
 		{% csrf_token %}
 		{{ form.as_p }}

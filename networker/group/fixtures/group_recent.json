@@ -1,0 +1,28 @@
+[
+{
+    "model": "group.networkergroup",
+    "pk": 1,
+    "fields": {
+        "group_image": "images/Synergy Consultants, LLC/pdx.png",
+        "group_extension": 1,
+        "welcome_message": "Welcome to Synergy Consultants!",
+        "created_dateTime": "2015-10-06T07:09:15.276Z",
+        "group_organizer": 1,
+        "website": "",
+        "group_description": "Synergy Consultants is a multi-disciplined international consulting firm. We provide professional consulting services with specialization in construction, engineering, architecture, and accounting-related services."
+    }
+},
+{
+    "model": "group.networkergroup",
+    "pk": 2,
+    "fields": {
+        "group_image": "images/Williams Family Business Network/w.gif",
+        "group_extension": 2,
+        "welcome_message": "Welcome to the Williams Family Business Network!",
+        "created_dateTime": "2015-10-07T05:35:24.873Z",
+        "group_organizer": 1,
+        "website": "",
+        "group_description": "The Williams since 1978"
+    }
+}
+]

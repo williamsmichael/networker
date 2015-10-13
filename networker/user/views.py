@@ -49,6 +49,7 @@ class UserUpdateMain(UpdateView):
     model = User
     fields = ['username', 'first_name', 'last_name']
     success_url = '/users/'
+    section = "Main"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -61,6 +62,7 @@ class UserUpdateAdditional(UpdateView):
     model = NetworkerUser
     fields = '__all__'
     success_url = '/users/'
+    section = "Additional"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -73,6 +75,7 @@ class UserUpdateMembership(UpdateView):
     model = User
     fields = ['groups']
     success_url = '/users/'
+    section = "Membership"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
@@ -85,6 +88,7 @@ class UserUpdatePhone(UpdateView):
     model = UserPhone
     fields = ['phone_category_id', 'country_code', 'phone_number']
     success_url = '/users/'
+    section = "Phone"
 
     def get_success_url(self):
         return reverse('detail', kwargs={
