@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} email listing {% endblock %}
+
+{# {% block heading %}  Networker Users {% endblock %} #}
+
+{% block content %}
+
+{% for email in useremail_list %}
+
+	{# {% if user.user_extension.is_active == True %} #}
+	<div>
+
+		<ul>
+			
+			<li>
+				({{ email.email_category_id }}) {{ email.email }}
+				
+			</li>
+		</ul>	
+	</div>
+
+	{# {% endif %} #}
+{% endfor %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

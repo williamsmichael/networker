@@ -70,19 +70,20 @@
 	</ul>
 
 	<h4>
-		Email
+		<a href="{% url 'email_listing' member.user_extension.pk %}">Email</a>
 		<span>
 			<a href="{% url 'create_email' member.user_extension.pk %}">add</a>
 		</span> 
 	</h4>
 	<ul>
 		<li>
-			<a href="{% url 'update_email' pk=member.user_extension.pk %}">(Main) {{ member.user_extension.email }}</a>
+			{# {{ member.user_extension.email }} #}
+			{# <a href="{% url 'update_email' pk=member.user_extension.pk email=member.user_extension.email.pk %}">(Main) {{ member.user_extension.email }}</a> #}
 		</li>
 		{% for email in member.useremail_set.all %}
 			{% if email.deactivate == False %}
 			<li>
-				<a href="{% url 'update_email' email.pk %}">({{ email.email_category_id.email_category }}) {{ email.email }}</a>
+				<a href="{% url 'update_email' pk=member.user_extension.pk email=email.pk %}">({{ email.email_category_id.email_category }}) {{ email.email }}</a>
 			</li>
 			{% endif %}	
 		{% endfor %}

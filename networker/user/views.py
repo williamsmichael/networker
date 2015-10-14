@@ -20,6 +20,11 @@ class UserListing(ListView):
     model = NetworkerUser
 
 
+class EmailListing(ListView):
+    """ For list of all user emails """
+    model = UserEmail
+
+
 def UserDetail(request, pk):
     """ Details of a user """
     # """ is_staff: List of all users """
@@ -53,8 +58,8 @@ class CreatePhone(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('user_detail', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 
@@ -73,8 +78,8 @@ class CreateEmail(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('user_detail', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 
@@ -93,8 +98,8 @@ class CreateAddress(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('user_detail', kwargs={
+          'pk': self.object.user_id.pk,
         })
 
 
@@ -113,8 +118,8 @@ class CreateSocialMedia(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('user_detail', kwargs={
+          'pk': self.object.user_id.pk,
         })
 
 
@@ -133,8 +138,8 @@ class CreateJob(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('user_detail', kwargs={
+          'pk': self.object.user_id.pk,
         })
 
 
@@ -153,8 +158,8 @@ class CreateSkill(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('user_detail', kwargs={
+          'pk': self.object.user_id.pk,
         })
 
 
