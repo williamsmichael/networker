@@ -16,7 +16,7 @@ def index(request):
 
 
 class UserListing(ListView):
-    """ Simple list of all users """ 
+    """ Simple list of all users """
     model = NetworkerUser
 
 
@@ -24,11 +24,11 @@ def UserDetail(request, pk):
     """ Details of a user """
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
-        # print(NetworkerUser.objects.all())
-        # for networker_user in NetworkerUser.objects.all():
-        #     print(networker_user.user_extension.first_name)
-        # users = NetworkerUser.objects.all()
-        # return render(request, 'user/user_detail.html', {'users': users})
+    # print(NetworkerUser.objects.all())
+    # for networker_user in NetworkerUser.objects.all():
+    #     print(networker_user.user_extension.first_name)
+    # users = NetworkerUser.objects.all()
+    # return render(request, 'user/user_detail.html', {'users': users})
     # else:
     #     return HttpResponse("Unauthorized Access!")
 
@@ -38,7 +38,7 @@ def UserDetail(request, pk):
 
 # ----------------------------------------------------------------------create
 class CreatePhone(CreateView):
-    """ Creates a phone number for user """ 
+    """ Creates a phone number for user """
     model = UserPhone
     fields = '__all__'
     # success_url = '/users/'
@@ -54,11 +54,11 @@ class CreatePhone(CreateView):
     def get_success_url(self):
         return reverse('update_phone', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class CreateEmail(CreateView):
-    """ Creates a email number for user """ 
+    """ Creates a email number for user """
     model = UserEmail
     fields = '__all__'
     # success_url = '/users/'
@@ -74,11 +74,11 @@ class CreateEmail(CreateView):
     def get_success_url(self):
         return reverse('update_email', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class CreateAddress(CreateView):
-    """ Creates a address number for user """ 
+    """ Creates a address number for user """
     model = UserAddress
     fields = '__all__'
     # success_url = '/users/'
@@ -94,7 +94,7 @@ class CreateAddress(CreateView):
     def get_success_url(self):
         return reverse('update_address', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 # ----------------------------------------------------------------------delete
@@ -111,6 +111,7 @@ class DeleteEmail(DeleteView):
     success_url = '/users/'
     section = "Confirm"
     button = "delete"
+
 
 class DeleteAddress(DeleteView):
     model = UserAddress
@@ -132,7 +133,7 @@ class UserUpdateMain(UpdateView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class UserUpdateAdditional(UpdateView):
@@ -147,7 +148,7 @@ class UserUpdateAdditional(UpdateView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class UserUpdateMembership(UpdateView):
@@ -162,7 +163,7 @@ class UserUpdateMembership(UpdateView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class UserUpdatePhone(UpdateView):
@@ -177,7 +178,7 @@ class UserUpdatePhone(UpdateView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class UserUpdateEmail(UpdateView):
@@ -192,7 +193,7 @@ class UserUpdateEmail(UpdateView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class UserUpdateAddress(UpdateView):
@@ -207,7 +208,7 @@ class UserUpdateAddress(UpdateView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 class UserDelete(DeleteView):
@@ -219,15 +220,16 @@ class UserDelete(DeleteView):
     def get_success_url(self):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
-    })
+        })
 
 
 # --------------------------------------------------------------authentication
 
 def register(request):
     """ Register a user """
-	# A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
+    # A boolean value for telling the template whether the registration was successful.
+    # Set to False initially. Code changes value to True when registration
+    # succeeds.
     registered = False
 
     # If it's a HTTP POST, we're interested in processing form data.
@@ -252,7 +254,11 @@ def register(request):
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
-            # We also establish a link between the two model instances that we create. After creating a new User model instance, we reference it in the UserProfile instance with the line profile.user_extension = user. This is where we populate the user attribute of the UserProfileForm form
+            # We also establish a link between the two model instances that we
+            # create. After creating a new User model instance, we reference it
+            # in the UserProfile instance with the line profile.user_extension
+            # = user. This is where we populate the user attribute of the
+            # UserProfileForm form
             profile = networker_user_form.save(commit=False)
             profile.user_extension = user
 
@@ -265,7 +271,8 @@ def register(request):
             # Save the UserProfile model instance
             profile.save()
 
-            # Update the variable to tell the template registration was successful.
+            # Update the variable to tell the template registration was
+            # successful.
             registered = True
 
         # Invalid form or forms - mistakes or something else?
@@ -281,7 +288,7 @@ def register(request):
         networker_user_form = NetworkerUserForm()
 
     # Render the template depending on the context.
-    return render(request, 'user/register.html', { 'user_form': user_form, 'networker_user_form': networker_user_form, 'registered': registered })
+    return render(request, 'user/register.html', {'user_form': user_form, 'networker_user_form': networker_user_form, 'registered': registered})
 
 
 def user_login(request):
@@ -293,7 +300,8 @@ def user_login(request):
         # This information is obtained from the login form.
             # We use request.POST.get('<variable>') as opposed to request.POST['<variable>'],
             # because the request.POST.get('<variable>') returns None, if the value does not exist,
-            # while the request.POST['<variable>'] will raise key error exception
+            # while the request.POST['<variable>'] will raise key error
+            # exception
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -322,8 +330,8 @@ def user_login(request):
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
-        # No context variables to pass to the template system, hence the 
-        # blank dictionary object 
+        # No context variables to pass to the template system, hence the
+        # blank dictionary object
         return render(request, 'user/login.html', {})
 
 
@@ -333,7 +341,8 @@ def restricted(request):
     return HttpResponse("Since you are logged in, you can see this text!")
 
 
-# Use the login_required() decorator to ensure only those logged in can access the view.
+# Use the login_required() decorator to ensure only those logged in can
+# access the view.
 @login_required
 def user_logout(request):
     """ Logout functionality """
@@ -344,15 +353,13 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 
-
 # ----------------------------------------------------------------------unused
 
 # def user_listing(request):
-#     """ Simple list of all users """ 
+#     """ Simple list of all users """
 
 #     users = NetworkerUser.objects.all()
 #     return render(request, 'user/user_listing.html', {'users': users})
-
 
 
 # class UpdateContactView(UpdateView):
@@ -426,5 +433,3 @@ def user_logout(request):
 #         form = UserNewForm(instance=updated_data)
 
 #     return render(request, "user/user_new.html", {'form': form})
-    
-

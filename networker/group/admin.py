@@ -7,4 +7,3 @@ admin.site.register(GroupUser)
 admin.site.register(MessageSystemTopic)
 admin.site.register(MessageSystemTopicTag)
 admin.site.register(MessageSystemMessage)
-
