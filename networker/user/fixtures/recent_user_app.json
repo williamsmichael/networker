@@ -324,36 +324,6 @@
 },
 {
     "pk": 1,
-    "model": "user.userphone",
-    "fields": {
-        "phone_category_id": 1,
-        "user_id": 1,
-        "country_code": 1,
-        "phone_number": "503-720-6114"
-    }
-},
-{
-    "pk": 2,
-    "model": "user.userphone",
-    "fields": {
-        "phone_category_id": 3,
-        "user_id": 2,
-        "country_code": 1,
-        "phone_number": "650-567-1368"
-    }
-},
-{
-    "pk": 3,
-    "model": "user.userphone",
-    "fields": {
-        "phone_category_id": 5,
-        "user_id": 3,
-        "country_code": 1,
-        "phone_number": "212-250-2042"
-    }
-},
-{
-    "pk": 1,
     "model": "user.socialmediacategory",
     "fields": {
         "social_media_category": "Facebook"

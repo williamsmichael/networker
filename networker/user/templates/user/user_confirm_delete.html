@@ -6,7 +6,7 @@
 {% block content %}
 
 <div>
-	<h4><span>{{ user.username }}</span> {{ view.section }}</h4>
+	<h4><span class='user'>{{ user.username }}</span> {{ view.section }}</h4>
 	
 	<form action="" method="POST">{% csrf_token %}
 	    

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} profile {% endblock %}
+
+{% block content %}
+
+<div>
+
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<h2>
+			<a href="{% url 'update_main' pk=member.user_extension.pk %}">{{ member.user_extension.username }}</a>
+		</h2>
+	{% else %}
+		<h2 class="anonymous-user">{{ member.user_extension.username }}</h2>
+	{% endif %}
+	
+	<ul>
+		{% if member.profile_image %}
+			<li><img src="{{ member.profile_image.url }}"></li>
+		{% else %}
+			<li><img src="https://unsplash.it/150/150/?random"></li>
+		{% endif %}
+		<li>ids: {{ member.user_extension.id }} &vrtri; {{ member.id }} </li>
+		<li>username: {{ member.user_extension.username }}</li>
+		{# <li>password: {{ member.user_extension.password }}</li> #}
+		<li>first name: {{ member.user_extension.first_name | default:"none" }}</li> 
+		<li>last name: {{ member.user_extension.last_name | default:"none" }}</li>
+		{% if member.is_superuser %}
+			<li>active status: {{ member.user_extension.is_active }}</li>
+		{% endif %}
+		<li>staff status: {{ member.user_extension.is_staff }}</li>
+		<li>superuser status: {{ member.user_extension.is_superuser }}</li>
+		<li>last login: {{ member.user_extension.last_login | timesince }}</li>
+		<li>date joined: {{ member.user_extension.date_joined | date:"F d, Y f A e" }}</li>
+	</ul>
+
+	<h4>
+		<a href="{% url 'update_additional' pk=member.user_extension.pk %}">Additional</a>
+	</h4>
+	<ul>
+		<li>relationship to group: {{ member.relationship_to_group | default:"none" }}</li>
+		<li>nickname: {{ member.nickname | default:"none" }}</li>
+		<li>website: {{ member.website | default:"none" }}</li>
+		<li>place of birth: {{ member.place_of_birth |  default:"none" }}</li>
+		<li>date of birth: {{ member.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
+	</ul>
+
+	<h4>
+		<a href="{% url 'update_membership' pk=member.user_extension.pk %}">Membership</a>
+	</h4>
+	<ul>
+		{% for group in member.user_extension.groups.values %}
+			<li>{{ group.name }}</li>	
+		{% endfor %}
+	</ul>
+
+	<h4>
+		Phone 
+		<span><a href="{% url 'create_phone' member.user_extension.pk %}">add</a></span> 
+	</h4>
+	<ul>
+		{% for phone in member.userphone_set.all %}
+			<li>
+				<a href="{% url 'update_phone' pk=phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+			</li>	
+		{% endfor %}
+	</ul>
+
+	<h4>
+		Email
+		<span><a href="{% url 'create_email' member.user_extension.pk %}">add</a></span> 
+	</h4>
+	<ul>
+		<li>
+			<a href="{% url 'update_email' pk=member.user_extension.pk %}">(Main) {{ member.user_extension.email }}</a>
+		</li>
+		{% for email in member.useremail_set.all %}
+			<li>
+				<a href="{% url 'update_email' email.pk %}">({{ email.email_category_id.email_category }}) {{ email.email }}</a>
+			</li>	
+		{% endfor %}
+	</ul>
+
+	<h4>
+		Address
+		<span><a href="{% url 'create_address' member.user_extension.pk %}">add</a></span>
+	</h4>
+	<ul>
+		{% for address in member.useraddress_set.all %}
+			<li>
+				<a href="{% url 'update_address' address.pk %}">({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</a>
+			</li>	
+		{% endfor %}
+	</ul>
+
+	<h4>Social Profile</h4>
+	<ul>
+		{% for social_media in member.usersocialmedia_set.all %}
+			<li>({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</li>	
+		{% endfor %}
+	</ul>
+
+	<h4>Job Profile</h4>
+	<ul>
+		{% for job in member.userjob_set.all %}
+			<li>{{ job.job_title }}, {{ job.company_name }}</li>	
+		{% endfor %}
+	</ul>
+
+	<h4>Skill Profile</h4>
+	<ul>
+		{% for skill in member.userskill_set.all %}
+			<li>{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</li>	
+		{% endfor %}
+	</ul>
+
+</div>
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

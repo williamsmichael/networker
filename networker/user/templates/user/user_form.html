@@ -5,17 +5,21 @@
 
 {% block nav_addon %} 
 
-<a href="{% url 'update_main' pk=user.pk %}">Main</a> 
-<a href="{% url 'update_additional' pk=user.pk %}">Additional</a> 
-<a href="{% url 'update_membership' pk=user.pk %}">Membership</a>
-<a href="{% url 'update_phone' pk=user.pk %}">Phone</a>  
+<a href="{% url 'update_main' user.pk %}">Main</a> 
+<a href="{% url 'update_additional' user.pk %}">Additional</a> 
+<a href="{% url 'update_membership' user.pk %}">Membership</a>
+<a href="{% url 'update_phone' user.pk %}">Phone</a>  
+<a href="{% url 'update_address' user.pk %}">Address</a>  
 
 {% endblock nav_addon %}
 
 {% block content %}
 
 <div>
-	<h4><span>{{ user.username }}</span> {{ view.section }}</h4>	
+	<h4>
+		<span class='user'>{{ user.username }}</span> 
+		{{ view.section }}
+	</h4>	
 
 	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 

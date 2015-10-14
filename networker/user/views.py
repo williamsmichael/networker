@@ -33,28 +33,29 @@ def UserDetail(request, pk):
     #     return HttpResponse("Unauthorized Access!")
 
     user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/networkeruser_detail.html', {'apples': user})
+    return render(request, 'user/user_detail.html', {'member': user})
 
 
 # ----------------------------------------------------------------------create
+
 class CreatePhone(CreateView):
     """ Creates a phone number for user """
     model = UserPhone
     fields = '__all__'
-    # success_url = '/users/'
+    success_url = '/'
     section = 'Add'
     title = 'add'
-    button = 'add'
+    button = 'create'
 
     def get_initial(self):
         return {
             'user_id': self.request.user
         }
 
-    def get_success_url(self):
-        return reverse('update_phone', kwargs={
-            'pk': self.object.pk,
-        })
+    # def get_success_url(self):
+    #     return reverse('update_detail', kwargs={
+    #         'pk': self.object.pk,
+    #     })
 
 
 class CreateEmail(CreateView):
@@ -64,7 +65,7 @@ class CreateEmail(CreateView):
     # success_url = '/users/'
     section = 'Add'
     title = 'add'
-    button = 'add'
+    button = 'create'
 
     def get_initial(self):
         return {
@@ -72,7 +73,7 @@ class CreateEmail(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_email', kwargs={
+        return reverse('update_detail', kwargs={
             'pk': self.object.pk,
         })
 
@@ -84,7 +85,7 @@ class CreateAddress(CreateView):
     # success_url = '/users/'
     section = 'Add'
     title = 'add'
-    button = 'add'
+    button = 'create'
 
     def get_initial(self):
         return {
@@ -92,35 +93,13 @@ class CreateAddress(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('update_address', kwargs={
+        return reverse('update_detail', kwargs={
             'pk': self.object.pk,
         })
 
 
-# ----------------------------------------------------------------------delete
-
-class DeletePhone(DeleteView):
-    model = UserPhone
-    success_url = '/users/'
-    section = "Confirm"
-    button = "delete"
-
-
-class DeleteEmail(DeleteView):
-    model = UserEmail
-    success_url = '/users/'
-    section = "Confirm"
-    button = "delete"
-
-
-class DeleteAddress(DeleteView):
-    model = UserAddress
-    success_url = '/users/'
-    section = "Confirm"
-    button = "delete"
-
-
 # ----------------------------------------------------------------------update
+
 class UserUpdateMain(UpdateView):
     """ Update auth-user details of a user """
     model = User
@@ -169,7 +148,7 @@ class UserUpdateMembership(UpdateView):
 class UserUpdatePhone(UpdateView):
     """ Update phone details of a user """
     model = UserPhone
-    fields = ['phone_category_id', 'country_code', 'phone_number']
+    fields = ['phone_category_id', 'country_code', 'phone_number', 'deactivate']
     # success_url = '/users/'
     section = "Phone"
     title = 'update'
@@ -184,7 +163,8 @@ class UserUpdatePhone(UpdateView):
 class UserUpdateEmail(UpdateView):
     """ Update email details of a user """
     model = UserEmail
-    fields = ['email_category_id', 'email']
+    # fields = ['email_category_id', 'email']
+    fields = '__all__'
     # success_url = '/users/'
     section = "Email"
     title = 'update'
@@ -209,6 +189,29 @@ class UserUpdateAddress(UpdateView):
         return reverse('user_detail', kwargs={
             'pk': self.object.pk,
         })
+
+
+# ----------------------------------------------------------------------delete
+
+class DeletePhone(DeleteView):
+    model = UserPhone
+    success_url = '/users/'
+    section = "Confirm"
+    button = "delete"
+
+
+class DeleteEmail(DeleteView):
+    model = UserEmail
+    success_url = '/users/'
+    section = "Confirm"
+    button = "delete"
+
+
+class DeleteAddress(DeleteView):
+    model = UserAddress
+    success_url = '/users/'
+    section = "Confirm"
+    button = "delete"
 
 
 # --------------------------------------------------------------authentication
@@ -342,7 +345,6 @@ def user_logout(request):
 
 
 # ----------------------------------------------------------------------unused
-
 
 # class UserDelete(DeleteView):
 #     model = NetworkerUser
