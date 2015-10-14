@@ -211,18 +211,6 @@ class UserUpdateAddress(UpdateView):
         })
 
 
-class UserDelete(DeleteView):
-    model = NetworkerUser
-    success_url = '/users/'
-    section = "Confirm Delete"
-    button = "delete"
-
-    def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
-        })
-
-
 # --------------------------------------------------------------authentication
 
 def register(request):
@@ -354,6 +342,19 @@ def user_logout(request):
 
 
 # ----------------------------------------------------------------------unused
+
+
+# class UserDelete(DeleteView):
+#     model = NetworkerUser
+#     success_url = '/users/'
+#     section = "Confirm Delete"
+#     button = "delete"
+
+#     def get_success_url(self):
+#         return reverse('user_detail', kwargs={
+#             'pk': self.object.pk,
+#         })
+
 
 # def user_listing(request):
 #     """ Simple list of all users """

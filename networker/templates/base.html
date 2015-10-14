@@ -1,56 +1,49 @@
 {% load static from staticfiles %}
-
 <!DOCTYPE html>
+
 <head>
-	<title>{% block title %}{% endblock title %} | networker by michael williams | making peoples lives easier MPLE</title>
-	<meta charset="UTF-8">
-
-	<!-- temp styles, remove ASAP -->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-	
+    <title>{% block title %}{% endblock title %} | networker by michael williams | making peoples lives easier MPLE</title>
+    <meta charset="UTF-8">
+    <!-- temp styles, remove ASAP -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 </head>
+
 <body>
-	<div class="container">
-
-		{% block header %}
-			<a href="{% url 'index' %}">			
-				<h1>
-					{% if user.is_authenticated %}
-						hej <span class='user'>{{ user.get_username }}</span>!
-					{% else %}
-						networker says hej!
-					{% endif %}
-				</h1>
-			</a>
-
-			<ul>
+    <div class="container">
+        {% block header %}
+        <a href="{% url 'index' %}">
+            <h1>
 				{% if user.is_authenticated %}
-					<li><a href="{% url 'user_listing' %}">Users</a></li>
-					<li><a href="{% url 'group_listing' %}">Groups</a></li>
-					{# <li><a href="/restricted/">Restricted</a></li> #}
-					<li><a href="{% url 'logout' %}">Logout</a></li>
-					<br>
-					{% block nav_addon %}{% endblock nav_addon %}
+					hej <span class='user'>{{ user.get_username }}</span>!
 				{% else %}
-					<li><a href="{% url 'login' %}">Login</a></li>
-					<li><a href="{% url 'register' %}">Sign Up for Free</a></li>
+					networker says hej!
 				{% endif %}
-				
-			</ul>
-		{% endblock header %}
-
-		<main>
-
-			<h1>{% block heading %}{% endblock heading %}</h1>
-
-			<div>{% block content %}{% endblock content %}</div>
-		</main>
-
-		{% block footer %}
-		<footer>
-		    <p>&copy; 2015 networker by michael williams</p>
-		</footer>
-		{% endblock footer %}
-	 </div>
+			</h1>
+        </a>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'user_listing' %}">Users</a></li>
+                <li><a href="{% url 'group_listing' %}">Groups</a></li>
+                {# <li><a href="/restricted/">Restricted</a></li> #}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            <br> 
+                {% block nav_addon %}{% endblock nav_addon %} 
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Sign Up for Free</a></li>
+            {% endif %}
+        </ul>
+        {% endblock header %}
+        <main>
+            <h1>{% block heading %}{% endblock heading %}</h1>
+            <div>{% block content %}{% endblock content %}</div>
+        </main>
+        {% block footer %}
+        <footer>
+            <p>&copy; 2015 networker by michael williams</p>
+        </footer>
+        {% endblock footer %}
+    </div>
 </body>
+
 </html>

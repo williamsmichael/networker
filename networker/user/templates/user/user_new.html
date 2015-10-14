@@ -6,14 +6,17 @@
 {{ status }}
 
 {% block content %}
-	<p><span>{{ request.user.first_name }}</span> Update Profile</p>
-	<form method="POST" action=''>{% csrf_token %}
 
-		{{ form.as_p }}
-		<input type="submit" value="Update">
-	</form>
+<p>
+	<span>{{ request.user.first_name }}</span> Update Profile
+</p>
 
+<form method="POST" action=''>{% csrf_token %}
 
-{% endblock %}
+	{{ form.as_p }}
+	<input type="submit" value="Update">
+</form>
+
+{% endblock endblock %}
 
 

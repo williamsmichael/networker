@@ -7,11 +7,12 @@
 
 <div>
 	<h4><span>{{ user.username }}</span> {{ view.section }}</h4>
-	<form action="" method="POST">
-
-	    {% csrf_token %}
+	
+	<form action="" method="POST">{% csrf_token %}
+	    
 	    <input type="submit" value="delete">
 	</form>
+
 </div>
 
-{% endblock %}
+{% endblock content %}

@@ -31,10 +31,11 @@ class UserDetailMainForm(forms.ModelForm):
         super(UserDetailMainForm, self).__init__(*args, **kwargs)
 
 
-class UserNewForm(forms.ModelForm):
-    """ Update a Networker User profile form """
-    class Meta:
-        model = User
-        # fields = '__all__'
-        exclude = ['is_superuser', 'user_permissions', 'is_staff',
-                   'is_active', 'date_joined', 'last_login', 'groups']
+# ----------------------------------------------------------------------unused
+# class UserNewForm(forms.ModelForm):
+#     """ Update a Networker User profile form """
+#     class Meta:
+#         model = User
+#         # fields = '__all__'
+#         exclude = ['is_superuser', 'user_permissions', 'is_staff',
+#                    'is_active', 'date_joined', 'last_login', 'groups']

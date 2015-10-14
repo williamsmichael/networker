@@ -8,8 +8,6 @@ urlpatterns = [
 
     # ------------------------------------------------------------user general
     url(r'^$', views.UserListing.as_view(), name='user_listing'),
-    url(r'^(?P<pk>[0-9]+)/delete/$',
-        views.UserDelete.as_view(), name='delete'),
 
 
     # -------------------------------------------------------------user update
@@ -51,6 +49,8 @@ urlpatterns = [
 
 
     # ------------------------------------------------------------------unused
+    # url(r'^(?P<pk>[0-9]+)/delete/$',
+    #     views.UserDelete.as_view(), name='delete'),
     # url(r'^$', views.user_listing, name='user_listing'),
     # url(r'^detail/(?P<pk>[0-9]+)/$', views.user_detail, name='user_detail'),
     # url(r'^edit/(?P<pk>\d+)/$', views.UpdateContactView.as_view(),
