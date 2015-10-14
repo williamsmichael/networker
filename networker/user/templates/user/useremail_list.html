@@ -9,7 +9,7 @@
 
 {% for email in useremail_list %}
 
-	{# {% if user.user_extension.is_active == True %} #}
+	{% if email.deactivate == False %}
 	<div>
 
 		<ul>
@@ -21,7 +21,7 @@
 		</ul>	
 	</div>
 
-	{# {% endif %} #}
+	{% endif %}
 {% endfor %}
 
 {% endblock content %}

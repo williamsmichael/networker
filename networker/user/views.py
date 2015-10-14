@@ -23,6 +23,12 @@ class UserListing(ListView):
 class EmailListing(ListView):
     """ For list of all user emails """
     model = UserEmail
+    queryset = UserEmail.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
+        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
 def UserDetail(request, pk):
