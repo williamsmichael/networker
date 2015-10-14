@@ -9,16 +9,19 @@
 
 {% for user in networkeruser_list %}
 
-<div>
+	{% if user.user_extension.is_active == True %}
+	<div>
 
-	<ul>
+		<ul>
+			
+			<li>
+				<a href="{% url 'user_detail' user.user_extension.pk %}">[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a>
+				
+			</li>
+		</ul>	
+	</div>
 
-		<li>
-			<a href="{% url 'user_detail' user.user_extension.pk %}">[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a>
-		</li>
-	</ul>	
-
-</div>
+	{% endif %}
 {% endfor %}
 
 {% endblock content %}

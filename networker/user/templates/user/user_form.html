@@ -5,11 +5,12 @@
 
 {% block nav_addon %} 
 
-<a href="{% url 'update_main' user.pk %}">Main</a> 
-<a href="{% url 'update_additional' user.pk %}">Additional</a> 
-<a href="{% url 'update_membership' user.pk %}">Membership</a>
-<a href="{% url 'update_phone' user.pk %}">Phone</a>  
-<a href="{% url 'update_address' user.pk %}">Address</a>  
+{# <a href="{% url 'update_main' user.pk %}">Main</a>  #}
+{# <a href="{% url 'update_additional' user.pk %}">Additional</a>  #}
+{# <a href="{% url 'update_membership' user.pk %}">Membership</a> #}
+{# <a href="{% url 'update_phone' pk=user.user_extension.pk phone=phone.pk %}">Phone</a>  #}
+{# <a href="{% url 'update_email' user.pk %}">Email</a>    #}
+{# <a href="{% url 'update_address' user.pk %}">Address</a>   #}
 
 {% endblock nav_addon %}
 
@@ -29,3 +30,5 @@
 </div>
 
 {% endblock content %}
+
+{% block footer %}{% endblock footer %}

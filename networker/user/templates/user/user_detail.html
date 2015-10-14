@@ -26,9 +26,7 @@
 		{# <li>password: {{ member.user_extension.password }}</li> #}
 		<li>first name: {{ member.user_extension.first_name | default:"none" }}</li> 
 		<li>last name: {{ member.user_extension.last_name | default:"none" }}</li>
-		{% if member.is_superuser %}
-			<li>active status: {{ member.user_extension.is_active }}</li>
-		{% endif %}
+		<li>active status: {{ member.user_extension.is_active }}</li>
 		<li>staff status: {{ member.user_extension.is_staff }}</li>
 		<li>superuser status: {{ member.user_extension.is_superuser }}</li>
 		<li>last login: {{ member.user_extension.last_login | timesince }}</li>
@@ -57,61 +55,101 @@
 
 	<h4>
 		Phone 
-		<span><a href="{% url 'create_phone' member.user_extension.pk %}">add</a></span> 
+		<span>
+			<a href="{% url 'create_phone' member.user_extension.pk %}">add</a>
+		</span> 
 	</h4>
 	<ul>
 		{% for phone in member.userphone_set.all %}
+			{% if phone.deactivate == False %}
 			<li>
-				<a href="{% url 'update_phone' pk=phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+				<a href="{% url 'update_phone' phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
 			</li>	
+			{% endif %}
 		{% endfor %}
 	</ul>
 
 	<h4>
 		Email
-		<span><a href="{% url 'create_email' member.user_extension.pk %}">add</a></span> 
+		<span>
+			<a href="{% url 'create_email' member.user_extension.pk %}">add</a>
+		</span> 
 	</h4>
 	<ul>
 		<li>
 			<a href="{% url 'update_email' pk=member.user_extension.pk %}">(Main) {{ member.user_extension.email }}</a>
 		</li>
 		{% for email in member.useremail_set.all %}
+			{% if email.deactivate == False %}
 			<li>
 				<a href="{% url 'update_email' email.pk %}">({{ email.email_category_id.email_category }}) {{ email.email }}</a>
-			</li>	
+			</li>
+			{% endif %}	
 		{% endfor %}
 	</ul>
 
 	<h4>
 		Address
-		<span><a href="{% url 'create_address' member.user_extension.pk %}">add</a></span>
+		<span>
+			<a href="{% url 'create_address' member.user_extension.pk %}">add</a>
+		</span>
 	</h4>
 	<ul>
 		{% for address in member.useraddress_set.all %}
+			{% if address.deactivate == False %}
 			<li>
 				<a href="{% url 'update_address' address.pk %}">({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</a>
-			</li>	
+			</li>
+			{% endif %}	
 		{% endfor %}
 	</ul>
 
-	<h4>Social Profile</h4>
+	<h4>
+		Social Profile
+		<span>
+			<a href="{% url 'create_social_media' member.user_extension.pk %}">add</a>
+		</span>
+	</h4>
 	<ul>
 		{% for social_media in member.usersocialmedia_set.all %}
-			<li>({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</li>	
+			{% if social_media.deactivate == False %}
+			<li>
+				<a href="{% url 'update_social_media' social_media.pk %}">({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</a>
+			</li>
+			{% endif %}	
 		{% endfor %}
 	</ul>
 
-	<h4>Job Profile</h4>
+	<h4>
+		Job Profile
+		<span>
+			<a href="{% url 'create_job' member.user_extension.pk %}">add</a>
+		</span>
+	</h4>
 	<ul>
 		{% for job in member.userjob_set.all %}
-			<li>{{ job.job_title }}, {{ job.company_name }}</li>	
+			{% if job.deactivate == False %}
+			<li>
+				<a href="{% url 'update_job' job.pk %}">{{ job.job_title }}, {{ job.company_name }}</a>
+			</li>
+			{% endif %}	
 		{% endfor %}
 	</ul>
 
-	<h4>Skill Profile</h4>
+	<h4>
+		Skill Profile
+		<span>
+			<a href="{% url 'create_skill' member.user_extension.pk %}">add</a>
+		</span>
+	</h4>
 	<ul>
 		{% for skill in member.userskill_set.all %}
-			<li>{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</li>	
+			{% if skill.deactivate == False %}
+			<li>
+				<a href="{% url 'update_skill' skill.pk %}">
+				{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</a>
+			</li>
+			{% endif %}	
 		{% endfor %}
 	</ul>
 

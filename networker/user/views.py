@@ -52,14 +52,14 @@ class CreatePhone(CreateView):
             'user_id': self.request.user
         }
 
-    # def get_success_url(self):
-    #     return reverse('update_detail', kwargs={
-    #         'pk': self.object.pk,
-    #     })
+    def get_success_url(self):
+        return reverse('update_detail', kwargs={
+            'pk': self.object.pk,
+        })
 
 
 class CreateEmail(CreateView):
-    """ Creates a email number for user """
+    """ Creates a email for user """
     model = UserEmail
     fields = '__all__'
     # success_url = '/users/'
@@ -79,8 +79,68 @@ class CreateEmail(CreateView):
 
 
 class CreateAddress(CreateView):
-    """ Creates a address number for user """
+    """ Creates a address for user """
     model = UserAddress
+    fields = '__all__'
+    # success_url = '/users/'
+    section = 'Add'
+    title = 'add'
+    button = 'create'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('update_detail', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class CreateSocialMedia(CreateView):
+    """ Creates a social media for user """
+    model = UserSocialMedia
+    fields = '__all__'
+    # success_url = '/users/'
+    section = 'Add'
+    title = 'add'
+    button = 'create'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('update_detail', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class CreateJob(CreateView):
+    """ Creates a job for user """
+    model = UserJob
+    fields = '__all__'
+    # success_url = '/users/'
+    section = 'Add'
+    title = 'add'
+    button = 'create'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('update_detail', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class CreateSkill(CreateView):
+    """ Creates a skill for user """
+    model = UserSkill
     fields = '__all__'
     # success_url = '/users/'
     section = 'Add'
@@ -101,7 +161,7 @@ class CreateAddress(CreateView):
 # ----------------------------------------------------------------------update
 
 class UserUpdateMain(UpdateView):
-    """ Update auth-user details of a user """
+    """ Update auth-user details for a user """
     model = User
     fields = ['username', 'first_name', 'last_name', 'is_active']
     # success_url = '/users/'
@@ -116,7 +176,7 @@ class UserUpdateMain(UpdateView):
 
 
 class UserUpdateAdditional(UpdateView):
-    """ Update networker-user-extension details of a user """
+    """ Update networker-user-extension details for a user """
     model = NetworkerUser
     fields = '__all__'
     # success_url = '/users/'
@@ -131,7 +191,7 @@ class UserUpdateAdditional(UpdateView):
 
 
 class UserUpdateMembership(UpdateView):
-    """ Update membership details of a user """
+    """ Update membership details for a user """
     model = User
     fields = ['groups']
     # success_url = '/users/'
@@ -146,7 +206,7 @@ class UserUpdateMembership(UpdateView):
 
 
 class UserUpdatePhone(UpdateView):
-    """ Update phone details of a user """
+    """ Update phone details for a user """
     model = UserPhone
     fields = ['phone_category_id', 'country_code', 'phone_number', 'deactivate']
     # success_url = '/users/'
@@ -161,7 +221,7 @@ class UserUpdatePhone(UpdateView):
 
 
 class UserUpdateEmail(UpdateView):
-    """ Update email details of a user """
+    """ Update email details for a user """
     model = UserEmail
     # fields = ['email_category_id', 'email']
     fields = '__all__'
@@ -177,7 +237,7 @@ class UserUpdateEmail(UpdateView):
 
 
 class UserUpdateAddress(UpdateView):
-    """ Update address details of a user """
+    """ Update address details for a user """
     model = UserAddress
     fields = '__all__'
     # success_url = '/users/'
@@ -191,27 +251,49 @@ class UserUpdateAddress(UpdateView):
         })
 
 
-# ----------------------------------------------------------------------delete
+class UserUpdateSocialMedia(UpdateView):
+    """ Update social media details for a user """
+    model = UserSocialMedia
+    fields = '__all__'
+    # success_url = '/users/'
+    section = "Social Media"
+    title = 'update'
+    button = 'update'
 
-class DeletePhone(DeleteView):
-    model = UserPhone
-    success_url = '/users/'
-    section = "Confirm"
-    button = "delete"
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+        })
 
 
-class DeleteEmail(DeleteView):
-    model = UserEmail
-    success_url = '/users/'
-    section = "Confirm"
-    button = "delete"
+class UserUpdateJob(UpdateView):
+    """ Update job details for a user """
+    model = UserJob
+    fields = '__all__'
+    # success_url = '/users/'
+    section = "Job"
+    title = 'update'
+    button = 'update'
+
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+        })
 
 
-class DeleteAddress(DeleteView):
-    model = UserAddress
-    success_url = '/users/'
-    section = "Confirm"
-    button = "delete"
+class UserUpdateSkill(UpdateView):
+    """ Update skill details for a user """
+    model = UserSkill
+    fields = '__all__'
+    # success_url = '/users/'
+    section = "Skill"
+    title = 'update'
+    button = 'update'
+
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+        })
 
 
 # --------------------------------------------------------------authentication
@@ -345,6 +427,26 @@ def user_logout(request):
 
 
 # ----------------------------------------------------------------------unused
+
+# class DeletePhone(DeleteView):
+#     model = UserPhone
+#     success_url = '/users/'
+#     section = "Confirm"
+#     button = "delete"
+
+
+# class DeleteEmail(DeleteView):
+#     model = UserEmail
+#     success_url = '/users/'
+#     section = "Confirm"
+#     button = "delete"
+
+
+# class DeleteAddress(DeleteView):
+#     model = UserAddress
+#     success_url = '/users/'
+#     section = "Confirm"
+#     button = "delete"
 
 # class UserDelete(DeleteView):
 #     model = NetworkerUser
