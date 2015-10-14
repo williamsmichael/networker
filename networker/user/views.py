@@ -20,6 +20,23 @@ class UserListing(ListView):
     model = NetworkerUser
 
 
+def UserDetail(request, pk):
+    """ Details of a user """
+    # """ is_staff: List of all users """
+    # if request.user.is_authenticated() and request.user.is_staff:
+        # print(NetworkerUser.objects.all())
+        # for networker_user in NetworkerUser.objects.all():
+        #     print(networker_user.user_extension.first_name)
+        # users = NetworkerUser.objects.all()
+        # return render(request, 'user/user_detail.html', {'users': users})
+    # else:
+    #     return HttpResponse("Unauthorized Access!")
+
+    user = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/networkeruser_detail.html', {'apples': user})
+
+
+# ----------------------------------------------------------------------create
 class CreatePhone(CreateView):
     """ Creates a phone number for user """ 
     model = UserPhone
@@ -60,6 +77,28 @@ class CreateEmail(CreateView):
     })
 
 
+class CreateAddress(CreateView):
+    """ Creates a address number for user """ 
+    model = UserAddress
+    fields = '__all__'
+    # success_url = '/users/'
+    section = 'Add'
+    title = 'add'
+    button = 'add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('update_address', kwargs={
+            'pk': self.object.pk,
+    })
+
+
+# ----------------------------------------------------------------------delete
+
 class DeletePhone(DeleteView):
     model = UserPhone
     success_url = '/users/'
@@ -73,23 +112,14 @@ class DeleteEmail(DeleteView):
     section = "Confirm"
     button = "delete"
 
-
-def UserDetail(request, pk):
-    """ Details of a user """
-    # """ is_staff: List of all users """
-    # if request.user.is_authenticated() and request.user.is_staff:
-        # print(NetworkerUser.objects.all())
-        # for networker_user in NetworkerUser.objects.all():
-        #     print(networker_user.user_extension.first_name)
-        # users = NetworkerUser.objects.all()
-        # return render(request, 'user/user_detail.html', {'users': users})
-    # else:
-    #     return HttpResponse("Unauthorized Access!")
-
-    user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/networkeruser_detail.html', {'user': user})
+class DeleteAddress(DeleteView):
+    model = UserAddress
+    success_url = '/users/'
+    section = "Confirm"
+    button = "delete"
 
 
+# ----------------------------------------------------------------------update
 class UserUpdateMain(UpdateView):
     """ Update auth-user details of a user """
     model = User
@@ -165,6 +195,21 @@ class UserUpdateEmail(UpdateView):
     })
 
 
+class UserUpdateAddress(UpdateView):
+    """ Update address details of a user """
+    model = UserAddress
+    fields = '__all__'
+    # success_url = '/users/'
+    section = "Address"
+    title = 'update'
+    button = 'update'
+
+    def get_success_url(self):
+        return reverse('user_detail', kwargs={
+            'pk': self.object.pk,
+    })
+
+
 class UserDelete(DeleteView):
     model = NetworkerUser
     success_url = '/users/'
@@ -177,47 +222,7 @@ class UserDelete(DeleteView):
     })
 
 
-# def user_listing(request):
-#     """ Simple list of all users """ 
-
-#     users = NetworkerUser.objects.all()
-#     return render(request, 'user/user_listing.html', {'users': users})
-
-
-
-# class UpdateContactView(UpdateView):
-#     model = NetworkerUser
-#     template_name = 'user_edit.html'
-
-#     def get_success_url(self):
-#         return reverse('user_listing')
-
-#     def get_context_data(self, **kwargs):
-#         context = super(UpdateContactView, self).get_context_data(**kwargs)
-#         context['action'] = reverse('user-edit', kwargs={'pk': self.get_object().id})
-#         return context
-
-
-# def user_detail_main(request, pk):
-#     """ Details of a user section=MAIN """
-#     user = get_object_or_404(NetworkerUser, pk=pk)
-#     return render(request, 'user/user_detail_main.html', {'user': user})
-
-
-# def user_detail_main_edit(request, pk):
-#     """ Update user section=MAIN """
-#     user = get_object_or_404(NetworkerUser, pk=pk)
-#     if request.method == "POST":
-#         form = UserDetailMainForm(request.POST, user=request.user)
-#         if form.is_valid():
-#             user = form.save()
-#             return redirect('views.user_detail', pk=NetworkerUser.post)
-
-#     else:
-#         form = UserDetailMainForm(user=request.user)
-
-#     return render(request, 'user/user_detail_main_edit.html', {'form': form})
-
+# --------------------------------------------------------------authentication
 
 def register(request):
     """ Register a user """
@@ -337,6 +342,51 @@ def user_logout(request):
 
     # Take the user back to the homepage
     return HttpResponseRedirect('/')
+
+
+
+# ----------------------------------------------------------------------unused
+
+# def user_listing(request):
+#     """ Simple list of all users """ 
+
+#     users = NetworkerUser.objects.all()
+#     return render(request, 'user/user_listing.html', {'users': users})
+
+
+
+# class UpdateContactView(UpdateView):
+#     model = NetworkerUser
+#     template_name = 'user_edit.html'
+
+#     def get_success_url(self):
+#         return reverse('user_listing')
+
+#     def get_context_data(self, **kwargs):
+#         context = super(UpdateContactView, self).get_context_data(**kwargs)
+#         context['action'] = reverse('user-edit', kwargs={'pk': self.get_object().id})
+#         return context
+
+
+# def user_detail_main(request, pk):
+#     """ Details of a user section=MAIN """
+#     user = get_object_or_404(NetworkerUser, pk=pk)
+#     return render(request, 'user/user_detail_main.html', {'user': user})
+
+
+# def user_detail_main_edit(request, pk):
+#     """ Update user section=MAIN """
+#     user = get_object_or_404(NetworkerUser, pk=pk)
+#     if request.method == "POST":
+#         form = UserDetailMainForm(request.POST, user=request.user)
+#         if form.is_valid():
+#             user = form.save()
+#             return redirect('views.user_detail', pk=NetworkerUser.post)
+
+#     else:
+#         form = UserDetailMainForm(user=request.user)
+
+#     return render(request, 'user/user_detail_main_edit.html', {'form': form})
 
 
 # def user_new(request):

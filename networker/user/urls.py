@@ -11,24 +11,30 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/delete/$', views.UserDelete.as_view(), name='delete'),
 
 
-    # ------------------------------------------------------------------update
+    # -------------------------------------------------------------user update
     # url(r'^(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/$', views.UserDetail, name='user_detail'),
     url(r'^(?P<pk>[0-9]+)/update/additional$', views.UserUpdateAdditional.as_view(), name='update_additional'),
 	url(r'^(?P<pk>[0-9]+)/update/main$', views.UserUpdateMain.as_view(template_name='user/networkeruser_form.html'), name='update_main'),
 	url(r'^(?P<pk>[0-9]+)/update/membership$', views.UserUpdateMembership.as_view(template_name='user/networkeruser_form.html'), name='update_membership'),
+
+
+    # ---------------------------------------------------------category update
 	url(r'^(?P<pk>[0-9]+)/update/phone$', views.UserUpdatePhone.as_view(template_name='user/networkeruser_form.html'), name='update_phone'),
     url(r'^(?P<pk>[0-9]+)/update/email$', views.UserUpdateEmail.as_view(template_name='user/networkeruser_form.html'), name='update_email'),
+    url(r'^(?P<pk>[0-9]+)/update/address$', views.UserUpdateAddress.as_view(template_name='user/networkeruser_form.html'), name='update_address'),
 
 
-    # --------------------------------------------------create from categories
+    # -------------------------------------------------------categories create
     url(r'^(?P<pk>[0-9]+)/create/phone$', views.CreatePhone.as_view(template_name='user/networkeruser_form.html'), name='create_phone'),
     url(r'^(?P<pk>[0-9]+)/create/email$', views.CreateEmail.as_view(template_name='user/networkeruser_form.html'), name='create_email'),
+    url(r'^(?P<pk>[0-9]+)/create/address$', views.CreateAddress.as_view(template_name='user/networkeruser_form.html'), name='create_address'),
 
 
-    # --------------------------------------------------------delete instances
+    # --------------------------------------------------------instances delete
     url(r'^(?P<pk>[0-9]+)/delete/phone$', views.DeletePhone.as_view(template_name='user/networkeruser_confirm_delete.html'), name='delete_phone'),
     url(r'^(?P<pk>[0-9]+)/delete/email$', views.DeleteEmail.as_view(template_name='user/networkeruser_confirm_delete.html'), name='delete_email'),
+    url(r'^(?P<pk>[0-9]+)/delete/address$', views.DeleteAddress.as_view(template_name='user/networkeruser_confirm_delete.html'), name='delete_address'),
 
 
     # ------------------------------------------------------------------unused
