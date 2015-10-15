@@ -15,8 +15,7 @@
 		<ul>
 			
 			<li>
-				({{ email.email_category_id }}) {{ email.email }}
-				
+				<a href="{% url 'update_email' pk=user.id email=email.pk %}">({{ email.email_category_id }}) {{ email.email }}</a>
 			</li>
 		</ul>	
 	</div>

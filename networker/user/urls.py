@@ -8,12 +8,12 @@ from . import views
 urlpatterns = [
 
 
-    # ------------------------------------------------------------user general
+    # ----------------------------------------------------------------listview
     url(r'^$', views.UserListing.as_view(template_name='user/user_list.html'), name='user_listing'),
-    url(r'^(?P<pk>[0-9]+)/emails$', views.EmailListing.as_view(template_name='user/useremail_list.html'), name='email_listing'),
+    url(r'^(?P<pk>[0-9]+)/email$', views.EmailListing.as_view(template_name='user/useremail_list.html'), name='email_listing'),
 
 
-    # -------------------------------------------------------------user update
+    # ---------------------------------------------------------updateview user
     # url(r'^(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/$', views.UserDetail, name='user_detail'),
     url(r'^(?P<pk>[0-9]+)/additional$',
@@ -24,7 +24,7 @@ urlpatterns = [
         template_name='user/user_form.html'), name='update_membership'),
 
 
-    # ------------------------------------------------category instance update
+    # --------------------------------------------------updateview by category
     url(r'^(?P<pk>[0-9]+)/phone$', views.UserUpdatePhone.as_view(
         template_name='user/user_form.html'), name='update_phone'),
     url(r'^(?P<pk>[0-9]+)/email/(?P<email>[0-9]+)$', views.UserUpdateEmail.as_view(
@@ -39,7 +39,7 @@ urlpatterns = [
         template_name='user/user_form.html'), name='update_skill'),
 
 
-    # -------------------------------------------------------categories create
+    # --------------------------------------------------------------createview
     url(r'^(?P<pk>[0-9]+)/phone/create$', views.CreatePhone.as_view(
         template_name='user/user_form.html'), name='create_phone'),
     url(r'^(?P<pk>[0-9]+)/email/create$', views.CreateEmail.as_view(
