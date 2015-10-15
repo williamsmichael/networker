@@ -5,5 +5,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.group_listing, name='group_listing'),
+    url(r'^$', views.listing_group, name='listing_group'),
 ]

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import NetworkerGroup, Group
 
 
-def group_listing(request):
+def listing_group(request):
 
     groups = NetworkerGroup.objects.all()
     # group = NetworkerGroup.objects.get(group_extension__name="Synergy Consultants, LLC")

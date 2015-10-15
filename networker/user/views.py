@@ -15,13 +15,24 @@ def index(request):
     return render(request, 'index.html', {})
 
 
-class UserListing(ListView):
-    """ Simple list of all users """
+class ListingUser(ListView):
+    """ List of all users """
     model = NetworkerUser
 
 
-class EmailListing(ListView):
-    """ For list of all user emails """
+class ListingPhone(ListView):
+    """ List of all user phone """
+    model = UserPhone
+    queryset = UserPhone.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
+        # return UserPhone.objects.filter(user_id=self.request.user.networkeruser)
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
+
+
+class ListingEmail(ListView):
+    """ List of all user email """
     model = UserEmail
     queryset = UserEmail.objects.select_related('user_id').all()
 
@@ -174,7 +185,7 @@ class CreateSkill(CreateView):
 class UserUpdateMain(UpdateView):
     """ Update auth-user details for a user """
     model = User
-    fields = ['username', 'first_name', 'last_name', 'is_active']
+    fields = ['username', 'first_name', 'last_name', 'email', 'is_active']
     # success_url = '/users/'
     section = "Main"
     title = 'update'
@@ -233,17 +244,18 @@ class UserUpdatePhone(UpdateView):
 
 class UserUpdateEmail(UpdateView):
     """ Update email details for a user """
-    model = UserEmail
+    def get_object(self, queryset=None):
+        return UserEmail.objects.get(pk=self.kwargs['email'])
     # fields = ['email_category_id', 'email']
     fields = '__all__'
     # success_url = '/users/'
-    section = "Email"
+    section = "Alternate Email"
     title = 'update'
     button = 'update'
 
     def get_success_url(self):
         return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
+            'pk': self.object.user_id.pk,
         })
 
 

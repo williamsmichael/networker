@@ -9,8 +9,9 @@ urlpatterns = [
 
 
     # ----------------------------------------------------------------listview
-    url(r'^$', views.UserListing.as_view(template_name='user/user_list.html'), name='user_listing'),
-    url(r'^(?P<pk>[0-9]+)/email$', views.EmailListing.as_view(template_name='user/useremail_list.html'), name='email_listing'),
+    url(r'^$', views.ListingUser.as_view(template_name='user/user_list.html'), name='listing_user'),
+    url(r'^(?P<pk>[0-9]+)/phone$', views.ListingPhone.as_view(template_name='user/userphone_list.html'), name='listing_phone'),
+    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/useremail_list.html'), name='listing_email'),
 
 
     # ---------------------------------------------------------updateview user
@@ -25,7 +26,7 @@ urlpatterns = [
 
 
     # --------------------------------------------------updateview by category
-    url(r'^(?P<pk>[0-9]+)/phone$', views.UserUpdatePhone.as_view(
+    url(r'^(?P<pk>[0-9]+)/phone/(?P<phone>[0-9]+)$', views.UserUpdatePhone.as_view(
         template_name='user/user_form.html'), name='update_phone'),
     url(r'^(?P<pk>[0-9]+)/email/(?P<email>[0-9]+)$', views.UserUpdateEmail.as_view(
         template_name='user/user_form.html'), name='update_email'),

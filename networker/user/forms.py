@@ -17,7 +17,7 @@ class NetworkerUserForm(forms.ModelForm):
     """ Register Networker User form """
     class Meta:
         model = NetworkerUser
-        fields = ('website', 'profile_image',)
+        fields = ()
 
 
 class UserDetailMainForm(forms.ModelForm):

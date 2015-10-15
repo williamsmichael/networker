@@ -22,8 +22,8 @@
         </a>
         <ul>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'user_listing' %}">Users</a></li>
-                <li><a href="{% url 'group_listing' %}">Groups</a></li>
+                <li><a href="{% url 'listing_user' %}">Users</a></li>
+                <li><a href="{% url 'listing_group' %}">Groups</a></li>
                 {# <li><a href="/restricted/">Restricted</a></li> #}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             <br> 

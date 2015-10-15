@@ -14,7 +14,10 @@
 	{% else %}
 		<h2 class="anonymous-user">{{ member.user_extension.username }}</h2>
 	{% endif %}
-	
+
+	<h4>
+		<a href="{% url 'update_main' pk=member.user_extension.pk %}">Main</a>
+	</h4>
 	<ul>
 		{% if member.profile_image %}
 			<li><img src="{{ member.profile_image.url }}"></li>
@@ -26,6 +29,7 @@
 		{# <li>password: {{ member.user_extension.password }}</li> #}
 		<li>first name: {{ member.user_extension.first_name | default:"none" }}</li> 
 		<li>last name: {{ member.user_extension.last_name | default:"none" }}</li>
+		<li>primary email: {{ member.user_extension.email }}</li>
 		<li>active status: {{ member.user_extension.is_active }}</li>
 		<li>staff status: {{ member.user_extension.is_staff }}</li>
 		<li>superuser status: {{ member.user_extension.is_superuser }}</li>
@@ -54,7 +58,7 @@
 	</ul>
 
 	<h4>
-		Phone 
+		<a href="{% url 'listing_phone' member.user_extension.pk %}">Phone</a>
 		<span>
 			<a href="{% url 'create_phone' member.user_extension.pk %}">add</a>
 		</span> 
@@ -63,23 +67,19 @@
 		{% for phone in member.userphone_set.all %}
 			{% if phone.deactivate == False %}
 			<li>
-				<a href="{% url 'update_phone' phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+				({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}
 			</li>	
 			{% endif %}
 		{% endfor %}
 	</ul>
 
 	<h4>
-		<a href="{% url 'email_listing' member.user_extension.pk %}">Email</a>
+		<a href="{% url 'listing_email' member.user_extension.pk %}">Email</a>
 		<span>
 			<a href="{% url 'create_email' member.user_extension.pk %}">add</a>
 		</span> 
 	</h4>
 	<ul>
-		<li>
-			{# {{ member.user_extension.email }} #}
-			{# <a href="{% url 'update_email' pk=member.user_extension.pk email=member.user_extension.email.pk %}">(Main) {{ member.user_extension.email }}</a> #}
-		</li>
 		{% for email in member.useremail_set.all %}
 			{% if email.deactivate == False %}
 			<li>

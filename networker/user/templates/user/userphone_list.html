@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} phone listing {% endblock %}
+
+{# {% block heading %}  Networker Users {% endblock %} #}
+
+{% block content %}
+
+{% for phone in userphone_list %}
+
+	{% if phone.deactivate == False %}
+	<div>
+
+		<ul>
+			
+			<li>
+				<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+			</li>
+		</ul>	
+	</div>
+
+	{% endif %}
+{% endfor %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}
