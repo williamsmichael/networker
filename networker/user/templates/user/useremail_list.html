@@ -7,22 +7,17 @@
 
 {% block content %}
 
-{% for email in useremail_list %}
+<div>
+	{% for email in useremail_list %}
 
-	{% if email.deactivate == False %}
-	<div>
-
+		{% if email.deactivate == False %}
 		<ul>
-			
 			<li>
-				<a href="{% url 'update_email' pk=user.id email=email.pk %}">({{ email.email_category_id }}) {{ email.email }}</a>
+				<a href="{% url 'update_email' pk=user.id email=email.pk %}" class="list-item">({{ email.email_category_id }}) {{ email.email }}</a>
 			</li>
 		</ul>	
-	</div>
-
-	{% endif %}
-{% endfor %}
+		{% endif %}
+	{% endfor %}
+</div>
 
 {% endblock content %}
-
-{% block footer %}{% endblock footer %}

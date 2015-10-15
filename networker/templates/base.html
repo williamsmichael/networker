@@ -36,7 +36,12 @@
         {% endblock header %}
         <main>
             <h1>{% block heading %}{% endblock heading %}</h1>
-            <div>{% block content %}{% endblock content %}</div>
+            <div>
+                {% block content %}
+                    {% block nav_column %}{% endblock nav_column %}
+                    {% block details_column %}{% endblock details_column %}
+                {% endblock content %}
+            </div>
         </main>
         {% block footer %}
         <footer>

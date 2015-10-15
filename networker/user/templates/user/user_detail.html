@@ -7,23 +7,30 @@
 
 <div>
 
+	{% if member.profile_image %}
+		<img src="{{ member.profile_image.url }}">
+	{% else %}
+		<img src="https://unsplash.it/150/150/?random">
+	{% endif %}
+
 	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 		<h2>
-			<a href="{% url 'update_main' pk=member.user_extension.pk %}">{{ member.user_extension.username }}</a>
+			<a href="{% url 'update_main' pk=member.user_extension.pk %}">
+				{{ member.user_extension.first_name }}
+				{{ member.user_extension.last_name }}
+			</a>
 		</h2>
 	{% else %}
-		<h2 class="anonymous-user">{{ member.user_extension.username }}</h2>
+		<h2 class="anonymous-user">
+			{{ member.user_extension.first_name }}
+			{{ member.user_extension.last_name }}
+		</h2>
 	{% endif %}
 
 	<h4>
 		<a href="{% url 'update_main' pk=member.user_extension.pk %}">Main</a>
 	</h4>
 	<ul>
-		{% if member.profile_image %}
-			<li><img src="{{ member.profile_image.url }}"></li>
-		{% else %}
-			<li><img src="https://unsplash.it/150/150/?random"></li>
-		{% endif %}
 		<li>ids: {{ member.user_extension.id }} &vrtri; {{ member.id }} </li>
 		<li>username: {{ member.user_extension.username }}</li>
 		{# <li>password: {{ member.user_extension.password }}</li> #}
@@ -60,7 +67,7 @@
 	<h4>
 		<a href="{% url 'listing_phone' member.user_extension.pk %}">Phone</a>
 		<span>
-			<a href="{% url 'create_phone' member.user_extension.pk %}">add</a>
+			<a href="{% url 'create_phone' member.user_extension.pk %}" class="create">add</a>
 		</span> 
 	</h4>
 	<ul>
@@ -76,7 +83,7 @@
 	<h4>
 		<a href="{% url 'listing_email' member.user_extension.pk %}">Email</a>
 		<span>
-			<a href="{% url 'create_email' member.user_extension.pk %}">add</a>
+			<a href="{% url 'create_email' member.user_extension.pk %}" class="create">add</a>
 		</span> 
 	</h4>
 	<ul>
@@ -92,7 +99,7 @@
 	<h4>
 		Address
 		<span>
-			<a href="{% url 'create_address' member.user_extension.pk %}">add</a>
+			<a href="{% url 'create_address' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
 	<ul>
@@ -108,7 +115,7 @@
 	<h4>
 		Social Profile
 		<span>
-			<a href="{% url 'create_social_media' member.user_extension.pk %}">add</a>
+			<a href="{% url 'create_social_media' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
 	<ul>
@@ -124,7 +131,7 @@
 	<h4>
 		Job Profile
 		<span>
-			<a href="{% url 'create_job' member.user_extension.pk %}">add</a>
+			<a href="{% url 'create_job' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
 	<ul>
@@ -140,7 +147,7 @@
 	<h4>
 		Skill Profile
 		<span>
-			<a href="{% url 'create_skill' member.user_extension.pk %}">add</a>
+			<a href="{% url 'create_skill' member.user_extension.pk %}" class="create">add</a>
 		</span>
 	</h4>
 	<ul>

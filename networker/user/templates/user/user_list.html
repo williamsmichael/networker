@@ -7,22 +7,19 @@
 
 {% block content %}
 
-{% for user in networkeruser_list %}
+<div>
+	{% for user in networkeruser_list %}
 
-	{% if user.user_extension.is_active == True %}
-	<div>
-
+		{% if user.user_extension.is_active == True %}
 		<ul>
-			
 			<li>
-				<a href="{% url 'user_detail' user.user_extension.pk %}">[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a>
+				<a href="{% url 'user_detail' user.user_extension.pk %}" class='list-item'>[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}</a>
 
 			</li>
 		</ul>	
-	</div>
-
-	{% endif %}
-{% endfor %}
+		{% endif %}
+	{% endfor %}
+</div>
 
 {% endblock content %}
 

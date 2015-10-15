@@ -10,14 +10,22 @@
 {% for group in groups %}
 
 <div>
+
+	{% if group.group_image %}
+		<img src="{{ group.group_image.url }}">
+	{% else %}
+		<img src="https://unsplash.it/150/150/?random">
+	{% endif %}
+
+
 	<h2>{{ group }}</h2>
-	<ul>
-		<li><img src="{{ group.group_image.url }}"></li>
-		<li class='id'>id: {{ group.id }}</li>
-		<li>{{ group.welcome_message }}</li>
+
+	<h4>{{ group.welcome_message }}</h4>
+	<ul>	
 		<li>{{ group.group_description }}</li>
-		<li>website: {{ group.group_website | default:"none" }}</li>
 		<br>
+		<li class='id'>ids: {{ group.id }} &vrtri; {{ group.group_extension.id }}</li>
+		<li>website: {{ group.group_website | default:"none" }}</li>
 		<li>organizer: {{ group.group_organizer.user_extension.first_name }} {{ group.group_organizer.user_extension.last_name }}, {{ group.group_organizer.user_extension.email }}</li>
 	</ul>
 	<h4>Members</h4>
@@ -32,3 +40,5 @@
 {% endfor %}
 
 {% endblock content %}
+
+{% block footer %}{% endblock footer %}

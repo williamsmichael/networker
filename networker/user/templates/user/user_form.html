@@ -3,31 +3,41 @@
 
 {% block title %} {{ view.title }} {% endblock %}
 
-{% block nav_addon %} 
-
-{# <a href="{% url 'update_main' user.pk %}">Main</a>  #}
-{# <a href="{% url 'update_additional' user.pk %}">Additional</a>  #}
-{# <a href="{% url 'update_membership' user.pk %}">Membership</a> #}
-{# <a href="{% url 'update_phone' pk=user.user_extension.pk phone=phone.pk %}">Phone</a>  #}
-{# <a href="{% url 'update_email' user.pk %}">Email</a>    #}
-{# <a href="{% url 'update_address' user.pk %}">Address</a>   #}
-
-{% endblock nav_addon %}
-
 {% block content %}
 
-<div>
-	<h4>
-		<span class='user'>{{ user.username }}</span> 
-		{{ view.section }}
-	</h4>	
+{% block nav_column %}
+	
+<section>
+	<ul>
+		<li><a href="{% url 'listing_email' user.pk %}">Alternate Email</a></li>
+		<li>2</li>
+		<li>3</li>
 
-	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+	</ul>
+</section>
 
-		{{ form.as_p }}
-		<input type="submit" value="{{ view.button }}">
-	</form>
-</div>
+{% endblock nav_column %}
+
+{% block details_column %}
+
+	<section>	
+
+		<div>
+
+			<h4>
+				<span class='user'>{{ user.username }}</span> 
+				{{ view.section }}
+			</h4>	
+
+			<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+				{{ form.as_p }}
+				<input type="submit" value="{{ view.button }}">
+			</form>
+		</div>
+	</section>
+
+{% endblock details_column %}
 
 {% endblock content %}
 
