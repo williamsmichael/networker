@@ -14,7 +14,7 @@
         <a href="{% url 'index' %}">
             <h1>
 				{% if user.is_authenticated %}
-					hej <span class='user'>{{ user.get_username }}</span>!
+					hej <span class='user'>{{ user.first_name | default:user.get_username }}</span>!
 				{% else %}
 					networker says hej!
 				{% endif %}

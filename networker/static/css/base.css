@@ -31,12 +31,12 @@ h1 {
 	margin-top: 10px;
 }
 h2 {
-	color: #0066CC;
+	color: #009966;
 	margin-top: 0;
 }
 h4 {
 	margin-bottom: 10px;
-	color: #009966
+	color: #009966;
 }
 div	> div, section div {
 	background-color: #fff;
@@ -76,13 +76,17 @@ a:focus {
 	text-decoration: #333;
 	color: #669966;
 }
-a.create {
-	border: 1px solid #3399CC;
-	color: #3399CC;
+a.update, a.create {
+	border: 2px solid #009966;
+	color: #009966;
 	margin-left: 5px;
 	padding: 1px 10px;
 	border-radius: 3px;
 	font-size: .6em;
+}
+a.create {
+	border: 2px solid #3399CC;
+	color: #3399CC;
 }
 a.list-item, section ul li a {
 	display: inline-block;
@@ -106,6 +110,19 @@ span.user {
 }
 
 /*------------------------------------------------------------media queries */
+@media (max-width: 400px) {
+	h2 {
+		text-align: center;
+	}
+	img {
+		width: 100%;
+		max-width: 100%;
+		float: none;
+		display: block;
+		margin: 0 auto;
+	}
+}
+
 @media (max-width: 640px) {
 	.container, footer {
 		width: 100%;
