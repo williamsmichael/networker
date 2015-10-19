@@ -9,10 +9,16 @@
 	
 <section>
 	<ul>
+		<li><a href="{% url 'user_detail' user.pk %}" class='list-item'>Full Profile</a></li>
+		<li><a href="">Main</a></li>
+		<li><a href="">Additional</a></li>
+		<li><a href="">Membership</a></li>
+		<li><a href="{% url 'listing_phone' user.pk %}">Phone</a></li>
 		<li><a href="{% url 'listing_email' user.pk %}">Alternate Email</a></li>
-		<li>2</li>
-		<li>3</li>
-
+		<li><a href="">Address</a></li>
+		<li><a href="">Social Profile</a></li>
+		<li><a href="">Job Profile</a></li>
+		<li><a href="">Skill Profile</a></li>
 	</ul>
 </section>
 

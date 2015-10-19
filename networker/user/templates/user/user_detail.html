@@ -96,9 +96,6 @@
 	<h4>
 		Phone
 		<span>
-			<a href="{% url 'listing_phone' member.user_extension.pk %}" class="update">Edit</a>
-		</span>
-		<span>
 			<a href="{% url 'create_phone' member.user_extension.pk %}" class="create">add</a>
 		</span> 
 	</h4>
@@ -111,6 +108,9 @@
 			{% if phone.deactivate == False %}
 			<li>
 				({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}
+				<span>
+					<a href="{% url 'update_phone' pk=member.user_extension.id phone=phone.pk %}" class="update">Edit</a>
+				</span>
 			</li>	
 			{% endif %}
 		{% endfor %}

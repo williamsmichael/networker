@@ -59,7 +59,8 @@ ul > ul {
 	margin-bottom: 10px;
 }
 section ul {
-	margin-top: 40px;
+	/*margin-top: 40px;*/
+	font-size: 0.75em;
 }
 section ul li {
 	border-top: 1px solid #ccc;
@@ -77,7 +78,7 @@ a:focus {
 	color: #669966;
 }
 a.update, a.create {
-	border: 2px solid #009966;
+	border: 1px solid #009966;
 	color: #009966;
 	margin-left: 5px;
 	padding: 1px 10px;
@@ -85,7 +86,7 @@ a.update, a.create {
 	font-size: .6em;
 }
 a.create {
-	border: 2px solid #3399CC;
+	border-color: #3399CC;
 	color: #3399CC;
 }
 a.list-item, section ul li a {
@@ -122,7 +123,6 @@ span.user {
 		margin: 0 auto;
 	}
 }
-
 @media (max-width: 640px) {
 	.container, footer {
 		width: 100%;
