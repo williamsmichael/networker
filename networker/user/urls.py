@@ -11,7 +11,7 @@ urlpatterns = [
     # ----------------------------------------------------------------listview
     url(r'^$', views.ListingUser.as_view(template_name='user/user_list.html'), name='listing_user'),
     url(r'^(?P<pk>[0-9]+)/phone$', views.ListingPhone.as_view(template_name='user/userphone_list.html'), name='listing_phone'),
-    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/list_form.html'), name='listing_email'),
+    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/useremail_form.html'), name='listing_email'),
 
 
     # ---------------------------------------------------------updateview user

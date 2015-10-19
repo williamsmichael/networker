@@ -12,7 +12,7 @@
 	{# variable registered established in views.py #}
 	{# variable registered=False displays the form #}
 	{% if registered %}
-	<p><strong>Thank you for registering! Please continue to login.</strong></p>
+	<p>Thank you for registering! <strong><a href="{% url 'login' %}">Please continue to login.</a></strong></p>
 	{# <a href="/">Return to the homepage.</a> #}
 	
 	{% else %}

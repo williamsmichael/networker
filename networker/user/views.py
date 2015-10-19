@@ -34,8 +34,8 @@ class ListingPhone(ListView):
 class ListingEmail(ListView):
     """ List of all user email """
     model = UserEmail
+    title = 'emails alternate'
     section = 'Alternate Emails'
-    title = 'Email Listing'
     queryset = UserEmail.objects.select_related('user_id').all()
 
     def get_queryset(self):
@@ -67,8 +67,8 @@ class CreatePhone(CreateView):
     model = UserPhone
     fields = '__all__'
     # success_url = '/'
-    section = 'Add Phone'
     title = 'add'
+    section = 'Add Phone'
     button = 'create'
 
     def get_initial(self):
@@ -87,8 +87,8 @@ class CreateEmail(CreateView):
     model = UserEmail
     fields = '__all__'
     # success_url = '/users/'
-    section = 'Add Email'
     title = 'add'
+    section = 'Add Email'
     button = 'create'
 
     def get_initial(self):
@@ -107,8 +107,8 @@ class CreateAddress(CreateView):
     model = UserAddress
     fields = '__all__'
     # success_url = '/users/'
-    section = 'Add'
     title = 'add'
+    section = 'Add'
     button = 'create'
 
     def get_initial(self):
@@ -127,8 +127,8 @@ class CreateSocialMedia(CreateView):
     model = UserSocialMedia
     fields = '__all__'
     # success_url = '/users/'
-    section = 'Add'
     title = 'add'
+    section = 'Add'
     button = 'create'
 
     def get_initial(self):
@@ -147,8 +147,8 @@ class CreateJob(CreateView):
     model = UserJob
     fields = '__all__'
     # success_url = '/users/'
-    section = 'Add'
     title = 'add'
+    section = 'Add'
     button = 'create'
 
     def get_initial(self):
@@ -167,8 +167,8 @@ class CreateSkill(CreateView):
     model = UserSkill
     fields = '__all__'
     # success_url = '/users/'
-    section = 'Add'
     title = 'add'
+    section = 'Add'
     button = 'create'
 
     def get_initial(self):

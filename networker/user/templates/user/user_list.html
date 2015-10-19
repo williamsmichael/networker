@@ -29,7 +29,14 @@
 				{% block list_view_form %}
 
 				<a href="{% url 'user_detail' user.user_extension.pk %}" class='list-item'>
-					<img src="{{ user.profile_image.url }}" class="list-img"> [ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}
+
+					{% if user.profile_image %}
+						<img src="{{ user.profile_image.url }}" class="list-img">
+					{% else %}
+						<img src="https://unsplash.it/150/150/?random" class="list-img">
+					{% endif %}
+
+					[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}
 				</a>
 
 				{% endblock list_view_form %}
