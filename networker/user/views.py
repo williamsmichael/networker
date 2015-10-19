@@ -34,6 +34,8 @@ class ListingPhone(ListView):
 class ListingEmail(ListView):
     """ List of all user email """
     model = UserEmail
+    section = 'Alternate Emails'
+    title = 'Email Listing'
     queryset = UserEmail.objects.select_related('user_id').all()
 
     def get_queryset(self):
@@ -64,8 +66,8 @@ class CreatePhone(CreateView):
     """ Creates a phone number for user """
     model = UserPhone
     fields = '__all__'
-    success_url = '/'
-    section = 'Add'
+    # success_url = '/'
+    section = 'Add Phone'
     title = 'add'
     button = 'create'
 
@@ -85,7 +87,7 @@ class CreateEmail(CreateView):
     model = UserEmail
     fields = '__all__'
     # success_url = '/users/'
-    section = 'Add'
+    section = 'Add Email'
     title = 'add'
     button = 'create'
 
@@ -229,8 +231,12 @@ class UserUpdateMembership(UpdateView):
 
 class UserUpdatePhone(UpdateView):
     """ Update phone details for a user """
+
+    def get_object(self, queryset=None):
+        return UserPhone.objects.get(pk=self.kwargs['phone'])
+
     model = UserPhone
-    fields = ['phone_category_id', 'country_code', 'phone_number', 'deactivate']
+    fields = '__all__'
     # success_url = '/users/'
     section = "Phone"
     title = 'update'
@@ -238,14 +244,16 @@ class UserUpdatePhone(UpdateView):
 
     def get_success_url(self):
         return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
+            'pk': self.object.user_id.pk
         })
 
 
 class UserUpdateEmail(UpdateView):
     """ Update email details for a user """
+
     def get_object(self, queryset=None):
         return UserEmail.objects.get(pk=self.kwargs['email'])
+
     # fields = ['email_category_id', 'email']
     fields = '__all__'
     # success_url = '/users/'

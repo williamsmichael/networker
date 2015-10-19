@@ -22,7 +22,7 @@
         </a>
         <ul>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'listing_user' %}">Users</a></li>
+                <li><a href="{% url 'listing_user' %}">Members</a></li>
                 <li><a href="{% url 'listing_group' %}">Groups</a></li>
                 {# <li><a href="/restricted/">Restricted</a></li> #}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -35,11 +35,14 @@
         </ul>
         {% endblock header %}
         <main>
-            <h1>{% block heading %}{% endblock heading %}</h1>
+            <h2>{% block heading %}{% endblock heading %}</h2>
             <div>
                 {% block content %}
+
                     {% block nav_column %}{% endblock nav_column %}
                     {% block details_column %}{% endblock details_column %}
+                    {% block list_view_form %}{% endblock list_view_form %}
+                    
                 {% endblock content %}
             </div>
         </main>

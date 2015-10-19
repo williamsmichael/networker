@@ -1,0 +1,10 @@
+{% for email in useremail_list %}
+
+	{% if email.deactivate == False %}
+	<ul>
+		<li>
+			<a href="{% url 'update_email' pk=user.id email=email.pk %}" class="list-item">({{ email.email_category_id }}) {{ email.email }}</a>
+		</li>
+	</ul>	
+	{% endif %}
+{% endfor %}

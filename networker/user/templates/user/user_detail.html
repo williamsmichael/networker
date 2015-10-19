@@ -5,6 +5,20 @@
 
 {% block content %}
 
+{# -----------------------------------------------------------full name #}
+{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+	<h2>
+		<span class='user'>{{ user.username }}</span>
+		{{ member.user_extension.first_name }}
+		{{ member.user_extension.last_name }}
+	</h2>
+{% else %}
+	<h2 class="unauthorized">
+		{{ member.user_extension.first_name }}
+		{{ member.user_extension.last_name }}
+	</h2>
+{% endif %}
+
 <div>
 
 	{# ---------------------------------------------------------------image #}
@@ -12,19 +26,6 @@
 		<img src="{{ member.profile_image.url }}">
 	{% else %}
 		<img src="https://unsplash.it/150/150/?random">
-	{% endif %}
-
-	{# -----------------------------------------------------------full name #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-		<h2>
-			{{ member.user_extension.first_name }}
-			{{ member.user_extension.last_name }}
-		</h2>
-	{% else %}
-		<h2 class="unauthorized">
-			{{ member.user_extension.first_name }}
-			{{ member.user_extension.last_name }}
-		</h2>
 	{% endif %}
 
 	{# ----------------------------------------------------------------main #}
@@ -96,7 +97,7 @@
 	<h4>
 		Phone
 		<span>
-			<a href="{% url 'create_phone' member.user_extension.pk %}" class="create">add</a>
+			<a href="{% url 'create_phone' member.user_extension.pk %}" class="create">&plus;</a>
 		</span> 
 	</h4>
 	{% else %}
@@ -109,7 +110,7 @@
 			<li>
 				({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}
 				<span>
-					<a href="{% url 'update_phone' pk=member.user_extension.id phone=phone.pk %}" class="update">Edit</a>
+					<a href="{% url 'update_phone' pk=member.user_extension.id phone=phone.pk %}" class="update">edit</a>
 				</span>
 			</li>	
 			{% endif %}
@@ -119,13 +120,13 @@
 	{# ---------------------------------------------------------------email #}
 	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
-		<a href="{% url 'listing_email' member.user_extension.pk %}">Email</a>
+		<a href="{% url 'listing_email' member.user_extension.pk %}">Alternate Email</a>
 		<span>
-			<a href="{% url 'create_email' member.user_extension.pk %}" class="create">add</a>
+			<a href="{% url 'create_email' member.user_extension.pk %}" class="create">&plus;</a>
 		</span> 
 	</h4>
 	{% else %}
-		<h4 class="unauthorized">Email</h4>
+		<h4 class="unauthorized">Alternate Email</h4>
 	{% endif %}
 
 	<ul>
@@ -143,7 +144,7 @@
 	<h4>
 		Address
 		<span>
-			<a href="{% url 'create_address' member.user_extension.pk %}" class="create">add</a>
+			<a href="{% url 'create_address' member.user_extension.pk %}" class="create">&plus;</a>
 		</span>
 	</h4>
 	{% else %}
@@ -165,7 +166,7 @@
 	<h4>
 		Social Profile
 		<span>
-			<a href="{% url 'create_social_media' member.user_extension.pk %}" class="create">add</a>
+			<a href="{% url 'create_social_media' member.user_extension.pk %}" class="create">&plus;</a>
 		</span>
 	</h4>
 	{% else %}
@@ -187,7 +188,7 @@
 	<h4>
 		Job Profile
 		<span>
-			<a href="{% url 'create_job' member.user_extension.pk %}" class="create">add</a>
+			<a href="{% url 'create_job' member.user_extension.pk %}" class="create">&plus;</a>
 		</span>
 	</h4>
 	{% else %}
@@ -209,7 +210,7 @@
 	<h4>
 		Skill Profile
 		<span>
-			<a href="{% url 'create_skill' member.user_extension.pk %}" class="create">add</a>
+			<a href="{% url 'create_skill' member.user_extension.pk %}" class="create">&plus;</a>
 		</span>
 	</h4>
 	{% else %}

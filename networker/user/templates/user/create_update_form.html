@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+<span class='user'>{{ user.username }}</span> {{ view.section }}
+
+{% endblock heading %}
+
+{% block content %}
+
+	{% block nav_column %}
+
+		{% include "user/nav_column.html" %}
+
+	{% endblock nav_column %}
+
+	{% block details_column %}
+
+		<section>	
+
+			<div>
+
+				<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+					{{ form.as_p }}
+					<input type="submit" value="{{ view.button }}">
+				</form>
+			</div>
+		</section>
+
+	{% endblock details_column %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

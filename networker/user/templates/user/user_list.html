@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} user listing {% endblock %}
+{% block title %} members {% endblock %}
 
-{# {% block heading %}  Networker Users {% endblock %} #}
+{% block heading %}
+
+	{% if user.is_authenticated and user.is_staff %}
+		<h2>Members</h2>
+		<span>
+			<a href="{% url 'register' %}" class="create">&plus;</a>
+		</span>
+	{% else %}
+		<h2>Members</h2>
+	{% endif %}
+
+{% endblock heading %}
 
 {% block content %}
-
-{% if user.is_authenticated and user.is_staff %}
-	<h2>Members</h2>
-	<span>
-		<a href="{% url 'register' %}" class="create">&plus;</a>
-	</span>
-{% else %}
-	<h2>Members</h2>
-{% endif %}
 
 <div>
 

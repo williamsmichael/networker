@@ -11,48 +11,48 @@ urlpatterns = [
     # ----------------------------------------------------------------listview
     url(r'^$', views.ListingUser.as_view(template_name='user/user_list.html'), name='listing_user'),
     url(r'^(?P<pk>[0-9]+)/phone$', views.ListingPhone.as_view(template_name='user/userphone_list.html'), name='listing_phone'),
-    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/useremail_list.html'), name='listing_email'),
+    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/list_form.html'), name='listing_email'),
 
 
     # ---------------------------------------------------------updateview user
     # url(r'^(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/$', views.UserDetail, name='user_detail'),
     url(r'^(?P<pk>[0-9]+)/additional$',
-        views.UserUpdateAdditional.as_view(template_name='user/user_form.html'), name='update_additional'),
+        views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html'), name='update_additional'),
     url(r'^(?P<pk>[0-9]+)/main$', views.UserUpdateMain.as_view(
-        template_name='user/user_form.html'), name='update_main'),
+        template_name='user/create_update_form.html'), name='update_main'),
     url(r'^(?P<pk>[0-9]+)/membership$', views.UserUpdateMembership.as_view(
-        template_name='user/user_form.html'), name='update_membership'),
+        template_name='user/create_update_form.html'), name='update_membership'),
 
 
     # --------------------------------------------------updateview by category
     url(r'^(?P<pk>[0-9]+)/phone/(?P<phone>[0-9]+)$', views.UserUpdatePhone.as_view(
-        template_name='user/user_form.html'), name='update_phone'),
+        template_name='user/create_update_form.html'), name='update_phone'),
     url(r'^(?P<pk>[0-9]+)/email/(?P<email>[0-9]+)$', views.UserUpdateEmail.as_view(
-        template_name='user/user_form.html'), name='update_email'),
+        template_name='user/create_update_form.html'), name='update_email'),
     url(r'^(?P<pk>[0-9]+)/address$', views.UserUpdateAddress.as_view(
-        template_name='user/user_form.html'), name='update_address'),
+        template_name='user/create_update_form.html'), name='update_address'),
     url(r'^(?P<pk>[0-9]+)/social_media$', views.UserUpdateSocialMedia.as_view(
-        template_name='user/user_form.html'), name='update_social_media'),
+        template_name='user/create_update_form.html'), name='update_social_media'),
     url(r'^(?P<pk>[0-9]+)/job$', views.UserUpdateJob.as_view(
-        template_name='user/user_form.html'), name='update_job'),
+        template_name='user/create_update_form.html'), name='update_job'),
     url(r'^(?P<pk>[0-9]+)/skill$', views.UserUpdateSkill.as_view(
-        template_name='user/user_form.html'), name='update_skill'),
+        template_name='user/create_update_form.html'), name='update_skill'),
 
 
     # --------------------------------------------------------------createview
     url(r'^(?P<pk>[0-9]+)/phone/create$', views.CreatePhone.as_view(
-        template_name='user/user_form.html'), name='create_phone'),
+        template_name='user/create_update_form.html'), name='create_phone'),
     url(r'^(?P<pk>[0-9]+)/email/create$', views.CreateEmail.as_view(
-        template_name='user/user_form.html'), name='create_email'),
+        template_name='user/create_update_form.html'), name='create_email'),
     url(r'^(?P<pk>[0-9]+)/address/create$', views.CreateAddress.as_view(
-        template_name='user/user_form.html'), name='create_address'),
+        template_name='user/create_update_form.html'), name='create_address'),
     url(r'^(?P<pk>[0-9]+)/social_media/create$', views.CreateSocialMedia.as_view(
-        template_name='user/user_form.html'), name='create_social_media'),
+        template_name='user/create_update_form.html'), name='create_social_media'),
     url(r'^(?P<pk>[0-9]+)/job/create$', views.CreateJob.as_view(
-        template_name='user/user_form.html'), name='create_job'),
+        template_name='user/create_update_form.html'), name='create_job'),
     url(r'^(?P<pk>[0-9]+)/skill/create$', views.CreateSkill.as_view(
-        template_name='user/user_form.html'), name='create_skill'),
+        template_name='user/create_update_form.html'), name='create_skill'),
 
 
     # ------------------------------------------------------------------unused
