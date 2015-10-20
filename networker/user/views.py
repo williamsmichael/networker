@@ -399,6 +399,25 @@ def register(request):
             # successful.
             registered = True
 
+            # redirect active user to auto-login
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            # Use Django's machinery to attempt to see if the username/password
+            # combination is valid - a User object is returned if it is.
+            user = authenticate(username=username, password=password)
+
+            # If we have a User object, the details are correct.
+            # If None (Python's way of representing the absence of a value), no user
+            # with matching credentials was found.
+            if user:
+                # Is the account active? It could have been disabled.
+                if user.is_active:
+                    # If the account is valid and active, we can log the user in.
+                    # We'll send the user back to the homepage.
+                    login(request, user)
+                    return HttpResponseRedirect('/')
+
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.
