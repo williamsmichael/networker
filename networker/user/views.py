@@ -61,6 +61,19 @@ class ListingAddress(ListView):
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
+class ListingSocialMedia(ListView):
+    """ List of all user social media """
+    model = UserSocialMedia
+    title = 'social media'
+    section = 'Social Media'
+    queryset = UserSocialMedia.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
+        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
+
+
 # ---------------------------------------------------------------------details
 
 def UserDetail(request, pk):
@@ -97,7 +110,7 @@ class CreatePhone(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('listing_phone', kwargs={
+        return reverse('user_detail', kwargs={
             'pk': self.object.user_id.pk,
         })
 
@@ -252,6 +265,7 @@ class UserUpdateMembership(UpdateView):
 class UserUpdatePhone(UpdateView):
     """ Update phone details for a user """
 
+    # gets the specific phone 
     def get_object(self, queryset=None):
         return UserPhone.objects.get(pk=self.kwargs['phone'])
 
@@ -271,10 +285,11 @@ class UserUpdatePhone(UpdateView):
 class UserUpdateEmail(UpdateView):
     """ Update email details for a user """
 
+    # gets the specific email
     def get_object(self, queryset=None):
         return UserEmail.objects.get(pk=self.kwargs['email'])
 
-    # fields = ['email_category_id', 'email']
+    model = UserEmail
     fields = '__all__'
     # success_url = '/users/'
     section = "Alternate Email"
@@ -289,6 +304,11 @@ class UserUpdateEmail(UpdateView):
 
 class UserUpdateAddress(UpdateView):
     """ Update address details for a user """
+
+    # gets the specific address
+    def get_object(self, queryset=None):
+        return UserAddress.objects.get(pk=self.kwargs['address'])
+
     model = UserAddress
     fields = '__all__'
     # success_url = '/users/'
@@ -304,6 +324,11 @@ class UserUpdateAddress(UpdateView):
 
 class UserUpdateSocialMedia(UpdateView):
     """ Update social media details for a user """
+
+    # gets the specific social media
+    def get_object(self, queryset=None):
+        return UserSocialMedia.objects.get(pk=self.kwargs['social_media'])
+
     model = UserSocialMedia
     fields = '__all__'
     # success_url = '/users/'
@@ -312,8 +337,8 @@ class UserUpdateSocialMedia(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('listing_social_media', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 

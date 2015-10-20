@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+<span class='user'>{{ user.username }}</span> {{ view.section }}
+
+{% endblock heading %}
+
+{% block content %}
+
+	{% block nav_column %}
+
+		{% include "user/nav_column.html" %}
+
+	{% endblock nav_column %}
+
+	{% block details_column %}
+
+		<section>	
+
+			<div>
+
+			{% block list_view_form %}
+
+				{% for social_media in usersocialmedia_list %}
+
+					{% if social_media.deactivate == False %}
+					<ul>
+						<li>
+							<a href="{% url 'update_social_media' pk=user.id social_media=social_media.pk %}" class="list-item">({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</a>
+						</li>
+					</ul>	
+					{% endif %}
+				{% endfor %}
+
+			{% endblock list_view_form %}
+
+			</div>
+
+		</section>
+
+	{% endblock details_column %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

@@ -185,7 +185,10 @@
 		{% for social_media in member.usersocialmedia_set.all %}
 			{% if social_media.deactivate == False %}
 			<li>
-				<a href="{% url 'update_social_media' social_media.pk %}">({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</a>
+				({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}
+				<span>
+					<a href="{% url 'update_social_media' pk=member.user_extension.id social_media=social_media.pk %}" class="update">edit</a>
+				</span>
 			</li>
 			{% endif %}	
 		{% endfor %}
