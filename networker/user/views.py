@@ -57,7 +57,6 @@ class ListingAddress(ListView):
 
     def get_queryset(self):
         # import pdb; pdb.set_trace()
-        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
@@ -70,7 +69,6 @@ class ListingSocialMedia(ListView):
 
     def get_queryset(self):
         # import pdb; pdb.set_trace()
-        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
@@ -83,7 +81,18 @@ class ListingJob(ListView):
 
     def get_queryset(self):
         # import pdb; pdb.set_trace()
-        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
+
+
+class ListingSkill(ListView):
+    """ List of all user skill """
+    model = UserSkill
+    title = 'skill'
+    section = 'Skill Profile'
+    queryset = UserSkill.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
@@ -377,16 +386,21 @@ class UserUpdateJob(UpdateView):
 
 class UserUpdateSkill(UpdateView):
     """ Update skill details for a user """
+
+    # gets the specific skill
+    def get_object(self, queryset=None):
+        return UserSkill.objects.get(pk=self.kwargs['skill'])
+
     model = UserSkill
     fields = '__all__'
     # success_url = '/users/'
-    section = "Skill"
+    section = "Skill Profile"
     title = 'update'
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('listing_skill', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 

@@ -235,8 +235,10 @@
 		{% for skill in member.userskill_set.all %}
 			{% if skill.deactivate == False %}
 			<li>
-				<a href="{% url 'update_skill' skill.pk %}">
-				{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</a>
+				{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}
+				<span>
+					<a href="{% url 'update_skill' pk=member.user_extension.id skill=skill.pk %}" class="update">edit</a>
+				</span>
 			</li>
 			{% endif %}	
 		{% endfor %}

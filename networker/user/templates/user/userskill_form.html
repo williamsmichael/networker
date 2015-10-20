@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+<span class='user'>{{ user.username }}</span> {{ view.section }}
+
+{% endblock heading %}
+
+{% block content %}
+
+	{% block nav_column %}
+
+		{% include "user/nav_column.html" %}
+
+	{% endblock nav_column %}
+
+	{% block details_column %}
+
+		<section>	
+
+			<div>
+
+			{% block list_view_form %}
+
+				{% for skill in userskill_list %}
+
+					{% if skill.deactivate == False %}
+					<ul>
+						<li>
+							<a href="{% url 'update_skill' pk=user.id skill=skill.pk %}" class="list-item">{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</a>
+						</li>
+					</ul>	
+					{% endif %}
+				{% endfor %}
+
+			{% endblock list_view_form %}
+
+			</div>
+
+		</section>
+
+	{% endblock details_column %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}
