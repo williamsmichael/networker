@@ -3,24 +3,26 @@
 
 {% block title %} profile {% endblock %}
 
+{% block heading %}{% endblock heading %}
+
 {% block content %}
 
 {# -----------------------------------------------------------full name #}
-{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h2>
-		<span class='user'>{{ user.username }}</span>
-		{{ member.user_extension.first_name }}
-		{{ member.user_extension.last_name }}
-	</h2>
-{% else %}
-	<h2 class="unauthorized">
-		{{ member.user_extension.first_name }}
-		{{ member.user_extension.last_name }}
-	</h2>
-{% endif %}
+
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<h2>
+			<span class='user'>{{ user.username }}</span>
+			{{ member.user_extension.first_name }}
+			{{ member.user_extension.last_name }}
+		</h2>
+	{% else %}
+		<h2 class="unauthorized">
+			{{ member.user_extension.first_name }}
+			{{ member.user_extension.last_name }}
+		</h2>
+	{% endif %}
 
 <div>
-
 	{# ---------------------------------------------------------------image #}
 	{% if member.profile_image %}
 		<img src="{{ member.profile_image.url }}">
@@ -120,7 +122,7 @@
 	{# ---------------------------------------------------------------email #}
 	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 	<h4>
-		<a href="{% url 'listing_email' member.user_extension.pk %}">Alternate Email</a>
+		Alternate Email
 		<span>
 			<a href="{% url 'create_email' member.user_extension.pk %}" class="create">&plus;</a>
 		</span> 
@@ -134,6 +136,9 @@
 			{% if email.deactivate == False %}
 			<li>
 				({{ email.email_category_id.email_category }}) {{ email.email }}
+				<span>
+					<a href="{% url 'update_email' pk=member.user_extension.id email=email.pk %}" class="update">edit</a>
+				</span>
 			</li>
 			{% endif %}	
 		{% endfor %}

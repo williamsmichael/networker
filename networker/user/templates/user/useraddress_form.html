@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+<span class='user'>{{ user.username }}</span> {{ view.section }}
+
+{% endblock heading %}
+
+{% block content %}
+
+	{% block nav_column %}
+
+		{% include "user/nav_column.html" %}
+
+	{% endblock nav_column %}
+
+	{% block details_column %}
+
+		<section>	
+
+			<div>
+
+			{% block list_view_form %}
+
+				{% for address in useraddress_list %}
+
+					{% if address.deactivate == False %}
+					<ul>
+						<li>
+							<a href="{% url 'update_address' pk=user.id address=address.pk %}" class="list-item">({{ address.address_category_id }}) {{ address.address }}</a>
+						</li>
+					</ul>	
+					{% endif %}
+				{% endfor %}
+
+			{% endblock list_view_form %}
+
+			</div>
+
+		</section>
+
+	{% endblock details_column %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

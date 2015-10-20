@@ -23,6 +23,8 @@ class ListingUser(ListView):
 class ListingPhone(ListView):
     """ List of all user phone """
     model = UserPhone
+    title = 'phone'
+    section = 'Phone'
     queryset = UserPhone.objects.select_related('user_id').all()
 
     def get_queryset(self):
@@ -34,9 +36,22 @@ class ListingPhone(ListView):
 class ListingEmail(ListView):
     """ List of all user email """
     model = UserEmail
-    title = 'emails alternate'
-    section = 'Alternate Emails'
+    title = 'email alternate'
+    section = 'Alternate Email'
     queryset = UserEmail.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
+        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
+
+
+class ListingAddress(ListView):
+    """ List of all user address """
+    model = UserAddress
+    title = 'address'
+    section = 'Address'
+    queryset = UserAddress.objects.select_related('user_id').all()
 
     def get_queryset(self):
         # import pdb; pdb.set_trace()
@@ -66,6 +81,7 @@ class CreatePhone(CreateView):
     """ Creates a phone number for user """
     model = UserPhone
     fields = '__all__'
+    print('phone')
     # success_url = '/'
     title = 'add'
     section = 'Add Phone'
@@ -77,7 +93,7 @@ class CreatePhone(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_phone', kwargs={
             'pk': self.object.user_id.pk,
         })
 
@@ -188,13 +204,13 @@ class UserUpdateMain(UpdateView):
     """ Update auth-user details for a user """
     model = User
     fields = ['username', 'first_name', 'last_name', 'email', 'is_active']
-    # success_url = '/users/'
+    # success_url = '.'
     section = "Main"
     title = 'update'
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('update_main', kwargs={
             'pk': self.object.pk,
         })
 
@@ -209,7 +225,7 @@ class UserUpdateAdditional(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('update_additional', kwargs={
             'pk': self.object.pk,
         })
 
@@ -224,7 +240,7 @@ class UserUpdateMembership(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('update_membership', kwargs={
             'pk': self.object.pk,
         })
 
@@ -243,8 +259,8 @@ class UserUpdatePhone(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.user_id.pk
+        return reverse('listing_phone', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 
@@ -262,7 +278,7 @@ class UserUpdateEmail(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_email', kwargs={
             'pk': self.object.user_id.pk,
         })
 
