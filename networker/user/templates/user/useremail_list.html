@@ -6,6 +6,9 @@
 {% block heading %}
 
 <span class='user'>{{ user.username }}</span> {{ view.section }}
+<span>
+	<a href="{% url 'create_email' user.pk %}" class="create">&plus;</a>
+</span> 
 
 {% endblock heading %}
 

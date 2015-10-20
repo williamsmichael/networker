@@ -11,11 +11,11 @@ urlpatterns = [
     # ----------------------------------------------------------------listview
     url(r'^$', views.ListingUser.as_view(template_name='user/user_list.html'), name='listing_user'),
     url(r'^(?P<pk>[0-9]+)/phone$', views.ListingPhone.as_view(template_name='user/userphone_list.html'), name='listing_phone'),
-    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/useremail_form.html'), name='listing_email'),
-    url(r'^(?P<pk>[0-9]+)/address$', views.ListingAddress.as_view(template_name='user/useraddress_form.html'), name='listing_address'),
-    url(r'^(?P<pk>[0-9]+)/socialmedia$', views.ListingSocialMedia.as_view(template_name='user/usersocialmedia_form.html'), name='listing_social_media'),
-    url(r'^(?P<pk>[0-9]+)/job$', views.ListingJob.as_view(template_name='user/userjob_form.html'), name='listing_job'),
-    url(r'^(?P<pk>[0-9]+)/skill$', views.ListingSkill.as_view(template_name='user/userskill_form.html'), name='listing_skill'),
+    url(r'^(?P<pk>[0-9]+)/email$', views.ListingEmail.as_view(template_name='user/useremail_list.html'), name='listing_email'),
+    url(r'^(?P<pk>[0-9]+)/address$', views.ListingAddress.as_view(template_name='user/useraddress_list.html'), name='listing_address'),
+    url(r'^(?P<pk>[0-9]+)/socialmedia$', views.ListingSocialMedia.as_view(template_name='user/usersocialmedia_list.html'), name='listing_social_media'),
+    url(r'^(?P<pk>[0-9]+)/job$', views.ListingJob.as_view(template_name='user/userjob_list.html'), name='listing_job'),
+    url(r'^(?P<pk>[0-9]+)/skill$', views.ListingSkill.as_view(template_name='user/userskill_list.html'), name='listing_skill'),
 
 
     # ---------------------------------------------------------updateview user

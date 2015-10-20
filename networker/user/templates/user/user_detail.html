@@ -110,7 +110,7 @@
 		{% for phone in member.userphone_set.all %}
 			{% if phone.deactivate == False %}
 			<li>
-				({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}
+				({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }} 
 				<span>
 					<a href="{% url 'update_phone' pk=member.user_extension.id phone=phone.pk %}" class="update">edit</a>
 				</span>

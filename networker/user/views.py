@@ -132,7 +132,7 @@ class CreatePhone(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_phone', kwargs={
             'pk': self.object.user_id.pk,
         })
 
@@ -152,7 +152,7 @@ class CreateEmail(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_email', kwargs={
             'pk': self.object.user_id.pk,
         })
 
@@ -172,7 +172,7 @@ class CreateAddress(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_address', kwargs={
           'pk': self.object.user_id.pk,
         })
 
@@ -192,7 +192,7 @@ class CreateSocialMedia(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_social_media', kwargs={
           'pk': self.object.user_id.pk,
         })
 
@@ -212,7 +212,7 @@ class CreateJob(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_job', kwargs={
           'pk': self.object.user_id.pk,
         })
 
@@ -232,7 +232,7 @@ class CreateSkill(CreateView):
         }
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
+        return reverse('listing_skill', kwargs={
           'pk': self.object.user_id.pk,
         })
 
