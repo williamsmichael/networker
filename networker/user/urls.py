@@ -31,7 +31,7 @@ urlpatterns = [
         template_name='user/create_update_form.html'), name='update_phone'),
     url(r'^(?P<pk>[0-9]+)/email/(?P<email>[0-9]+)$', views.UserUpdateEmail.as_view(
         template_name='user/create_update_form.html'), name='update_email'),
-    url(r'^(?P<pk>[0-9]+)/address$', views.UserUpdateAddress.as_view(
+    url(r'^(?P<pk>[0-9]+)/address/(?P<address>[0-9]+)$', views.UserUpdateAddress.as_view(
         template_name='user/create_update_form.html'), name='update_address'),
     url(r'^(?P<pk>[0-9]+)/social_media$', views.UserUpdateSocialMedia.as_view(
         template_name='user/create_update_form.html'), name='update_social_media'),

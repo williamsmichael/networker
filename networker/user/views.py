@@ -15,6 +15,8 @@ def index(request):
     return render(request, 'index.html', {})
 
 
+# -----------------------------------------------------------------------lists
+
 class ListingUser(ListView):
     """ List of all users """
     model = NetworkerUser
@@ -58,6 +60,8 @@ class ListingAddress(ListView):
         # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
+
+# ---------------------------------------------------------------------details
 
 def UserDetail(request, pk):
     """ Details of a user """
@@ -293,8 +297,8 @@ class UserUpdateAddress(UpdateView):
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('listing_address', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 

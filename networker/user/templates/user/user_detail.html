@@ -160,7 +160,10 @@
 		{% for address in member.useraddress_set.all %}
 			{% if address.deactivate == False %}
 			<li>
-				<a href="{% url 'update_address' address.pk %}">({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</a>
+				({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}
+				<span>
+					<a href="{% url 'update_address' pk=member.user_extension.id address=address.pk %}" class="update">edit</a>
+				</span>
 			</li>
 			{% endif %}	
 		{% endfor %}
