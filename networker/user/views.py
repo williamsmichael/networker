@@ -74,6 +74,19 @@ class ListingSocialMedia(ListView):
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
+class ListingJob(ListView):
+    """ List of all user job """
+    model = UserJob
+    title = 'job'
+    section = 'Job Profile'
+    queryset = UserJob.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
+        # return UserEmail.objects.filter(user_id=self.request.user.networkeruser)
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
+
+
 # ---------------------------------------------------------------------details
 
 def UserDetail(request, pk):
@@ -344,16 +357,21 @@ class UserUpdateSocialMedia(UpdateView):
 
 class UserUpdateJob(UpdateView):
     """ Update job details for a user """
+
+    # gets the specific job
+    def get_object(self, queryset=None):
+        return UserJob.objects.get(pk=self.kwargs['job'])
+
     model = UserJob
     fields = '__all__'
     # success_url = '/users/'
-    section = "Job"
+    section = "Job Profile"
     title = 'update'
     button = 'update'
 
     def get_success_url(self):
-        return reverse('user_detail', kwargs={
-            'pk': self.object.pk,
+        return reverse('listing_job', kwargs={
+            'pk': self.object.user_id.pk,
         })
 
 

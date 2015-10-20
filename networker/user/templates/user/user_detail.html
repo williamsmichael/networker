@@ -210,7 +210,10 @@
 		{% for job in member.userjob_set.all %}
 			{% if job.deactivate == False %}
 			<li>
-				<a href="{% url 'update_job' job.pk %}">{{ job.job_title }}, {{ job.company_name }}</a>
+				{{ job.job_title }}, {{ job.company_name }}
+				<span>
+					<a href="{% url 'update_job' pk=member.user_extension.id job=job.pk %}" class="update">edit</a>
+				</span>
 			</li>
 			{% endif %}	
 		{% endfor %}

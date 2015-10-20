@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+<span class='user'>{{ user.username }}</span> {{ view.section }}
+
+{% endblock heading %}
+
+{% block content %}
+
+	{% block nav_column %}
+
+		{% include "user/nav_column.html" %}
+
+	{% endblock nav_column %}
+
+	{% block details_column %}
+
+		<section>	
+
+			<div>
+
+			{% block list_view_form %}
+
+				{% for job in userjob_list %}
+
+					{% if job.deactivate == False %}
+					<ul>
+						<li>
+							<a href="{% url 'update_job' pk=user.id job=job.pk %}" class="list-item">{{ job.job_title }}, {{ job.company_name }}</a>
+						</li>
+					</ul>	
+					{% endif %}
+				{% endfor %}
+
+			{% endblock list_view_form %}
+
+			</div>
+
+		</section>
+
+	{% endblock details_column %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}
