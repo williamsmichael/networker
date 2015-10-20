@@ -111,6 +111,9 @@ a.list-item, section.left-col ul li a {
 	height: 100%;
 	padding: 10px 0;
 }
+a[href*=register] {
+	vertical-align: middle;
+}
 span.user {
 	background-color: #669966;
 	color: #eee;

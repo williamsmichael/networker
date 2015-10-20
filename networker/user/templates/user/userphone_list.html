@@ -1,28 +1,48 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} phone listing {% endblock %}
+{% block title %} {{ view.title }} {% endblock %}
 
 {% block heading %}
 
-<span class='user'>{{ user.username }}</span> Phone
+<span class='user'>{{ user.username }}</span> {{ view.section }}
 
 {% endblock heading %}
 
 {% block content %}
 
-<div>
-	{% for phone in userphone_list %}
+	{% block nav_column %}
 
-		{% if phone.deactivate == False %}
-		<ul>
-			<li>
-				<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
-			</li>
-		</ul>	
-		{% endif %}
-	{% endfor %}
-</div>
+		{% include "user/nav_column.html" %}
+
+	{% endblock nav_column %}
+
+	{% block details_column %}
+
+		<section>	
+
+			<div>
+
+			{% block list_view_form %}
+
+				{% for phone in userphone_list %}
+
+					{% if phone.deactivate == False %}
+					<ul>
+						<li>
+							<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}" class="list-item">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+						</li>
+					</ul>	
+					{% endif %}
+				{% endfor %}
+
+			{% endblock list_view_form %}
+
+			</div>
+
+		</section>
+
+	{% endblock details_column %}
 
 {% endblock content %}
 

@@ -36,7 +36,7 @@
 						<img src="https://unsplash.it/150/150/?random" class="list-img">
 					{% endif %}
 
-					[ {{ user.user_extension.id }} &vrtri; {{ user.id }} ] {{ user.user_extension.username }}, {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} - {{ user.user_extension.last_login | timesince }}
+					{{ user.user_extension.id }}: {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} {{ user.user_extension.username }} - {{ user.user_extension.last_login | timesince }}
 				</a>
 
 				{% endblock list_view_form %}
