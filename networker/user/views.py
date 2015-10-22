@@ -10,13 +10,19 @@ from .models import *
 from .forms import *
 
 
+# -----------------------------------------------------------------------index
 def index(request):
     """ Navigates to the index or home page """
     return render(request, 'index.html', {})
 
 
-# -----------------------------------------------------------------------lists
+# -------------------------------------------------------------------------map
+def map(request):
+    """ Navigates to the google map api """
+    return render(request, 'user/map.html', {})
 
+
+# -----------------------------------------------------------------------lists
 class ListingUser(ListView):
     """ List of all users """
     model = NetworkerUser
@@ -97,7 +103,6 @@ class ListingSkill(ListView):
 
 
 # ---------------------------------------------------------------------details
-
 def UserDetail(request, pk):
     """ Details of a user """
     # """ is_staff: List of all users """
@@ -238,7 +243,6 @@ class CreateSkill(CreateView):
 
 
 # ----------------------------------------------------------------------update
-
 class UserUpdateMain(UpdateView):
     """ Update auth-user details for a user """
     model = User
@@ -405,7 +409,6 @@ class UserUpdateSkill(UpdateView):
 
 
 # --------------------------------------------------------------authentication
-
 def register(request):
     """ Register a user """
     # A boolean value for telling the template whether the registration was successful.
@@ -554,7 +557,6 @@ def user_logout(request):
 
 
 # ----------------------------------------------------------------------unused
-
 # class DeletePhone(DeleteView):
 #     model = UserPhone
 #     success_url = '/users/'

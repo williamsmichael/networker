@@ -129,6 +129,7 @@ span.user {
 	list-style: none;
 }
 
+
 /*------------------------------------------------------------media queries */
 @media (max-width: 400px) {
 	h2 {
