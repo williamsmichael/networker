@@ -35,6 +35,7 @@ def ajax(request):
     # data = serializers.serialize('json', NetworkerUser.objects.all(), fields=('user_id', 'latitude_api','longitude_api'))
     return HttpResponse(json.dumps(data), content_type = 'application/json')
 
+
 # -----------------------------------------------------------------------lists
 class ListingUser(ListView):
     """ List of all users """

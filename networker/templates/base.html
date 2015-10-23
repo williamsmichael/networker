@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <!-- temp styles, remove ASAP -->
 
-    {% block link_script_base %}
+    {% block head_base %}
 
         {% include "base_css_link.html" %}
 
-    {% endblock link_script_base %}
+    {% endblock head_base %}
 
-    {% block link_script_addon %}{% endblock link_script_addon %}
+    {% block head_addon %}{% endblock head_addon %}
 </head>
 
 <body>
@@ -62,6 +62,8 @@
         </footer>
         {% endblock footer %}
     </div>
+
+{% block script_addon %}{% endblock script_addon %}
 
 </body>
 </html>
