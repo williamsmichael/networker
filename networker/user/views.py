@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+import json
+from django.core import serializers
 
 from .models import *
 from .forms import *
@@ -21,6 +23,17 @@ def map(request):
     """ Navigates to the google map api """
     return render(request, 'user/map.html', {})
 
+
+def ajax(request):
+    """ Write JSON file for UserAddress """
+    with open("static/ajax/user_address.json", "w") as out:
+        json_serializer = serializers.get_serializer('json')()
+        json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'latitude_api','longitude_api'), stream=out)
+
+    all_objects = list(User.objects.all()) + list(UserAddress.objects.all())
+    data = serializers.serialize('json', all_objects, fields=('first_name', 'user_id', 'latitude_api','longitude_api'))
+    # data = serializers.serialize('json', NetworkerUser.objects.all(), fields=('user_id', 'latitude_api','longitude_api'))
+    return HttpResponse(json.dumps(data), content_type = 'application/json')
 
 # -----------------------------------------------------------------------lists
 class ListingUser(ListView):
