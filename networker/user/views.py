@@ -21,12 +21,18 @@ def index(request):
 # -------------------------------------------------------------------------map
 def map(request):
     """ Navigates to the google map api """
+
+    # write json file for map api
+    with open("static/ajax/user_address.json", "w") as out:
+        json_serializer = serializers.get_serializer('json')()
+        json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
+
     return render(request, 'user/map.html', {})
 
 
 def ajax(request):
     """ Write JSON file for UserAddress """
-    with open("static/ajax/user_address.json", "w") as out:
+    with open("ajax/user_address.json", "w") as out:
         json_serializer = serializers.get_serializer('json')()
         json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
 
