@@ -28,7 +28,7 @@ def ajax(request):
     """ Write JSON file for UserAddress """
     with open("static/ajax/user_address.json", "w") as out:
         json_serializer = serializers.get_serializer('json')()
-        json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'latitude_api','longitude_api'), stream=out)
+        json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
 
     all_objects = list(User.objects.all()) + list(UserAddress.objects.all())
     data = serializers.serialize('json', all_objects, fields=('first_name', 'user_id', 'latitude_api','longitude_api'))
