@@ -1,17 +1,3 @@
-{% extends "base.html" %}
-{% load static from staticfiles %}
-
-{% block title %} map {% endblock %}
-
-{% block head_base %}{% endblock head_base %}
-
-{% block head_addon %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
-
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript">
-	
 	function initialize() {
 
 		// center the map on the middle of USA
@@ -23,19 +9,18 @@
 			center: center_usa,
 			zoom: 4,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
-		}
+		};
 		var map = new google.maps.Map(mapCanvas, mapOptions);
 
 		// gets JSON to display markers
-		$.getJSON('{% static 'ajax/user_address.json' %}', function(data) {
+		$.getJSON("/static/ajax/user_address.json", function(data) {
 			$.each(data, function (key, value) {
 				var address_coordinates = new google.maps.LatLng(value.fields.latitude_api, value.fields.longitude_api);
-				// console.log(address_coordinates);
 				var marker = new google.maps.Marker({
 					position: address_coordinates,
 					map: map,
 					title: value.fields.first_name + ' ' + value.fields.last_name
-				})
+				});
 
 				// info window
 				var contentString = 
@@ -44,43 +29,25 @@
 			      		'<h1>' + value.fields.first_name + ' ' + value.fields.last_name +
 			     		'</h1>' +
 			      		'<div>' +
-			      			'<p>' + value.fields.city_town + ', ' + value.fields.state_province + '</p>' +
+			      			'<p>' + value.fields.city_town + ', ' + value.fields.state_province + 
+			      			'</p>' +
 			      		'</div>'+
 			      	'</div>';
 
 				var infowindow = new google.maps.InfoWindow({
 					content: contentString,
     				maxWidth: 200
-				})
+				});
 
 				marker.addListener('click', function() {
 					infowindow.close();
 					infowindow.open(map, marker);
 				})
 			})
-		})
-	}
+		});
+	});
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-</script>
 
-{% endblock head_addon %}
 
-{# {% block header %}{% endblock header %} #}
-
-{% block heading %}{% endblock heading %}
-
-{% block content %}
-
-<div id="map"></div>
-
-{% endblock content %}
-
-{% block footer %}{% endblock footer %}
-
-{% block script_addon %}
-
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
-{% endblock script_addon %}
