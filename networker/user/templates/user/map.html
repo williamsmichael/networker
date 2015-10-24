@@ -22,7 +22,7 @@
 		var mapOptions = {
 			// center: new google.maps.LatLng(45.5200, -122.6819),
 			center: center_usa,
-			zoom: 3,
+			zoom: 4,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 		var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -47,22 +47,23 @@
 				var marker = new google.maps.Marker({
 					position: address_coordinates,
 					map: map,
-					title: 'User ID: ' + value.fields.user_id
+					title: value.fields.first_name + ' ' + value.fields.last_name
 				})
 
 				// info window
-				var contentString = '<div id="content">'+
-			      '<div id="siteNotice">'+
-			      '</div>'+
-			      '<h1 id="firstHeading" class="firstHeading">' + value.fields.city_town + ', ' + value.fields.state_province + '</h1>'+
-			      '<div id="bodyContent">'+
-			      '<p>user id: <b>' + value.fields.user_id + '</b></p>'+
-			      '</div>'+
-			      '</div>';
+				var contentString = 
+					'<div>' +
+						'<img src="/static/' + value.fields.profile_image + '" alt="' + value.fields.first_name + ' ' + value.fields.last_name + ' Profile Image" class="map_image">' +
+			      		'<h1>' + value.fields.first_name + ' ' + value.fields.last_name +
+			     		'</h1>' +
+			      		'<div>' +
+			      			'<p>' + value.fields.city_town + ', ' + value.fields.state_province + '</p>' +
+			      		'</div>'+
+			      	'</div>';
 
 				var infowindow = new google.maps.InfoWindow({
 					content: contentString,
-					maxWidth: 200
+    				maxWidth: 200
 				})
 
 				marker.addListener('click', function() {
@@ -79,15 +80,13 @@
 
 {% endblock head_addon %}
 
-{% block heading %} Map {% endblock heading %}
+{% block header %}{% endblock header %}
+
+{% block heading %}{% endblock heading %}
 
 {% block content %}
 
-	{% for member in extended_users %}
-	    <h3>{{ member.user_id.user_extension.first_name }} {{ member.user_id.user_extension.last_name }}</h3>
-	{% endfor %}
-
-	<div id="map"></div>
+<div id="map"></div>
 
 {% endblock content %}
 

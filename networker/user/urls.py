@@ -1,4 +1,4 @@
-""" group app URL Configuration """
+""" user app URL Configuration """
 
 from django.conf.urls import patterns, url
 

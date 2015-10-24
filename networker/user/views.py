@@ -23,22 +23,18 @@ def index(request):
 def map(request):
     """ Navigates to and displays the google map api """
 
-
-    name = UserAddress.objects.select_related().all()
-    print(name[0].user_id.user_extension.first_name)
-
-    # write json file for map api
-    with open("static/ajax/user_address.json", "w") as out:
-        json_serializer = serializers.get_serializer('json')()
-        json_serializer.serialize(UserAddress.objects.select_related().all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api', 'first_name'), stream=out)
-
-    with open('static/ajax/test.json', 'w') as out:
+    # creates custom json file for map api
+    # address will not populate without establishing a UserAddress pk
+    with open('static/ajax/user_address.json', 'w') as out:
+        
         lst = []
-
         address_object = UserAddress.objects.all().select_related()
 
         for info in address_object:
+
             dict = {}
+            
+            # fields from AuthUser, NetworkerUser, UserAddress models
             pk = info.user_id.user_extension.pk
             first_name = info.user_id.user_extension.first_name
             if not first_name:
@@ -46,29 +42,39 @@ def map(request):
             last_name = info.user_id.user_extension.last_name
             if not last_name:
                 last_name = info.user_id.user_extension.username
-            image = info.user_id.profile_image
-            address_city = info.city_town
+            profile_image = info.user_id.profile_image
+            city_town = info.city_town
+            state_province = info.state_province
+            latitude_api = info.latitude_api
+            longitude_api = info.longitude_api
 
-            dict["fields"]={"pk":pk, "first_name":first_name, "last_name":last_name, "image":str(image), "address_city":address_city}
+            dict["fields"] = {
+                "pk": pk, 
+                "first_name": first_name, 
+                "last_name":last_name, 
+                "profile_image": str(profile_image), 
+                "city_town": city_town,
+                "state_province": state_province,
+                "latitude_api": latitude_api,
+                "longitude_api": longitude_api
+            }
+
             lst.append(dict)
-            # lst.append(pk)
-            # lst.append(first_name)
-            # lst.append(last_name)
-            # lst.append(image)
-            # lst.append(address_city)
-            # if image:
-            #     user_list.append(image)
-        print(lst)
+
+        # print(lst)
         # print(dict["5"]["first_name"])
         # print(dict)
         json.dump(lst, out, indent=4)
 
-    all_objects = UserAddress.objects.all()
+    # # write json file directly from the UserAddress model for map api
+    # with open("static/ajax/user_address.json", "w") as out:
+    #     json_serializer = serializers.get_serializer('json')()
+    #     json_serializer.serialize(UserAddress.objects.select_related().all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api', 'first_name'), stream=out, indent=4)
 
     return render(request, 'user/map.html', {})
 
 
-def ajax(request):
+def test_ajax(request):
     """ Write JSON file for UserAddress """
     # with open("ajax/user_address.json", "w") as out:
     #     json_serializer = serializers.get_serializer('json')()
@@ -88,13 +94,11 @@ def ajax(request):
     # all_objects = list(UserAddress.objects.filter(user_id__user_extension__first_name="Michael"))
 
     all_objects = NetworkerUser.objects.all().prefetch_related('user_extension')
-    data = serializers.serialize('json', all_objects)
+    data = serializers.serialize('json', all_objects, indent=4)
 
     # data = serializers.serialize('json', NetworkerUser.objects.all(), fields=('user_id', 'latitude_api','longitude_api'))
     # return HttpResponse(json.dumps(data), content_type = 'application/json')
     return HttpResponse(data)
-
-
 
 
 # -----------------------------------------------------------------------lists

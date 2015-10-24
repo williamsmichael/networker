@@ -17,7 +17,7 @@ urlpatterns = [
 
     # ---------------------------------------------------------------------map
     url(r'^map/$', 'user.views.map', name='map'),
-    url(r'^ajax$', 'user.views.ajax', name='ajax'),
+    url(r'^ajax$', 'user.views.test_ajax', name='test_ajax'),
 
 
     # ----------------------------------------------------------authentication
