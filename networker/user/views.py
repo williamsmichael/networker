@@ -8,38 +8,81 @@ from django.contrib.auth.models import User
 import json
 from django.core import serializers
 
+
 from .models import *
 from .forms import *
 
 
 # -----------------------------------------------------------------------index
 def index(request):
-    """ Navigates to the index or home page """
+    """ Navigates to and displays the index or home page """
     return render(request, 'index.html', {})
 
 
 # -------------------------------------------------------------------------map
 def map(request):
-    """ Navigates to the google map api """
+    """ Navigates to and displays the google map api """
 
     # write json file for map api
     with open("static/ajax/user_address.json", "w") as out:
         json_serializer = serializers.get_serializer('json')()
-        json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
+        json_serializer.serialize(UserAddress.objects.all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
 
-    return render(request, 'user/map.html', {})
+    with open('static/ajax/test.json', 'w') as out:
+        lst = []
+        address_object = UserAddress.objects.all()
+        for info in address_object:
+            pk = info.user_id.user_extension.pk
+            first_name = info.user_id.user_extension.first_name
+            if not first_name:
+                first_name = info.user_id.user_extension.username
+            last_name = info.user_id.user_extension.last_name
+            if not last_name:
+                last_name = info.user_id.user_extension.username
+            image = info.user_id.profile_image
+            address_city = info.city_town
+            lst.append(pk)
+            lst.append(address_city)
+            lst.append(first_name)
+            lst.append(last_name)
+            lst.append(image)
+            # if image:
+            #     user_list.append(image)
+        print(lst)
+        json.dump({'numbers':'numbers', 'strings':'s', 'x':'x', 'y':'y'}, out, indent=4)
+
+    all_objects = UserAddress.objects.all()
+
+    return render(request, 'user/map.html', {'extended_users': all_objects})
 
 
 def ajax(request):
     """ Write JSON file for UserAddress """
-    with open("ajax/user_address.json", "w") as out:
-        json_serializer = serializers.get_serializer('json')()
-        json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
+    # with open("ajax/user_address.json", "w") as out:
+    #     json_serializer = serializers.get_serializer('json')()
+    #     json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
 
-    all_objects = list(User.objects.all()) + list(UserAddress.objects.all())
-    data = serializers.serialize('json', all_objects, fields=('first_name', 'user_id', 'latitude_api','longitude_api'))
+    # all_objects = list(NetworkerUser.objects.all()) + list(UserAddress.objects.all())
+    # data = serializers.serialize('json', all_objects, fields=('first_name', 'user_id', 'latitude_api','longitude_api'))
+    
+
+
+    # Have address get firstName, lastName, profile, address
+    # address_id : user_id
+    # user = NetworkerUser.get_object(id=user_id).user_extension
+
+    # NetworkUser.objects.all()prefetch_related('NetworkerUser__User')
+
+    # all_objects = list(UserAddress.objects.filter(user_id__user_extension__first_name="Michael"))
+
+    all_objects = NetworkerUser.objects.all().prefetch_related('user_extension')
+    data = serializers.serialize('json', all_objects)
+
     # data = serializers.serialize('json', NetworkerUser.objects.all(), fields=('user_id', 'latitude_api','longitude_api'))
-    return HttpResponse(json.dumps(data), content_type = 'application/json')
+    # return HttpResponse(json.dumps(data), content_type = 'application/json')
+    return HttpResponse(data)
+
+
 
 
 # -----------------------------------------------------------------------lists
@@ -145,7 +188,6 @@ class CreatePhone(CreateView):
     """ Creates a phone number for user """
     model = UserPhone
     fields = '__all__'
-    print('phone')
     # success_url = '/'
     title = 'add'
     section = 'Add Phone'

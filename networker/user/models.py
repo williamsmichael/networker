@@ -7,15 +7,16 @@ from django.contrib.auth.models import User
 
 
 def upload_to(instance, filename):
+    """ upload images helper function for NetworkerUser """
     return 'images/{}/{}'.format(instance.user_extension.username, filename)
 
 
 class NetworkerUser(models.Model):
     """ Main table for User """
 
-    # default Django User
+    # default Django AuthUser
     # --------------------------
-    # username, password, email, first_name, last_name
+    # username, password, email, first_name, last_name, etc.
 
     # User extended
     # --------------------------
