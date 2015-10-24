@@ -23,15 +23,22 @@ def index(request):
 def map(request):
     """ Navigates to and displays the google map api """
 
+
+    name = UserAddress.objects.select_related().all()
+    print(name[0].user_id.user_extension.first_name)
+
     # write json file for map api
     with open("static/ajax/user_address.json", "w") as out:
         json_serializer = serializers.get_serializer('json')()
-        json_serializer.serialize(UserAddress.objects.all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
+        json_serializer.serialize(UserAddress.objects.select_related().all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api', 'first_name'), stream=out)
 
     with open('static/ajax/test.json', 'w') as out:
         lst = []
-        address_object = UserAddress.objects.all()
+
+        address_object = UserAddress.objects.all().select_related()
+
         for info in address_object:
+            dict = {}
             pk = info.user_id.user_extension.pk
             first_name = info.user_id.user_extension.first_name
             if not first_name:
@@ -41,19 +48,24 @@ def map(request):
                 last_name = info.user_id.user_extension.username
             image = info.user_id.profile_image
             address_city = info.city_town
-            lst.append(pk)
-            lst.append(address_city)
-            lst.append(first_name)
-            lst.append(last_name)
-            lst.append(image)
+
+            dict["fields"]={"pk":pk, "first_name":first_name, "last_name":last_name, "image":str(image), "address_city":address_city}
+            lst.append(dict)
+            # lst.append(pk)
+            # lst.append(first_name)
+            # lst.append(last_name)
+            # lst.append(image)
+            # lst.append(address_city)
             # if image:
             #     user_list.append(image)
         print(lst)
-        json.dump({'numbers':'numbers', 'strings':'s', 'x':'x', 'y':'y'}, out, indent=4)
+        # print(dict["5"]["first_name"])
+        # print(dict)
+        json.dump(lst, out, indent=4)
 
     all_objects = UserAddress.objects.all()
 
-    return render(request, 'user/map.html', {'extended_users': all_objects})
+    return render(request, 'user/map.html', {})
 
 
 def ajax(request):

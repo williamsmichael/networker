@@ -1,6 +1,65 @@
-{
-    "numbers": "numbers",
-    "strings": "s",
-    "y": "y",
-    "x": "x"
-}
+[
+    {
+        "fields": {
+            "last_name": "Flores",
+            "image": "images/machele/avatar2.png",
+            "pk": 5,
+            "first_name": "Mary",
+            "address_city": "Verona"
+        }
+    },
+    {
+        "fields": {
+            "last_name": "Johnson",
+            "image": "images/johnson/avatar2.png",
+            "pk": 6,
+            "first_name": "Alesia",
+            "address_city": "Oakland"
+        }
+    },
+    {
+        "fields": {
+            "last_name": "Beta",
+            "image": "images/beta/avatar2.png",
+            "pk": 7,
+            "first_name": "Georgina",
+            "address_city": "Grand Junction"
+        }
+    },
+    {
+        "fields": {
+            "last_name": "Williams",
+            "image": "images/mw/avatarMe.png",
+            "pk": 1,
+            "first_name": "Michael",
+            "address_city": "Jacksonville"
+        }
+    },
+    {
+        "fields": {
+            "last_name": "Christman",
+            "image": "images/christman/avatar1.png",
+            "pk": 3,
+            "first_name": "James",
+            "address_city": "Apple Valley"
+        }
+    },
+    {
+        "fields": {
+            "last_name": "Burton",
+            "image": "images/burton/avatar2.png",
+            "pk": 2,
+            "first_name": "Katherine",
+            "address_city": "Mountain View"
+        }
+    },
+    {
+        "fields": {
+            "last_name": "Williams",
+            "image": "images/mw/avatarMe.png",
+            "pk": 1,
+            "first_name": "Michael",
+            "address_city": "Portland"
+        }
+    }
+]
