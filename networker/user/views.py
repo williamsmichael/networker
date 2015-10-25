@@ -7,6 +7,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 import json
 from django.core import serializers
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 from .models import *
@@ -632,6 +634,40 @@ def user_logout(request):
 
     # Take the user back to the homepage
     return HttpResponseRedirect('/')
+
+
+def invite(request):
+    """ Invite user to a group """
+    form = InviteForm(request.POST or None)
+    if form.is_valid():
+        # print(form.cleaned_data)
+        # for key in form.cleaned_data:
+        #     # print(key)
+        #     print(form.cleaned_data.get(key))
+
+        form_email = form.cleaned_data.get('email')
+        form_first_name = form.cleaned_data.get('first_name')
+        form_last_name = form.cleaned_data.get('last_name')
+        form_message = form.cleaned_data.get('message')
+        subject = 'Networker App Invitation'
+        from_email = settings.EMAIL_HOST_USER
+        to_email = [from_email, 'willia32@hotmail.com']
+        contact_message = "% %: % via %".format(form_first_name, form_last_name, form_message, form_email)
+
+
+        send_mail(
+            subject, 
+            contact_message, 
+            from_email, 
+            to_email,
+            fail_silently=False
+        )
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "user/invite.html", context)
 
 
 # ----------------------------------------------------------------------unused

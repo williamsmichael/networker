@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^login/$', 'user.views.user_login', name='login'),
     url(r'^restricted/$', 'user.views.restricted', name='restricted'),
     url(r'^logout/$', 'user.views.user_logout', name='logout'),
+    url(r'^invite/$', 'user.views.invite', name='invite'),
 
 
     # -------------------------------------------------------------------group

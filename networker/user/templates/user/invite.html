@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} invite {% endblock %}
+
+{% block heading %} Invite to Group {% endblock heading %}
+
+{% block content %}
+
+<div>
+
+	<form method="POST" action="">{% csrf_token %}
+
+		{{ form.as_p }}
+
+		<input type="submit" value="Send">
+
+	</form>
+	
+</div>
+
+{% endblock content%}

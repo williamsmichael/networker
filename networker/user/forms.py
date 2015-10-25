@@ -20,18 +20,26 @@ class NetworkerUserForm(forms.ModelForm):
         fields = ()
 
 
-class UserDetailMainForm(forms.ModelForm):
-    """ Update a Networker User section=Main of profile"""
-    class Meta:
-        model = User
-        fields = ('username', 'password', 'first_name', 'last_name',)
-
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super(UserDetailMainForm, self).__init__(*args, **kwargs)
+class InviteForm(forms.Form):
+    """ Invite user to a group """
+    email = forms.EmailField()
+    first_name = forms.CharField(required=False)
+    last_name = forms.CharField(required=False)
+    message = forms.CharField()
 
 
 # ----------------------------------------------------------------------unused
+
+# class UserDetailMainForm(forms.ModelForm):
+#     """ Update a Networker User section=Main of profile"""
+#     class Meta:
+#         model = User
+#         fields = ('username', 'password', 'first_name', 'last_name',)
+
+#     def __init__(self, *args, **kwargs):
+#         self.user = kwargs.pop('user', None)
+#         super(UserDetailMainForm, self).__init__(*args, **kwargs)
+
 # class UserNewForm(forms.ModelForm):
 #     """ Update a Networker User profile form """
 #     class Meta:
