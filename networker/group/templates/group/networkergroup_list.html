@@ -3,7 +3,18 @@
 
 {% block title %} groups {% endblock %}
 
-{# {% block heading %}  Networker Groups {% endblock %} #}
+{% block heading %}
+
+	{% if user.is_authenticated and user.is_staff %}
+		<h2>Groups</h2>
+		<span>
+			<a href="{% url 'invite' %}" class="create">&plus;</a>
+		</span>
+	{% else %}
+		<h2>Groups</h2>
+	{% endif %}
+
+{% endblock heading %}
 
 {% block content %}
 

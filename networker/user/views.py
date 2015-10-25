@@ -638,6 +638,8 @@ def user_logout(request):
 
 def invite(request):
     """ Invite user to a group """
+    successful_invite = False
+
     form = InviteForm(request.POST or None)
     if form.is_valid():
         # print(form.cleaned_data)
@@ -651,9 +653,8 @@ def invite(request):
         form_message = form.cleaned_data.get('message')
         subject = 'Networker App Invitation'
         from_email = settings.EMAIL_HOST_USER
-        to_email = [from_email, 'willia32@hotmail.com']
-        contact_message = "% %: % via %".format(form_first_name, form_last_name, form_message, form_email)
-
+        to_email = [form_email]
+        contact_message = "{} {}: {} via {}".format(form_first_name, form_last_name, form_message, form_email)
 
         send_mail(
             subject, 
@@ -663,8 +664,11 @@ def invite(request):
             fail_silently=False
         )
 
+        successful_invite = True
+
     context = {
         "form": form,
+        "successful_invite": successful_invite,
     }
 
     return render(request, "user/invite.html", context)

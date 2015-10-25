@@ -3,19 +3,37 @@
 
 {% block title %} invite {% endblock %}
 
-{% block heading %} Invite to Group {% endblock heading %}
+{% block heading %}
+
+	{% if user.is_authenticated and user.is_staff %}
+		<h2>Invite to Group</h2>
+		<span>
+			<a href="{% url 'invite' %}" class="create">&plus;</a>
+		</span>
+	{% else %}
+		<h2>Invite to Group</h2>
+	{% endif %}
+
+{% endblock heading %}
 
 {% block content %}
 
 <div>
 
-	<form method="POST" action="">{% csrf_token %}
+	{% if successful_invite %}
 
-		{{ form.as_p }}
+		<p>Invitation Sent!</p>
+	
+	{% else %}
 
-		<input type="submit" value="Send">
+		<form method="POST" action="">{% csrf_token %}
 
-	</form>
+			{{ form.as_p }}
+
+			<input type="submit" value="Send">
+
+		</form>
+	{% endif %}
 	
 </div>
 
