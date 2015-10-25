@@ -1,6 +1,5 @@
 """ networker app URL Configuration """
 
-
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
@@ -17,7 +16,7 @@ urlpatterns = [
 
     # ---------------------------------------------------------------------map
     url(r'^map/$', 'user.views.map', name='map'),
-    url(r'^ajax$', 'user.views.test_ajax', name='test_ajax'),
+    url(r'^ajax/$', 'user.views.test_ajax', name='test_ajax'),
 
 
     # ----------------------------------------------------------authentication
@@ -28,7 +27,7 @@ urlpatterns = [
 
 
     # -------------------------------------------------------------------group
-    url(r'^groups/$', include('group.urls')),
+    url(r'^groups/', include('group.urls')),
 
 
     # --------------------------------------------------------------------user

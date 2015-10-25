@@ -89,7 +89,7 @@
 	{% endif %}
 
 	<ul>
-		{% for group in member.user_extension.groups.values %}
+		{% for group in member.user_extension.groups.all %}
 			<li>{{ group.name }}</li>	
 		{% endfor %}
 	</ul>
