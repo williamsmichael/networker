@@ -6,13 +6,13 @@
 
 {% block heading %}
 
+	Invite to Group
+
 	{% if user.is_authenticated and user.is_staff %}
-		Invite to Group
-		<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
-  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		</a>
-	{% else %}
-		Invite to Group
+	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+	
 	{% endif %}
 
 {% endblock heading %}

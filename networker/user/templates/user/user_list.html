@@ -5,13 +5,13 @@
 
 {% block heading %}
 
+	Members
+
 	{% if user.is_authenticated and user.is_staff %}
-		Members
-		<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
-  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		</a>
-	{% else %}
-		Members
+	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+
 	{% endif %}
 
 {% endblock heading %}
@@ -28,7 +28,7 @@
 
 				{% block list_view_form %}
 
-				<a href="{% url 'user_detail' user.user_extension.pk %}">
+				<a href="{% url 'user_profile' user.user_extension.pk %}">
 
 					{% if user.profile_image %}
 					<img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded">

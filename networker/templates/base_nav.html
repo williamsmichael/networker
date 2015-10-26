@@ -21,7 +21,7 @@
                 {% block nav_addon %}{% endblock nav_addon %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'auth_logout' %}">Logout</a></li>
                 <li class="active"><a href="{% url 'user_profile' user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
             </ul>
             {% else %}
@@ -29,7 +29,7 @@
                 <li><a href="{% url 'register' %}">Register</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="{% url 'auth_login' %}">Login <span class="sr-only">(current)</span></a></li>
             </ul>
             {% endif %}
         </div>

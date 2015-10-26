@@ -1,97 +1,97 @@
 [
     {
         "fields": {
+            "profile_image": "images/mw/avatarMe.png",
+            "first_name": "Michael",
+            "longitude_api": -81.631496,
+            "latitude_api": 30.306437,
             "city_town": "Jacksonville",
             "state_province": "FL",
-            "latitude_api": 30.306437,
             "last_name": "Williams",
-            "first_name": "Michael",
-            "profile_image": "images/mw/avatarMe.png",
-            "longitude_api": -81.631496,
             "pk": 1
         }
     },
     {
         "fields": {
+            "profile_image": "images/machele/avatar2.png",
+            "first_name": "Mary",
+            "longitude_api": -98.036862,
+            "latitude_api": 46.363996,
             "city_town": "Verona",
             "state_province": "ND",
-            "latitude_api": 46.363996,
             "last_name": "Flores",
-            "first_name": "Mary",
-            "profile_image": "images/machele/avatar2.png",
-            "longitude_api": -98.036862,
             "pk": 5
         }
     },
     {
         "fields": {
+            "profile_image": "images/johnson/avatar2.png",
+            "first_name": "Alesia",
+            "longitude_api": -122.382487,
+            "latitude_api": 37.810064,
             "city_town": "Oakland",
             "state_province": "CA",
-            "latitude_api": 37.810064,
             "last_name": "Johnson",
-            "first_name": "Alesia",
-            "profile_image": "images/johnson/avatar2.png",
-            "longitude_api": -122.382487,
             "pk": 6
         }
     },
     {
         "fields": {
+            "profile_image": "images/beta/avatar2.png",
+            "first_name": "Georgina",
+            "longitude_api": -81.125703,
+            "latitude_api": 35.614511,
             "city_town": "Grand Junction",
             "state_province": "CO",
-            "latitude_api": 35.614511,
             "last_name": "Beta",
-            "first_name": "Georgina",
-            "profile_image": "images/beta/avatar2.png",
-            "longitude_api": -81.125703,
             "pk": 7
         }
     },
     {
         "fields": {
+            "profile_image": "images/hewitt/avatar2.png",
+            "first_name": "Elizabeth",
+            "longitude_api": -72.013087,
+            "latitude_api": 41.587346,
             "city_town": "Norwich",
             "state_province": "CT",
-            "latitude_api": 41.587346,
             "last_name": "Hewitt",
-            "first_name": "Elizabeth",
-            "profile_image": "images/hewitt/avatar2.png",
-            "longitude_api": -72.013087,
             "pk": 4
         }
     },
     {
         "fields": {
+            "profile_image": "images/christman/avatar1.png",
+            "first_name": "James",
+            "longitude_api": -80.223605,
+            "latitude_api": 39.276383,
             "city_town": "Apple Valley",
             "state_province": "MN",
-            "latitude_api": 39.276383,
             "last_name": "Christman",
-            "first_name": "James",
-            "profile_image": "images/christman/avatar1.png",
-            "longitude_api": -80.223605,
             "pk": 3
         }
     },
     {
         "fields": {
+            "profile_image": "images/burton/avatar2.png",
+            "first_name": "Katherine",
+            "longitude_api": -97.016947,
+            "latitude_api": 39.338543,
             "city_town": "Mountain View",
             "state_province": "CA",
-            "latitude_api": 39.338543,
             "last_name": "Burton",
-            "first_name": "Katherine",
-            "profile_image": "images/burton/avatar2.png",
-            "longitude_api": -97.016947,
             "pk": 2
         }
     },
     {
         "fields": {
+            "profile_image": "images/mw/avatarMe.png",
+            "first_name": "Michael",
+            "longitude_api": -122.686153,
+            "latitude_api": 45.53055,
             "city_town": "Portland",
             "state_province": "OR",
-            "latitude_api": 45.53055,
             "last_name": "Williams",
-            "first_name": "Michael",
-            "profile_image": "images/mw/avatarMe.png",
-            "longitude_api": -122.686153,
             "pk": 1
         }
     }
