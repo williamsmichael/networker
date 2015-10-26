@@ -34,9 +34,9 @@
 
 					{% if email.remove == False %}
 
-						<li>
-							<a href="{% url 'update_email' pk=user.id email=email.pk %}" class="list-item">({{ email.email_category_id }}) {{ email.email }}</a>
-						</li>
+					<li>
+						<a href="{% url 'update_email' pk=user.id email=email.pk %}" class="list-item">({{ email.email_category_id }}) {{ email.email }}</a>
+					</li>
 	
 					{% endif %}
 
