@@ -50,7 +50,7 @@ class UserPhone(models.Model):
     phone_category_id = models.ForeignKey(PhoneCategory)
     country_code = models.PositiveSmallIntegerField(blank=True, null=True)
     phone_number = models.CharField(max_length=255)
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
@@ -69,7 +69,7 @@ class UserEmail(models.Model):
     user_id = models.ForeignKey(NetworkerUser)
     email_category_id = models.ForeignKey(EmailCategory)
     email = models.EmailField()
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id)
@@ -95,7 +95,7 @@ class UserAddress(models.Model):
     postal_code = models.CharField(max_length=255)
     latitude_api = models.FloatField()
     longitude_api = models.FloatField()
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {}, {}, {} ({})".format(self.user_id, self.street_address_1, self.postal_code, self.country, self.address_category_id)
@@ -114,7 +114,7 @@ class UserSocialMedia(models.Model):
     user_id = models.ForeignKey(NetworkerUser)
     social_media_category_id = models.ForeignKey(SocialMediaCategory)
     social_media_url = models.URLField()
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {} ({})".format(self.user_id, self.social_media_url, self.social_media_category_id)
@@ -140,7 +140,7 @@ class UserJob(models.Model):
     is_current = models.BooleanField(default=True)
     company_year_started = models.DateField(default=timezone.now)
     company_year_ended = models.DateField(default=timezone.now)
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {}, current={} [{}]".format(self.user_id, self.company_name, self.is_current, self.job_category_id)
@@ -164,7 +164,7 @@ class UserEducation(models.Model):
     is_completed = models.BooleanField(default=False)
     school_year_started = models.DateField(default=timezone.now)
     school_year_ended = models.DateField(default=timezone.now)
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {}, passed={} ({})".format(self.user_id, self.school_name, self.is_completed, self.education_category_id)
@@ -183,7 +183,7 @@ class UserSkill(models.Model):
     user_id = models.ForeignKey(NetworkerUser)
     skill_category_id = models.ForeignKey(SkillCategory)
     skill_description = models.TextField(blank=True)
-    deactivate = models.BooleanField(default=False)
+    remove = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}, {} ({})".format(self.user_id, self.skill_description, self.skill_category_id)
