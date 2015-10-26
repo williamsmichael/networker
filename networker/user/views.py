@@ -187,7 +187,7 @@ class ListingSkill(ListView):
 
 # ---------------------------------------------------------------------details
 @login_required
-def UserDetail(request, pk):
+def UserProfile(request, pk):
     """ Details of a user """
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
@@ -195,12 +195,12 @@ def UserDetail(request, pk):
     # for networker_user in NetworkerUser.objects.all():
     #     print(networker_user.user_extension.first_name)
     # users = NetworkerUser.objects.all()
-    # return render(request, 'user/user_detail.html', {'users': users})
+    # return render(request, 'user/user_profile.html', {'users': users})
     # else:
     #     return HttpResponse("Unauthorized Access!")
 
     user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/user_detail.html', {'member': user})
+    return render(request, 'user/user_profile.html', {'member': user})
 
 
 # ----------------------------------------------------------------------create
