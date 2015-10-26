@@ -6,12 +6,12 @@
 {% block heading %}
 
 	{% if user.is_authenticated and user.is_staff %}
-		<h2>Groups</h2>
-		<span>
-			<a href="{% url 'invite' %}" class="create">&plus;</a>
-		</span>
+		Groups
+		<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a>
 	{% else %}
-		<h2>Groups</h2>
+		Groups
 	{% endif %}
 
 {% endblock heading %}
