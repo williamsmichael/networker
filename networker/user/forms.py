@@ -23,7 +23,7 @@ class NetworkerUserForm(forms.ModelForm):
 class InviteForm(forms.Form):
     """ Invite user to a group """
     email = forms.EmailField()
-    first_name = forms.CharField(required=False)
+    first_name = forms.CharField()
     last_name = forms.CharField(required=False)
     message = forms.CharField()
 

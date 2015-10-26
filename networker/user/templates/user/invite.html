@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% load crispy_forms_tags %}
 
 {% block title %} invite {% endblock %}
 
 {% block heading %}
 
 	{% if user.is_authenticated and user.is_staff %}
-		<h2>Invite to Group</h2>
-		<span>
-			<a href="{% url 'invite' %}" class="create">&plus;</a>
-		</span>
+		Invite to Group
+		<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a>
 	{% else %}
-		<h2>Invite to Group</h2>
+		Invite to Group
 	{% endif %}
 
 {% endblock heading %}
@@ -28,9 +29,9 @@
 
 		<form method="POST" action="">{% csrf_token %}
 
-			{{ form.as_p }}
+			{{ form | crispy }}
 
-			<input type="submit" value="Send">
+			<button type="submit" class="btn btn-default">Send</button>
 
 		</form>
 	{% endif %}
