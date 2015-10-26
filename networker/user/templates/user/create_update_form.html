@@ -12,17 +12,17 @@
 
 {% block content %}
 
-	{% block nav_column %}
+<div class="container">
 
-		{% include "user/nav_column.html" %}
+	<div class="row row-offcanvas row-offcanvas-right">
 
-	{% endblock nav_column %}
+		{% block details_column %}
 
-	{% block details_column %}
+			<section class="col-xs-12 col-sm-9">
 
-		<section>	
-
-			<div>
+				<p class="pull-right visible-xs">
+	            	<button type="button" class="btn btn-success btn-xs" data-toggle="offcanvas">Toggle nav</button>
+	          	</p>	
 
 				<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 
@@ -31,11 +31,27 @@
 					<input type="submit" class="btn btn-default" value="{{ view.button }}">
 				
 				</form>
-			</div>
-		</section>
+			</section><!--/.col-xs-12.col-sm-9-->
 
-	{% endblock details_column %}
+		{% endblock details_column %}
+
+		{% block nav_column %}
+
+			{% include "user/nav_column.html" %}
+
+		{% endblock nav_column %}
+
+	</div><!--/row-->
+</div><!--/.container-->
 
 {% endblock content %}
 
-{% block footer %}{% endblock footer %}
+{% block script_addon %}
+
+<script src="{% static 'js/offcanvas.js' %}"></script>
+
+{% endblock script_addon %}
+
+
+
+

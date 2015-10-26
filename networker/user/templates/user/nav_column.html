@@ -1,16 +1,19 @@
-<section class="left-col">
+{% load static from staticfiles %}
 
-	<ul>
-		<li><a href="{% url 'user_detail' user.pk %}" class='list-item'>Full Profile</a></li>
-		<li><a href="{% url 'update_main' user.pk %}">Main</a></li>
-		<li><a href="{% url 'update_additional' user.pk %}">Additional</a></li>
-		<li><a href="{% url 'update_membership' user.pk %}">Membership</a></li>
-		<li><a href="{% url 'listing_phone' user.pk %}">Phone</a></li>
-		<li><a href="{% url 'listing_email' user.pk %}">Alternate Email</a></li>
-		<li><a href="{% url 'listing_address' user.pk %}">Address</a></li>
-		<li><a href="{% url 'listing_social_media' user.pk %}">Social Profile</a></li>
-		<li><a href="{% url 'listing_job' user.pk %}">Job Profile</a></li>
-		<li><a href="{% url 'listing_skill' user.pk %}">Skill Profile</a></li>
-	</ul>
+<section class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 
-</section>
+	<div class="list-group">
+
+		<a href="{% url 'user_detail' user.pk %}" class="list-group-item">Full Profile</a>
+		<a href="{% url 'update_main' user.pk %}" class="list-group-item">Main</a>
+		<a href="{% url 'update_additional' user.pk %}" class="list-group-item">Additional</a>
+		<a href="{% url 'update_membership' user.pk %}" class="list-group-item">Membership</a>
+		<a href="{% url 'listing_phone' user.pk %}" class="list-group-item">Phone</a>
+		<a href="{% url 'listing_email' user.pk %}" class="list-group-item">Alternate Email</a>
+		<a href="{% url 'listing_address' user.pk %}" class="list-group-item">Address</a>
+		<a href="{% url 'listing_social_media' user.pk %}" class="list-group-item">Social Profile</a>
+		<a href="{% url 'listing_job' user.pk %}" class="list-group-item">Job Profile</a>
+		<a href="{% url 'listing_skill' user.pk %}" class="list-group-item">Skill Profile</a>
+
+	</div>
+</section><!--/.sidebar-offcanvas-->

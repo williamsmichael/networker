@@ -40,4 +40,4 @@ def listing_group(request):
 
     # import pdb; pdb.set_trace()
 
-	return render(request, 'group/networkergroup_list.html', {'groups': groups})
+	return render(request, 'group/group_list.html', {'groups': groups})
