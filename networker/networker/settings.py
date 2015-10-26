@@ -35,12 +35,18 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = (
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third party apps
+    'crispy_forms',
+
+    # networker apps
     'group',
     'user',
 )
@@ -132,6 +138,10 @@ except ImportError:
 #####################
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
+
+
+# django crispy forms bootstrap
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 
