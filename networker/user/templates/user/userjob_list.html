@@ -5,10 +5,11 @@
 
 {% block heading %}
 
-<span class='user'>{{ user.username }}</span> {{ view.section }}
-<span>
-	<a href="{% url 'create_job' user.pk %}" class="create">&plus;</a>
-</span>
+	{{ view.section }}
+
+	<a href="{% url 'create_job' user.pk %}" class="btn btn-default btn-sm" aria-label="Left Align">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
 
 {% endblock heading %}
 
