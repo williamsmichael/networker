@@ -7,6 +7,14 @@
 
 {% block content %}
 
+{% for x, y in user_groups %}
+
+	<h3>{{ x }} {{ y }}</h3>
+	
+{% endfor %}
+
+<br><br><br><br><br>
+
 {% for group in user_groups %}
 
 <div>

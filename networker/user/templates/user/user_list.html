@@ -37,9 +37,10 @@
                 {% if user.user_extension.is_active == True %}
 
                 <tr class='clickable-row' data-href='{% url 'user_profile' user.user_extension.pk %}'>
-                    {% block list_view_form %}
+                
+                {% block list_view_form %}
 
-                    <td>{{ user.user_extension.id }}</td>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ user.user_extension.first_name }}</td>
                     <td>{{ user.user_extension.last_name }}</td>
                     <td>{{ user.user_extension.username }}</td>
@@ -52,8 +53,8 @@
                     <td><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
                     {% endif %}
                  
-                    {% endblock list_view_form %}
-
+                {% endblock list_view_form %}
+                
                 </tr>
 
                 {% endif %}
@@ -73,7 +74,7 @@ $(document).ready(function($) {
     $(".clickable-row").click(function() {
         window.document.location = $(this).data("href");
     });
-});
+}); 
 	
 </script>
 	

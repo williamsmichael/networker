@@ -16,7 +16,7 @@ li {
 .glyphicon {
   color: #339966;
 }
-tr {
+tbody tr {
   cursor: pointer;
 }
 

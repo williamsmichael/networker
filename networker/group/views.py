@@ -22,9 +22,11 @@ def test1(request):
 def listing_user_groups(request):
 	# get the groups for the login user
 	current_user = request.user
-	user_groups = Group.objects.filter(user=request.user)
-	# networker_group = NetworkerGroup.objects.filter(id=user_groups.pk)
+	user_groups = Group.objects.filter(user=request.user).values('networkergroup__welcome_message', 'networkergroup__group_description').distinct()
+	# networker_groups = user_groups.annotate(networkergroup)
+
 	print(user_groups)
+	# print(networker_groups)
 
 	return render(request, 'group/test.html', {'user_groups': user_groups})
 	# return HttpResponse("test")

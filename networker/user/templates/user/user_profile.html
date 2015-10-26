@@ -116,7 +116,12 @@
 
 			{% endif %}
 		</li>	
+
 		{% endif %}
+
+	{% empty %}
+		<li>none set</li>
+				
 	{% endfor %}
 	</ul>
 
@@ -133,22 +138,26 @@
 	</h2>
 
 	<ul>
-		{% for email in member.useremail_set.all %}
+	{% for email in member.useremail_set.all %}
 
-			{% if email.remove == False %}
+		{% if email.remove == False %}
 
-			<li>
-				({{ email.email_category_id.email_category }}) {{ email.email }}
+		<li>
+			({{ email.email_category_id.email_category }}) {{ email.email }}
 
-				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-				<a href="{% url 'update_email' pk=member.user_extension.id email=email.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
-	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				</a>
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_email' pk=member.user_extension.id email=email.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
 
-				{% endif %}
-			</li>
-			{% endif %}	
-		{% endfor %}
+			{% endif %}
+		</li>
+		{% endif %}	
+
+	{% empty %}
+		<li>none set</li>
+
+	{% endfor %}
 	</ul>
 
 	{# -------------------------------------------------------------address #}
@@ -164,22 +173,26 @@
 	</h2>
 
 	<ul>
-		{% for address in member.useraddress_set.all %}
+	{% for address in member.useraddress_set.all %}
 
-			{% if address.remove == False %}
-		
-			<li>
-				({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}
+		{% if address.remove == False %}
+	
+		<li>
+			({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}
 
-				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-				<a href="{% url 'update_address' pk=member.user_extension.id address=address.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
-	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				</a>
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_address' pk=member.user_extension.id address=address.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
 
-				{% endif %}
-			</li>
-			{% endif %}	
-		{% endfor %}
+			{% endif %}
+		</li>
+		{% endif %}	
+
+	{% empty %}
+		<li>none set</li>
+
+	{% endfor %}
 	</ul>
 
 	{# --------------------------------------------------------social media #}
@@ -195,22 +208,26 @@
 	</h2>
 
 	<ul>
-		{% for social_media in member.usersocialmedia_set.all %}
+	{% for social_media in member.usersocialmedia_set.all %}
 
-			{% if social_media.remove == False %}
-		
-			<li>
-				({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}
+		{% if social_media.remove == False %}
+	
+		<li>
+			({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}
 
-				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-				<a href="{% url 'update_social_media' pk=member.user_extension.id social_media=social_media.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
-	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				</a>
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_social_media' pk=member.user_extension.id social_media=social_media.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
 
-				{% endif %}
-			</li>
-			{% endif %}	
-		{% endfor %}
+			{% endif %}
+		</li>
+		{% endif %}	
+
+	{% empty %}
+		<li>none set</li>
+
+	{% endfor %}
 	</ul>
 
 	{# -----------------------------------------------------------------job #}
@@ -226,22 +243,26 @@
 	</h2>
 
 	<ul>
-		{% for job in member.userjob_set.all %}
+	{% for job in member.userjob_set.all %}
 
-			{% if job.remove == False %}
-			
-			<li>
-				{{ job.job_title }}, {{ job.company_name }}
+		{% if job.remove == False %}
+		
+		<li>
+			{{ job.job_title }}, {{ job.company_name }}
 
-				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-				<a href="{% url 'update_job' pk=member.user_extension.id job=job.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
-	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				</a>
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_job' pk=member.user_extension.id job=job.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
 
-				{% endif %}
-			</li>
-			{% endif %}	
-		{% endfor %}
+			{% endif %}
+		</li>
+		{% endif %}	
+
+	{% empty %}
+		<li>none set</li>
+
+	{% endfor %}
 	</ul>
 
 	{# ---------------------------------------------------------------skill #}
@@ -255,27 +276,28 @@
 
 		{% endif %}
 	</h2>
-	
-	
-	
 
 	<ul>
-		{% for skill in member.userskill_set.all %}
+	{% for skill in member.userskill_set.all %}
 
-			{% if skill.remove == False %}
-			
-			<li>
-				{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}
+		{% if skill.remove == False %}
+		
+		<li>
+			{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}
 
-				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-				<a href="{% url 'update_skill' pk=member.user_extension.id skill=skill.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
-	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				</a>
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_skill' pk=member.user_extension.id skill=skill.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
 
-				{% endif %}
-			</li>
-			{% endif %}	
-		{% endfor %}
+			{% endif %}
+		</li>
+		{% endif %}	
+
+	{% empty %}
+		<li>none set</li>
+
+	{% endfor %}
 	</ul>
 
 </div>

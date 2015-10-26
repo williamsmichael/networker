@@ -28,17 +28,23 @@
           	</p>	
 
 			{% block list_view_form %}
-
+				
+				<ul>
 				{% for phone in userphone_list %}
 
 					{% if phone.remove == False %}
-					<ul>
-						<li>
-							<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}" class="list-item">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
-						</li>
-					</ul>	
+
+					<li>
+						<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}" class="list-item">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+					</li>
+
 					{% endif %}
+
+				{% empty %}
+					<li>none set</li>
+					
 				{% endfor %}
+				</ul>
 
 			{% endblock list_view_form %}
 

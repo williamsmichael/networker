@@ -29,16 +29,22 @@
 
 			{% block list_view_form %}
 
+				<ul>
 				{% for address in useraddress_list %}
 
 					{% if address.remove == False %}
-					<ul>
+
 						<li>
 							<a href="{% url 'update_address' pk=user.id address=address.pk %}" class="list-item">({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</a>
 						</li>
-					</ul>	
+
 					{% endif %}
+
+				{% empty %}
+					<li>none set</li>
+
 				{% endfor %}
+				</ul>
 
 			{% endblock list_view_form %}
 
