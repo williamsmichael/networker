@@ -3,7 +3,7 @@
 
 {% block title %} map {% endblock %}
 
-{% block head_base %}{% endblock head_base %}
+{# {% block head_base %}{% endblock head_base %} #}
 
 {% block head_addon %}
 
@@ -64,12 +64,9 @@
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-
 {% endblock head_addon %}
 
-{# {% block header %}{% endblock header %} #}
-
-{% block heading %}{% endblock heading %}
+{% block header %}{% endblock header %}
 
 {% block content %}
 

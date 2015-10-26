@@ -3,15 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Networker App for Building Private Networks">
-    <meta name="author" content="Michael Williams">
+
+    {% include "base_meta.html" %}
 
     {% block head_base %}
-        {% include "base_css_link.html" %}
+        {% include "base_css.html" %}
     {% endblock head_base %}
 
     {% block head_addon %}{% endblock head_addon %}
@@ -27,62 +23,23 @@
 
 <body>
 
-    <div class="container">
+    {% include "base_nav.html" %}
 
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="{% url 'index' %}">Networker</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              {% if user.is_authenticated %}
-              <ul class="nav navbar-nav">
-                <li><a href="{% url 'listing_user' %}">Members</a></li>
-                <li><a href="{% url 'listing_group' %}">Groups</a></li>
-                <li><a href="{% url 'map' %}">Map</a></li>
-                {% block nav_addon %}{% endblock nav_addon %} 
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li class="active"><a href="./">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
-              </ul>
-              {% else %}
-              <ul class="nav navbar-nav">
-                <li><a href="{% url 'register' %}">Register</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li class="active"><a href="./">networker says hej! <span class="sr-only">(current)</span></a></li>
-              </ul>
-              {% endif %}
-            </div><!--/.nav-collapse -->
+    <main class="container">
+        {% block header %}
+          <div class="page-header">
+              <h2>{% block heading %}{% endblock heading %}</h2>
           </div>
-        </nav>
+        {% endblock header %}
 
-{#         {% block header %}{% endblock header %} #}
+        {% block content %}
 
-        <main>
-            <div class="page-header">
-                <h2>{% block heading %}{% endblock heading %}</h2>
-            </div>
-            <div>
-                {% block content %}
-
-                    {% block nav_column %}{% endblock nav_column %}
-                    {% block details_column %}{% endblock details_column %}
-                    {% block list_view_form %}{% endblock list_view_form %}
-                    
-                {% endblock content %}
-            </div>
-        </main>
-    </div>
+            {% block nav_column %}{% endblock nav_column %}
+            {% block details_column %}{% endblock details_column %}
+            {% block list_view_form %}{% endblock list_view_form %}
+            
+        {% endblock content %}
+    </main>
 
     <footer class="footer">
       <div class="container">
@@ -90,12 +47,7 @@
       </div>
     </footer>
 
-    <!-- Bootstrap JavaScript -->
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    {% include "base_js.html" %}
 
     {% block script_addon %}{% endblock script_addon %}
 

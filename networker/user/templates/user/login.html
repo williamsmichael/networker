@@ -7,20 +7,16 @@
 
 {% block content %}
 
-<div>
+<form id="login_form" method="post" action="/login/">
+	{% csrf_token %}	
 
-	<form id="login_form" method="post" action="/login/">
-		{% csrf_token %}	
-
-		<input type="text" name="username" value="" size="50" placeholder="Username">
-		<br>
-		<br>
-		<input type="text" name="password" value="" size="50" placeholder="Password">
-		<br>
-		<br>
-		<input type="submit" value="submit" size="50">
-	</form>
-
-</div>
+	<div class="form-group">
+		<input type="text" name="username" class="form-control" placeholder="Username">
+	</div>
+	<div class="form-group">
+		<input type="text" name="password" class="form-control" placeholder="Password">
+	</div>
+	<button type="submit" class="btn btn-default">Login</button>
+</form>
 
 {% endblock content %}
