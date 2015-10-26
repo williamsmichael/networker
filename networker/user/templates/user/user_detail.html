@@ -1,46 +1,38 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} profile {% endblock %}
+{% block title %} {{ member.user_extension.username }} profile {% endblock %}
 
-{% block heading %}{% endblock heading %}
+{% block heading %}
+
+	{{ member.user_extension.first_name }}
+	{{ member.user_extension.last_name }}
+
+{% endblock heading %}
 
 {% block content %}
-
-{# -----------------------------------------------------------full name #}
-
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-		<h2>
-			<span class='user'>{{ user.username }}</span>
-			{{ member.user_extension.first_name }}
-			{{ member.user_extension.last_name }}
-		</h2>
-	{% else %}
-		<h2 class="unauthorized">
-			{{ member.user_extension.first_name }}
-			{{ member.user_extension.last_name }}
-		</h2>
-	{% endif %}
 
 <div>
 	{# ---------------------------------------------------------------image #}
 	{% if member.profile_image %}
-		<img src="{{ member.profile_image.url }}">
+	<img src="{{ member.profile_image.url }}">
+	
 	{% else %}
-		<img src="https://unsplash.it/150/150/?random">
+	<img src="https://unsplash.it/150/150/?random">
+	
 	{% endif %}
 
 	{# ----------------------------------------------------------------main #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-		<h4>
-			Main
-			<span>
-				<a href="{% url 'update_main' pk=member.user_extension.pk %}" class='update'>edit</a>
-			</span>
-		</h4>
-	{% else %}
-		<h4 class="unauthorized">Main</h4>
-	{% endif %}
+	<h2>
+		Main
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'update_main' pk=member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+		</a>
+
+		{% endif %}
+	</h2>
 
 	<ul>
 		<li>ids: {{ member.user_extension.id }} &vrtri; {{ member.id }} </li>
@@ -57,16 +49,16 @@
 	</ul>
 
 	{# ----------------------------------------------------------additional #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-		<h4>
-			Additional
-			<span>
-				<a href="{% url 'update_additional' pk=member.user_extension.pk %}" class='update'>edit</a>
-			</span>
-		</h4>
-	{% else %}
-		<h4 class="unauthorized">Additional</h4>
-	{% endif %}
+	<h2>
+		Additional
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'update_additional' pk=member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+		</a>
+
+		{% endif %}
+	</h2>
 
 	<ul>
 		<li>relationship to group: {{ member.relationship_to_group | default:"none" }}</li>
@@ -77,168 +69,210 @@
 	</ul>
 
 	{# ----------------------------------------------------------membership #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Membership
-		<span>
-			<a href="{% url 'update_membership' pk=member.user_extension.pk %}" class='update'>edit</a>
-		</span>
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Membership</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'update_membership' pk=member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+		</a>
+
+		{% endif %}
+	</h2>
+	
+	
 
 	<ul>
 		{% for group in member.user_extension.groups.all %}
-			<li>{{ group.name }}</li>	
+		<li>{{ group.name }}</li>	
+
 		{% endfor %}
 	</ul>
 
 	{# ---------------------------------------------------------------phone #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Phone
-		<span>
-			<a href="{% url 'create_phone' member.user_extension.pk %}" class="create">&plus;</a>
-		</span> 
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Phone</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_phone' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a> 
+
+		{% endif %}
+	</h2>
 
 	<ul>
-		{% for phone in member.userphone_set.all %}
-			{% if phone.deactivate == False %}
-			<li>
-				({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }} 
-				<span>
-					<a href="{% url 'update_phone' pk=member.user_extension.id phone=phone.pk %}" class="update">edit</a>
-				</span>
-			</li>	
+	{% for phone in member.userphone_set.all %}
+
+		{% if phone.deactivate == False %}
+	
+		<li>
+			({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }} 
+
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_phone' pk=member.user_extension.id phone=phone.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
+
 			{% endif %}
-		{% endfor %}
+		</li>	
+		{% endif %}
+	{% endfor %}
 	</ul>
 
 	{# ---------------------------------------------------------------email #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Alternate Email
-		<span>
-			<a href="{% url 'create_email' member.user_extension.pk %}" class="create">&plus;</a>
-		</span> 
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Alternate Email</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_email' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a>  
+
+		{% endif %}
+	</h2>
 
 	<ul>
 		{% for email in member.useremail_set.all %}
+
 			{% if email.deactivate == False %}
+
 			<li>
 				({{ email.email_category_id.email_category }}) {{ email.email }}
-				<span>
-					<a href="{% url 'update_email' pk=member.user_extension.id email=email.pk %}" class="update">edit</a>
-				</span>
+
+				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+				<a href="{% url 'update_email' pk=member.user_extension.id email=email.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				</a>
+
+				{% endif %}
 			</li>
 			{% endif %}	
 		{% endfor %}
 	</ul>
 
 	{# -------------------------------------------------------------address #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Address
-		<span>
-			<a href="{% url 'create_address' member.user_extension.pk %}" class="create">&plus;</a>
-		</span>
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Address</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_address' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a> 
+
+		{% endif %}
+	</h2>
 
 	<ul>
 		{% for address in member.useraddress_set.all %}
+
 			{% if address.deactivate == False %}
+		
 			<li>
 				({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}
-				<span>
-					<a href="{% url 'update_address' pk=member.user_extension.id address=address.pk %}" class="update">edit</a>
-				</span>
+
+				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+				<a href="{% url 'update_address' pk=member.user_extension.id address=address.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				</a>
+
+				{% endif %}
 			</li>
 			{% endif %}	
 		{% endfor %}
 	</ul>
 
 	{# --------------------------------------------------------social media #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Social Profile
-		<span>
-			<a href="{% url 'create_social_media' member.user_extension.pk %}" class="create">&plus;</a>
-		</span>
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Social Profile</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_social_media' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a> 
+
+		{% endif %}
+	</h2>
 
 	<ul>
 		{% for social_media in member.usersocialmedia_set.all %}
+
 			{% if social_media.deactivate == False %}
+		
 			<li>
 				({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}
-				<span>
-					<a href="{% url 'update_social_media' pk=member.user_extension.id social_media=social_media.pk %}" class="update">edit</a>
-				</span>
+
+				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+				<a href="{% url 'update_social_media' pk=member.user_extension.id social_media=social_media.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				</a>
+
+				{% endif %}
 			</li>
 			{% endif %}	
 		{% endfor %}
 	</ul>
 
 	{# -----------------------------------------------------------------job #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Job Profile
-		<span>
-			<a href="{% url 'create_job' member.user_extension.pk %}" class="create">&plus;</a>
-		</span>
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Job Profile</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_job' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a>
+
+		{% endif %} 
+	</h2>
 
 	<ul>
 		{% for job in member.userjob_set.all %}
+
 			{% if job.deactivate == False %}
+			
 			<li>
 				{{ job.job_title }}, {{ job.company_name }}
-				<span>
-					<a href="{% url 'update_job' pk=member.user_extension.id job=job.pk %}" class="update">edit</a>
-				</span>
+
+				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+				<a href="{% url 'update_job' pk=member.user_extension.id job=job.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				</a>
+
+				{% endif %}
 			</li>
 			{% endif %}	
 		{% endfor %}
 	</ul>
 
 	{# ---------------------------------------------------------------skill #}
-	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-	<h4>
+	<h2>
 		Skill Profile
-		<span>
-			<a href="{% url 'create_skill' member.user_extension.pk %}" class="create">&plus;</a>
-		</span>
-	</h4>
-	{% else %}
-		<h4 class="unauthorized">Skill Profile</h4>
-	{% endif %}
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_skill' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a> 
+
+		{% endif %}
+	</h2>
+	
+	
+	
 
 	<ul>
 		{% for skill in member.userskill_set.all %}
+
 			{% if skill.deactivate == False %}
+			
 			<li>
 				{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}
-				<span>
-					<a href="{% url 'update_skill' pk=member.user_extension.id skill=skill.pk %}" class="update">edit</a>
-				</span>
+
+				{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+				<a href="{% url 'update_skill' pk=member.user_extension.id skill=skill.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				</a>
+
+				{% endif %}
 			</li>
 			{% endif %}	
 		{% endfor %}
