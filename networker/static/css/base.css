@@ -1,19 +1,20 @@
 
 /*-----------------------------------------------------------general layout */
-img {
+img.profile {
 	max-width: 150px;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	border-radius: 50%;
 	float: right;
 }
-img.list-img {
-	width: 50px;
+img.img-list {
+	width: 75px;
 	float: none;
-	margin-bottom: 0;
 }
 li {
 	list-style: none;
+}
+.glyphicon {
+  color: #339966;
 }
 
 /*---------------------------------------------------------------off canvas */

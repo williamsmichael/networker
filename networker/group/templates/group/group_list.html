@@ -24,10 +24,10 @@
 <div>
 
 	{% if group.group_image %}
-	<img src="{{ group.group_image.url }}" alt="{{ group }} profile image" class="img-rounded">
+	<img src="{{ group.group_image.url }}" alt="{{ group }} profile image" class="profile img-responsive img-rounded">
 	
 	{% else %}
-	<img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="img-rounded">
+	<img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="profile img-responsive img-rounded">
 	
 	{% endif %}
 

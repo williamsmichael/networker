@@ -28,13 +28,13 @@
 
 				{% block list_view_form %}
 
-				<a href="{% url 'user_detail' user.user_extension.pk %}" class='list-item'>
+				<a href="{% url 'user_detail' user.user_extension.pk %}">
 
 					{% if user.profile_image %}
-					<img src="{{ user.profile_image.url }}" class="img-rounded list-img" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image">
+					<img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded">
 					
 					{% else %}
-					<img src="https://unsplash.it/150/150/?random" class="img-rounded list-img" alt="alternate random image for profile">
+					<img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded">
 					{% endif %}
 
 					{{ user.user_extension.id }}: {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} {{ user.user_extension.username }} - {{ user.user_extension.last_login | timesince }}
