@@ -31,7 +31,7 @@
 
 				{% for skill in userskill_list %}
 
-					{% if skill.deactivate == False %}
+					{% if skill.remove == False %}
 					<ul>
 						<li>
 							<a href="{% url 'update_skill' pk=user.id skill=skill.pk %}" class="list-item">{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}</a>

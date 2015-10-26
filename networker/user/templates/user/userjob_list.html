@@ -31,7 +31,7 @@
 
 				{% for job in userjob_list %}
 
-					{% if job.deactivate == False %}
+					{% if job.remove == False %}
 					<ul>
 						<li>
 							<a href="{% url 'update_job' pk=user.id job=job.pk %}" class="list-item">{{ job.job_title }}, {{ job.company_name }}</a>

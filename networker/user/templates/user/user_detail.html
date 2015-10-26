@@ -104,7 +104,7 @@
 	<ul>
 	{% for phone in member.userphone_set.all %}
 
-		{% if phone.deactivate == False %}
+		{% if phone.remove == False %}
 	
 		<li>
 			({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }} 
@@ -135,7 +135,7 @@
 	<ul>
 		{% for email in member.useremail_set.all %}
 
-			{% if email.deactivate == False %}
+			{% if email.remove == False %}
 
 			<li>
 				({{ email.email_category_id.email_category }}) {{ email.email }}
@@ -166,7 +166,7 @@
 	<ul>
 		{% for address in member.useraddress_set.all %}
 
-			{% if address.deactivate == False %}
+			{% if address.remove == False %}
 		
 			<li>
 				({{ address.address_category_id.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}
@@ -197,7 +197,7 @@
 	<ul>
 		{% for social_media in member.usersocialmedia_set.all %}
 
-			{% if social_media.deactivate == False %}
+			{% if social_media.remove == False %}
 		
 			<li>
 				({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}
@@ -228,7 +228,7 @@
 	<ul>
 		{% for job in member.userjob_set.all %}
 
-			{% if job.deactivate == False %}
+			{% if job.remove == False %}
 			
 			<li>
 				{{ job.job_title }}, {{ job.company_name }}
@@ -262,7 +262,7 @@
 	<ul>
 		{% for skill in member.userskill_set.all %}
 
-			{% if skill.deactivate == False %}
+			{% if skill.remove == False %}
 			
 			<li>
 				{{ skill.skill_category_id.skill_category }} {{ skill.skill_description }}

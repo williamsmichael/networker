@@ -31,7 +31,7 @@
 
 				{% for social_media in usersocialmedia_list %}
 
-					{% if social_media.deactivate == False %}
+					{% if social_media.remove == False %}
 					<ul>
 						<li>
 							<a href="{% url 'update_social_media' pk=user.id social_media=social_media.pk %}" class="list-item">({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</a>
