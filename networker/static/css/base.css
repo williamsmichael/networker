@@ -16,6 +16,9 @@ li {
 .glyphicon {
   color: #339966;
 }
+tr {
+  cursor: pointer;
+}
 
 /*---------------------------------------------------------------off canvas */
 @media screen and (max-width: 767px) {

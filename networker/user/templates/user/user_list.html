@@ -19,35 +19,64 @@
 {% block content %}
 
 <div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Last Login</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in networkeruser_list %} 
 
-	{% for user in networkeruser_list %}
+                {% if user.user_extension.is_active == True %}
 
-		{% if user.user_extension.is_active == True %}
-		<ul>
-			<li>
+                <tr class='clickable-row' data-href='{% url 'user_profile' user.user_extension.pk %}'>
+                    {% block list_view_form %}
 
-				{% block list_view_form %}
+                    <td>{{ user.user_extension.id }}</td>
+                    <td>{{ user.user_extension.first_name }}</td>
+                    <td>{{ user.user_extension.last_name }}</td>
+                    <td>{{ user.user_extension.username }}</td>
+                    <td>{{ user.user_extension.last_login | timesince }}</td>
 
-				<a href="{% url 'user_profile' user.user_extension.pk %}">
+                    {% if user.profile_image %}
+                    <td><img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded"></td>
 
-					{% if user.profile_image %}
-					<img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded">
-					
-					{% else %}
-					<img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded">
-					{% endif %}
+                    {% else %}
+                    <td><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
+                    {% endif %}
+                 
+                    {% endblock list_view_form %}
 
-					{{ user.user_extension.id }}: {{ user.user_extension.first_name }} {{ user.user_extension.last_name }} {{ user.user_extension.username }} - {{ user.user_extension.last_login | timesince }}
-				</a>
+                </tr>
 
-				{% endblock list_view_form %}
-
-			</li>
-		</ul>	
-		{% endif %}
-	{% endfor %}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock content %}
 
-{% block footer %}{% endblock footer %}
+{% block script_addon %}
+
+<script type="text/javascript">
+
+$(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+	
+</script>
+	
+{% endblock script_addon %}
+
+
