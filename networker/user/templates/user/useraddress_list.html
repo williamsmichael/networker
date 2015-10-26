@@ -15,17 +15,17 @@
 
 {% block content %}
 
-	{% block nav_column %}
+<div class="container">
 
-		{% include "user/nav_column.html" %}
-
-	{% endblock nav_column %}
+	<div class="row row-offcanvas row-offcanvas-right">
 
 	{% block details_column %}
 
-		<section>	
+		<section class="col-xs-12 col-sm-9">
 
-			<div>
+			<p class="pull-right visible-xs">
+            	<button type="button" class="btn btn-success btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          	</p>	
 
 			{% block list_view_form %}
 
@@ -42,12 +42,24 @@
 
 			{% endblock list_view_form %}
 
-			</div>
+		</section><!--/.col-xs-12.col-sm-9-->
 
-		</section>
+		{% endblock details_column %}
 
-	{% endblock details_column %}
+		{% block nav_column %}
+
+			{% include "user/nav_column.html" %}
+
+		{% endblock nav_column %}
+
+	</div><!--/row-->
+</div><!--/.container-->
 
 {% endblock content %}
 
-{% block footer %}{% endblock footer %}
+{% block script_addon %}
+
+<script src="{% static 'js/offcanvas.js' %}"></script>
+
+{% endblock script_addon %}
+
