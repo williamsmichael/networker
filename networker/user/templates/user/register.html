@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% load crispy_forms_tags %}
 
 {% block title %} register {% endblock %}
 
@@ -9,24 +10,22 @@
 
 <div>
 
-	{# variable registered established in views.py #}
-	{# variable registered=False displays the form #}
+	{# registered variable established in views.py #}
+	{# registered=False displays the form #}
 	{% if registered %}
 	<p>Thank you for registering! <strong><a href="{% url 'login' %}">Please continue to login.</a></strong></p>
 	{# <a href="/">Return to the homepage.</a> #}
 	
 	{% else %}
-	<p><strong>Register here!</strong></p>
-
 	{# When you make a POST request, you have to encode the data that forms the body of the request in some way, hence enctype. #}
 	<form id="user_form" method="post" action="/register/" enctype="multipart/form-data">{% csrf_token %}
 
 		{# Display each form. The as_p method wraps each element in a paragraph (<p>) element. This ensures each element appears on a new line, making everything look neater. #}
-		{{ user_form.as_p }}
-		{{ networker_user_form.as_p }}
+		{{ user_form | crispy }}
+		{{ networker_user_form | crispy }}
 
 		{# Button to click to submit the form. #}
-		<input type="submit" name="submit" value="Register">
+		<button type="submit" name="submit" class="btn btn-default">Register</button>
 
 	</form>
 	{% endif %}
