@@ -212,7 +212,7 @@ class CreatePhone(CreateView):
     # success_url = '/'
     title = 'add'
     section = 'Add Phone'
-    button = 'create'
+    button = 'Add'
 
     def get_initial(self):
         return {
@@ -232,7 +232,7 @@ class CreateEmail(CreateView):
     # success_url = '/users/'
     title = 'add'
     section = 'Add Email'
-    button = 'create'
+    button = 'Add'
 
     def get_initial(self):
         return {
@@ -251,8 +251,8 @@ class CreateAddress(CreateView):
     fields = '__all__'
     # success_url = '/users/'
     title = 'add'
-    section = 'Add'
-    button = 'create'
+    section = 'Add Address'
+    button = 'Add'
 
     def get_initial(self):
         return {
@@ -271,8 +271,8 @@ class CreateSocialMedia(CreateView):
     fields = '__all__'
     # success_url = '/users/'
     title = 'add'
-    section = 'Add'
-    button = 'create'
+    section = 'Add Social Media'
+    button = 'Add'
 
     def get_initial(self):
         return {
@@ -291,8 +291,8 @@ class CreateJob(CreateView):
     fields = '__all__'
     # success_url = '/users/'
     title = 'add'
-    section = 'Add'
-    button = 'create'
+    section = 'Add Job'
+    button = 'Add'
 
     def get_initial(self):
         return {
@@ -311,8 +311,8 @@ class CreateSkill(CreateView):
     fields = '__all__'
     # success_url = '/users/'
     title = 'add'
-    section = 'Add'
-    button = 'create'
+    section = 'Add Skill'
+    button = 'Add'
 
     def get_initial(self):
         return {
@@ -333,7 +333,7 @@ class UserUpdateMain(UpdateView):
     # success_url = '.'
     section = "Main"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('update_main', kwargs={
@@ -348,7 +348,7 @@ class UserUpdateAdditional(UpdateView):
     # success_url = '/users/'
     section = 'Additional'
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('update_additional', kwargs={
@@ -363,7 +363,7 @@ class UserUpdateMembership(UpdateView):
     # success_url = '/users/'
     section = "Membership"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('update_membership', kwargs={
@@ -383,7 +383,7 @@ class UserUpdatePhone(UpdateView):
     # success_url = '/users/'
     section = "Phone"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('listing_phone', kwargs={
@@ -403,7 +403,7 @@ class UserUpdateEmail(UpdateView):
     # success_url = '/users/'
     section = "Alternate Email"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('listing_email', kwargs={
@@ -423,7 +423,7 @@ class UserUpdateAddress(UpdateView):
     # success_url = '/users/'
     section = "Address"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('listing_address', kwargs={
@@ -443,7 +443,7 @@ class UserUpdateSocialMedia(UpdateView):
     # success_url = '/users/'
     section = "Social Media"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('listing_social_media', kwargs={
@@ -463,7 +463,7 @@ class UserUpdateJob(UpdateView):
     # success_url = '/users/'
     section = "Job Profile"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('listing_job', kwargs={
@@ -483,7 +483,7 @@ class UserUpdateSkill(UpdateView):
     # success_url = '/users/'
     section = "Skill Profile"
     title = 'update'
-    button = 'update'
+    button = 'Update'
 
     def get_success_url(self):
         return reverse('listing_skill', kwargs={
