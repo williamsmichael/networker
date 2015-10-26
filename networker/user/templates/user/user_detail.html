@@ -15,10 +15,10 @@
 <div>
 	{# ---------------------------------------------------------------image #}
 	{% if member.profile_image %}
-	<img src="{{ member.profile_image.url }}">
+	<img src="{{ member.profile_image.url }}" alt="{{ member.user_extension.first_name }} {{ member.user_extension.last_name }} profile image" class="img-rounded">
 	
 	{% else %}
-	<img src="https://unsplash.it/150/150/?random">
+	<img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-rounded">
 	
 	{% endif %}
 
