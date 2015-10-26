@@ -130,7 +130,8 @@ except ImportError:
 #####################
 # REDIRECT TO LOGIN #
 #####################
-LOGIN_URL = '/users/login/'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 
 
 

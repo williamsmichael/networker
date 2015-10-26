@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User, Group
 
@@ -17,6 +18,7 @@ def test1(request):
 	return render(request, 'group/test.html', {'membership': membership})
 
 
+@login_required
 def listing_user_groups(request):
 	# get the groups for the login user
 	current_user = request.user
@@ -28,6 +30,7 @@ def listing_user_groups(request):
 	# return HttpResponse("test")
 
 
+@login_required
 def listing_group(request):
 	""" List of all group(s) for the login user """
 	groups = NetworkerGroup.objects.all()

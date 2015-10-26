@@ -22,6 +22,7 @@ def index(request):
 
 
 # -------------------------------------------------------------------------map
+@login_required
 def map(request):
     """ Navigates to and displays the google map api """
 
@@ -76,6 +77,7 @@ def map(request):
     return render(request, 'user/map.html', {})
 
 
+@login_required
 def test_ajax(request):
     """ Write JSON file for UserAddress """
     # with open("ajax/user_address.json", "w") as out:
@@ -184,6 +186,7 @@ class ListingSkill(ListView):
 
 
 # ---------------------------------------------------------------------details
+@login_required
 def UserDetail(request, pk):
     """ Details of a user """
     # """ is_staff: List of all users """
@@ -635,7 +638,7 @@ def user_logout(request):
     # Take the user back to the homepage
     return HttpResponseRedirect('/')
 
-
+@login_required
 def invite(request):
     """ Invite user to a group """
     successful_invite = False
