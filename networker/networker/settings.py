@@ -40,11 +40,13 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     # third party apps
     'crispy_forms',
+    'registration',
 
     # networker apps
     'group',
@@ -133,15 +135,19 @@ try:
 except ImportError:
     pass
 
-#####################
-# REDIRECT TO LOGIN #
-#####################
+
+
+# login and redirect
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
-
 # django crispy forms bootstrap
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# django-registration-redux
+ACCOUNT_ACTIVATION_DAYS = 7 
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
 
 
 

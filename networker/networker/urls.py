@@ -20,6 +20,7 @@ urlpatterns = [
 
 
     # ----------------------------------------------------------authentication
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^register/$', 'user.views.register', name='register'),
     url(r'^login/$', 'user.views.user_login', name='login'),
     url(r'^restricted/$', 'user.views.restricted', name='restricted'),
