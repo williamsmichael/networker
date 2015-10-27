@@ -9,6 +9,7 @@
 __pycache__/
 *.pyc
 
+
 ### Django ###
 ##############
 local_settings.py

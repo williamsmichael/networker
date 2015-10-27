@@ -28,6 +28,7 @@
     {% include "base_nav.html" %}
 
     <main class="container">
+
         {% block header %}
           <div class="page-header">
               <h2>{% block heading %}{% endblock heading %}</h2>
@@ -41,12 +42,22 @@
             {% block list_view_form %}{% endblock list_view_form %}
             
         {% endblock content %}
+
     </main>
 
     <footer class="footer">
-      <div class="container">
-        <p class="text-muted text-right">&copy; 2015 networker by michael williams</p>
-      </div>
+
+        <div class="container">
+
+            <p class="text-muted text-right">
+
+                &copy; 2015 networker by michael williams
+                <a href="https://twitter.com/michael_mdw">
+                  <span class="icon-twitter"></span>
+                </a>
+
+            </p>
+        </div>
     </footer>
 
     {% include "base_js.html" %}
