@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} groups {% endblock %}
+{% block title %} {{ request.user }} groups {% endblock %}
 
-{# {% block heading %}  Networker Groups {% endblock %} #}
+{% block heading %}  
+{# ------------------------------ #}
+
+{% for x in user_groups %}
+
+	{{ x.website }} <br>
+	{{ x }}
+	
+{# ------------------------------ #}
+{% endfor %}
+
+
+ {% endblock %}
 
 {% block content %}
 
-{% for x, y in user_groups %}
-
-	<h3>{{ x }} {{ y }}</h3>
-	
-{% endfor %}
 
 <br><br><br><br><br>
 

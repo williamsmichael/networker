@@ -22,14 +22,27 @@ def test1(request):
 def listing_user_groups(request):
 	# get the groups for the login user
 	current_user = request.user
-	user_groups = Group.objects.filter(user=request.user).values('networkergroup__welcome_message', 'networkergroup__group_description').distinct()
+	# user_groups = Group.objects.filter(user=request.user).values('networkergroup__welcome_message', 'networkergroup__group_description').distinct()
+	# user_groups = request.user.groups.values("networkergroup__welcome_message")
+
+	# user_groups = Group.objects.all().select_related().filter(user=request.user)
+	# user_groups = NetworkerGroup.objects.filter(user__username=request.user)
 	# networker_groups = user_groups.annotate(networkergroup)
 
-	print(user_groups)
-	# print(networker_groups)
+	user_groups = Group.objects.all().filter(user=request.user)
+	id_list = []
+	for attribute in user_groups:
+		# print(attribute.welcome_message)
+		# print(attribute.id)
+		id_list.append(attribute.id)
+		    
+	# print(id_list)
 
-	return render(request, 'group/test.html', {'user_groups': user_groups})
+	avail_groups = NetworkerGroup.objects.all().select_related().filter(pk__in=id_list)
+	print(avail_groups)
+	# return render(request, 'group/test.html', {'user_groups': user_groups})
 	# return HttpResponse("test")
+	return render(request, 'group/test.html', {'user_groups': avail_groups})
 
 
 @login_required
