@@ -7,7 +7,9 @@
     {% include "base_meta.html" %}
 
     {% block head_base %}
+
         {% include "base_css.html" %}
+    
     {% endblock head_base %}
 
     {% block head_addon %}{% endblock head_addon %}
@@ -28,7 +30,7 @@
     <main class="container">
         {% block header %}
           <div class="page-header">
-              <h1>{% block heading %}{% endblock heading %}</h1>
+              <h2>{% block heading %}{% endblock heading %}</h2>
           </div>
         {% endblock header %}
 
