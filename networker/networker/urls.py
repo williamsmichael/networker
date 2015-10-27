@@ -29,11 +29,11 @@ urlpatterns = [
 
 
     # -------------------------------------------------------------------group
-    url(r'^groups/', include('group.urls')),
+    url(r'^membership/', include('group.urls')),
 
 
     # --------------------------------------------------------------------user
-    url(r'^users/', include('user.urls')),
+    url(r'^directory/', include('user.urls')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

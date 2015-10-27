@@ -140,7 +140,7 @@ except ImportError:
 
 # login and redirect
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/groups/'
+LOGIN_REDIRECT_URL = '/membership/'
 
 # django crispy forms bootstrap
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

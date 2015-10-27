@@ -5,54 +5,50 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User, Group
 
 from .models import NetworkerGroup, Group
-# from user.models import NetworkerUser
 
 
-def test1(request):
-	current_user = request.user
-	membership = User.objects.get(pk=current_user.pk)
-	groups = membership.groups.all()
-
-	print(groups)
-	# return HttpResponse("test")
-	return render(request, 'group/test.html', {'membership': membership})
-
+    # -----------------------------------------------------------------listing
 
 @login_required
 def listing_membership(request):
 	# get the groups for the login user
-	current_user = request.user
-	# user_groups = Group.objects.filter(user=request.user).values('networkergroup__welcome_message', 'networkergroup__group_description').distinct()
-	# user_groups = request.user.groups.values("networkergroup__welcome_message")
 
-	# user_groups = Group.objects.all().select_related().filter(user=request.user)
-	# user_groups = NetworkerGroup.objects.filter(user__username=request.user)
-	# networker_groups = user_groups.annotate(networkergroup)
-
+	# query auth group(s) for login user
 	user_groups = Group.objects.all().filter(user=request.user)
+
+	# get the ids for the auth groups of the login user
 	id_list = []
 	for attribute in user_groups:
-		# print(attribute.welcome_message)
-		# print(attribute.id)
-		id_list.append(attribute.id)
-		    
-	# print(id_list)
 
+		id_list.append(attribute.id)
+
+	# query the extended networkergroup details by pk
 	avail_groups = NetworkerGroup.objects.all().select_related().filter(pk__in=id_list)
-	print(avail_groups)
-	# return render(request, 'group/test.html', {'user_groups': user_groups})
-	# return HttpResponse("test")
+
 	return render(request, 'group/test.html', {'user_groups': avail_groups})
 
+    
+    # ------------------------------------------------------------------unused
 
-@login_required
-def listing_group(request):
-	""" List of all group(s) for the login user """
-	groups = NetworkerGroup.objects.all()
-	# group = NetworkerGroup.objects.get(group_extension__name="Synergy Consultants, LLC")
-    # users = group.group_extension.user_set.all()
-    # print(users)
 
-    # import pdb; pdb.set_trace()
+# @login_required
+# def listing_group(request):
+# 	""" List of all group(s) for the login user """
+# 	groups = NetworkerGroup.objects.all()
+# 	# group = NetworkerGroup.objects.get(group_extension__name="Synergy Consultants, LLC")
+#     # users = group.group_extension.user_set.all()
+#     # print(users)
 
-	return render(request, 'group/group_list.html', {'groups': groups})
+#     # import pdb; pdb.set_trace()
+
+# 	return render(request, 'group/group_list.html', {'groups': groups})
+
+
+# def test1(request):
+# 	current_user = request.user
+# 	membership = User.objects.get(pk=current_user.pk)
+# 	groups = membership.groups.all()
+
+# 	print(groups)
+# 	# return HttpResponse("test")
+	# return render(request, 'group/test.html', {'membership': membership})

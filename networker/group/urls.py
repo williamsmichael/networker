@@ -1,10 +1,17 @@
-""" user app URL Configuration """
+""" group app URL Configuration """
 
 from django.conf.urls import url
 
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.listing_group, name='listing_group'),
-    url(r'^membership/', 'group.views.listing_membership', name='listing_membership'),
+
+	# ----------------------------------------------------------------listview
+    url(r'^$', 'group.views.listing_membership', name='listing_membership'),
+
+
+    # ------------------------------------------------------------------unused
+    # url(r'^$', views.listing_group, name='listing_group'),
+
 ]
+

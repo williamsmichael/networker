@@ -8,7 +8,6 @@ from . import views
 
 urlpatterns = [
 
-
     # ----------------------------------------------------------------listview
     url(r'^$', login_required(views.ListingUser.as_view(template_name='user/user_list.html')), name='listing_user'),
     url(r'^(?P<pk>[0-9]+)/phone$', login_required(views.ListingPhone.as_view(template_name='user/userphone_list.html')), name='listing_phone'),
