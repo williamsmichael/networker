@@ -19,7 +19,7 @@ def test1(request):
 
 
 @login_required
-def listing_user_groups(request):
+def listing_membership(request):
 	# get the groups for the login user
 	current_user = request.user
 	# user_groups = Group.objects.filter(user=request.user).values('networkergroup__welcome_message', 'networkergroup__group_description').distinct()
