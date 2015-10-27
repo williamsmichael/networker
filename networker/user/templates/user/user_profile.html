@@ -23,7 +23,7 @@
 	{% endif %}
 
 	{# ----------------------------------------------------------------main #}
-	<h2>
+	<h4>
 		Main
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -32,7 +32,7 @@
 		</a>
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 		<li>ids: {{ member.user_extension.id }} &vrtri; {{ member.id }} </li>
@@ -49,7 +49,7 @@
 	</ul>
 
 	{# ----------------------------------------------------------additional #}
-	<h2>
+	<h4>
 		Additional
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -58,7 +58,7 @@
 		</a>
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 		<li>relationship to group: {{ member.relationship_to_group | default:"none" }}</li>
@@ -69,7 +69,7 @@
 	</ul>
 
 	{# ----------------------------------------------------------membership #}
-	<h2>
+	<h4>
 		Membership
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -78,9 +78,7 @@
 		</a>
 
 		{% endif %}
-	</h2>
-	
-	
+	</h4>
 
 	<ul>
 		{% for group in member.user_extension.groups.all %}
@@ -90,7 +88,7 @@
 	</ul>
 
 	{# ---------------------------------------------------------------phone #}
-	<h2>
+	<h4>
 		Phone
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -99,7 +97,7 @@
 		</a> 
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 	{% for phone in member.userphone_set.all %}
@@ -126,7 +124,7 @@
 	</ul>
 
 	{# ---------------------------------------------------------------email #}
-	<h2>
+	<h4>
 		Alternate Email
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -135,7 +133,7 @@
 		</a>  
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 	{% for email in member.useremail_set.all %}
@@ -161,7 +159,7 @@
 	</ul>
 
 	{# -------------------------------------------------------------address #}
-	<h2>
+	<h4>
 		Address
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -170,7 +168,7 @@
 		</a> 
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 	{% for address in member.useraddress_set.all %}
@@ -196,7 +194,7 @@
 	</ul>
 
 	{# --------------------------------------------------------social media #}
-	<h2>
+	<h4>
 		Social Profile
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -205,7 +203,7 @@
 		</a> 
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 	{% for social_media in member.usersocialmedia_set.all %}
@@ -231,7 +229,7 @@
 	</ul>
 
 	{# -----------------------------------------------------------------job #}
-	<h2>
+	<h4>
 		Job Profile
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -240,7 +238,7 @@
 		</a>
 
 		{% endif %} 
-	</h2>
+	</h4>
 
 	<ul>
 	{% for job in member.userjob_set.all %}
@@ -266,7 +264,7 @@
 	</ul>
 
 	{# ---------------------------------------------------------------skill #}
-	<h2>
+	<h4>
 		Skill Profile
 
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
@@ -275,7 +273,7 @@
 		</a> 
 
 		{% endif %}
-	</h2>
+	</h4>
 
 	<ul>
 	{% for skill in member.userskill_set.all %}
