@@ -8,7 +8,6 @@ from django.conf import settings
 
 urlpatterns = [
 
-
     # -----------------------------------------------------------admin + index
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'user.views.index', name='index'),
@@ -16,7 +15,6 @@ urlpatterns = [
 
     # ---------------------------------------------------------------------map
     url(r'^map/$', 'user.views.map', name='map'),
-    url(r'^ajax/$', 'user.views.test_ajax', name='test_ajax'),
 
 
     # ----------------------------------------------------------authentication
@@ -37,3 +35,7 @@ urlpatterns = [
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+    # ------------------------------------------------------------------unused
+    # url(r'^ajax/$', 'user.views.test_ajax', name='test_ajax'),

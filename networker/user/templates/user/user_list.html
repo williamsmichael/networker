@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} members {% endblock %}
+{% block title %} directory {% endblock %}
 
 {% block heading %}
 
-	Members
+	Directory
 
 	{% if user.is_authenticated and user.is_staff %}
 	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
@@ -26,7 +26,7 @@
                     <th>#</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Username</th>
+                    <th class="hidden-xs">Username</th>
                     <th class='hidden-xs'>Last Login</th>
                     <th>Image</th>
                 </tr>
@@ -43,7 +43,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ user.user_extension.first_name }}</td>
                     <td>{{ user.user_extension.last_name }}</td>
-                    <td>{{ user.user_extension.username }}</td>
+                    <td class="hidden-xs">{{ user.user_extension.username }}</td>
                     <td class="hidden-xs">{{ user.user_extension.last_login | timesince }}</td>
 
                     {% if user.profile_image %}

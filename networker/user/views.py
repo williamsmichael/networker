@@ -77,37 +77,9 @@ def map(request):
     return render(request, 'user/map.html', {})
 
 
-@login_required
-def test_ajax(request):
-    """ Write JSON file for UserAddress """
-    # with open("ajax/user_address.json", "w") as out:
-    #     json_serializer = serializers.get_serializer('json')()
-    #     json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
-
-    # all_objects = list(NetworkerUser.objects.all()) + list(UserAddress.objects.all())
-    # data = serializers.serialize('json', all_objects, fields=('first_name', 'user_id', 'latitude_api','longitude_api'))
-    
-
-
-    # Have address get firstName, lastName, profile, address
-    # address_id : user_id
-    # user = NetworkerUser.get_object(id=user_id).user_extension
-
-    # NetworkUser.objects.all()prefetch_related('NetworkerUser__User')
-
-    # all_objects = list(UserAddress.objects.filter(user_id__user_extension__first_name="Michael"))
-
-    all_objects = NetworkerUser.objects.all().prefetch_related('user_extension')
-    data = serializers.serialize('json', all_objects, indent=4)
-
-    # data = serializers.serialize('json', NetworkerUser.objects.all(), fields=('user_id', 'latitude_api','longitude_api'))
-    # return HttpResponse(json.dumps(data), content_type = 'application/json')
-    return HttpResponse(data)
-
-
-# -----------------------------------------------------------------------lists
+# ---------------------------------------------------------------------listing
 class ListingUser(ListView):
-    """ List of all users """
+    """ List of all users for a login user group """
     model = NetworkerUser
 
 
@@ -678,6 +650,34 @@ def invite(request):
 
 
 # ----------------------------------------------------------------------unused
+# @login_required
+# def test_ajax(request):
+#     """ Write JSON file for UserAddress """
+#     # with open("ajax/user_address.json", "w") as out:
+#     #     json_serializer = serializers.get_serializer('json')()
+#     #     json_serializer.serialize(UserAddress.objects.all(), fields=('first_name', 'user_id', 'city_town', 'state_province', 'latitude_api','longitude_api'), stream=out)
+
+#     # all_objects = list(NetworkerUser.objects.all()) + list(UserAddress.objects.all())
+#     # data = serializers.serialize('json', all_objects, fields=('first_name', 'user_id', 'latitude_api','longitude_api'))
+    
+
+
+#     # Have address get firstName, lastName, profile, address
+#     # address_id : user_id
+#     # user = NetworkerUser.get_object(id=user_id).user_extension
+
+#     # NetworkUser.objects.all()prefetch_related('NetworkerUser__User')
+
+#     # all_objects = list(UserAddress.objects.filter(user_id__user_extension__first_name="Michael"))
+
+#     all_objects = NetworkerUser.objects.all().prefetch_related('user_extension')
+#     data = serializers.serialize('json', all_objects, indent=4)
+
+#     # data = serializers.serialize('json', NetworkerUser.objects.all(), fields=('user_id', 'latitude_api','longitude_api'))
+#     # return HttpResponse(json.dumps(data), content_type = 'application/json')
+#     return HttpResponse(data)
+
+
 # class DeletePhone(DeleteView):
 #     model = UserPhone
 #     success_url = '/users/'

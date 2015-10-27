@@ -16,7 +16,7 @@
             {% if user.is_authenticated %}
             <ul class="nav navbar-nav">
                 <li class="active visible-xs"><a href="{% url 'user_profile' user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
-                <li><a href="{% url 'listing_membership' %}">Membership</a></li>
+                <li><a href="{% url 'listing_group' %}">Membership</a></li>
                 <li><a href="{% url 'listing_user' %}">Directory</a></li>
                 <li><a href="{% url 'map' %}">Map</a></li>
                 {% block nav_addon %}{% endblock nav_addon %}

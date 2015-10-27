@@ -3,16 +3,6 @@
 div.page-header {
   margin-top: 0;
 }
-img.profile {
-	max-width: 150px;
-	margin-right: 10px;
-	margin-bottom: 20px;
-	float: right;
-}
-img.img-list {
-	width: 50px;
-	float: none;
-}
 li {
 	list-style: none;
 }
@@ -21,7 +11,20 @@ tbody tr {
 }
 
 
-/*--------------------------------------------------------------------icons */
+/*-------------------------------------------------------------------images */
+img.profile {
+  max-width: 150px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  float: right;
+}
+img.img-list {
+  width: 50px;
+  float: none;
+}
+
+
+/*--------------------------------------------------------------------fonts */
 .glyphicon {
   color: #339966;
 }

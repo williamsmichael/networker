@@ -3,11 +3,17 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from .models import NetworkerGroup, Group
 
 
-    # -----------------------------------------------------------------listing
+# ---------------------------------------------------------------------listing
+class ListingGroup(ListView):
+    """ List of all groups for a login user """
+    model = NetworkerGroup
+
 
 @login_required
 def listing_membership(request):
@@ -23,9 +29,9 @@ def listing_membership(request):
 		id_list.append(attribute.id)
 
 	# query the extended networkergroup details by pk
-	avail_groups = NetworkerGroup.objects.all().select_related().filter(pk__in=id_list)
+	group_list = NetworkerGroup.objects.all().select_related().filter(pk__in=id_list)
 
-	return render(request, 'group/test.html', {'user_groups': avail_groups})
+	return render(request, 'group/group_list.html', {'group_list': group_list})
 
     
     # ------------------------------------------------------------------unused
