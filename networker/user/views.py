@@ -258,7 +258,7 @@ class UserUpdateMain(UpdateView):
 
 
 class UserUpdateAdditional(UpdateView):
-    """ Update networker-user-extension details for a user """
+    """ Update networker user_extension details for a user """
     model = NetworkerUser
     fields = '__all__'
     # success_url = '/users/'

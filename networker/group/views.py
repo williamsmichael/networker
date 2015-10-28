@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Count
 
 
-from .models import NetworkerGroup, Group
+from .models import Group, NetworkerGroup
 
 
 #----------------------------------------------------------------group profile
@@ -78,6 +78,21 @@ class GroupUpdateMain(UpdateView):
 
     def get_success_url(self):
         return reverse('update_main_group', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class GroupUpdateAdditional(UpdateView):
+    """ Update networker group_extension details for a login user group """
+    model = NetworkerGroup
+    fields = '__all__'
+    # success_url = '.'
+    section = "Additional"
+    title = 'update'
+    button = 'Update'
+
+    def get_success_url(self):
+        return reverse('update_additional_group', kwargs={
             'pk': self.object.pk,
         })
 
