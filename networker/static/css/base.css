@@ -9,6 +9,10 @@ li {
 tbody tr {
   cursor: pointer;
 }
+#updated {
+  display: none;
+  margin-top: 10px;
+}
 
 
 /*-------------------------------------------------------------------images */
