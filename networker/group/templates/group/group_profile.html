@@ -66,7 +66,11 @@
 	<h4>Members <span class="badge">{{ membership.group_extension.user_set.all | length }}</span></h4>
 	<ul>
 		{% for member in membership.group_extension.user_set.all %}
-		<li>{{ member }}, {{ member.email }}</li>	
+
+		<a href="{% url 'user_profile' member.pk %}">
+			<li>{{ member.first_name }} {{ member.last_name }}</li>	
+		</a>
+		
 		{% endfor %}
 	</ul>
 
