@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
 
+
     # ----------------------------------------------------------------listview
     url(r'^$', login_required(views.ListingUser.as_view(template_name='user/user_list.html')), name='listing_user'),
     url(r'^(?P<pk>[0-9]+)/phone$', login_required(views.ListingPhone.as_view(template_name='user/userphone_list.html')), name='listing_phone'),
@@ -18,7 +19,11 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/skill$', login_required(views.ListingSkill.as_view(template_name='user/userskill_list.html')), name='listing_skill'),
 
 
-    # ---------------------------------------------------------updateview user
+    # ------------------------------------------------------------user profile
+    url(r'^(?P<pk>[0-9]+)/$', views.UserProfile, name='user_profile'),
+
+
+    # --------------------------------------------------------------updateview
     url(r'^(?P<pk>[0-9]+)/$', views.UserProfile, name='user_profile'),
     url(r'^(?P<pk>[0-9]+)/additional$',
         login_required(views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html')), name='update_additional'),

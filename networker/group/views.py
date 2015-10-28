@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
@@ -7,7 +7,16 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.db.models import Count
 
+
 from .models import NetworkerGroup, Group
+
+
+#----------------------------------------------------------------group profile
+@login_required
+def GroupProfile(request, pk):
+
+	membership = get_object_or_404(NetworkerGroup, pk=pk)
+	return render(request, 'group/group_profile.html', {'membership': membership})
 
 
 # ---------------------------------------------------------------------listing
@@ -50,9 +59,10 @@ def listing_group(request):
 	# data = [group_list, member_count_list]
 
 	# print(member_count_list)
-	return render(request, 'group/group_list.html', {'group_list': group_list})
+
 	# return render(request, 'group/group_list.html', {'data': data})
-    
+	return render(request, 'group/group_list.html', {'group_list': group_list})
+
 
 # ----------------------------------------------------------------------unused
 # class ListingGroup(ListView):

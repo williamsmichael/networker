@@ -9,7 +9,7 @@
 
 	{% if user.is_authenticated and user.is_staff %}
 	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
 
 	{% endif %}
@@ -41,7 +41,6 @@
                 {% block list_view_form %}
 
                     <td>{{ forloop.counter }}</td>
-</button>
                     <td>{{ user.user_extension.first_name }}</td>
                     <td>{{ user.user_extension.last_name }}</td>
                     <td class="hidden-xs">{{ user.user_extension.username }}</td>

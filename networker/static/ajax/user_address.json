@@ -1,6 +1,18 @@
 [
     {
         "fields": {
+            "first_name": "Michael",
+            "city_town": "Jacksonville",
+            "last_name": "Williams",
+            "profile_image": "images/mw/avatarMe.png",
+            "pk": 1,
+            "latitude_api": 30.306437,
+            "longitude_api": -81.631496,
+            "state_province": "FL"
+        }
+    },
+    {
+        "fields": {
             "first_name": "Brian",
             "city_town": "Sugarcreek",
             "last_name": "Foxtrot",
@@ -57,18 +69,6 @@
             "latitude_api": 34.158494,
             "longitude_api": -118.295409,
             "state_province": "CA"
-        }
-    },
-    {
-        "fields": {
-            "first_name": "Michael",
-            "city_town": "Jacksonville",
-            "last_name": "Williams",
-            "profile_image": "images/mw/avatarMe.png",
-            "pk": 1,
-            "latitude_api": 30.306437,
-            "longitude_api": -81.631496,
-            "state_province": "FL"
         }
     },
     {

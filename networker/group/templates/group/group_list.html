@@ -32,9 +32,7 @@
             <tbody>
             {% for group in group_list %} 
 
-                {# <tr class='clickable-row' data-href='{% url 'group_profile' group.group_extension.pk %}'> #}
-                
-                <tr>
+                <tr class='clickable-row' data-href='{% url 'group_profile' group.group_extension.pk %}'>
 
                 {% block list_view_form %}
 

@@ -21,60 +21,22 @@ def index(request):
     return render(request, 'index.html', {})
 
 
-# -------------------------------------------------------------------------map
+# ----------------------------------------------------------------user profile
 @login_required
-def map(request):
-    """ Navigates to and displays the google map api """
+def UserProfile(request, pk):
+    """ Details of a user """
+    # """ is_staff: List of all users """
+    # if request.user.is_authenticated() and request.user.is_staff:
+    # print(NetworkerUser.objects.all())
+    # for networker_user in NetworkerUser.objects.all():
+    #     print(networker_user.user_extension.first_name)
+    # users = NetworkerUser.objects.all()
+    # return render(request, 'user/user_profile.html', {'users': users})
+    # else:
+    #     return HttpResponse("Unauthorized Access!")
 
-    # creates custom json file for map api
-    # address will not populate without establishing a UserAddress pk
-    with open('static/ajax/user_address.json', 'w') as out:
-        
-        lst = []
-        address_object = UserAddress.objects.all().select_related()
-
-        for info in address_object:
-
-            dict = {}
-            
-            # fields from AuthUser, NetworkerUser, UserAddress models
-            pk = info.user_id.user_extension.pk
-            first_name = info.user_id.user_extension.first_name
-            if not first_name:
-                first_name = info.user_id.user_extension.username
-            last_name = info.user_id.user_extension.last_name
-            if not last_name:
-                last_name = info.user_id.user_extension.username
-            profile_image = info.user_id.profile_image
-            city_town = info.city_town
-            state_province = info.state_province
-            latitude_api = info.latitude_api
-            longitude_api = info.longitude_api
-
-            dict["fields"] = {
-                "pk": pk, 
-                "first_name": first_name, 
-                "last_name":last_name, 
-                "profile_image": str(profile_image), 
-                "city_town": city_town,
-                "state_province": state_province,
-                "latitude_api": latitude_api,
-                "longitude_api": longitude_api
-            }
-
-            lst.append(dict)
-
-        # print(lst)
-        # print(dict["5"]["first_name"])
-        # print(dict)
-        json.dump(lst, out, indent=4)
-
-    # # write json file directly from the UserAddress model for map api
-    # with open("static/ajax/user_address.json", "w") as out:
-    #     json_serializer = serializers.get_serializer('json')()
-    #     json_serializer.serialize(UserAddress.objects.select_related().all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api', 'first_name'), stream=out, indent=4)
-
-    return render(request, 'user/map.html', {})
+    user = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/user_profile.html', {'member': user})
 
 
 # ---------------------------------------------------------------------listing
@@ -155,24 +117,6 @@ class ListingSkill(ListView):
     def get_queryset(self):
         # import pdb; pdb.set_trace()
         return self.queryset.filter(user_id=self.request.user.networkeruser)
-
-
-# ---------------------------------------------------------------------details
-@login_required
-def UserProfile(request, pk):
-    """ Details of a user """
-    # """ is_staff: List of all users """
-    # if request.user.is_authenticated() and request.user.is_staff:
-    # print(NetworkerUser.objects.all())
-    # for networker_user in NetworkerUser.objects.all():
-    #     print(networker_user.user_extension.first_name)
-    # users = NetworkerUser.objects.all()
-    # return render(request, 'user/user_profile.html', {'users': users})
-    # else:
-    #     return HttpResponse("Unauthorized Access!")
-
-    user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/user_profile.html', {'member': user})
 
 
 # ----------------------------------------------------------------------create
@@ -461,6 +405,62 @@ class UserUpdateSkill(UpdateView):
         return reverse('listing_skill', kwargs={
             'pk': self.object.user_id.pk,
         })
+
+
+# -------------------------------------------------------------------------map
+@login_required
+def map(request):
+    """ Navigates to and displays the google map api """
+
+    # creates custom json file for map api
+    # address will not populate without establishing a UserAddress pk
+    with open('static/ajax/user_address.json', 'w') as out:
+        
+        lst = []
+        address_object = UserAddress.objects.all().select_related()
+
+        for info in address_object:
+
+            dict = {}
+            
+            # fields from AuthUser, NetworkerUser, UserAddress models
+            pk = info.user_id.user_extension.pk
+            first_name = info.user_id.user_extension.first_name
+            if not first_name:
+                first_name = info.user_id.user_extension.username
+            last_name = info.user_id.user_extension.last_name
+            if not last_name:
+                last_name = info.user_id.user_extension.username
+            profile_image = info.user_id.profile_image
+            city_town = info.city_town
+            state_province = info.state_province
+            latitude_api = info.latitude_api
+            longitude_api = info.longitude_api
+
+            dict["fields"] = {
+                "pk": pk, 
+                "first_name": first_name, 
+                "last_name":last_name, 
+                "profile_image": str(profile_image), 
+                "city_town": city_town,
+                "state_province": state_province,
+                "latitude_api": latitude_api,
+                "longitude_api": longitude_api
+            }
+
+            lst.append(dict)
+
+        # print(lst)
+        # print(dict["5"]["first_name"])
+        # print(dict)
+        json.dump(lst, out, indent=4)
+
+    # # write json file directly from the UserAddress model for map api
+    # with open("static/ajax/user_address.json", "w") as out:
+    #     json_serializer = serializers.get_serializer('json')()
+    #     json_serializer.serialize(UserAddress.objects.select_related().all(), fields=('user_id', 'address_category_id', 'city_town', 'state_province', 'latitude_api','longitude_api', 'first_name'), stream=out, indent=4)
+
+    return render(request, 'user/map.html', {})
 
 
 # --------------------------------------------------------------authentication
