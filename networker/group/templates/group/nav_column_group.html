@@ -1,0 +1,11 @@
+{% load static from staticfiles %}
+
+<section class="col-xs-6 col-sm-4 sidebar-offcanvas" id="sidebar">
+
+	<div class="list-group">
+
+		<a href="{% url 'update_main_group' user.pk %}" class="list-group-item">Main</a>
+		<a href="{% url 'group_profile' group.pk %}" class="active list-group-item">Full Profile <span class="sr-only">(current)</span></a>
+
+	</div>
+</section><!--/.sidebar-offcanvas-->

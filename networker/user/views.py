@@ -35,8 +35,8 @@ def UserProfile(request, pk):
     # else:
     #     return HttpResponse("Unauthorized Access!")
 
-    user = get_object_or_404(NetworkerUser, pk=pk)
-    return render(request, 'user/user_profile.html', {'member': user})
+    member = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/user_profile.html', {'member': member})
 
 
 # ---------------------------------------------------------------------listing

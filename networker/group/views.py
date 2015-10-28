@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.core.urlresolvers import reverse
 from django.db.models import Count
 
 
@@ -14,6 +15,7 @@ from .models import NetworkerGroup, Group
 #----------------------------------------------------------------group profile
 @login_required
 def GroupProfile(request, pk):
+	""" Details of a group """
 
 	membership = get_object_or_404(NetworkerGroup, pk=pk)
 	return render(request, 'group/group_profile.html', {'membership': membership})
@@ -22,7 +24,7 @@ def GroupProfile(request, pk):
 # ---------------------------------------------------------------------listing
 @login_required
 def listing_group(request):
-	# get the groups for the login user
+	""" List of all group for a login user """
 
 	# query auth group(s) for login user
 	user_groups = Group.objects.all().filter(user=request.user)
@@ -62,6 +64,22 @@ def listing_group(request):
 
 	# return render(request, 'group/group_list.html', {'data': data})
 	return render(request, 'group/group_list.html', {'group_list': group_list})
+
+
+# ----------------------------------------------------------------------update
+class GroupUpdateMain(UpdateView):
+    """ Update auth-group details for a login user group """
+    model = Group
+    fields = ['name']
+    # success_url = '.'
+    section = "Main"
+    title = 'update'
+    button = 'Update'
+
+    def get_success_url(self):
+        return reverse('update_main_group', kwargs={
+            'pk': self.object.pk,
+        })
 
 
 # ----------------------------------------------------------------------unused

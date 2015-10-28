@@ -24,11 +24,10 @@ urlpatterns = [
 
 
     # --------------------------------------------------------------updateview
-    url(r'^(?P<pk>[0-9]+)/$', views.UserProfile, name='user_profile'),
-    url(r'^(?P<pk>[0-9]+)/additional$',
-        login_required(views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html')), name='update_additional'),
     url(r'^(?P<pk>[0-9]+)/main$', login_required(views.UserUpdateMain.as_view(
         template_name='user/create_update_form.html')), name='update_main'),
+    url(r'^(?P<pk>[0-9]+)/additional$',
+        login_required(views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html')), name='update_additional'),
     url(r'^(?P<pk>[0-9]+)/membership$', login_required(views.UserUpdateMembership.as_view(
         template_name='user/create_update_form.html')), name='update_membership'),
 

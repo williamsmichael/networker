@@ -16,6 +16,11 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', views.GroupProfile, name='group_profile'),
 
 
+    # --------------------------------------------------------------updateview
+    url(r'^(?P<pk>[0-9]+)/main$', login_required(views.GroupUpdateMain.as_view(
+        template_name='group/create_update_form_group.html')), name='update_main_group'),
+
+
     # ------------------------------------------------------------------unused
     # url(r'^$', views.listing_group, name='listing_group'),
 	# url(r'^$', login_required(views.ListingGroup.as_view(template_name='group/group_list.html')), name='listing_group'),
