@@ -23,7 +23,7 @@
 
 	{# successful_invite variable established in views.py #}
 	{% if successful_invite %}
-	<p>Invitation Sent!</p>
+	<p class="lead">Invitation Sent!</p>
 	
 	{% else %}
 	<form method="POST" action="">{% csrf_token %}
