@@ -5,7 +5,7 @@
 
 {% block heading %}
 
-	Membership
+	Membership <span class="badge">{{ group_list.count }}</span>
 
 	{% if user.is_authenticated and user.is_staff %}
 	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
@@ -24,43 +24,41 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Group Name</th>
-                    <th>Total Members</th>
-                    <th>Image</th>
+                    <th>Name</th>
+                    <th class="hidden-xs">Total Members</th>
+                    <th class="hidden-xs">Image</th>
                 </tr>
             </thead>
             <tbody>
-            {% for group in networkergroup_list %} 
-
-                {# {% if group.group_extension.is_active == True %} #}
+            {% for group in group_list %} 
 
                 {# <tr class='clickable-row' data-href='{% url 'group_profile' group.group_extension.pk %}'> #}
                 
                 <tr>
-                    
+
                 {% block list_view_form %}
 
                     <td>{{ forloop.counter }}</td>
                     <td>{{ group }}</td>
-                    <td>pending</td>
+                    <td class="hidden-xs">calculating...</td>   
 
                     {% if group.group_image %}
-                    <td><img src="{{ group.group_image.url }}" alt="{{ group }} profile image" class="img-list img-responsive img-rounded"></td>
+                    <td class="hidden-xs"><img src="{{ group.group_image.url }}" alt="{{ group }} profile image" class="img-list img-responsive img-rounded"></td>
 
                     {% else %}
-                    <td><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
+                    <td class="hidden-xs"><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
                     {% endif %}
                  
                 {% endblock list_view_form %}
                 
                 </tr>
 
-                {# {% endif %} #}
             {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
 
 {% endblock content %}
 

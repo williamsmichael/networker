@@ -8,12 +8,12 @@ from . import views
 urlpatterns = [
 
 	# ----------------------------------------------------------------listview
-    url(r'^$', login_required(views.ListingGroup.as_view(template_name='group/group_list.html')), name='listing_group'),
-    # url(r'^$', 'group.views.listing_membership', name='listing_membership'),
+    url(r'^$', 'group.views.listing_group', name='listing_group'),
 
 
     # ------------------------------------------------------------------unused
     # url(r'^$', views.listing_group, name='listing_group'),
+	# url(r'^$', login_required(views.ListingGroup.as_view(template_name='group/group_list.html')), name='listing_group'),
 
 ]
 

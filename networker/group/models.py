@@ -3,9 +3,11 @@ from datetime import datetime
 from user.models import NetworkerUser
 from django.contrib.auth.models import Group
 
+
 # helper function for uploading files to group name path
 def upload_to(instance, filename):
     return 'images/{}/{}'.format(instance.group_extension.name, filename)
+    
 
 class NetworkerGroup(models.Model):
 	""" Main table for Group """
