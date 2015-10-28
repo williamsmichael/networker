@@ -407,6 +407,13 @@ class UserUpdateSkill(UpdateView):
         })
 
 
+# -------------------------------------------------------------------dashboard
+@login_required
+def dashboard(request):
+    """ Navigates to and displays dashboard """
+    return render(request, 'user/dashboard.html', {})
+
+
 # -------------------------------------------------------------------------map
 @login_required
 def map(request):

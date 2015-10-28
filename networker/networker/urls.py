@@ -13,10 +13,6 @@ urlpatterns = [
     url(r'^$', 'user.views.index', name='index'),
 
 
-    # ---------------------------------------------------------------------map
-    url(r'^map/$', 'user.views.map', name='map'),
-
-
     # ----------------------------------------------------------authentication
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^register/$', 'user.views.register', name='register'),
@@ -24,6 +20,14 @@ urlpatterns = [
     url(r'^restricted/$', 'user.views.restricted', name='restricted'),
     url(r'^logout/$', 'user.views.user_logout', name='logout'),
     url(r'^invite/$', 'user.views.invite', name='invite'),
+
+
+    # ---------------------------------------------------------------dashboard
+    url(r'^dashboard/$', 'user.views.dashboard', name='dashboard'),
+
+
+    # ---------------------------------------------------------------------map
+    url(r'^map/$', 'user.views.map', name='map'),
 
 
     # -------------------------------------------------------------------group
