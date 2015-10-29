@@ -83,7 +83,7 @@ class GroupUpdateMain(UpdateView):
 
 
 class GroupUpdateAdditional(UpdateView):
-    """ Update networker group_extension details for a login user group """
+    """ Update networker details for a login user group """
     model = NetworkerGroup
     fields = '__all__'
     # success_url = '.'
@@ -106,8 +106,8 @@ class GroupUpdateAdditional(UpdateView):
 # def listing_group(request):
 # 	""" List of all group(s) for the login user """
 # 	groups = NetworkerGroup.objects.all()
-# 	# group = NetworkerGroup.objects.get(group_extension__name="Synergy Consultants, LLC")
-#     # users = group.group_extension.user_set.all()
+# 	# group = NetworkerGroup.objects.get__name="Synergy Consultants, LLC")
+#     # users = group.user_set.all()
 #     # print(users)
 
 #     # import pdb; pdb.set_trace()

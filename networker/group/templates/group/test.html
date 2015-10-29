@@ -39,13 +39,13 @@
 	<ul>	
 		<li>{{ group.group_description }}</li>
 		<br>
-		<li class='id'>ids: {{ group.id }} &vrtri; {{ group.group_extension.id }}</li>
+		<li class='id'>ids: {{ group.id }} &vrtri; {{ group.id }}</li>
 		<li>website: {{ group.group_website | default:"none" }}</li>
 		<li>organizer: {{ group.group_organizer.user_extension.first_name }} {{ group.group_organizer.user_extension.last_name }}, {{ group.group_organizer.user_extension.email }}</li>
 	</ul>
 	<h4>Members</h4>
 	<ul>
-		{% for member in group.group_extension.user_set.all %}
+		{% for member in group.user_set.all %}
 		<li>{{ member }}, {{ member.email }}</li>	
 		{% endfor %}
 	</ul>

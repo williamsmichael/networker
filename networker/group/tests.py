@@ -14,7 +14,6 @@
 
 # 	def test_group_creation(self):
 # 		networker_group = NetworkerGroup.objects.create(
-# 			group_extension = 1,
 # 			group_organizer = 1,
 # 			group_description = "Makers since 1978",
 # 			welcome_message = "Welcome to our new space!",

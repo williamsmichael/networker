@@ -5,10 +5,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$ZCJETPdBNVpS$EEOQGpVRA+1n1+irbHps94CGZ0YaNAGe6qPWwaNGVPY=",
         "first_name": "Michael",
-        "groups": [
-            1,
-            2
-        ],
         "last_name": "Williams",
         "date_joined": "2015-10-06T03:23:39Z",
         "is_superuser": true,
@@ -26,9 +22,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$UU4VGmXnDhQo$EsM4Or08gZBDV3abUcFVXUBI6LmSeKAUjTXuOkQZz00=",
         "first_name": "Katherine",
-        "groups": [
-            1
-        ],
         "last_name": "Burton",
         "date_joined": "2015-10-06T03:50:27Z",
         "is_superuser": false,
@@ -46,9 +39,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$UU4VGmXnDhQo$EsM4Or08gZBDV3abUcFVXUBI6LmSeKAUjTXuOkQZz00=",
         "first_name": "James",
-        "groups": [
-            1
-        ],
         "last_name": "Christman",
         "date_joined": "2015-10-06T03:50:27Z",
         "is_superuser": false,
@@ -66,9 +56,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$1is8BuRzJ6I3$O5q5tZrNkDqT/VlrL4LWfjHZzHoS2j4XOiCkw1lzpv8=",
         "first_name": "Elizabeth",
-        "groups": [
-            1
-        ],
         "last_name": "Hewitt",
         "date_joined": "2015-10-15T00:45:17.631Z",
         "is_superuser": false,
@@ -86,9 +73,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$0HOnGhdSDd86$xpROG47EUnTD63FPUjWKq6fRnzWuH4jiSMWsHspDv9U=",
         "first_name": "Mary",
-        "groups": [
-            1
-        ],
         "last_name": "Flores",
         "date_joined": "2015-10-19T20:32:14.779Z",
         "is_superuser": false,
@@ -106,9 +90,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$mGaNJUYN7TDc$NGcYeT0XgEfKd8z3KMj9u4HpKKwOLpGONPnPzzqJJ50=",
         "first_name": "Alesia",
-        "groups": [
-            1
-        ],
         "last_name": "Johnson",
         "date_joined": "2015-10-19T21:16:46.402Z",
         "is_superuser": false,
@@ -126,9 +107,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$P1xNNF66EpGp$LzyLtlVWjAq2izNJxO6AejoKg35TjKgta/ITLX47y0Q=",
         "first_name": "Georgina",
-        "groups": [
-            1
-        ],
         "last_name": "Beta",
         "date_joined": "2015-10-19T21:17:11.471Z",
         "is_superuser": false,
@@ -146,9 +124,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$XQhJFzHX2ChE$8xM63qEllINfNkI6VQ0hxXHi93PAnkfL2GAHFKzwMro=",
         "first_name": "Carol",
-        "groups": [
-            1
-        ],
         "last_name": "Mitchell",
         "date_joined": "2015-10-19T21:17:44.904Z",
         "is_superuser": false,
@@ -166,9 +141,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$S7qDiYNZJ4ul$CxzFbh9hMJjnt7v4Jjl4vVBIsxCZxGMp3T+WAXHNk7w=",
         "first_name": "Thomas",
-        "groups": [
-            1
-        ],
         "last_name": "Alexander",
         "date_joined": "2015-10-19T21:24:26.075Z",
         "is_superuser": false,
@@ -186,9 +158,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$kFqjo7a1NMuM$2npagysSbyFZHAjMcU8fKyNjhGsNWDoHxJ9sF0o2nqc=",
         "first_name": "Roland",
-        "groups": [
-            2
-        ],
         "last_name": "Metz",
         "date_joined": "2015-10-20T17:00:56.427Z",
         "is_superuser": false,
@@ -206,9 +175,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$pGqMCyj4b6Yr$RSTAT60Q4UW5CultFOdzK//BtPLaVB5x+qLRsOZXQsw=",
         "first_name": "Brian",
-        "groups": [
-            2
-        ],
         "last_name": "Foxtrot",
         "date_joined": "2015-10-20T22:32:01.174Z",
         "is_superuser": false,
@@ -226,9 +192,6 @@
     "fields": {
         "password": "pbkdf2_sha256$20000$mI6WTKKpRQy7$7TaYHwcsADNbJ/m5LC2jgqoRwhdp/xAtPRpIeGCYb/M=",
         "first_name": "Matthew",
-        "groups": [
-            2
-        ],
         "last_name": "Thomas",
         "date_joined": "2015-10-26T10:07:12Z",
         "is_superuser": false,
