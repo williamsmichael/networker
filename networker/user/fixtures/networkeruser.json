@@ -1,0 +1,1561 @@
+[
+{
+    "pk": 1,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1988-11-01",
+        "profile_image": "images/mw/avatarMe.png",
+        "website": "",
+        "place_of_birth": "Los Angeles, CA, USA",
+        "membership_list": [],
+        "nickname": "Founder",
+        "relationship_to_group": "Founder"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1945-06-22",
+        "profile_image": "images/burton/avatar2.png",
+        "website": "",
+        "place_of_birth": "Mountain View, CA, USA",
+        "membership_list": [],
+        "nickname": "Burtoner",
+        "relationship_to_group": "Partner"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1987-01-22",
+        "profile_image": "images/christman/avatar1.png",
+        "website": "",
+        "place_of_birth": "Apple Valley, MN, USA",
+        "membership_list": [],
+        "nickname": "Christmaner",
+        "relationship_to_group": "Partner"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1980-12-04",
+        "profile_image": "images/hewitt/avatar2.png",
+        "website": "http://www.hewitt.com",
+        "place_of_birth": "Savannah, GA USA",
+        "membership_list": [],
+        "nickname": "hewitter",
+        "relationship_to_group": "Board of Directors"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1949-11-08",
+        "profile_image": "images/machele/avatar2.png",
+        "website": "",
+        "place_of_birth": "Verona, ND, USA",
+        "membership_list": [],
+        "nickname": "floreser",
+        "relationship_to_group": "Vice President"
+    }
+},
+{
+    "pk": 6,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1990-11-22",
+        "profile_image": "images/johnson/avatar2.png",
+        "website": "",
+        "place_of_birth": "Oakland, CA, USA",
+        "membership_list": [],
+        "nickname": "fighall",
+        "relationship_to_group": "Executive"
+    }
+},
+{
+    "pk": 7,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": null,
+        "profile_image": "images/beta/avatar2.png",
+        "website": "",
+        "place_of_birth": "",
+        "membership_list": [],
+        "nickname": "",
+        "relationship_to_group": ""
+    }
+},
+{
+    "pk": 8,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1962-06-23",
+        "profile_image": "images/mitchell/avatar2.png",
+        "website": "http://BloggingReport.com",
+        "place_of_birth": "Sepulveda, CA, USA",
+        "membership_list": [],
+        "nickname": "Hambir",
+        "relationship_to_group": "Agent"
+    }
+},
+{
+    "pk": 9,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1940-05-10",
+        "profile_image": "images/Wrins/avatar1.png",
+        "website": "",
+        "place_of_birth": "Elmsford, NY, USA",
+        "membership_list": [],
+        "nickname": "Wrins",
+        "relationship_to_group": "Investor"
+    }
+},
+{
+    "pk": 10,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1972-02-28",
+        "profile_image": "images/metz/avatar2.png",
+        "website": "http://www.praymaster.com",
+        "place_of_birth": "Charlotte, NC, USA",
+        "membership_list": [],
+        "nickname": "Aftle",
+        "relationship_to_group": "Friend"
+    }
+},
+{
+    "pk": 11,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1966-11-08",
+        "profile_image": "images/foxtrot/avatar1.png",
+        "website": "http://www.pokeropening.com",
+        "place_of_birth": "Sugarcreek, OH, USA",
+        "membership_list": [],
+        "nickname": "Foxtrotter",
+        "relationship_to_group": "Friend"
+    }
+},
+{
+    "pk": 12,
+    "model": "user.networkeruser",
+    "fields": {
+        "date_of_birth": "1994-05-31",
+        "profile_image": "images/thomas/avatar1.png",
+        "website": "http://www.search.com",
+        "place_of_birth": "Akron, OH, 44301",
+        "membership_list": [],
+        "nickname": "thomaser",
+        "relationship_to_group": "Executive"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.phonecategory",
+    "fields": {
+        "phone_category": "Mobile"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.phonecategory",
+    "fields": {
+        "phone_category": "Work"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.phonecategory",
+    "fields": {
+        "phone_category": "Home"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.phonecategory",
+    "fields": {
+        "phone_category": "Fax"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.phonecategory",
+    "fields": {
+        "phone_category": "Other"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "314-269-8780",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 1,
+        "country_code": 1
+    }
+},
+{
+    "pk": 2,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "314-269-1111",
+        "phone_category_id": 2,
+        "remove": false,
+        "user_id": 1,
+        "country_code": 1
+    }
+},
+{
+    "pk": 3,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "503-678-0000",
+        "phone_category_id": 4,
+        "remove": true,
+        "user_id": 1,
+        "country_code": 1
+    }
+},
+{
+    "pk": 4,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "614-293-0033",
+        "phone_category_id": 4,
+        "remove": false,
+        "user_id": 1,
+        "country_code": 1
+    }
+},
+{
+    "pk": 5,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "510-866-8580",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 6,
+        "country_code": 1
+    }
+},
+{
+    "pk": 6,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "234-999-2562",
+        "phone_category_id": 3,
+        "remove": false,
+        "user_id": 7,
+        "country_code": 1
+    }
+},
+{
+    "pk": 7,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "614-293-0022",
+        "phone_category_id": 2,
+        "remove": false,
+        "user_id": 7,
+        "country_code": 1
+    }
+},
+{
+    "pk": 8,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "330-852-8271",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 11,
+        "country_code": 1
+    }
+},
+{
+    "pk": 9,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "701-432-9010",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 5,
+        "country_code": 1
+    }
+},
+{
+    "pk": 10,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "818-895-5397",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 8,
+        "country_code": 1
+    }
+},
+{
+    "pk": 11,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "347-589-6533",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 9,
+        "country_code": 1
+    }
+},
+{
+    "pk": 12,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "704-815-0802",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 10,
+        "country_code": 1
+    }
+},
+{
+    "pk": 13,
+    "model": "user.userphone",
+    "fields": {
+        "phone_number": "330-773-9850",
+        "phone_category_id": 1,
+        "remove": false,
+        "user_id": 12,
+        "country_code": 1
+    }
+},
+{
+    "pk": 1,
+    "model": "user.emailcategory",
+    "fields": {
+        "email_category": "Work"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.emailcategory",
+    "fields": {
+        "email_category": "Home"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.emailcategory",
+    "fields": {
+        "email_category": "Other"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.useremail",
+    "fields": {
+        "email": "willia32@hotmail.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 2,
+    "model": "user.useremail",
+    "fields": {
+        "email": "KatherineDBurton@rhyta.com",
+        "remove": false,
+        "user_id": 2,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 3,
+    "model": "user.useremail",
+    "fields": {
+        "email": "jamesChristman@armyspy.com",
+        "remove": false,
+        "user_id": 3,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 4,
+    "model": "user.useremail",
+    "fields": {
+        "email": "willia32@hotmail.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 5,
+    "model": "user.useremail",
+    "fields": {
+        "email": "willz@gmail.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 1
+    }
+},
+{
+    "pk": 6,
+    "model": "user.useremail",
+    "fields": {
+        "email": "mike@email.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 7,
+    "model": "user.useremail",
+    "fields": {
+        "email": "mike@email.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 8,
+    "model": "user.useremail",
+    "fields": {
+        "email": "mw@email.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 3
+    }
+},
+{
+    "pk": 9,
+    "model": "user.useremail",
+    "fields": {
+        "email": "mw@email.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 3
+    }
+},
+{
+    "pk": 10,
+    "model": "user.useremail",
+    "fields": {
+        "email": "mw@email.com",
+        "remove": true,
+        "user_id": 1,
+        "email_category_id": 3
+    }
+},
+{
+    "pk": 11,
+    "model": "user.useremail",
+    "fields": {
+        "email": "mike@email.com",
+        "remove": false,
+        "user_id": 1,
+        "email_category_id": 3
+    }
+},
+{
+    "pk": 12,
+    "model": "user.useremail",
+    "fields": {
+        "email": "beta_work@work.com",
+        "remove": false,
+        "user_id": 7,
+        "email_category_id": 1
+    }
+},
+{
+    "pk": 13,
+    "model": "user.useremail",
+    "fields": {
+        "email": "beta_home@home.com",
+        "remove": false,
+        "user_id": 7,
+        "email_category_id": 2
+    }
+},
+{
+    "pk": 1,
+    "model": "user.addresscategory",
+    "fields": {
+        "address_category": "Home"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.addresscategory",
+    "fields": {
+        "address_category": "Work"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.addresscategory",
+    "fields": {
+        "address_category": "Other"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -122.686153,
+        "street_address_2": "",
+        "city_town": "Portland",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 45.53055,
+        "state_province": "OR",
+        "street_address_1": "2000 SW Washington Street",
+        "postal_code": "07209",
+        "user_id": 1,
+        "address_category_id": 3
+    }
+},
+{
+    "pk": 2,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -97.016947,
+        "street_address_2": "",
+        "city_town": "Mountain View",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 39.338543,
+        "state_province": "CA",
+        "street_address_1": "1514 Thunder Road",
+        "postal_code": "94041",
+        "user_id": 2,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 3,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -80.223605,
+        "street_address_2": "",
+        "city_town": "Apple Valley",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 39.276383,
+        "state_province": "MN",
+        "street_address_1": "715 Oral Lake Road",
+        "postal_code": "55124",
+        "user_id": 3,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 4,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -81.631496,
+        "street_address_2": "",
+        "city_town": "Jacksonville",
+        "remove": true,
+        "country": "USA",
+        "latitude_api": 30.306437,
+        "state_province": "FL",
+        "street_address_1": "1500 NW Camden Avenue",
+        "postal_code": "43024",
+        "user_id": 1,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 5,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -77.2219096,
+        "street_address_2": "",
+        "city_town": "Gaithersburg",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 39.1184171,
+        "state_province": "MD",
+        "street_address_1": "2819 Timberbrook Lane",
+        "postal_code": "20878",
+        "user_id": 7,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 6,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -122.382487,
+        "street_address_2": "",
+        "city_town": "Oakland",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 37.810064,
+        "state_province": "CA",
+        "street_address_1": "418 Green Avenue",
+        "postal_code": "94608",
+        "user_id": 6,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 7,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -98.036862,
+        "street_address_2": "",
+        "city_town": "Verona",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 46.363996,
+        "state_province": "ND",
+        "street_address_1": "4847 Walnut Drive",
+        "postal_code": "58490",
+        "user_id": 5,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 8,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -72.013087,
+        "street_address_2": "",
+        "city_town": "Norwich",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 41.587346,
+        "state_province": "CT",
+        "street_address_1": "3551 Airplane Avenue",
+        "postal_code": "06360",
+        "user_id": 4,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 9,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -118.295409,
+        "street_address_2": "",
+        "city_town": "Sepulveda",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 34.158494,
+        "state_province": "CA",
+        "street_address_1": "2311 Quiet Valley Lane",
+        "postal_code": "91343",
+        "user_id": 8,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 10,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -73.878427,
+        "street_address_2": "",
+        "city_town": "Elmsford",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 41.1011,
+        "state_province": "NY",
+        "street_address_1": "4763 Dancing Dove Lane",
+        "postal_code": "10523",
+        "user_id": 9,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 11,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -80.829682,
+        "street_address_2": "",
+        "city_town": "Charlotte",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 35.253918,
+        "state_province": "NC",
+        "street_address_1": "4263 Harry Place",
+        "postal_code": "28202",
+        "user_id": 10,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 12,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -81.499653,
+        "street_address_2": "",
+        "city_town": "Akron",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 41.063187,
+        "state_province": "OH",
+        "street_address_1": "774 Rivendell Drive",
+        "postal_code": "44301",
+        "user_id": 12,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 13,
+    "model": "user.useraddress",
+    "fields": {
+        "longitude_api": -81.63339,
+        "street_address_2": "",
+        "city_town": "Sugarcreek",
+        "remove": false,
+        "country": "USA",
+        "latitude_api": 40.462894,
+        "state_province": "OH",
+        "street_address_1": "3783 Rivendell Drive",
+        "postal_code": "44681",
+        "user_id": 11,
+        "address_category_id": 1
+    }
+},
+{
+    "pk": 1,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Facebook"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Foursquare"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Instagram"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Kik Messenger"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "LinkedIn"
+    }
+},
+{
+    "pk": 6,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "ooVoo"
+    }
+},
+{
+    "pk": 7,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Pinterest"
+    }
+},
+{
+    "pk": 8,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Skype"
+    }
+},
+{
+    "pk": 9,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Tumblr"
+    }
+},
+{
+    "pk": 10,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Twitter"
+    }
+},
+{
+    "pk": 11,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Whatsapp"
+    }
+},
+{
+    "pk": 12,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Vine"
+    }
+},
+{
+    "pk": 13,
+    "model": "user.socialmediacategory",
+    "fields": {
+        "social_media_category": "Other"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.usersocialmedia",
+    "fields": {
+        "remove": false,
+        "social_media_url": "http://linkedin.com/in/williamsmichael1",
+        "user_id": 1,
+        "social_media_category_id": 5
+    }
+},
+{
+    "pk": 2,
+    "model": "user.usersocialmedia",
+    "fields": {
+        "remove": false,
+        "social_media_url": "https://twitter.com/michael_mdw",
+        "user_id": 1,
+        "social_media_category_id": 10
+    }
+},
+{
+    "pk": 3,
+    "model": "user.usersocialmedia",
+    "fields": {
+        "remove": false,
+        "social_media_url": "https://twitter.com/burton",
+        "user_id": 2,
+        "social_media_category_id": 10
+    }
+},
+{
+    "pk": 4,
+    "model": "user.usersocialmedia",
+    "fields": {
+        "remove": false,
+        "social_media_url": "https://twitter.com/christman",
+        "user_id": 3,
+        "social_media_category_id": 10
+    }
+},
+{
+    "pk": 5,
+    "model": "user.usersocialmedia",
+    "fields": {
+        "remove": true,
+        "social_media_url": "https://twitter.com/mpleconsulting",
+        "user_id": 1,
+        "social_media_category_id": 10
+    }
+},
+{
+    "pk": 6,
+    "model": "user.usersocialmedia",
+    "fields": {
+        "remove": false,
+        "social_media_url": "http://linkedin.com/in/beta",
+        "user_id": 7,
+        "social_media_category_id": 5
+    }
+},
+{
+    "pk": 1,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Accounting"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Administrative/Clerical"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Arts/Entertainment/Media"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Agriculture/Forestry/Fishing"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Automotive"
+    }
+},
+{
+    "pk": 6,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Biotechnology"
+    }
+},
+{
+    "pk": 7,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Business"
+    }
+},
+{
+    "pk": 8,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Computers"
+    }
+},
+{
+    "pk": 9,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Consulting"
+    }
+},
+{
+    "pk": 10,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Customer Service"
+    }
+},
+{
+    "pk": 11,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Education"
+    }
+},
+{
+    "pk": 12,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Engineering"
+    }
+},
+{
+    "pk": 13,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Executive/Leadership"
+    }
+},
+{
+    "pk": 14,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Facilities"
+    }
+},
+{
+    "pk": 15,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Financial Services"
+    }
+},
+{
+    "pk": 16,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Government"
+    }
+},
+{
+    "pk": 17,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Healthcare"
+    }
+},
+{
+    "pk": 18,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Hospitality"
+    }
+},
+{
+    "pk": 19,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Human Resources"
+    }
+},
+{
+    "pk": 20,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Information Technology"
+    }
+},
+{
+    "pk": 21,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Insurance"
+    }
+},
+{
+    "pk": 22,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Law Enforcement/Fire/Security"
+    }
+},
+{
+    "pk": 23,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Legal"
+    }
+},
+{
+    "pk": 24,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Manufacturing/Production"
+    }
+},
+{
+    "pk": 25,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Marketing"
+    }
+},
+{
+    "pk": 26,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Military"
+    }
+},
+{
+    "pk": 27,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Real Estate"
+    }
+},
+{
+    "pk": 28,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Restaurant/Food Services"
+    }
+},
+{
+    "pk": 29,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Retail/Wholesale"
+    }
+},
+{
+    "pk": 30,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Sales"
+    }
+},
+{
+    "pk": 31,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Science/Research"
+    }
+},
+{
+    "pk": 32,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Telecommunications"
+    }
+},
+{
+    "pk": 33,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Technology"
+    }
+},
+{
+    "pk": 34,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Transportation/Warehouse"
+    }
+},
+{
+    "pk": 35,
+    "model": "user.jobcategory",
+    "fields": {
+        "job_category": "Other"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 8,
+        "job_description": "Programming Skill in Python, Django, HTML, CSS, JavaScript",
+        "company_year_ended": "2015-10-06",
+        "remove": false,
+        "company_state_province": "OR",
+        "company_year_started": "2015-03-01",
+        "company_name": "MPLE Consulting",
+        "is_current": true,
+        "user_id": 1,
+        "job_title": "Developer",
+        "company_country": "USA"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 26,
+        "job_description": "Contractor for United States Coast Guard",
+        "company_year_ended": "1982-08-01",
+        "remove": false,
+        "company_state_province": "CA",
+        "company_year_started": "1952-07-01",
+        "company_name": "SoundTrack",
+        "is_current": false,
+        "user_id": 2,
+        "job_title": "Communicator",
+        "company_country": "USA"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 12,
+        "job_description": "",
+        "company_year_ended": "2015-10-06",
+        "remove": false,
+        "company_state_province": "CA",
+        "company_year_started": "2009-12-01",
+        "company_name": "Sportswest",
+        "is_current": true,
+        "user_id": 3,
+        "job_title": "Astronautical Engineer",
+        "company_country": "USA"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 8,
+        "job_description": "Advanced",
+        "company_year_ended": "2015-10-14",
+        "remove": true,
+        "company_state_province": "",
+        "company_year_started": "2015-10-14",
+        "company_name": "",
+        "is_current": true,
+        "user_id": 1,
+        "job_title": "MS Office",
+        "company_country": ""
+    }
+},
+{
+    "pk": 5,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 8,
+        "job_description": "Advanced",
+        "company_year_ended": "2015-10-14",
+        "remove": false,
+        "company_state_province": "",
+        "company_year_started": "2015-10-14",
+        "company_name": "Tech Force",
+        "is_current": true,
+        "user_id": 1,
+        "job_title": "MS Office",
+        "company_country": ""
+    }
+},
+{
+    "pk": 6,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 9,
+        "job_description": "",
+        "company_year_ended": "2015-10-20",
+        "remove": false,
+        "company_state_province": "",
+        "company_year_started": "2015-10-20",
+        "company_name": "GB Consulting, LLC",
+        "is_current": true,
+        "user_id": 7,
+        "job_title": "Tax Consultant",
+        "company_country": ""
+    }
+},
+{
+    "pk": 7,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 11,
+        "job_description": "",
+        "company_year_ended": "2015-10-23",
+        "remove": false,
+        "company_state_province": "",
+        "company_year_started": "2015-10-23",
+        "company_name": "Pioneer Chicken",
+        "is_current": true,
+        "user_id": 6,
+        "job_title": "Biographer",
+        "company_country": ""
+    }
+},
+{
+    "pk": 8,
+    "model": "user.userjob",
+    "fields": {
+        "job_category_id": 16,
+        "job_description": "",
+        "company_year_ended": "2015-10-28",
+        "remove": false,
+        "company_state_province": "",
+        "company_year_started": "2015-10-28",
+        "company_name": "P. Samuels Men's Clothiers",
+        "is_current": true,
+        "user_id": 8,
+        "job_title": "FBI Agent",
+        "company_country": ""
+    }
+},
+{
+    "pk": 1,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "K12"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Post Secondary"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Associates Degree"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Bachelors Degree"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Graduate Degree"
+    }
+},
+{
+    "pk": 6,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Doctoral Degree"
+    }
+},
+{
+    "pk": 7,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Certification"
+    }
+},
+{
+    "pk": 8,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "License"
+    }
+},
+{
+    "pk": 9,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Professional Development"
+    }
+},
+{
+    "pk": 10,
+    "model": "user.educationcategory",
+    "fields": {
+        "education_category": "Other"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.usereducation",
+    "fields": {
+        "education_category_id": 5,
+        "school_year_ended": "2007-05-01",
+        "remove": false,
+        "school_year_started": "2005-02-01",
+        "is_completed": true,
+        "school_name": "University of Phoenix",
+        "education_title": "MBA",
+        "user_id": 1,
+        "education_description": "Master's of Business Administration"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.usereducation",
+    "fields": {
+        "education_category_id": 4,
+        "school_year_ended": "2056-06-01",
+        "remove": false,
+        "school_year_started": "1952-09-01",
+        "is_completed": false,
+        "school_name": "United States Coast Guard Academy",
+        "education_title": "Communications",
+        "user_id": 2,
+        "education_description": ""
+    }
+},
+{
+    "pk": 3,
+    "model": "user.usereducation",
+    "fields": {
+        "education_category_id": 4,
+        "school_year_ended": "2009-06-01",
+        "remove": false,
+        "school_year_started": "2005-08-01",
+        "is_completed": false,
+        "school_name": "University of Southern California",
+        "education_title": "Astronautical Engineering",
+        "user_id": 3,
+        "education_description": ""
+    }
+},
+{
+    "pk": 1,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Administrative"
+    }
+},
+{
+    "pk": 2,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Clerical"
+    }
+},
+{
+    "pk": 3,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Communication"
+    }
+},
+{
+    "pk": 4,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Counseling"
+    }
+},
+{
+    "pk": 5,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Development"
+    }
+},
+{
+    "pk": 6,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Financial"
+    }
+},
+{
+    "pk": 7,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Interpersonal"
+    }
+},
+{
+    "pk": 8,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Management"
+    }
+},
+{
+    "pk": 9,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Problem Solving"
+    }
+},
+{
+    "pk": 10,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Organizational"
+    }
+},
+{
+    "pk": 11,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Research"
+    }
+},
+{
+    "pk": 12,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Technical"
+    }
+},
+{
+    "pk": 13,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Time Management"
+    }
+},
+{
+    "pk": 14,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Training"
+    }
+},
+{
+    "pk": 15,
+    "model": "user.skillcategory",
+    "fields": {
+        "skill_category": "Sales"
+    }
+},
+{
+    "pk": 1,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 1,
+        "skill_category_id": 9
+    }
+},
+{
+    "pk": 2,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 2,
+        "skill_category_id": 3
+    }
+},
+{
+    "pk": 3,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 3,
+        "skill_category_id": 12
+    }
+},
+{
+    "pk": 4,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 1,
+        "skill_category_id": 7
+    }
+},
+{
+    "pk": 5,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 1,
+        "skill_category_id": 6
+    }
+},
+{
+    "pk": 6,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 1,
+        "skill_category_id": 5
+    }
+},
+{
+    "pk": 7,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 7,
+        "skill_category_id": 14
+    }
+},
+{
+    "pk": 8,
+    "model": "user.userskill",
+    "fields": {
+        "skill_description": "",
+        "remove": false,
+        "user_id": 7,
+        "skill_category_id": 6
+    }
+}
+]

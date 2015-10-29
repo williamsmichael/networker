@@ -4,9 +4,9 @@
 
 	<div class="list-group">
 
-		<a href="{% url 'update_main_group' group.pk %}" class="list-group-item">Main</a>
-		<a href="{% url 'update_additional_group' group.pk %}" class="list-group-item">Additional</a>
-		<a href="{% url 'group_profile' group.pk %}" class="active list-group-item">Full Profile <span class="sr-only">(current)</span></a>
+		<a href="{% url 'update_main_group' group.id %}" class="list-group-item">Main</a>
+		<a href="{% url 'update_additional_group' group.id %}" class="list-group-item">Additional</a>
+		<a href="{% url 'group_profile' group.id %}" class="active list-group-item">Full Profile <span class="sr-only">(current)</span></a>
 
 	</div>
 </section><!--/.sidebar-offcanvas-->

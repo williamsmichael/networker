@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.contrib import messages
 import json
 from django.core import serializers
 from django.core.mail import send_mail
@@ -247,9 +248,14 @@ class UserUpdateMain(UpdateView):
     model = User
     fields = ['username', 'first_name', 'last_name', 'email', 'is_active']
     # success_url = '.'
+    success_message = "Update Successful"
     section = "Main"
     title = 'update'
     button = 'Update'
+
+    def form_valid(self, form):
+        messages.info(self.request, "Some message")
+        return super(UserUpdateMain, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('update_main', kwargs={

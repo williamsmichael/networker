@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
-from user.models import NetworkerUser
-from django.contrib.auth.models import Group
+# from user.models import NetworkerUser
+from django.contrib.auth.models import Group, User
 
 
 # helper function for uploading files to group name path
@@ -11,11 +11,11 @@ def upload_to(instance, filename):
 
 class NetworkerGroup(models.Model):
 	""" Main table for Group """
-	group_extension = models.OneToOneField(Group)
-	group_organizer = models.ForeignKey(NetworkerUser)
-	group_description = models.TextField(blank=True)
+	name = models.CharField(max_length=255, blank=True)
+	organizer = models.ForeignKey(User)
+	description = models.TextField(blank=True)
 	welcome_message = models.TextField(blank=True)
-	group_image = models.ImageField(upload_to=upload_to, blank=True, null=True)
+	profile_image = models.ImageField(upload_to=upload_to, blank=True, null=True)
 	website = models.URLField(blank=True)
 	created_dateTime = models.DateTimeField(auto_now_add=True, auto_now=False)
 
@@ -28,7 +28,7 @@ class NetworkerGroup(models.Model):
 class GroupUser(models.Model):
 	""" Relationship table for message system and user """
 	group_id = models.ForeignKey(NetworkerGroup)
-	user_id = models.ForeignKey(NetworkerUser)
+	# user_id = models.ForeignKey(NetworkerUser)
 	last_message_dateTime = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 class MessageSystemTopic(models.Model):

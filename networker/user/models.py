@@ -2,10 +2,10 @@ from django.db import models
 from datetime import datetime, date
 from django.utils import timezone
 from django.contrib.auth.models import User
+from group.models import NetworkerGroup
+
 
 # helper function for uploading files to username path
-
-
 def upload_to(instance, filename):
     """ upload images helper function for NetworkerUser """
     return 'images/{}/{}'.format(instance.user_extension.username, filename)
@@ -13,14 +13,8 @@ def upload_to(instance, filename):
 
 class NetworkerUser(models.Model):
     """ Main table for User """
-
-    # default Django AuthUser
-    # --------------------------
-    # username, password, email, first_name, last_name, etc.
-
-    # User extended
-    # --------------------------
     user_extension = models.OneToOneField(User)
+    membership_list = models.ManyToManyField(NetworkerGroup)
     relationship_to_group = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(
         upload_to=upload_to, blank=True, null=True)
