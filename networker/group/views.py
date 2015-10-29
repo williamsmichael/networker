@@ -10,6 +10,7 @@ from django.db.models import Count
 
 
 from .models import Group, NetworkerGroup
+from user.models import NetworkerUser
 
 
 #----------------------------------------------------------------group profile
@@ -26,45 +27,46 @@ def GroupProfile(request, pk):
 def listing_group(request):
 	""" List of all group for a login user """
 
-	# query auth group(s) for login user
-	user_groups = Group.objects.all().filter(user=request.user)
-	print(user_groups)
+	# query request.user membership_list
+	login_user = NetworkerUser.objects.get(pk=request.user.id)
+	group_list = login_user.membership_list.all().prefetch_related()
+	print(group_list)
 
-	# get the ids for the auth groups of the login user
-	id_list = []
-	name_list = []
-	for attribute in user_groups:
+	# # get the ids for the auth groups of the login user
+	# id_list = []
+	# name_list = []
+	# for attribute in member_group_list:
 
-		id_list.append(attribute.id)
-		name_list.append(attribute.name)
+	# 	id_list.append(attribute.id)
+	# 	name_list.append(attribute.name)
 
-	# query the extended networkergroup details by id or pk
-	group_list = NetworkerGroup.objects.all().prefetch_related().filter(pk__in=id_list)
+	# # query the extended networkergroup details by id or pk
+	# group_list = NetworkerGroup.objects.all().prefetch_related().filter(pk__in=id_list)
 
-	print("group list:", group_list)
+	# print("group list:", group_list)
 
-	member_count_list = []
-	# print("name list: ", name_list)
-	for name in name_list:
+	# member_count_list = []
+	# # print("name list: ", name_list)
+	# for name in name_list:
 
-		# member_count = {}
+	# 	# member_count = {}
 
-		# name = name
-		total = User.objects.filter(groups__name=name).count()
+	# 	# name = name
+	# 	total = User.objects.filter(groups__name=name).count()
 		
-		# member_count = {
-			# 'name': name,
-			# 'total': total
-		# }
+	# 	# member_count = {
+	# 		# 'name': name,
+	# 		# 'total': total
+	# 	# }
 
-		member_count_list.append(total)
+	# 	member_count_list.append(total)
 
-	# data = [group_list, member_count_list]
+	# # data = [group_list, member_count_list]
 
-	# print(member_count_list)
+	# # print(member_count_list)
 
-	# return render(request, 'group/group_list.html', {'data': data})
-	return render(request, 'group/group_list.html', {'group_list': group_list})
+	# # return render(request, 'group/group_list.html', {'data': data})
+	return render(request, 'group/group_list.html', {"group_list": group_list})
 
 
 # ----------------------------------------------------------------------update
