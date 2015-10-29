@@ -28,6 +28,7 @@ def listing_group(request):
 
 	# query auth group(s) for login user
 	user_groups = Group.objects.all().filter(user=request.user)
+	print(user_groups)
 
 	# get the ids for the auth groups of the login user
 	id_list = []

@@ -280,8 +280,8 @@ class UserUpdateAdditional(UpdateView):
 
 class UserUpdateMembership(UpdateView):
     """ Update membership details for a user """
-    model = User
-    fields = ['groups']
+    model = NetworkerUser
+    fields = ['membership_list']
     # success_url = '/users/'
     section = "Membership"
     title = 'update'

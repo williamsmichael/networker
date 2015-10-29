@@ -81,7 +81,7 @@
 	</h4>
 
 	<ul>
-		{% for group in member.user_extension.groups.all %}
+		{% for group in member.membership_list.all %}
 		<li>{{ group.name }}</li>	
 
 		{% endfor %}
