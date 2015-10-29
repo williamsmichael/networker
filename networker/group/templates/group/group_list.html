@@ -38,7 +38,7 @@
 
                     <td>{{ forloop.counter }}</td>
                     <td>{{ group }}</td>
-                    <td class="hidden-xs">calculating...</td>   
+                    <td class="hidden-xs">{{ group.networkeruser_set.all | length }}</td>   
 
                     {% if group.profile_image %}
                     <td class="hidden-xs"><img src="{{ group.profile_image.url }}" alt="{{ group }} profile image" class="img-list img-responsive img-rounded"></td>

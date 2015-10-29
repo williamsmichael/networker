@@ -18,8 +18,8 @@ from user.models import NetworkerUser
 def GroupProfile(request, pk):
 	""" Details of a group """
 
-	membership = get_object_or_404(NetworkerGroup, pk=pk)
-	return render(request, 'group/group_profile.html', {'membership': membership})
+	profile = get_object_or_404(NetworkerGroup, pk=pk)
+	return render(request, 'group/group_profile.html', {'profile': profile})
 
 
 # ---------------------------------------------------------------------listing
@@ -30,77 +30,45 @@ def listing_group(request):
 	# query request.user membership_list
 	login_user = NetworkerUser.objects.get(pk=request.user.id)
 	group_list = login_user.membership_list.all().prefetch_related()
-	print(group_list)
 
-	# # get the ids for the auth groups of the login user
-	# id_list = []
-	# name_list = []
-	# for attribute in member_group_list:
+	id_list = []
+	for each_group in group_list:
+		print(each_group.pk)
 
-	# 	id_list.append(attribute.id)
-	# 	name_list.append(attribute.name)
-
-	# # query the extended networkergroup details by id or pk
-	# group_list = NetworkerGroup.objects.all().prefetch_related().filter(pk__in=id_list)
-
-	# print("group list:", group_list)
-
-	# member_count_list = []
-	# # print("name list: ", name_list)
-	# for name in name_list:
-
-	# 	# member_count = {}
-
-	# 	# name = name
-	# 	total = User.objects.filter(groups__name=name).count()
-		
-	# 	# member_count = {
-	# 		# 'name': name,
-	# 		# 'total': total
-	# 	# }
-
-	# 	member_count_list.append(total)
-
-	# # data = [group_list, member_count_list]
-
-	# # print(member_count_list)
-
-	# # return render(request, 'group/group_list.html', {'data': data})
 	return render(request, 'group/group_list.html', {"group_list": group_list})
 
 
 # ----------------------------------------------------------------------update
-class GroupUpdateMain(UpdateView):
+class GroupUpdateAbout(UpdateView):
     """ Update auth-group details for a login user group """
-    model = Group
-    fields = ['name']
-    # success_url = '.'
-    section = "Main"
-    title = 'update'
-    button = 'Update'
-
-    def get_success_url(self):
-        return reverse('update_main_group', kwargs={
-            'pk': self.object.pk,
-        })
-
-
-class GroupUpdateAdditional(UpdateView):
-    """ Update networker details for a login user group """
     model = NetworkerGroup
     fields = '__all__'
     # success_url = '.'
-    section = "Additional"
+    section = "About"
     title = 'update'
     button = 'Update'
 
     def get_success_url(self):
-        return reverse('update_additional_group', kwargs={
+        return reverse('update_about_group', kwargs={
             'pk': self.object.pk,
         })
 
 
 # ----------------------------------------------------------------------unused
+# class GroupUpdateAdditional(UpdateView):
+#     """ Update networker details for a login user group """
+#     model = NetworkerGroup
+#     fields = '__all__'
+#     # success_url = '.'
+#     section = "Additional"
+#     title = 'update'
+#     button = 'Update'
+
+#     def get_success_url(self):
+#         return reverse('update_additional_group', kwargs={
+#             'pk': self.object.pk,
+#         })
+        
 # class ListingGroup(ListView):
 #     """ List of all groups for a login user """
 #     model = NetworkerGroup
