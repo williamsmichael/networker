@@ -20,7 +20,7 @@ class Thread(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return self.creator + " - " + self.title
+		return "{} - {}".format(self.creator, self.title)
 
 
 class Post(models.Model):
