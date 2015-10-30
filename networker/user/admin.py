@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import NetworkerUser, SkillCategory, UserSkill, AddressCategory, UserAddress, EmailCategory, UserEmail, PhoneCategory, UserPhone, SocialMediaCategory, UserSocialMedia, JobCategory, UserJob, EducationCategory, UserEducation
+from .models import *
 
-
+# --------------------------------------------------admin inline NetworkerUser
 class CategoriesInline_1(admin.StackedInline):
     model = UserAddress
     extra = 0
@@ -50,7 +50,17 @@ class UsersAdmin(admin.ModelAdmin):
     ]
 
 # Register your models here.
+# ---------------------------------------------------------------NetworkerUser
 admin.site.register(NetworkerUser, UsersAdmin)
+
+
+# # -----------------------------------------------------------------------forum
+# admin.site.register(Post)
+# admin.site.register(Thread)
+# admin.site.register(Forum)
+
+
+# ------------------------------------------------------------------categories
 admin.site.register(SkillCategory)
 admin.site.register(AddressCategory)
 admin.site.register(EmailCategory)
@@ -58,3 +68,6 @@ admin.site.register(PhoneCategory)
 admin.site.register(SocialMediaCategory)
 admin.site.register(JobCategory)
 admin.site.register(EducationCategory)
+
+
+# NetworkerUser, SkillCategory, UserSkill, AddressCategory, UserAddress, EmailCategory, UserEmail, PhoneCategory, UserPhone, SocialMediaCategory, UserSocialMedia, JobCategory, UserJob, EducationCategory, UserEducation

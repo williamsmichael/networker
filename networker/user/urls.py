@@ -29,7 +29,7 @@ urlpatterns = [
         login_required(views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html')), name='update_additional'),
     url(r'^(?P<pk>[0-9]+)/membership$', login_required(views.UserUpdateMembership.as_view(
         template_name='user/create_update_form.html')), name='update_membership'),
-
+    
 
     # --------------------------------------------------updateview by category
     url(r'^(?P<pk>[0-9]+)/phone/(?P<phone>[0-9]+)$', login_required(views.UserUpdatePhone.as_view(

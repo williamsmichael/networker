@@ -30,6 +30,7 @@ class NetworkerUser(models.Model):
         return "[{}] {}-{} {}".format(self.user_extension.id, self.user_extension.username, self.user_extension.first_name, self.user_extension.last_name)
 
 
+# ------------------------------------------------------------------categories
 class PhoneCategory(models.Model):
     """ Helper table for User_Phone """
     phone_category = models.CharField(max_length=255)

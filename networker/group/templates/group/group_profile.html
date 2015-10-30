@@ -19,8 +19,6 @@
 
 {% block content %}
 
-<div>
-
 	{% if profile.profile_image %}
 	<img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile img-responsive img-rounded">
 	
@@ -46,7 +44,7 @@
 		<li>{{ profile.description | default:"none" }}</li>
 		<br>	
 		<li>website: {{ profile.website | default:"none" }}</li>
-		<li>organizer: {{ profile.organizer.user_extension.first_name }} {{ profile.organizer.user_extension.last_name }}, {{ profile.organizer.user_extension.email }}</li>
+		<li>organizer: {{ profile.organizer.first_name }} {{ profile.organizer.last_name }}, {{ profile.organizer.email }}</li>
 	</ul>
 
 	<h4>Members <span class="badge">{{ profile.networkeruser_set.all | length }}</span></h4>
@@ -63,4 +61,5 @@
 </div>
 
 {% endblock content %}
+
 

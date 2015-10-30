@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from django.contrib import messages
 import json
 from django.core import serializers
 from django.core.mail import send_mail
@@ -118,128 +117,6 @@ class ListingSkill(ListView):
     def get_queryset(self):
         # import pdb; pdb.set_trace()
         return self.queryset.filter(user_id=self.request.user.networkeruser)
-
-
-# ----------------------------------------------------------------------create
-
-class CreatePhone(CreateView):
-    """ Creates a phone number for user """
-    model = UserPhone
-    fields = '__all__'
-    # success_url = '/'
-    title = 'add'
-    section = 'Add Phone'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'user_id': self.request.user
-        }
-
-    def get_success_url(self):
-        return reverse('listing_phone', kwargs={
-            'pk': self.object.user_id.pk,
-        })
-
-
-class CreateEmail(CreateView):
-    """ Creates a email for user """
-    model = UserEmail
-    fields = '__all__'
-    # success_url = '/users/'
-    title = 'add'
-    section = 'Add Email'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'user_id': self.request.user
-        }
-
-    def get_success_url(self):
-        return reverse('listing_email', kwargs={
-            'pk': self.object.user_id.pk,
-        })
-
-
-class CreateAddress(CreateView):
-    """ Creates a address for user """
-    model = UserAddress
-    fields = '__all__'
-    # success_url = '/users/'
-    title = 'add'
-    section = 'Add Address'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'user_id': self.request.user
-        }
-
-    def get_success_url(self):
-        return reverse('listing_address', kwargs={
-          'pk': self.object.user_id.pk,
-        })
-
-
-class CreateSocialMedia(CreateView):
-    """ Creates a social media for user """
-    model = UserSocialMedia
-    fields = '__all__'
-    # success_url = '/users/'
-    title = 'add'
-    section = 'Add Social Media'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'user_id': self.request.user
-        }
-
-    def get_success_url(self):
-        return reverse('listing_social_media', kwargs={
-          'pk': self.object.user_id.pk,
-        })
-
-
-class CreateJob(CreateView):
-    """ Creates a job for user """
-    model = UserJob
-    fields = '__all__'
-    # success_url = '/users/'
-    title = 'add'
-    section = 'Add Job'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'user_id': self.request.user
-        }
-
-    def get_success_url(self):
-        return reverse('listing_job', kwargs={
-          'pk': self.object.user_id.pk,
-        })
-
-
-class CreateSkill(CreateView):
-    """ Creates a skill for user """
-    model = UserSkill
-    fields = '__all__'
-    # success_url = '/users/'
-    title = 'add'
-    section = 'Add Skill'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'user_id': self.request.user
-        }
-
-    def get_success_url(self):
-        return reverse('listing_skill', kwargs={
-          'pk': self.object.user_id.pk,
-        })
 
 
 # ----------------------------------------------------------------------update
@@ -410,6 +287,127 @@ class UserUpdateSkill(UpdateView):
     def get_success_url(self):
         return reverse('listing_skill', kwargs={
             'pk': self.object.user_id.pk,
+        })
+
+
+# ----------------------------------------------------------------------create
+class CreatePhone(CreateView):
+    """ Creates a phone number for user """
+    model = UserPhone
+    fields = '__all__'
+    # success_url = '/'
+    title = 'add'
+    section = 'Add Phone'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_phone', kwargs={
+            'pk': self.object.user_id.pk,
+        })
+
+
+class CreateEmail(CreateView):
+    """ Creates a email for user """
+    model = UserEmail
+    fields = '__all__'
+    # success_url = '/users/'
+    title = 'add'
+    section = 'Add Email'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_email', kwargs={
+            'pk': self.object.user_id.pk,
+        })
+
+
+class CreateAddress(CreateView):
+    """ Creates a address for user """
+    model = UserAddress
+    fields = '__all__'
+    # success_url = '/users/'
+    title = 'add'
+    section = 'Add Address'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_address', kwargs={
+          'pk': self.object.user_id.pk,
+        })
+
+
+class CreateSocialMedia(CreateView):
+    """ Creates a social media for user """
+    model = UserSocialMedia
+    fields = '__all__'
+    # success_url = '/users/'
+    title = 'add'
+    section = 'Add Social Media'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_social_media', kwargs={
+          'pk': self.object.user_id.pk,
+        })
+
+
+class CreateJob(CreateView):
+    """ Creates a job for user """
+    model = UserJob
+    fields = '__all__'
+    # success_url = '/users/'
+    title = 'add'
+    section = 'Add Job'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_job', kwargs={
+          'pk': self.object.user_id.pk,
+        })
+
+
+class CreateSkill(CreateView):
+    """ Creates a skill for user """
+    model = UserSkill
+    fields = '__all__'
+    # success_url = '/users/'
+    title = 'add'
+    section = 'Add Skill'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_skill', kwargs={
+          'pk': self.object.user_id.pk,
         })
 
 

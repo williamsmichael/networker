@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 # from user.models import NetworkerUser
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 
 
 # helper function for uploading files to group name path
@@ -29,7 +29,7 @@ class NetworkerGroup(models.Model):
 class GroupUser(models.Model):
 	""" Relationship table for message system and user """
 	group_id = models.ForeignKey(NetworkerGroup)
-	# user_id = models.ForeignKey(NetworkerUser)
+	user_id = models.ForeignKey(User)
 	last_message_dateTime = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 

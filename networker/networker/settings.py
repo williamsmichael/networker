@@ -137,7 +137,6 @@ except ImportError:
     pass
 
 
-
 # login and redirect
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/membership/'
@@ -149,6 +148,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 ACCOUNT_ACTIVATION_DAYS = 7 
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
+
+
+
+
+
+
 
 
 

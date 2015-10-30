@@ -2,14 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.core.urlresolvers import reverse
 from django.db.models import Count
 
 
-from .models import Group, NetworkerGroup
+from .models import NetworkerGroup
 from user.models import NetworkerUser
 
 

@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import user.models
-import django.utils.timezone
 from django.conf import settings
+import django.utils.timezone
 
 
 class Migration(migrations.Migration):
@@ -18,37 +18,37 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AddressCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('address_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='EducationCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('education_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='EmailCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('email_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='JobCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('job_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='NetworkerUser',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('relationship_to_group', models.CharField(max_length=255, blank=True)),
-                ('profile_image', models.ImageField(upload_to=user.models.upload_to, blank=True, null=True)),
+                ('profile_image', models.ImageField(null=True, upload_to=user.models.upload_to, blank=True)),
                 ('nickname', models.CharField(max_length=255, blank=True)),
                 ('website', models.URLField(blank=True)),
                 ('place_of_birth', models.CharField(max_length=255, blank=True)),
@@ -63,28 +63,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PhoneCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('phone_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='SkillCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('skill_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='SocialMediaCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('social_media_category', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='UserAddress',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('street_address_1', models.CharField(max_length=255)),
                 ('street_address_2', models.CharField(max_length=255, blank=True)),
                 ('city_town', models.CharField(max_length=255)),
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserEducation',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('education_title', models.CharField(max_length=255, blank=True)),
                 ('education_description', models.TextField(blank=True)),
                 ('school_name', models.CharField(max_length=255, blank=True)),
@@ -116,7 +116,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserEmail',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('email', models.EmailField(max_length=254)),
                 ('remove', models.BooleanField(default=False)),
                 ('email_category_id', models.ForeignKey(to='user.EmailCategory')),
@@ -126,7 +126,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserJob',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('job_title', models.CharField(max_length=255, blank=True)),
                 ('job_description', models.TextField(blank=True)),
                 ('company_name', models.CharField(max_length=255, blank=True)),
@@ -143,7 +143,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserPhone',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('country_code', models.PositiveSmallIntegerField(null=True, blank=True)),
                 ('phone_number', models.CharField(max_length=255)),
                 ('remove', models.BooleanField(default=False)),
@@ -154,7 +154,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserSkill',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('skill_description', models.TextField(blank=True)),
                 ('remove', models.BooleanField(default=False)),
                 ('skill_category_id', models.ForeignKey(to='user.SkillCategory')),
@@ -164,7 +164,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserSocialMedia',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('social_media_url', models.URLField()),
                 ('remove', models.BooleanField(default=False)),
                 ('social_media_category_id', models.ForeignKey(to='user.SocialMediaCategory')),
