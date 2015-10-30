@@ -15,6 +15,7 @@ class NetworkerUser(models.Model):
     """ Main table for User """
     user_extension = models.OneToOneField(User)
     membership_list = models.ManyToManyField(NetworkerGroup)
+
     relationship_to_group = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(
         upload_to=upload_to, blank=True, null=True)
@@ -43,6 +44,7 @@ class UserPhone(models.Model):
     """ Sub-table for the User: Phone """
     user_id = models.ForeignKey(NetworkerUser)
     phone_category_id = models.ForeignKey(PhoneCategory)
+
     country_code = models.PositiveSmallIntegerField(blank=True, null=True)
     phone_number = models.CharField(max_length=255)
     remove = models.BooleanField(default=False)
@@ -63,6 +65,7 @@ class UserEmail(models.Model):
     """ Sub-table for the User: Email """
     user_id = models.ForeignKey(NetworkerUser)
     email_category_id = models.ForeignKey(EmailCategory)
+
     email = models.EmailField()
     remove = models.BooleanField(default=False)
 
@@ -82,6 +85,7 @@ class UserAddress(models.Model):
     """ Sub-table for the User: Address """
     user_id = models.ForeignKey(NetworkerUser)
     address_category_id = models.ForeignKey(AddressCategory)
+
     street_address_1 = models.CharField(max_length=255)
     street_address_2 = models.CharField(max_length=255, blank=True)
     city_town = models.CharField(max_length=255)
@@ -108,6 +112,7 @@ class UserSocialMedia(models.Model):
     """ Sub-table for the User: Social Media """
     user_id = models.ForeignKey(NetworkerUser)
     social_media_category_id = models.ForeignKey(SocialMediaCategory)
+
     social_media_url = models.URLField()
     remove = models.BooleanField(default=False)
 
@@ -127,6 +132,7 @@ class UserJob(models.Model):
     """ Sub-table for the User: Job """
     user_id = models.ForeignKey(NetworkerUser)
     job_category_id = models.ForeignKey(JobCategory)
+
     job_title = models.CharField(max_length=255, blank=True)
     job_description = models.TextField(blank=True)
     company_name = models.CharField(max_length=255, blank=True)
@@ -153,6 +159,7 @@ class UserEducation(models.Model):
     """ Sub-table for the User: Education """
     user_id = models.ForeignKey(NetworkerUser)
     education_category_id = models.ForeignKey(EducationCategory)
+
     education_title = models.CharField(max_length=255, blank=True)
     education_description = models.TextField(blank=True)
     school_name = models.CharField(max_length=255, blank=True)
@@ -177,6 +184,7 @@ class UserSkill(models.Model):
     """ Sub-table for the User: Skill """
     user_id = models.ForeignKey(NetworkerUser)
     skill_category_id = models.ForeignKey(SkillCategory)
+    
     skill_description = models.TextField(blank=True)
     remove = models.BooleanField(default=False)
 

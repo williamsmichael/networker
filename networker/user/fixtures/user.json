@@ -8,7 +8,7 @@
         "profile_image": "images/mw/avatarMe.png",
         "website": "",
         "place_of_birth": "Los Angeles, CA, USA",
-        "membership_list": [],
+        "membership_list": [1, 2],
         "nickname": "Founder",
         "relationship_to_group": "Founder"
     }
@@ -22,7 +22,7 @@
         "profile_image": "images/burton/avatar2.png",
         "website": "",
         "place_of_birth": "Mountain View, CA, USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "Burtoner",
         "relationship_to_group": "Partner"
     }
@@ -36,7 +36,7 @@
         "profile_image": "images/christman/avatar1.png",
         "website": "",
         "place_of_birth": "Apple Valley, MN, USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "Christmaner",
         "relationship_to_group": "Partner"
     }
@@ -50,7 +50,7 @@
         "profile_image": "images/hewitt/avatar2.png",
         "website": "http://www.hewitt.com",
         "place_of_birth": "Savannah, GA USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "hewitter",
         "relationship_to_group": "Board of Directors"
     }
@@ -64,7 +64,7 @@
         "profile_image": "images/machele/avatar2.png",
         "website": "",
         "place_of_birth": "Verona, ND, USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "floreser",
         "relationship_to_group": "Vice President"
     }
@@ -78,7 +78,7 @@
         "profile_image": "images/johnson/avatar2.png",
         "website": "",
         "place_of_birth": "Oakland, CA, USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "fighall",
         "relationship_to_group": "Executive"
     }
@@ -92,9 +92,9 @@
         "profile_image": "images/beta/avatar2.png",
         "website": "",
         "place_of_birth": "",
-        "membership_list": [],
+        "membership_list": [1],
         "nickname": "",
-        "relationship_to_group": ""
+        "relationship_to_group": "Friend"
     }
 },
 {
@@ -106,7 +106,7 @@
         "profile_image": "images/mitchell/avatar2.png",
         "website": "http://BloggingReport.com",
         "place_of_birth": "Sepulveda, CA, USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "Hambir",
         "relationship_to_group": "Agent"
     }
@@ -120,7 +120,7 @@
         "profile_image": "images/Wrins/avatar1.png",
         "website": "",
         "place_of_birth": "Elmsford, NY, USA",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "Wrins",
         "relationship_to_group": "Investor"
     }
@@ -134,7 +134,7 @@
         "profile_image": "images/metz/avatar2.png",
         "website": "http://www.praymaster.com",
         "place_of_birth": "Charlotte, NC, USA",
-        "membership_list": [],
+        "membership_list": [1],
         "nickname": "Aftle",
         "relationship_to_group": "Friend"
     }
@@ -148,7 +148,7 @@
         "profile_image": "images/foxtrot/avatar1.png",
         "website": "http://www.pokeropening.com",
         "place_of_birth": "Sugarcreek, OH, USA",
-        "membership_list": [],
+        "membership_list": [1],
         "nickname": "Foxtrotter",
         "relationship_to_group": "Friend"
     }
@@ -162,7 +162,7 @@
         "profile_image": "images/thomas/avatar1.png",
         "website": "http://www.search.com",
         "place_of_birth": "Akron, OH, 44301",
-        "membership_list": [],
+        "membership_list": [2],
         "nickname": "thomaser",
         "relationship_to_group": "Executive"
     }

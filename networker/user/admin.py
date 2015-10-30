@@ -54,12 +54,6 @@ class UsersAdmin(admin.ModelAdmin):
 admin.site.register(NetworkerUser, UsersAdmin)
 
 
-# # -----------------------------------------------------------------------forum
-# admin.site.register(Post)
-# admin.site.register(Thread)
-# admin.site.register(Forum)
-
-
 # ------------------------------------------------------------------categories
 admin.site.register(SkillCategory)
 admin.site.register(AddressCategory)
@@ -70,4 +64,3 @@ admin.site.register(JobCategory)
 admin.site.register(EducationCategory)
 
 
-# NetworkerUser, SkillCategory, UserSkill, AddressCategory, UserAddress, EmailCategory, UserEmail, PhoneCategory, UserPhone, SocialMediaCategory, UserSocialMedia, JobCategory, UserJob, EducationCategory, UserEducation

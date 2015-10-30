@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
 
     # networker apps
+    'forum',
     'group',
     'user',
 )
