@@ -11,8 +11,8 @@ class ThreadAdmin(admin.ModelAdmin):
 	list_filter = ('forum', 'creator')
 
 class PostAdmin(admin.ModelAdmin):
-	search_fields = ('title', 'creator')
 	list_display = ('title', 'thread', 'creator', 'created')
+	search_fields = ['title', 'creator']
 
 
 # Register your models here.
