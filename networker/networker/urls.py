@@ -26,16 +26,20 @@ urlpatterns = [
     url(r'^dashboard/$', 'user.views.dashboard', name='dashboard'),
 
 
-    # ---------------------------------------------------------------------map
-    url(r'^map/$', 'user.views.map', name='map'),
-
-
     # -------------------------------------------------------------------group
     url(r'^membership/', include('group.urls')),
 
 
     # --------------------------------------------------------------------user
     url(r'^directory/', include('user.urls')),
+
+
+    # ---------------------------------------------------------------------map
+    url(r'^map/$', 'user.views.map', name='map'),
+
+
+    # -------------------------------------------------------------------forum
+    url(r'^forum/', include('forum.urls')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

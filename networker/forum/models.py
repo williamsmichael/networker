@@ -9,7 +9,20 @@ class Forum(models.Model):
 
 	def __str__(self):
 		return self.title
-		pyt
+
+	def num_posts(self):
+		return sum([t.num_posts() for t in self.thread_set.all()])
+
+	def last_post(self):
+		if self.thread_set.count():
+			last = None
+			for t in self.thread_set.all():
+				l = t.last_post()
+				if l:
+					if not last: last = l
+				elif l.created > last.created: last = l
+			return last
+
 
 class Thread(models.Model):
 	""" Threads for the Forum """
@@ -21,6 +34,16 @@ class Thread(models.Model):
 
 	def __str__(self):
 		return "{} - {}".format(self.creator, self.title)
+
+	def num_posts(self):
+		return self.post_set.count()
+
+	def num_replies(self):
+		return self.post_set.count() - 1
+
+	def last_post(self):
+		if self.post_set.count():
+			return self.post_set.order_by('created')[0]
 
 
 class Post(models.Model):
@@ -36,7 +59,7 @@ class Post(models.Model):
 		return "{} - {} - {}".format(self.creator, self.thread, self.title)
 
 	def short(self):
-		return "{} - {}\n{}".format(self.creator, selft.title, self.created.strftime("%b %d, %I:%M %p"))
+		return "{} - {}\n{}".format(self.creator, self.title, self.created.strftime("%b %d, %I:%M %p"))
 		short.allow_tags = True
 
 
