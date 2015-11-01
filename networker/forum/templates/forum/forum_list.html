@@ -27,7 +27,7 @@
             <tbody>
             {% for forum in forums %}
 
-                <tr class='clickable-row' data-href='{% url 'forum' forum.pk %}'>
+                <tr class='clickable-row' data-href='{% url 'thread_list' forum.pk %}'>
 
                     <td {% if forloop.last %}class='last' {% endif %} >
                         <span class='title'>{{ forum.title }}</span>
@@ -39,7 +39,7 @@
                         {{ forum.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <a href="{% url 'forum' forum.pk %}" class="btn btn-default" role="button">VIEW</a>
+                        <a href="{% url 'thread_list' forum.pk %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
                 </tr>

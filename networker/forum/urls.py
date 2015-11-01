@@ -12,8 +12,8 @@ urlpatterns = [
     # # url(r'^(\d+)/$', 'forum'),
     # # url(r'^thread/(\d+)/$', 'thread'),
 
-	url(r'^$', 'forum.views.main', name='main'),
-	url(r'^forum/(\d+)/$', views.forum, name='forum'),
-	# url(r'^thread/(\d+)/$', views.thread, 'thread'),
+	url(r'^$', 'forum.views.forum_list', name='forum_list'),
+	url(r'^(\d+)/$', views.thread_list, name='thread_list'),
+	url(r'^thread/(\d+)/$', views.thread, name='thread'),
 
 ]

@@ -11,17 +11,6 @@ from django.core.urlresolvers import reverse
 from .models import *
 
 
-def main(request):
-	""" Forum Listing """
-	forums = Forum.objects.all()
-	return render(request, 'forum/forum_list.html', {'forums': forums, 'user': request.user})
-
-def add_csrf(request, **kwargs):
-	""" Add CSRF to dictionary """ 
-	d = dict(user=request.user, **kwargs)
-	d.update(csrf(request))
-	return d
-
 def mk_paginator(request, items, num_items):
 	""" Create and return a paginator """
 	paginator = Paginator(items, num_items)
@@ -34,22 +23,32 @@ def mk_paginator(request, items, num_items):
 		items = paginator.page(paginator.num_pages)
 	return items
 
-def forum(request, pk):
+
+def forum_list(request):
+	""" Forum Listing """
+	forums = Forum.objects.all()
+	return render(request, 'forum/forum_list.html', {'forums': forums, 'user': request.user})
+
+
+def thread_list(request, pk):
 	""" Listing of threads in a forum """
 	threads = Thread.objects.filter(forum=pk).order_by("-created")
 	threads = mk_paginator(request, threads, 20)
-	return render(request, 'forum/forum.html', add_csrf(request, threads=threads, pk=pk))
-	
+	return render(request, 'forum/thread_list.html', add_csrf(request, threads=threads, pk=pk))
+
 
 def thread(request, pk):
 	""" Listing of posts in a thread """
 	posts = Post.objects.filter(thread=pk).order_by('created')
 	posts = mk_paginator(request, posts, 15)
 	title = Thread.objects.get(pk=pk).title
-	return render(request, 'forum/thread.html', add_csrf(request, posts=posts, title=title, media_url=MEDIA_URL))
+	return render(request, 'forum/post_list.html', add_csrf(request, posts=posts, pk=pk, title=title))
 
 
-
-
+def add_csrf(request, **kwargs):
+	""" Add CSRF to dictionary """ 
+	d = dict(user=request.user, **kwargs)
+	d.update(csrf(request))
+	return d
 
 

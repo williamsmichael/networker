@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} thread {% endblock %}
+{% block title %} posts {% endblock %}
 
-{% block heading %} Thread {% endblock heading %}
+{% block heading %} 
+
+    Posts
+    <span class="badge">{{ posts.object_list  | length }}</span>
+
+{% endblock heading %}
 
 {% block content %}
 
