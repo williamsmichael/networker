@@ -5,7 +5,8 @@
 
 {% block heading %}
 
-	Membership <span class="badge">{{ group_list.count }}</span>
+	Membership 
+    <span class="badge">{{ group_list.count }}</span>
 
 	{% if user.is_authenticated and user.is_staff %}
 	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">

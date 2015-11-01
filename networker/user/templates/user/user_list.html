@@ -5,7 +5,8 @@
 
 {% block heading %}
 
-	Directory <span class="badge">{{ networkeruser_list | length }}</span>
+	Directory 
+    <span class="badge">{{ networkeruser_list | length }}</span>
 
 	{% if user.is_authenticated and user.is_staff %}
 	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
@@ -68,15 +69,7 @@
 
 {% block script_addon %}
 
-<script type="text/javascript">
-
-$(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-}); 
-	
-</script>
+<script src="{% static 'js/clickRow.js' %}"></script>
 	
 {% endblock script_addon %}
 

@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} forum {% endblock %}
+{% block title %} thread {% endblock %}
 
-{% block heading %} Forum {% endblock heading %}
+{% block heading %} 
+
+    Threads 
+    <span class="badge">{{ threads.object_list  | length }}</span>
+
+{% endblock heading %}
 
 {% block content %}
 
-<a href="#" id="new_topic" class="buttont">Start New Topic</a>
+<a href="#" id="new_topic" class="btn btn-default" role="button">Start New Topic</a>
 
 <div>
     <div class="table-responsive">
@@ -24,12 +29,10 @@
             <tbody>
             {% for thread in threads.object_list %}
 
-                <tr>
+                <tr class='clickable-row' data-href='#'>
 
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <span class='title'>
-                        	<a href="#">{{ forum.title }}</a>
-                        </span>
+                        <span class='title'>{{ thread.title }}</span>
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
                         {{ thread.num_replies }}
@@ -38,7 +41,7 @@
                         {{ thread.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                    	<a href="button" href="#">VIEW</a>
+                    	<a href='#' class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
                 </tr>
@@ -51,5 +54,10 @@
 
 {% endblock content %}
 
+{% block script_addon %}
+
+<script src="{% static 'js/clickRow.js' %}"></script>
+    
+{% endblock script_addon %}
 
 

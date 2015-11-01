@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} thread {% endblock %}
+
+{% block heading %} Thread {% endblock heading %}
+
+{% block content %}
+
+<a href="#" id="new_topic" class="buttont">Start New Topic</a>
+
+<div>
+
+    {% for post in posts.object_list %}
+
+        <div class='post'>
+            <span class='title'>
+                {{ post.title }} by {{ post.creator }} | <span class='date'>{{ post.created }}</span> {{ post.body }}
+            </span>
+
+        </div>
+
+    {% endfor %}
+
+    {# next/prev page links #}
+    {% if threads.object_list and threads.paginator.num_pages > 1 %}
+    <div class='pagination'>
+        <span class='step-links'>
+
+            {% if thread.has_previous %}
+                <a href="#">previous</a>
+            {% endif %}
+
+            <span class='current'>
+                &nbsp;Page {{ threads.number }} of {{ threads.paginator.num_pages }}
+            </span>
+
+            {% if thread.has_next %}
+                <a href="#"> &gt;&gt next</a>
+            {% endif %}
+
+        </span>
+    </div>
+    {% endif %}
+
+    <a href="#" class='button'>Reply</a>
+
+</div>
+
+{% endblock content %}
+
+{% block script_addon %}
+
+<script src="{% static 'js/clickRow.js' %}"></script>
+    
+{% endblock script_addon %}
+
+
+

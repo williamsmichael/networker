@@ -3,7 +3,12 @@
 
 {% block title %} forum {% endblock %}
 
-{% block heading %} Forum {% endblock heading %}
+{% block heading %} 
+    
+    Forum 
+    <span class="badge">{{ forums | length }}</span>
+
+{% endblock heading %}
 
 {% block content %}
 
@@ -12,7 +17,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th></th>
+                    <th>Topic</th>
                     <th>Posts</th>
                     <th>Last post</th>
                     <th></th>
