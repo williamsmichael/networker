@@ -22,12 +22,10 @@
             <tbody>
             {% for forum in forums %}
 
-                <tr>
+                <tr class='clickable-row' data-href='{% url 'forum' forum.pk %}'>
 
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <span class='title'>
-                            <a href="#">{{ forum.title }}</a>
-                        </span>
+                        <span class='title'>{{ forum.title }}</span>
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
                         {{ forum.num_posts }}
@@ -36,7 +34,7 @@
                         {{ forum.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <a href="button" href="#">VIEW</a>
+                        <a href="{% url 'forum' forum.pk %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
                 </tr>
@@ -70,5 +68,11 @@
 </div>
 
 {% endblock content %}
+
+{% block script_addon %}
+
+<script src="{% static 'js/clickRow.js' %}"></script>
+    
+{% endblock script_addon %}
 
 
