@@ -26,7 +26,7 @@
 
                     <td {% if forloop.last %}class='last' {% endif %} >
                         <span class='title'>
-                        	<a href="#">{{ forum.title }}</a>
+                            <a href="#">{{ forum.title }}</a>
                         </span>
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
@@ -36,7 +36,7 @@
                         {{ forum.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                    	<a href="button" href="#">VIEW</a>
+                        <a href="button" href="#">VIEW</a>
                     </td>
                 
                 </tr>
@@ -70,6 +70,5 @@
 </div>
 
 {% endblock content %}
-
 
 
