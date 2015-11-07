@@ -4,7 +4,7 @@ from .models import *
 
 
 class ForumAdmin(admin.ModelAdmin):
-	pass
+	prepopulated_fields = {"slug": ("title",)}
 
 class ThreadAdmin(admin.ModelAdmin):
 	list_display = ('title', 'forum', 'creator', 'created')

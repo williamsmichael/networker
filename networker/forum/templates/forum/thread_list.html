@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} threads {% endblock %}
+{% block title %} topics {% endblock %}
 
 {% block heading %} 
 
-    Threads 
-    <span class="badge">{{ threads.object_list  | length }}</span>
+    Topics
+    <span class="badge">{{ threads | length }}</span>
 
 {% endblock heading %}
 
 {% block content %}
 
-<a href="#" id="new_topic" class="btn btn-default" role="button">Start New Topic</a>
+{# threads aka forum.html #}
+
+{# <a href="{% url 'post' 'new_thread' pk %}" id="new_topic" class="btn btn-default" role="button">Start New Topic</a> #}
+{# <a href="{% url 'create_phone' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align"> #}
+    {# <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> #}
+{# </a>  #}
 
 <div>
     <div class="table-responsive">
@@ -27,12 +32,12 @@
             </thead>
 
             <tbody>
-            {% for thread in threads.object_list %}
+            {% for thread in threads %}
 
-                <tr class='clickable-row' data-href='#'>
+                <tr class='clickable-row' data-href=''>
 
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <span class='title'>{{ thread.title }}</span>
+                        <span class='title'>{{ thread.id }}: {{ thread.title }}</span>
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
                         {{ thread.num_replies }}
@@ -41,7 +46,7 @@
                         {{ thread.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                    	<a href='#' class="btn btn-default" role="button">VIEW</a>
+                    	<a href="" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
                 </tr>
@@ -49,7 +54,11 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
+    </div>{# end table-responsive #}
+
+    <!-- next/prev page links  -->
+    {% include "forum/pagination.html" %}
+
 </div>
 
 {% endblock content %}

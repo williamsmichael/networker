@@ -5,50 +5,37 @@
 
 {% block heading %} 
 
-    Posts
-    <span class="badge">{{ posts.object_list  | length }}</span>
+    {{ title }} 
+    <span class="badge">{{ object_list  | length }}</span>
 
 {% endblock heading %}
 
 {% block content %}
 
-<a href="#" id="new_topic" class="buttont">Start New Topic</a>
+{# posts aka thread.html #}
+
+{# <a href="{% url 'thread_list' thread.pk %}" class="btn btn-default" role="button">&lt;&lt; back to list of topics</a> #}
 
 <div>
 
-    {% for post in posts.object_list %}
+    {% for post in object_list %}
 
-        <div class='post'>
-            <span class='title'>
-                {{ post.title }} by {{ post.creator }} | <span class='date'>{{ post.created }}</span> {{ post.body }}
-            </span>
-
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">re: {{ post.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <p>{{ post.body }}</p>
+                <p>by {{ post.creator.first_name }} {{ post.creator.last_name }} | {{ post.created | timesince }} ago</p>
+            </div>
         </div>
 
     {% endfor %}
 
-    {# next/prev page links #}
-    {% if threads.object_list and threads.paginator.num_pages > 1 %}
-    <div class='pagination'>
-        <span class='step-links'>
+    <!-- next/prev page links  -->
+    {% include "forum/pagination.html" %}
 
-            {% if thread.has_previous %}
-                <a href="#">previous</a>
-            {% endif %}
-
-            <span class='current'>
-                &nbsp;Page {{ threads.number }} of {{ threads.paginator.num_pages }}
-            </span>
-
-            {% if thread.has_next %}
-                <a href="#"> &gt;&gt next</a>
-            {% endif %}
-
-        </span>
-    </div>
-    {% endif %}
-
-    <a href="#" class='button'>Reply</a>
+    {# <a href="{% url 'post' 'reply' pk %}" class="btn btn-default" role="button">Reply</a> #}
 
 </div>
 
@@ -56,7 +43,7 @@
 
 {% block script_addon %}
 
-<script src="{% static 'js/clickRow.js' %}"></script>
+{# <script src="{% static 'js/clickRow.js' %}"></script> #}
     
 {% endblock script_addon %}
 

@@ -6,6 +6,7 @@ from django.contrib import admin
 class Forum(models.Model):
 	""" Forum for each group """
 	title = models.CharField(max_length=60)
+	slug = models.SlugField(max_length=60)
 
 	def __str__(self):
 		return self.title

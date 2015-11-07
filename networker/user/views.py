@@ -125,14 +125,9 @@ class UserUpdateMain(UpdateView):
     model = User
     fields = ['username', 'first_name', 'last_name', 'email', 'is_active']
     # success_url = '.'
-    success_message = "Update Successful"
     section = "Main"
     title = 'update'
     button = 'Update'
-
-    def form_valid(self, form):
-        messages.info(self.request, "Some message")
-        return super(UserUpdateMain, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('update_main', kwargs={
@@ -620,6 +615,7 @@ def user_logout(request):
 
     # Take the user back to the homepage
     return HttpResponseRedirect('/')
+    
 
 @login_required
 def invite(request):

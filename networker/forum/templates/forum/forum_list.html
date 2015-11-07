@@ -12,6 +12,8 @@
 
 {% block content %}
 
+{# forums aka list.html #}
+
 <div>
     <div class="table-responsive">
         <table class="table table-hover">
@@ -27,7 +29,7 @@
             <tbody>
             {% for forum in forums %}
 
-                <tr class='clickable-row' data-href='{% url 'thread_list' forum.pk %}'>
+                <tr class='clickable-row' data-href='{% url 'thread_list' forum.slug %}'>
 
                     <td {% if forloop.last %}class='last' {% endif %} >
                         <span class='title'>{{ forum.title }}</span>
@@ -39,7 +41,7 @@
                         {{ forum.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <a href="{% url 'thread_list' forum.pk %}" class="btn btn-default" role="button">VIEW</a>
+                        {# <a href="{% url 'thread_list' forum.pk %}" class="btn btn-default" role="button">VIEW</a> #}
                     </td>
                 
                 </tr>
