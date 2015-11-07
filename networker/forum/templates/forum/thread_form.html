@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+	{{ view.section }}
+
+{% endblock heading %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="row row-offcanvas row-offcanvas-right">
+
+		{% block details_column %}
+
+		<section class="col-xs-12 col-sm-8">
+
+			<p class="pull-right visible-xs">
+            	<button type="button" class="btn btn-success btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          	</p>	
+
+			<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+				{{ form | crispy }}
+
+				<input type="submit" id="updateButton" class="btn btn-default" value="{{ view.button }}">
+				<div id="updated" class="alert alert-success" role="alert">Update Successful</div>
+			
+			</form>
+		</section><!--/.col-xs-12.col-sm-9-->
+
+		{% endblock details_column %}
+
+		{% block nav_column %}
+
+			{% include "user/nav_column.html" %}
+
+		{% endblock nav_column %}
+
+	</div><!--/row-->
+</div><!--/.container-->
+
+{% endblock content %}
+
+{% block script_addon %}
+
+<script src="{% static 'js/offcanvas.js' %}"></script>
+
+<script type="text/javascript">
+
+	var button = document.getElementById('updateButton')
+	button.addEventListener('click', showStatus);
+	function showStatus() {
+	   document.getElementById('updated').style.display = "block";
+	}
+
+</script>
+
+{% endblock script_addon %}
+
+
+
+
