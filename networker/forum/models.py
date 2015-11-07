@@ -1,10 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
+from group.models import NetworkerGroup
 
 
 class Forum(models.Model):
 	""" Forum for each group """
+	group = models.ForeignKey(NetworkerGroup)
+
 	title = models.CharField(max_length=60)
 	slug = models.SlugField(max_length=60)
 
@@ -14,15 +17,15 @@ class Forum(models.Model):
 	def num_posts(self):
 		return sum([t.num_posts() for t in self.thread_set.all()])
 
-	def last_post(self):
-		if self.thread_set.count():
-			last = None
-			for t in self.thread_set.all():
-				l = t.last_post()
-				if l:
-					if not last: last = l
-				elif l.created > last.created: last = l
-			return last
+	# def last_post(self):
+	# 	if self.thread_set.count():
+	# 		last = None
+	# 		for t in self.thread_set.all():
+	# 			l = t.last_post()
+	# 			if l:
+	# 				if not last: last = l
+	# 			elif l.created > last.created: last = l
+	# 		return last
 
 
 class Thread(models.Model):
@@ -32,6 +35,7 @@ class Thread(models.Model):
 
 	title = models.CharField(max_length=60)
 	created = models.DateTimeField(auto_now_add=True)
+	slug = models.SlugField(max_length=60)
 
 	def __str__(self):
 		return "{} - {}".format(self.creator, self.title)

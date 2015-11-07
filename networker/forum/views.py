@@ -32,11 +32,18 @@ def forum_list(request):
 
 
 def thread_list(request, thread):
+	""" Listing of threads in a forum """
 	threads = Thread.objects.filter(forum__slug=thread)
-	# threads = Thread.objects.all()
+	threads = mk_paginator(request, threads, 20)
 	print(threads)
 	return render(request, 'forum/thread_list.html', {'threads': threads})
 
+
+def post_list(request, thread, post):
+	""" Listing of posts in a forum """
+	posts = Post.objects.filter(thread__slug=post)
+	print("we are at post list")
+	return render(request, 'forum/post_list.html', {'posts': posts})
 
 
 # def thread_list(request, pk):
@@ -60,27 +67,27 @@ def thread_list(request, thread):
 #     #     })
 
 
-class PostListing(ListView):
-    """ Listing of posts in a thread """
-    model = Post
+# class PostListing(ListView):
+#     """ Listing of posts in a thread """
+#     model = Post
     
 
-def post_list_old(request, pk):
-	""" Listing of posts in a thread """
-	posts = Post.objects.filter(thread=pk).order_by('created')
-	posts = mk_paginator(request, posts, 15)
-	# title = Thread.objects.get(pk=pk).title
-	# t = Thread.objects.get(pk=pk)
+# def post_list_old(request, pk):
+# 	""" Listing of posts in a thread """
+# 	posts = Post.objects.filter(thread=pk).order_by('created')
+# 	posts = mk_paginator(request, posts, 15)
+# 	# title = Thread.objects.get(pk=pk).title
+# 	# t = Thread.objects.get(pk=pk)
 
-	# gets the specific thread
-	def get_object(self, queryset=None):
-	    return Thread.objects.get(pk=self.kwargs['thread'])
+# 	# gets the specific thread
+# 	def get_object(self, queryset=None):
+# 	    return Thread.objects.get(pk=self.kwargs['thread'])
 
-	# gets the specific post
-	def get_object(self, queryset=None):
-	    return Post.objects.get(pk=self.kwargs['post'])
+	# # gets the specific post
+	# def get_object(self, queryset=None):
+	#     return Post.objects.get(pk=self.kwargs['post'])
 
-	return render(request, 'forum/post_list.html', {'posts': posts, 'pk': pk})
+	# return render(request, 'forum/post_list.html', {'posts': posts, 'pk': pk})
 
 
 # def post(request, ptype, pk):

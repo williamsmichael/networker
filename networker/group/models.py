@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
-from forum.models import Forum
 
 
 # helper function for uploading files to group name path
@@ -12,7 +11,6 @@ def upload_to(instance, filename):
 class NetworkerGroup(models.Model):
 	""" Main table for Group """
 	organizer = models.ForeignKey(User)
-	forum = models.OneToOneField(Forum)
 
 	name = models.CharField(max_length=255, blank=True)	
 	description = models.TextField(blank=True)

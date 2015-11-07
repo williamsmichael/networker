@@ -6,7 +6,7 @@
 {% block heading %} 
 
     {{ title }} 
-    <span class="badge">{{ object_list  | length }}</span>
+    <span class="badge">{{ posts  | length }}</span>
 
 {% endblock heading %}
 
@@ -18,7 +18,7 @@
 
 <div>
 
-    {% for post in object_list %}
+    {% for post in posts %}
 
         <div class="panel panel-success">
             <div class="panel-heading">

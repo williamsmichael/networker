@@ -34,10 +34,10 @@
             <tbody>
             {% for thread in threads %}
 
-                <tr class='clickable-row' data-href=''>
+                <tr class='clickable-row' data-href="{% url 'post_list' thread.forum.slug thread.slug %}">
 
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        <span class='title'>{{ thread.id }}: {{ thread.title }}</span>
+                        <span class='title'>{{ thread.title }}</span>
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
                         {{ thread.num_replies }}
