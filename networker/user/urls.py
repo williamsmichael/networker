@@ -19,10 +19,6 @@ urlpatterns = [
     # url(r'^(?P<pk>[0-9]+)/skill$', login_required(views.ListingSkill.as_view(template_name='user/userskill_list.html')), name='listing_skill'),
 
 
-    # # ------------------------------------------------------------user profile
-    url(r'^(?P<user_pk>[0-9]+)/$', views.UserProfile, name='user_profile'),
-
-
     # --------------------------------------------------------------updateview
     url(r'^(?P<user_pk>[0-9]+)/main$', login_required(views.UserUpdateMain.as_view(
         template_name='user/create_update_form.html')), name='update_main'),
@@ -30,9 +26,13 @@ urlpatterns = [
     #     login_required(views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html')), name='update_additional'),
     # url(r'^(?P<pk>[0-9]+)/membership$', login_required(views.UserUpdateMembership.as_view(
     #     template_name='user/create_update_form.html')), name='update_membership'),
+
+
+    # ------------------------------------------------------------user profile
+    url(r'^(?P<user_pk>[0-9]+)/$', views.UserProfile, name='user_profile'),
     
 
-    # # --------------------------------------------------updateview by category
+    # --------------------------------------------------updateview by category
     # url(r'^(?P<pk>[0-9]+)/phone/(?P<phone>[0-9]+)$', login_required(views.UserUpdatePhone.as_view(
     #     template_name='user/create_update_form.html')), name='update_phone'),
     # url(r'^(?P<pk>[0-9]+)/email/(?P<email>[0-9]+)$', login_required(views.UserUpdateEmail.as_view(

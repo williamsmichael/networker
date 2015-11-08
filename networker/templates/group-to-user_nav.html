@@ -22,8 +22,8 @@
                 <li class="active visible-xs"><a href="{% url 'user_profile' user_group user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
                 {# <li><a href="{% url 'dashboard' %}">Dashboard</a></li> #}
                 <li><a href="{% url 'listing_user' user_group %}">Directory</a></li>
-                {# <li><a href="{% url 'map' %}">Map</a></li> #}
-                {# <li><a href="{% url 'forum_list' %}">Forum</a></li> #}
+                <li><a href="{% url 'map' %}">Map</a></li>
+                <li><a href="{% url 'forum_list' %}">Forum</a></li>
                 {% block nav_addon %}{% endblock nav_addon %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
