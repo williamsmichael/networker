@@ -5,8 +5,8 @@
 
 {% block heading %} 
 
-    {{ title }} 
-    <span class="badge">{{ posts  | length }}</span>
+    {{ thread_title }} 
+    <span class="badge">{{ posts | length }}</span>
 
 {% endblock heading %}
 
@@ -14,7 +14,7 @@
 
 {# posts aka thread.html #}
 
-{# <a href="{% url 'thread_list' thread.pk %}" class="btn btn-default" role="button">&lt;&lt; back to list of topics</a> #}
+{# <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default" role="button">&lt;&lt; back to list of topics</a> #}
 
 <div>
 

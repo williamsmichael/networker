@@ -44,7 +44,7 @@ class Thread(models.Model):
 		return self.post_set.count()
 
 	def num_replies(self):
-		return self.post_set.count() - 1
+		return self.post_set.count()
 
 	def last_post(self):
 		if self.post_set.count():

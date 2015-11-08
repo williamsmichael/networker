@@ -28,24 +28,45 @@ def mk_paginator(request, items, num_items):
 def forum_list(request):
 	""" Forum Listing """
 	forums = Forum.objects.all()
-	return render(request, 'forum/forum_list.html', {'forums': forums, 'user': request.user})
+	return render(request, 'forum/forum_list.html', {'forums': forums})
 
 
 def thread_list(request, thread):
 	""" Listing of threads in a forum """
 	threads = Thread.objects.filter(forum__slug=thread)
 	threads = mk_paginator(request, threads, 20)
-	print(threads)
 	return render(request, 'forum/thread_list.html', {'threads': threads})
 
 
 def post_list(request, thread, post):
 	""" Listing of posts in a forum """
-	posts = Post.objects.filter(thread__slug=post)
-	print("we are at post list")
-	return render(request, 'forum/post_list.html', {'posts': posts})
+	posts = Post.objects.filter(thread__slug=post).order_by("-created")
+	thread_title = Thread.objects.get(slug=post).title
+	return render(request, 'forum/post_list.html', {'posts': posts, 'thread_title': thread_title})
 
 
+class CreateThread(CreateView):
+    """ Creates a thread for a forum """
+    model = Thread
+    fields = '__all__'
+    # success_url = '/'
+    title = 'add'
+    section = 'Add New Topic'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'creator': self.request.user, 
+            'forum': Forum
+        }
+
+    # def get_success_url(self):
+    #     return reverse('listing_phone', kwargs={
+    #         'pk': self.object.user_id.pk,
+    #     })
+
+
+# ----------------------------------------------------------------------unused
 # def thread_list(request, pk):
 # 	""" Listing of threads in a forum """
 # 	threads = Thread.objects.filter(forum=pk).order_by("-created")
@@ -56,6 +77,7 @@ def post_list(request, thread, post):
 # 	    return Thread.objects.get(pk=self.kwargs['thread'])
 	
 # 	return render(request, 'forum/thread_list.html', {'threads': threads, 'pk': pk})
+
 
 # class ThreadListing(ListView):
 #     """ Listing of threads in a forum """
@@ -113,41 +135,20 @@ def post_list(request, thread, post):
 # 	return HttpResponseRedirect(reverse('networker.networker.views.forum', args=[pk]))
 
 
-def reply(request, pk):
-	""" Reply to a thread """
-	p = request.POST
-	if p['body']:
-		thread = Thread.objects.get(pk=pk)
-		post = Post.objects.create(thread=thread, title=p['subject'], body=p['body'],
-	        creator=request.user)
-	return HttpResponseRedirect(reverse('views.thread', args=[pk]) + '?page=last')
+# def reply(request, pk):
+# 	""" Reply to a thread """
+# 	p = request.POST
+# 	if p['body']:
+# 		thread = Thread.objects.get(pk=pk)
+# 		post = Post.objects.create(thread=thread, title=p['subject'], body=p['body'],
+# 	        creator=request.user)
+# 	return HttpResponseRedirect(reverse('views.thread', args=[pk]) + '?page=last')
 
 
-def add_csrf(request, **kwargs):
-	""" Add CSRF to dictionary """ 
-	d = dict(user=request.user, **kwargs)
-	d.update(csrf(request))
-	return d
-
-
-class CreateThread(CreateView):
-    """ Creates a thread for a forum """
-    model = Thread
-    fields = '__all__'
-    # success_url = '/'
-    title = 'add'
-    section = 'Add New Topic'
-    button = 'Add'
-
-    def get_initial(self):
-        return {
-            'creator': self.request.user, 
-            'forum': Forum
-        }
-
-    # def get_success_url(self):
-    #     return reverse('listing_phone', kwargs={
-    #         'pk': self.object.user_id.pk,
-    #     })
+# def add_csrf(request, **kwargs):
+# 	""" Add CSRF to dictionary """ 
+# 	d = dict(user=request.user, **kwargs)
+# 	d.update(csrf(request))
+# 	return d
 
 

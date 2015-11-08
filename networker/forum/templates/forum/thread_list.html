@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %} topics {% endblock %}
+{% block title %} forum {% endblock %}
 
 {% block heading %} 
 
@@ -11,13 +11,6 @@
 {% endblock heading %}
 
 {% block content %}
-
-{# threads aka forum.html #}
-
-{# <a href="{% url 'post' 'new_thread' pk %}" id="new_topic" class="btn btn-default" role="button">Start New Topic</a> #}
-{# <a href="{% url 'create_phone' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align"> #}
-    {# <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> #}
-{# </a>  #}
 
 <div>
     <div class="table-responsive">
@@ -34,7 +27,7 @@
             <tbody>
             {% for thread in threads %}
 
-                <tr class='clickable-row' data-href="{% url 'post_list' thread.forum.slug thread.slug %}">
+                <tr class='clickable-row' data-href='{% url 'post_list' thread.forum.slug thread.slug %}'>
 
                     <td {% if forloop.last %}class='last' {% endif %} >
                         <span class='title'>{{ thread.title }}</span>
@@ -46,7 +39,7 @@
                         {{ thread.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                    	<a href="" class="btn btn-default" role="button">VIEW</a>
+                    	<a href="{% url 'post_list' thread.forum.slug thread.slug %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
                 </tr>
@@ -56,7 +49,7 @@
         </table>
     </div>{# end table-responsive #}
 
-    <!-- next/prev page links  -->
+    {# next/prev page links #}
     {% include "forum/pagination.html" %}
 
 </div>

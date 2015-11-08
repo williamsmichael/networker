@@ -12,14 +12,12 @@
 
 {% block content %}
 
-{# forums aka list.html #}
-
 <div>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Topic</th>
+                    <th>Topics</th>
                     <th>Posts</th>
                     <th>Last post</th>
                     <th></th>
@@ -41,7 +39,7 @@
                         {{ forum.last_post.short | linebreaksbr }}
                     </td>
                     <td {% if forloop.last %}class='last' {% endif %} >
-                        {# <a href="{% url 'thread_list' forum.pk %}" class="btn btn-default" role="button">VIEW</a> #}
+                        <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
                 </tr>
@@ -52,25 +50,7 @@
     </div> {# end table-responsive #}
 
     {# next/prev page links #}
-    {% if threads.object_list and threads.paginator.num_pages > 1 %}
-    <div class='pagination'>
-        <span class='step-links'>
-
-            {% if thread.has_previous %}
-                <a href="#">previous</a>
-            {% endif %}
-
-            <span class='current'>
-                &nbsp;Page {{ threads.number }} of {{ threads.paginator.num_pages }}
-            </span>
-
-            {% if thread.has_next %}
-                <a href="#"> &gt;&gt next</a>
-            {% endif %}
-
-        </span>
-    </div>
-    {% endif %}
+    {% include "forum/pagination.html" %}
 
 </div>
 
