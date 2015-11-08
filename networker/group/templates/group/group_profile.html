@@ -4,12 +4,6 @@
 
 {% block title %} {{ profile }} profile {% endblock %}
 
-{% block main_nav %}
-
-    {% include "group-to-user_nav.html" %}
-    
-{% endblock main_nav %}
-
 {% block heading %}
 
 	{{ profile }}
@@ -57,7 +51,7 @@
 	<ul>
 		{% for member in profile.networkeruser_set.all %}
 
-		<a href="{% url 'user_profile' profile.pk member.pk %}">
+		<a href="{% url 'user_profile' member.pk %}">
 			<li>{{ member.user_extension.first_name }} {{ member.user_extension.last_name }}</li>	
 		</a>
 		

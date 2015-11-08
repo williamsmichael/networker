@@ -28,19 +28,16 @@ def index(request):
 
 # ----------------------------------------------------------------user profile
 @login_required
-def UserProfile(request, pk, user_pk):
+def UserProfile(request, pk):
     """ Details of a user """
-    member = get_object_or_404(NetworkerUser, id=user_pk)
-    user_group = pk
-    return render(request, 'user/user_profile.html', {'member': member, 'user_group': user_group})
+    member = get_object_or_404(NetworkerUser, pk=pk)
+    return render(request, 'user/user_profile.html', {'member': member})
 
 
 # ---------------------------------------------------------------------listing
-def ListingUser(request, pk):
+class ListingUser(ListView):
     """ List of all users for a login user group """
-    networkeruser_list = NetworkerUser.objects.filter(membership_list=pk)
-    user_group = pk
-    return render(request, 'user/user_list.html', {'networkeruser_list': networkeruser_list, 'user_group': user_group})
+    model = NetworkerUser
 
 
 class ListingPhone(ListView):
@@ -655,9 +652,12 @@ def invite(request):
 
 
 # ----------------------------------------------------------------------unused
-# class ListingUser(ListView):
+# def ListingUser(request, pk):
 #     """ List of all users for a login user group """
-#     model = NetworkerUser
+#     networkeruser_list = NetworkerUser.objects.filter(membership_list=pk)
+#     user_group = pk
+#     return render(request, 'user/user_list.html', {'networkeruser_list': networkeruser_list, 'user_group': user_group})
+
 
 # @login_required
 # def UserProfile(request, pk, user_pk):

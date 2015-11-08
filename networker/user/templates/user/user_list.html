@@ -43,7 +43,7 @@
 
                 {% if user.user_extension.is_active == True %}
 
-                <tr class='clickable-row' data-href='{% url 'user_profile' user_group user.user_extension.pk %}'>
+                <tr class='clickable-row' data-href='{% url 'user_profile' user.user_extension.pk %}'>
                 
                 {% block list_view_form %}
 
