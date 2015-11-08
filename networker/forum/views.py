@@ -22,7 +22,6 @@ def forum_list(request):
 def thread_list(request, thread):
 	""" Listing of threads in a forum """
 	threads = Thread.objects.filter(forum__slug=thread)
-	threads = mk_paginator(request, threads, 20)
 	return render(request, 'forum/thread_list.html', {'threads': threads})
 
 
