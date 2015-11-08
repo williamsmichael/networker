@@ -19,8 +19,7 @@
                 <tr>
                     <th>Topics</th>
                     <th>Replies</th>
-                    <th></th>
-                    <th></th>
+                    <th class="hidden-xs"></th>
                 </tr>
             </thead>
 
@@ -35,8 +34,7 @@
                     <td>
                         {{ forum.num_posts }}
                     </td>
-                    <td></td>
-                    <td {% if forloop.last %}class='last' {% endif %} >
+                    <td class="hidden-xs">
                         <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 

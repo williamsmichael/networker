@@ -19,8 +19,8 @@
                 <tr>
                     <th>Topics</th>
                     <th>Replies</th>
-                    <th>Last reply</th>
-                    <th></th>
+                    <th class="hidden-xs">Last reply</th>
+                    <th class="hidden-xs"></th>
                 </tr>
             </thead>
 
@@ -35,10 +35,10 @@
                     <td>
                         {{ thread.num_replies }}
                     </td>
-                    <td {% if forloop.last %}class='last' {% endif %} >
+                    <td class="hidden-xs">
                         {{ thread.last_post.short | linebreaksbr }}
                     </td>
-                    <td>
+                    <td class="hidden-xs">
                     	<a href="{% url 'post_list' thread.forum.slug thread.slug %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
                 
