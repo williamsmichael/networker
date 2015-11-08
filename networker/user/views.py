@@ -49,10 +49,12 @@ def UserProfile(request, pk, pk_user):
 #     """ List of all users for a login user group """
 #     model = NetworkerUser
 
+
 def ListingUser(request, pk):
     """ List of all users for a login user group """
     networkeruser_list = NetworkerUser.objects.filter(membership_list=pk)
-    return render(request, 'user/user_list.html', {'networkeruser_list': networkeruser_list})
+    group_pk = pk
+    return render(request, 'user/user_list.html', {'networkeruser_list': networkeruser_list, 'group_pk': group_pk})
 
 
 class ListingPhone(ListView):

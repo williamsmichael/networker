@@ -31,12 +31,12 @@ def listing_group(request):
 	login_user = NetworkerUser.objects.get(pk=request.user.id)
 	group_list = login_user.membership_list.all().prefetch_related()
 
-	print(login_user)
-	print(group_list)
+	# print(login_user)
+	# print(group_list)
 
 	id_list = []
-	for each_group in group_list:
-		print(each_group.pk, each_group)
+	# for each_group in group_list:
+		# print(each_group.pk, each_group)
 
 	return render(request, 'group/group_list.html', {"group_list": group_list})
 
