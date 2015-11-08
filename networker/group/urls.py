@@ -1,6 +1,6 @@
 """ group app URL Configuration """
 
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib.auth.decorators import login_required
 
 from . import views
@@ -18,6 +18,9 @@ urlpatterns = [
 
     # --------------------------------------------------------------updateview
     url(r'^(?P<pk>[0-9]+)/about$', login_required(views.GroupUpdateAbout.as_view(template_name='group/create_update_form_group.html')), name='update_about_group'),
+
+    # --------------------------------------------------------------------user
+    url(r'^(?P<pk>[0-9]+)/directory/', include('user.urls')),
 
 
     # ------------------------------------------------------------------unused

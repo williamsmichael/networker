@@ -15,6 +15,11 @@ from .models import *
 from .forms import *
 
 
+def group_specific_to_user():
+    login_user = NetworkerUser.objects.get(pk=request.user.id)
+    group_list = login_user.membership_list.all().prefetch_related()
+
+
 # -----------------------------------------------------------------------index
 def index(request):
     """ Navigates to and displays the index or home page """
@@ -23,7 +28,7 @@ def index(request):
 
 # ----------------------------------------------------------------user profile
 @login_required
-def UserProfile(request, pk):
+def UserProfile(request, pk, pk_user):
     """ Details of a user """
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
@@ -35,14 +40,19 @@ def UserProfile(request, pk):
     # else:
     #     return HttpResponse("Unauthorized Access!")
 
-    member = get_object_or_404(NetworkerUser, pk=pk)
+    member = get_object_or_404(NetworkerUser, id=pk_user)
     return render(request, 'user/user_profile.html', {'member': member})
 
 
 # ---------------------------------------------------------------------listing
-class ListingUser(ListView):
+# class ListingUser(ListView):
+#     """ List of all users for a login user group """
+#     model = NetworkerUser
+
+def ListingUser(request, pk):
     """ List of all users for a login user group """
-    model = NetworkerUser
+    networkeruser_list = NetworkerUser.objects.filter(membership_list=pk)
+    return render(request, 'user/user_list.html', {'networkeruser_list': networkeruser_list})
 
 
 class ListingPhone(ListView):

@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
             </button>
             {% if user.is_authenticated %}
-            <a class="navbar-brand" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="navbar-brand" href="{% url 'listing_group' %}">Membership</a>
             {% else %}
             <a class="navbar-brand" href="{% url 'index' %}">Networker</a>
             {% endif %}
@@ -19,16 +19,10 @@
         <div id="navbar" class="navbar-collapse collapse">
             {% if user.is_authenticated %}
             <ul class="nav navbar-nav">
-                <li class="active visible-xs"><a href="{% url 'user_profile' user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
-                <li><a href="{% url 'listing_group' %}">Membership</a></li>
-                <li><a href="{% url 'listing_user' %}">Directory</a></li>
-                <li><a href="{% url 'map' %}">Map</a></li>
-                <li><a href="{% url 'forum_list' %}">Forum</a></li>
                 {% block nav_addon %}{% endblock nav_addon %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'auth_logout' %}">Logout</a></li>
-                <li class="active hidden-xs"><a href="{% url 'user_profile' user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
             </ul>
             {% else %}
             <ul class="nav navbar-nav">

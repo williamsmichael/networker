@@ -25,7 +25,11 @@
 
 <body>
 
-    {% include "base_nav.html" %}
+    {% block main_nav %}
+
+        {% include "non-member_nav.html" %}
+        
+    {% endblock main_nav %}
 
     <main class="container">
 
