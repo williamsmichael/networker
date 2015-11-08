@@ -30,27 +30,12 @@ def index(request):
 @login_required
 def UserProfile(request, pk, user_pk):
     """ Details of a user """
-    # """ is_staff: List of all users """
-    # if request.user.is_authenticated() and request.user.is_staff:
-    # print(NetworkerUser.objects.all())
-    # for networker_user in NetworkerUser.objects.all():
-    #     print(networker_user.user_extension.first_name)
-    # users = NetworkerUser.objects.all()
-    # return render(request, 'user/user_profile.html', {'users': users})
-    # else:
-    #     return HttpResponse("Unauthorized Access!")
-
     member = get_object_or_404(NetworkerUser, id=user_pk)
-    user_group = pk 
+    user_group = pk
     return render(request, 'user/user_profile.html', {'member': member, 'user_group': user_group})
 
 
 # ---------------------------------------------------------------------listing
-# class ListingUser(ListView):
-#     """ List of all users for a login user group """
-#     model = NetworkerUser
-
-
 def ListingUser(request, pk):
     """ List of all users for a login user group """
     networkeruser_list = NetworkerUser.objects.filter(membership_list=pk)
@@ -145,7 +130,6 @@ class UserUpdateMain(UpdateView):
     def get_success_url(self):
         return reverse('update_main', kwargs={
             'pk': self.object.pk,
-            'user_group': pk,
         })
 
 
@@ -671,6 +655,27 @@ def invite(request):
 
 
 # ----------------------------------------------------------------------unused
+# class ListingUser(ListView):
+#     """ List of all users for a login user group """
+#     model = NetworkerUser
+
+# @login_required
+# def UserProfile(request, pk, user_pk):
+#     """ Details of a user """
+#     # """ is_staff: List of all users """
+#     # if request.user.is_authenticated() and request.user.is_staff:
+#     # print(NetworkerUser.objects.all())
+#     # for networker_user in NetworkerUser.objects.all():
+#     #     print(networker_user.user_extension.first_name)
+#     # users = NetworkerUser.objects.all()
+#     # return render(request, 'user/user_profile.html', {'users': users})
+#     # else:
+#     #     return HttpResponse("Unauthorized Access!")
+
+#     member = get_object_or_404(NetworkerUser, id=user_pk)
+#     user_group = pk
+#     return render(request, 'user/user_profile.html', {'member': member, 'user_group': user_group})
+
 # @login_required
 # def test_ajax(request):
 #     """ Write JSON file for UserAddress """

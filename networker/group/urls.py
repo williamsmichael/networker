@@ -13,7 +13,7 @@ urlpatterns = [
 
 
     # -----------------------------------------------------------group profile
-    url(r'^(?P<pk>[0-9]+)/$', views.GroupProfile, name='group_profile'),
+    url(r'^(?P<pk>[0-9]+)/$', 'group.views.GroupProfile', name='group_profile'),
 
 
     # --------------------------------------------------------------updateview
