@@ -3,6 +3,12 @@
 
 {% block title %} {{ member.user_extension.username }} profile {% endblock %}
 
+{% block main_nav %}
+
+    {% include "group-to-user_nav.html" %}
+    
+{% endblock main_nav %}
+
 {% block heading %}
 
 	{{ member.user_extension.first_name }}

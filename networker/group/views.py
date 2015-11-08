@@ -19,7 +19,8 @@ def GroupProfile(request, pk):
 	""" Details of a group """
 
 	profile = get_object_or_404(NetworkerGroup, pk=pk)
-	return render(request, 'group/group_profile.html', {'profile': profile})
+	user_group = pk
+	return render(request, 'group/group_profile.html', {'profile': profile, 'user_group': user_group})
 
 
 # ---------------------------------------------------------------------listing
@@ -34,7 +35,7 @@ def listing_group(request):
 	# print(login_user)
 	# print(group_list)
 
-	id_list = []
+	# id_list = []
 	# for each_group in group_list:
 		# print(each_group.pk, each_group)
 

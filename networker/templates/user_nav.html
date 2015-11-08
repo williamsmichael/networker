@@ -19,16 +19,16 @@
         <div id="navbar" class="navbar-collapse collapse">
             {% if user.is_authenticated %}
             <ul class="nav navbar-nav">
-                <li class="active visible-xs"><a href="{% url 'user_profile' group_pk user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
+                <li class="active visible-xs"><a href="{% url 'user_profile' pk_group user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
                 {# <li><a href="{% url 'dashboard' %}">Dashboard</a></li> #}
-                <li><a href="{% url 'listing_user' group_pk %}">Directory</a></li>
+                <li><a href="{% url 'listing_user' pk_group %}">Directory</a></li>
                 {# <li><a href="{% url 'map' %}">Map</a></li> #}
                 {# <li><a href="{% url 'forum_list' %}">Forum</a></li> #}
                 {% block nav_addon %}{% endblock nav_addon %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'auth_logout' %}">Logout</a></li>
-                <li class="active hidden-xs"><a href="{% url 'user_profile' group_pk user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
+                <li class="active hidden-xs"><a href="{% url 'user_profile' pk_group user.pk %}">hej {{ user.first_name | default:user.get_username }}! <span class="sr-only">(current)</span></a></li>
             </ul>
             {% else %}
             <ul class="nav navbar-nav">
