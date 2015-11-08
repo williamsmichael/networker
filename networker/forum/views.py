@@ -12,19 +12,7 @@ from django.core.urlresolvers import reverse
 from .models import *
 
 
-def mk_paginator(request, items, num_items):
-	""" Create and return a paginator """
-	paginator = Paginator(items, num_items)
-	try: page = int(request.GET.get('page', '1'))
-	except ValueError: page = 1
-
-	try: 
-		items = paginator.page(page)
-	except (InvalidPage, Empty,Page):
-		items = paginator.page(paginator.num_pages)
-	return items
-
-
+# ---------------------------------------------------------------------listing
 def forum_list(request):
 	""" Forum Listing """
 	forums = Forum.objects.all()
@@ -45,6 +33,7 @@ def post_list(request, thread, post):
 	return render(request, 'forum/post_list.html', {'posts': posts, 'thread_title': thread_title})
 
 
+# ----------------------------------------------------------------------create
 class CreateThread(CreateView):
     """ Creates a thread for a forum """
     model = Thread
