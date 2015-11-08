@@ -12,10 +12,6 @@
 
 {% block content %}
 
-{# posts aka thread.html #}
-
-{# <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default" role="button">&lt;&lt; back to list of topics</a> #}
-
 <div>
 
     {% for post in posts %}
@@ -32,20 +28,10 @@
 
     {% endfor %}
 
-    <!-- next/prev page links  -->
-    {% include "forum/pagination.html" %}
-
-    {# <a href="{% url 'post' 'reply' pk %}" class="btn btn-default" role="button">Reply</a> #}
-
 </div>
 
 {% endblock content %}
 
-{% block script_addon %}
-
-{# <script src="{% static 'js/clickRow.js' %}"></script> #}
-    
-{% endblock script_addon %}
 
 
 

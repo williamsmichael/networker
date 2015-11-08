@@ -17,16 +17,6 @@ class Forum(models.Model):
 	def num_posts(self):
 		return sum([t.num_posts() for t in self.thread_set.all()])
 
-	# def last_post(self):
-	# 	if self.thread_set.count():
-	# 		last = None
-	# 		for t in self.thread_set.all():
-	# 			l = t.last_post()
-	# 			if l:
-	# 				if not last: last = l
-	# 			elif l.created > last.created: last = l
-	# 		return last
-
 
 class Thread(models.Model):
 	""" Threads for the Forum """

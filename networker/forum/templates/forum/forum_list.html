@@ -18,8 +18,8 @@
             <thead>
                 <tr>
                     <th>Topics</th>
-                    <th>Posts</th>
-                    <th>Last post</th>
+                    <th>Replies</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,15 +29,13 @@
 
                 <tr class='clickable-row' data-href='{% url 'thread_list' forum.slug %}'>
 
-                    <td {% if forloop.last %}class='last' {% endif %} >
+                    <td>
                         <span class='title'>{{ forum.title }}</span>
                     </td>
-                    <td {% if forloop.last %}class='last' {% endif %} >
+                    <td>
                         {{ forum.num_posts }}
                     </td>
-                    <td {% if forloop.last %}class='last' {% endif %} >
-                        {{ forum.last_post.short | linebreaksbr }}
-                    </td>
+                    <td></td>
                     <td {% if forloop.last %}class='last' {% endif %} >
                         <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default" role="button">VIEW</a>
                     </td>
@@ -48,9 +46,6 @@
             </tbody>
         </table>
     </div> {# end table-responsive #}
-
-    {# next/prev page links #}
-    {% include "forum/pagination.html" %}
 
 </div>
 
