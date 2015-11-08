@@ -20,7 +20,7 @@ urlpatterns = [
 
 
     # # ------------------------------------------------------------user profile
-    url(r'^(?P<pk_user>[0-9]+)/$', views.UserProfile, name='user_profile'),
+    url(r'^(?P<user_pk>[0-9]+)/$', views.UserProfile, name='user_profile'),
 
 
     # # --------------------------------------------------------------updateview

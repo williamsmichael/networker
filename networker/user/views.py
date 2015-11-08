@@ -28,7 +28,7 @@ def index(request):
 
 # ----------------------------------------------------------------user profile
 @login_required
-def UserProfile(request, pk, pk_user):
+def UserProfile(request, pk, user_pk):
     """ Details of a user """
     # """ is_staff: List of all users """
     # if request.user.is_authenticated() and request.user.is_staff:
@@ -40,7 +40,7 @@ def UserProfile(request, pk, pk_user):
     # else:
     #     return HttpResponse("Unauthorized Access!")
 
-    member = get_object_or_404(NetworkerUser, id=pk_user)
+    member = get_object_or_404(NetworkerUser, id=user_pk)
     user_group = pk 
     return render(request, 'user/user_profile.html', {'member': member, 'user_group': user_group})
 
@@ -145,6 +145,7 @@ class UserUpdateMain(UpdateView):
     def get_success_url(self):
         return reverse('update_main', kwargs={
             'pk': self.object.pk,
+            'user_group': pk,
         })
 
 
