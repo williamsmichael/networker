@@ -14,9 +14,8 @@ class Forum(models.Model):
 	def __str__(self):
 		return self.title
 
-	def num_posts(self):
-		return sum([t.num_posts() for t in self.thread_set.all()])
-
+	def num_threads(self):
+		return self.thread_set.count()
 
 class Thread(models.Model):
 	""" Threads for the Forum """
