@@ -17,15 +17,10 @@ tbody tr {
 
 /*-------------------------------------------------------------------images */
 .profile-image {
-  max-width: 150px;
-  margin-right: 10px;
-  margin-bottom: 20px;
+  max-width: 200px;
+  margin-top: -35px;
   float: right;
   position: relative;
-}
-.profile-image a {
-  position: absolute;
-  right: 0;
 }
 img.img-list {
   width: 50px;
