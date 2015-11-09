@@ -23,25 +23,6 @@ def GroupProfile(request, pk):
 	return render(request, 'group/group_profile.html', {'profile': profile, 'user_group': user_group})
 
 
-# ---------------------------------------------------------------------listing
-@login_required
-def listing_group(request):
-	""" List of all group for a login user """
-
-	# query request.user membership_list
-	login_user = NetworkerUser.objects.get(pk=request.user.id)
-	group_list = login_user.membership_list.all().prefetch_related()
-
-	# print(login_user)
-	# print(group_list)
-
-	# id_list = []
-	# for each_group in group_list:
-		# print(each_group.pk, each_group)
-
-	return render(request, 'group/group_list.html', {"group_list": group_list})
-
-
 # ----------------------------------------------------------------------update
 class GroupUpdateAbout(UpdateView):
     """ Update auth-group details for a login user group """
@@ -67,6 +48,23 @@ def dashboard(request):
 
 
 # ----------------------------------------------------------------------unused
+# @login_required
+# def listing_group(request):
+# 	""" List of all group for a login user """
+
+# 	# query request.user membership_list
+# 	login_user = NetworkerUser.objects.get(pk=request.user.id)
+# 	group_list = login_user.membership_list.all().prefetch_related()
+
+# 	# print(login_user)
+# 	# print(group_list)
+
+# 	# id_list = []
+# 	# for each_group in group_list:
+# 		# print(each_group.pk, each_group)
+
+# 	return render(request, 'group/group_list.html', {"group_list": group_list})
+
 # class GroupUpdateAdditional(UpdateView):
 #     """ Update networker details for a login user group """
 #     model = NetworkerGroup

@@ -50,10 +50,11 @@
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-                {% if user.is_superuser %}
+                {% if profile.organizer.pk == user.pk %}
                 <a href="{% url 'group_profile' profile.pk %}">
                   <button type="button" class="btn btn-primary">Edit</button>
                 </a>
+
                 {% endif %}
             
             </div>

@@ -7,11 +7,6 @@ from . import views
 
 urlpatterns = [
 
-
-	# ----------------------------------------------------------------listview
-    url(r'^$', 'group.views.listing_group', name='listing_group'),
-
-
     # -----------------------------------------------------------group profile
     url(r'^(?P<pk>[0-9]+)/$', 'group.views.GroupProfile', name='group_profile'),
 
@@ -21,6 +16,7 @@ urlpatterns = [
 
 
     # ------------------------------------------------------------------unused
+    # url(r'^$', 'group.views.listing_group', name='listing_group'),
     # url(r'^(?P<pk>[0-9]+)/directory/', include('user.urls')),    
     # url(r'^(?P<pk>[0-9]+)/main$', login_required(views.GroupUpdateMain.as_view(template_name='group/create_update_form_group.html')), name='update_main_group'),
     # url(r'^(?P<pk>[0-9]+)/additional$', login_required(views.GroupUpdateAdditional.as_view(template_name='group/create_update_form_group.html')), name='update_additional_group'),
