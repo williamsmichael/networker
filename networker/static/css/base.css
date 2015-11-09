@@ -18,7 +18,6 @@ tbody tr {
 /*-------------------------------------------------------------------images */
 .profile-image {
   max-width: 200px;
-  margin-top: -35px;
   float: right;
   position: relative;
 }

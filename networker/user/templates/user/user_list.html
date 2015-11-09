@@ -54,10 +54,14 @@
                 <td class="hidden-xs">{{ user.user_extension.last_login | timesince }}</td>
 
                 {% if user.profile_image %}
-                <td><img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded"></td>
+                <td>
+                    <img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded">
+                </td>
 
                 {% else %}
-                <td><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
+                <td>
+                    <img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded">
+                </td>
                 {% endif %}
              
             {% endblock list_view_form %}
