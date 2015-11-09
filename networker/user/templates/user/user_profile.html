@@ -65,6 +65,8 @@
 		{# <li>date joined: {{ member.user_extension.date_joined | date:"F d, Y f A e" }}</li> #}
 	</ul>
 
+	<hr>
+
 	{# ----------------------------------------------------------additional #}
 	<h4>
 		Additional
@@ -84,6 +86,8 @@
 		<li>place of birth: {{ member.place_of_birth |  default:"none" }}</li>
 		<li>date of birth: {{ member.date_of_birth | date:"F d, Y" |  default:"none" }}</li>
 	</ul>
+
+	<hr>
 
 	{# ----------------------------------------------------------membership #}
 	{# <h4> #}
@@ -140,6 +144,8 @@
 	{% endfor %}
 	</ul>
 
+	<hr>
+
 	{# ---------------------------------------------------------------email #}
 	<h4>
 		Alternate Email
@@ -174,6 +180,8 @@
 
 	{% endfor %}
 	</ul>
+
+	<hr>
 
 	{# -------------------------------------------------------------address #}
 	<h4>
@@ -210,6 +218,8 @@
 	{% endfor %}
 	</ul>
 
+	<hr>
+
 	{# --------------------------------------------------------social media #}
 	<h4>
 		Social Profile
@@ -245,6 +255,8 @@
 	{% endfor %}
 	</ul>
 
+	<hr>
+
 	{# -----------------------------------------------------------------job #}
 	<h4>
 		Job Profile
@@ -279,6 +291,8 @@
 
 	{% endfor %}
 	</ul>
+
+	<hr>
 
 	{# ---------------------------------------------------------------skill #}
 	<h4>
@@ -319,4 +333,8 @@
 
 {% endblock content %}
 
-{% block footer %}{% endblock footer %}
+{% block script_addon %}
+
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.4/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+	
+{% endblock script_addon %}

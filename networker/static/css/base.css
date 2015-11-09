@@ -5,10 +5,13 @@ div.page-header {
 }
 li {
 	list-style: none;
+  margin-bottom: 10px;
 }
 tbody tr {
   cursor: pointer;
 }
+
+/*button to update profiles*/
 #updated {
   display: none;
   margin-top: 10px;
@@ -19,11 +22,16 @@ tbody tr {
 .profile-image {
   max-width: 200px;
   float: right;
-  position: relative;
+}
+.profile-image a {
+  margin-top: 10px;
 }
 img.img-list {
   width: 50px;
   float: none;
+}
+a.btn {
+  margin-left: 5px;
 }
 
 
