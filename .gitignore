@@ -17,3 +17,9 @@ local_settings.py
 
 *.json
 !spec/*.json
+
+
+### Heroku ###
+##############
+venv
+*.pyc
