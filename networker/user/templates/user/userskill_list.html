@@ -29,22 +29,24 @@
 
 			{% block list_view_form %}
 
-				<ul>
 				{% for skill in userskill_list %}
 
 					{% if skill.remove == False %}
+					<a href="{% url 'update_skill' pk=user.id skill=skill.pk %}" class="list-item">
 
-					<li>
-						<a href="{% url 'update_skill' pk=user.id skill=skill.pk %}" class="list-item">{{ skill.skill_category.skill_category }} {{ skill.skill_description }}</a>
-					</li>
+						<div class="well">
+						   	{{ skill.skill_category.skill_category }} {{ skill.skill_description }}
+						</div>
+					</a>
 
 					{% endif %}
 
 				{% empty %}
-					<li>none set</li>
+				<div class="alert alert-dismissible alert-danger">
+					none set
+				</div>	
 
 				{% endfor %}
-				</ul>
 
 			{% endblock list_view_form %}
 

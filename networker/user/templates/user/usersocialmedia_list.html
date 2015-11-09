@@ -29,22 +29,24 @@
 
 			{% block list_view_form %}
 
-				<ul>
 				{% for social_media in usersocialmedia_list %}
 
 					{% if social_media.remove == False %}
 
-					<li>
-						<a href="{% url 'update_social_media' pk=user.id social_media=social_media.pk %}" class="list-item">({{ social_media.social_media_category.social_media_category }}) {{ social_media.social_media_url }}</a>
-					</li>
+					<a href="{% url 'update_social_media' pk=user.id social_media=social_media.pk %}" class="list-item">
+
+					<div class="well">
+						({{ social_media.social_media_category.social_media_category }}) {{ social_media.social_media_url }}</a>
+					</div>
 
 					{% endif %}
 
 				{% empty %}
-					<li>none set</li>
+				<div class="alert alert-dismissible alert-danger">
+					none set
+				</div>	
 
 				{% endfor %}
-				</ul>
 
 			{% endblock list_view_form %}
 

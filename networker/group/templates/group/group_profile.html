@@ -20,10 +20,10 @@
 {% block content %}
 
 	{% if profile.profile_image %}
-	<img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile img-responsive img-rounded">
+	<img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile-image img-responsive img-rounded">
 	
 	{% else %}
-	<img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="profile img-responsive img-rounded">
+	<img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="profile-image img-responsive img-rounded">
 	
 	{% endif %}
 

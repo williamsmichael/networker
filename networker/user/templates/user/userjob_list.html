@@ -29,22 +29,25 @@
 
 			{% block list_view_form %}
 
-				<ul>
 				{% for job in userjob_list %}
 
 					{% if job.remove == False %}
 
-					<li>
-						<a href="{% url 'update_job' pk=user.id job=job.pk %}" class="list-item">{{ job.title }}, {{ job.company_name }}</a>
-					</li>
+					<a href="{% url 'update_job' pk=user.id job=job.pk %}" class="list-item">
+
+						<div class="well">
+							{{ job.title }}, {{ job.company_name }}</a>
+						</div>
+					</a>
 	
 					{% endif %}
 
 				{% empty %}
-					<li>none set</li>
+				<div class="alert alert-dismissible alert-danger">
+					none set
+				</div>	
 
 				{% endfor %}
-				</ul>
 
 			{% endblock list_view_form %}
 

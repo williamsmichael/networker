@@ -39,10 +39,10 @@
             <div class="modal-body">
 
                 {% if profile.profile_image %}
-                <img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile img-responsive img-rounded"> 
+                <img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile-image img-responsive img-rounded"> 
 
                 {% else %}
-                <img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="profile img-responsive img-rounded"> {% endif %}
+                <img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="profile-image img-responsive img-rounded"> {% endif %}
                 <h5>{{ profile.welcome_message }}</h5>
                 <h5>{{ profile.description | default:"none" }}</h5>
                 <h5>website: {{ profile.website | default:"none" }}</h5>

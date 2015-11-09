@@ -292,7 +292,7 @@ class UserUpdateSkill(UpdateView):
 
     model = UserSkill
     # fields = '__all__'
-    fields = ['skill_category', 'description']
+    fields = ['skill_category', 'description', 'remove']
     # success_url = '/users/'
     section = "Skill Profile"
     title = 'update'
@@ -308,7 +308,8 @@ class UserUpdateSkill(UpdateView):
 class CreatePhone(CreateView):
     """ Creates a phone number for user """
     model = UserPhone
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['phone_category', 'country_code', 'phone_number']
     # success_url = '/'
     title = 'add'
     section = 'Add Phone'
@@ -328,7 +329,8 @@ class CreatePhone(CreateView):
 class CreateEmail(CreateView):
     """ Creates a email for user """
     model = UserEmail
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['email_category', 'email']
     # success_url = '/users/'
     title = 'add'
     section = 'Add Email'
@@ -348,7 +350,8 @@ class CreateEmail(CreateView):
 class CreateAddress(CreateView):
     """ Creates a address for user """
     model = UserAddress
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['address_category', 'street_address_1', 'street_address_2', 'city_town', 'state_province', 'postal_code', 'country']
     # success_url = '/users/'
     title = 'add'
     section = 'Add Address'
@@ -368,7 +371,8 @@ class CreateAddress(CreateView):
 class CreateSocialMedia(CreateView):
     """ Creates a social media for user """
     model = UserSocialMedia
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['social_media_category', 'social_media_url']
     # success_url = '/users/'
     title = 'add'
     section = 'Add Social Media'
@@ -388,7 +392,8 @@ class CreateSocialMedia(CreateView):
 class CreateJob(CreateView):
     """ Creates a job for user """
     model = UserJob
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['job_category', 'title', 'description', 'company_name', 'state_province', 'country', 'is_current', 'year_started', 'year_ended']
     # success_url = '/users/'
     title = 'add'
     section = 'Add Job'
@@ -408,7 +413,8 @@ class CreateJob(CreateView):
 class CreateSkill(CreateView):
     """ Creates a skill for user """
     model = UserSkill
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['skill_category', 'description']
     # success_url = '/users/'
     title = 'add'
     section = 'Add Skill'

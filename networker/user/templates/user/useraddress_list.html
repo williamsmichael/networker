@@ -29,22 +29,26 @@
 
 			{% block list_view_form %}
 
-				<ul>
 				{% for address in useraddress_list %}
 
 					{% if address.remove == False %}
 
-					<li>
-						<a href="{% url 'update_address' pk=user.id address=address.pk %}" class="list-item">({{ address.address_category.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}</a>
-					</li>
+					<a href="{% url 'update_address' pk=user.id address=address.pk %}" class="list-item">
+
+						<div class="well">
+
+							({{ address.address_category.address_category }}) {{ address.street_address_1 }}, {{ address.city_town }}, {{ address.state_province }}
+						</div>
+					</a>
 
 					{% endif %}
 
 				{% empty %}
-					<li>none set</li>
+				<div class="alert alert-dismissible alert-danger">
+					none set
+				</div>	
 
 				{% endfor %}
-				</ul>
 
 			{% endblock list_view_form %}
 

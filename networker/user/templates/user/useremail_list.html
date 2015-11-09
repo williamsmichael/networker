@@ -29,22 +29,24 @@
 
 			{% block list_view_form %}
 
-				<ul>
 				{% for email in useremail_list %}
 
 					{% if email.remove == False %}
 
-					<li>
-						<a href="{% url 'update_email' pk=user.id email=email.pk %}" class="list-item">({{ email.email_category }}) {{ email.email }}</a>
-					</li>
-	
+					<a href="{% url 'update_email' pk=user.id email=email.pk %}" class="list-item">
+						
+						<div class="well">
+							({{ email.email_category }}) {{ email.email }}
+						</div>
+					</a>
 					{% endif %}
 
 				{% empty %}
-					<li>none set</li>
+				<div class="alert alert-dismissible alert-danger">
+					none set
+				</div>	
 
 				{% endfor %}
-				</ul>
 
 			{% endblock list_view_form %}
 
