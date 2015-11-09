@@ -10,11 +10,15 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
     
-    About
+    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 </button>
+
+{% if profile.organizer.pk == user.pk %}
+
 <a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 </a>
+{% endif %}
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

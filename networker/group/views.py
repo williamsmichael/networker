@@ -44,7 +44,7 @@ class GroupUpdateAbout(UpdateView):
 def dashboard(request):
     """ Navigates to and displays dashboard """
     profile = get_object_or_404(NetworkerGroup, pk=1)
-    return render(request, 'user/dashboard.html', {'profile': profile})
+    return render(request, 'group/dashboard.html', {'profile': profile})
 
 
 # ----------------------------------------------------------------------unused
