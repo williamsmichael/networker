@@ -18,7 +18,7 @@
             <thead>
                 <tr>
                     <th>Forum</th>
-                    <th>Topics</th>
+                    <th class="text-center">Topics count</th>
                     <th class="hidden-xs"></th>
                 </tr>
             </thead>
@@ -31,11 +31,11 @@
                     <td>
                         <span class='title'>{{ forum.title }}</span>
                     </td>
-                    <td>
+                    <td class="text-center">
                         {{ forum.num_threads }}
                     </td>
                     <td class="hidden-xs">
-                        <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default" role="button">VIEW</a>
+                        <a href="{% url 'thread_list' forum.slug %}" class="btn btn-default btn-sm" role="button">VIEW</a>
                     </td>
                 
                 </tr>

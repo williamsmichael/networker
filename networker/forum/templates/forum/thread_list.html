@@ -18,7 +18,7 @@
             <thead>
                 <tr>
                     <th>Topics</th>
-                    <th>Replies</th>
+                    <th class="text-center">Reply count</th>
                     <th class="hidden-xs">Last reply</th>
                     <th class="hidden-xs"></th>
                 </tr>
@@ -32,14 +32,14 @@
                     <td>
                         <span class='title'>{{ thread.title }}</span>
                     </td>
-                    <td>
+                    <td class="text-center">
                         {{ thread.num_replies }}
                     </td>
                     <td class="hidden-xs">
                         {{ thread.last_post.short | linebreaksbr }}
                     </td>
                     <td class="hidden-xs">
-                    	<a href="{% url 'post_list' thread.forum.slug thread.slug %}" class="btn btn-default" role="button">VIEW</a>
+                    	<a href="{% url 'post_list' thread.forum.slug thread.slug %}" class="btn btn-default btn-sm" role="button">VIEW</a>
                     </td>
                 
                 </tr>

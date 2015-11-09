@@ -29,12 +29,6 @@ img.img-list {
 
 
 /*--------------------------------------------------------------------fonts */
-/*.glyphicon {
-  color: #339966;
-}*/
-/*.glyphicon-info-sign {
-  color: #4177BA;
-}*/
 @font-face {
   font-family: 'icomoon';
   src:url('/static/fonts/icomoon.eot?o6oyca');
