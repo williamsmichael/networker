@@ -24,7 +24,7 @@
             </thead>
 
             <tbody>
-            {% for forum in forums %}
+            {# {% for forum in forums %} #}
 
                 <tr class='clickable-row' data-href='{% url 'thread_list' forum.slug %}'>
 
@@ -40,7 +40,7 @@
                 
                 </tr>
 
-            {% endfor %}
+            {# {% endfor %} #}
             </tbody>
         </table>
     </div> {# end table-responsive #}

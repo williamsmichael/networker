@@ -15,8 +15,8 @@ from .models import *
 # ---------------------------------------------------------------------listing
 def forum_list(request):
 	""" Forum Listing """
-	forums = Forum.objects.all()
-	return render(request, 'forum/forum_list.html', {'forums': forums})
+	forums = Forum.objects.get(pk=1)
+	return render(request, 'forum/forum_list.html', {'forum': forums})
 
 
 def thread_list(request, thread):
