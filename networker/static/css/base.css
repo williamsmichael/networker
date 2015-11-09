@@ -16,11 +16,16 @@ tbody tr {
 
 
 /*-------------------------------------------------------------------images */
-img.profile {
+.profile-image {
   max-width: 150px;
   margin-right: 10px;
   margin-bottom: 20px;
   float: right;
+  position: relative;
+}
+.profile-image a {
+  position: absolute;
+  right: 0;
 }
 img.img-list {
   width: 50px;

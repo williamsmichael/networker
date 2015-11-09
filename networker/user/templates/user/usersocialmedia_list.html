@@ -35,7 +35,7 @@
 					{% if social_media.remove == False %}
 
 					<li>
-						<a href="{% url 'update_social_media' pk=user.id social_media=social_media.pk %}" class="list-item">({{ social_media.social_media_category_id.social_media_category }}) {{ social_media.social_media_url }}</a>
+						<a href="{% url 'update_social_media' pk=user.id social_media=social_media.pk %}" class="list-item">({{ social_media.social_media_category.social_media_category }}) {{ social_media.social_media_url }}</a>
 					</li>
 
 					{% endif %}

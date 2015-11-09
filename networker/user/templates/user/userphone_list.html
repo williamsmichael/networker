@@ -35,7 +35,7 @@
 					{% if phone.remove == False %}
 
 					<li>
-						<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}" class="list-item">({{ phone.phone_category_id.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
+						<a href="{% url 'update_phone' pk=user.id phone=phone.pk %}" class="list-item">({{ phone.phone_category.phone_category }}) +{{ phone.country_code }} {{ phone.phone_number }}</a>
 					</li>
 
 					{% endif %}

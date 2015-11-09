@@ -5,9 +5,10 @@
 	<div class="list-group">
 
 		<a href="{% url 'user_profile' user.pk %}" class="active list-group-item">Back to Profile <span class="sr-only">(current)</span></a>
-		<a href="{% url 'update_main' user.pk %}" class="list-group-item">Main</a>
+		<a href="{% url 'update_main' user.pk %}" class="list-group-item">Primary</a>
 		<a href="{% url 'update_additional' user.pk %}" class="list-group-item">Additional</a>
-		<a href="{% url 'update_membership' user.pk %}" class="list-group-item">Membership</a>
+		<a href="{% url 'update_image' user.pk %}" class="list-group-item">Profile Image</a>
+		{# <a href="{% url 'update_membership' user.pk %}" class="list-group-item">Membership</a> #}
 		<a href="{% url 'listing_phone' user.pk %}" class="list-group-item">Phone</a>
 		<a href="{% url 'listing_email' user.pk %}" class="list-group-item">Alternate Email</a>
 		<a href="{% url 'listing_address' user.pk %}" class="list-group-item">Address</a>

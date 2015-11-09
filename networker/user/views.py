@@ -132,9 +132,10 @@ class UserUpdateMain(UpdateView):
 
 
 class UserUpdateAdditional(UpdateView):
-    """ Update networker user_extension details for a user """
+    """ Update networker user_extension details for a user except image """
     model = NetworkerUser
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['relationship_to_group', 'nickname', 'website', 'place_of_birth', 'date_of_birth']
     # success_url = '/users/'
     section = 'Additional'
     title = 'update'
@@ -146,19 +147,35 @@ class UserUpdateAdditional(UpdateView):
         })
 
 
-class UserUpdateMembership(UpdateView):
-    """ Update membership details for a user """
+class UserUpdateImage(UpdateView):
+    """ Update networker user_extension image user """
     model = NetworkerUser
-    fields = ['membership_list']
+    # fields = '__all__'
+    fields = ['profile_image']
     # success_url = '/users/'
-    section = "Membership"
+    section = 'Profile Image'
     title = 'update'
     button = 'Update'
 
     def get_success_url(self):
-        return reverse('update_membership', kwargs={
+        return reverse('update_image', kwargs={
             'pk': self.object.pk,
         })
+
+
+# class UserUpdateMembership(UpdateView):
+#     """ Update membership details for a user """
+#     model = NetworkerUser
+#     fields = ['membership_list']
+#     # success_url = '/users/'
+#     section = "Membership"
+#     title = 'update'
+#     button = 'Update'
+
+#     def get_success_url(self):
+#         return reverse('update_membership', kwargs={
+#             'pk': self.object.pk,
+#         })
 
 
 class UserUpdatePhone(UpdateView):
@@ -169,7 +186,8 @@ class UserUpdatePhone(UpdateView):
         return UserPhone.objects.get(pk=self.kwargs['phone'])
 
     model = UserPhone
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['phone_category', 'country_code', 'phone_number', 'remove']
     # success_url = '/users/'
     section = "Phone"
     title = 'update'
@@ -189,7 +207,8 @@ class UserUpdateEmail(UpdateView):
         return UserEmail.objects.get(pk=self.kwargs['email'])
 
     model = UserEmail
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['email_category', 'email', 'remove']
     # success_url = '/users/'
     section = "Alternate Email"
     title = 'update'
@@ -209,7 +228,8 @@ class UserUpdateAddress(UpdateView):
         return UserAddress.objects.get(pk=self.kwargs['address'])
 
     model = UserAddress
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['address_category', 'street_address_1', 'street_address_2', 'city_town', 'state_province', 'postal_code', 'country', 'remove']
     # success_url = '/users/'
     section = "Address"
     title = 'update'
@@ -229,7 +249,8 @@ class UserUpdateSocialMedia(UpdateView):
         return UserSocialMedia.objects.get(pk=self.kwargs['social_media'])
 
     model = UserSocialMedia
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['social_media_category', 'social_media_url', 'remove']
     # success_url = '/users/'
     section = "Social Media"
     title = 'update'
@@ -249,7 +270,8 @@ class UserUpdateJob(UpdateView):
         return UserJob.objects.get(pk=self.kwargs['job'])
 
     model = UserJob
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['job_category', 'title', 'description', 'company_name', 'state_province', 'country', 'is_current', 'year_started', 'year_ended', 'remove']
     # success_url = '/users/'
     section = "Job Profile"
     title = 'update'
@@ -269,7 +291,8 @@ class UserUpdateSkill(UpdateView):
         return UserSkill.objects.get(pk=self.kwargs['skill'])
 
     model = UserSkill
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['skill_category', 'description']
     # success_url = '/users/'
     section = "Skill Profile"
     title = 'update'

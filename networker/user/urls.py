@@ -23,8 +23,10 @@ urlpatterns = [
         template_name='user/create_update_form.html')), name='update_main'),
     url(r'^(?P<pk>[0-9]+)/additional$',
         login_required(views.UserUpdateAdditional.as_view(template_name='user/create_update_form.html')), name='update_additional'),
-    url(r'^(?P<pk>[0-9]+)/membership$', login_required(views.UserUpdateMembership.as_view(
-        template_name='user/create_update_form.html')), name='update_membership'),
+    url(r'^(?P<pk>[0-9]+)/image$', login_required(views.UserUpdateImage.as_view(
+        template_name='user/create_update_form.html')), name='update_image'),
+    # url(r'^(?P<pk>[0-9]+)/membership$', login_required(views.UserUpdateMembership.as_view(
+        # template_name='user/create_update_form.html')), name='update_membership'),
 
 
     # ------------------------------------------------------------user profile

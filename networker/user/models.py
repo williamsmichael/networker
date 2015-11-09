@@ -133,14 +133,14 @@ class UserJob(models.Model):
     user_id = models.ForeignKey(NetworkerUser)
     job_category = models.ForeignKey(JobCategory)
 
-    job_title = models.CharField(max_length=255, blank=True)
-    job_description = models.TextField(blank=True)
+    title = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
     company_name = models.CharField(max_length=255, blank=True)
-    company_state_province = models.CharField(max_length=255, blank=True)
-    company_country = models.CharField(max_length=255, blank=True)
+    state_province = models.CharField(max_length=255, blank=True)
+    country = models.CharField(max_length=255, blank=True)
     is_current = models.BooleanField(default=True)
-    company_year_started = models.DateField(default=timezone.now)
-    company_year_ended = models.DateField(default=timezone.now)
+    year_started = models.DateField(default=timezone.now)
+    year_ended = models.DateField(default=timezone.now)
     remove = models.BooleanField(default=False)
 
     def __str__(self):
@@ -160,12 +160,12 @@ class UserEducation(models.Model):
     user_id = models.ForeignKey(NetworkerUser)
     education_category = models.ForeignKey(EducationCategory)
 
-    education_title = models.CharField(max_length=255, blank=True)
-    education_description = models.TextField(blank=True)
+    title = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
     school_name = models.CharField(max_length=255, blank=True)
     is_completed = models.BooleanField(default=False)
-    school_year_started = models.DateField(default=timezone.now)
-    school_year_ended = models.DateField(default=timezone.now)
+    year_started = models.DateField(default=timezone.now)
+    year_ended = models.DateField(default=timezone.now)
     remove = models.BooleanField(default=False)
 
     def __str__(self):
@@ -185,7 +185,7 @@ class UserSkill(models.Model):
     user_id = models.ForeignKey(NetworkerUser)
     skill_category = models.ForeignKey(SkillCategory)
     
-    skill_description = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     remove = models.BooleanField(default=False)
 
     def __str__(self):
