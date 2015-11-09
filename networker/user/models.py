@@ -43,7 +43,7 @@ class PhoneCategory(models.Model):
 class UserPhone(models.Model):
     """ Sub-table for the User: Phone """
     user_id = models.ForeignKey(NetworkerUser)
-    phone_category_id = models.ForeignKey(PhoneCategory)
+    phone_category = models.ForeignKey(PhoneCategory)
 
     country_code = models.PositiveSmallIntegerField(blank=True, null=True)
     phone_number = models.CharField(max_length=255)
@@ -64,7 +64,7 @@ class EmailCategory(models.Model):
 class UserEmail(models.Model):
     """ Sub-table for the User: Email """
     user_id = models.ForeignKey(NetworkerUser)
-    email_category_id = models.ForeignKey(EmailCategory)
+    email_category = models.ForeignKey(EmailCategory)
 
     email = models.EmailField()
     remove = models.BooleanField(default=False)
@@ -84,7 +84,7 @@ class AddressCategory(models.Model):
 class UserAddress(models.Model):
     """ Sub-table for the User: Address """
     user_id = models.ForeignKey(NetworkerUser)
-    address_category_id = models.ForeignKey(AddressCategory)
+    address_category = models.ForeignKey(AddressCategory)
 
     street_address_1 = models.CharField(max_length=255)
     street_address_2 = models.CharField(max_length=255, blank=True)
@@ -111,7 +111,7 @@ class SocialMediaCategory(models.Model):
 class UserSocialMedia(models.Model):
     """ Sub-table for the User: Social Media """
     user_id = models.ForeignKey(NetworkerUser)
-    social_media_category_id = models.ForeignKey(SocialMediaCategory)
+    social_media_category = models.ForeignKey(SocialMediaCategory)
 
     social_media_url = models.URLField()
     remove = models.BooleanField(default=False)
@@ -131,7 +131,7 @@ class JobCategory(models.Model):
 class UserJob(models.Model):
     """ Sub-table for the User: Job """
     user_id = models.ForeignKey(NetworkerUser)
-    job_category_id = models.ForeignKey(JobCategory)
+    job_category = models.ForeignKey(JobCategory)
 
     job_title = models.CharField(max_length=255, blank=True)
     job_description = models.TextField(blank=True)
@@ -158,7 +158,7 @@ class EducationCategory(models.Model):
 class UserEducation(models.Model):
     """ Sub-table for the User: Education """
     user_id = models.ForeignKey(NetworkerUser)
-    education_category_id = models.ForeignKey(EducationCategory)
+    education_category = models.ForeignKey(EducationCategory)
 
     education_title = models.CharField(max_length=255, blank=True)
     education_description = models.TextField(blank=True)
@@ -183,7 +183,7 @@ class SkillCategory(models.Model):
 class UserSkill(models.Model):
     """ Sub-table for the User: Skill """
     user_id = models.ForeignKey(NetworkerUser)
-    skill_category_id = models.ForeignKey(SkillCategory)
+    skill_category = models.ForeignKey(SkillCategory)
     
     skill_description = models.TextField(blank=True)
     remove = models.BooleanField(default=False)
