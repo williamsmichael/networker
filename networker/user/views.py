@@ -12,6 +12,7 @@ from django.conf import settings
 
 
 from .models import *
+from group.models import NetworkerGroup
 from .forms import *
 
 
@@ -485,6 +486,7 @@ def register(request):
 
             # Save the user's form data to the database.
             user = user_form.save()
+            
 
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.

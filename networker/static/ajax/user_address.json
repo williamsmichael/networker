@@ -1,158 +1,158 @@
 [
     {
         "fields": {
-            "city_town": "Jacksonville",
-            "longitude_api": -81.631496,
-            "latitude_api": 30.306437,
-            "last_name": "Williams",
-            "state_province": "FL",
-            "first_name": "Michael",
-            "pk": 1,
-            "profile_image": "images/mw/avatarMe.png"
-        }
-    },
-    {
-        "fields": {
-            "city_town": "Apple Valley",
-            "longitude_api": -80.223605,
             "latitude_api": 39.276383,
             "last_name": "Christman",
+            "profile_image": "images/christman/avatar1.png",
             "state_province": "MN",
-            "first_name": "James",
             "pk": 3,
-            "profile_image": "images/christman/avatar1.png"
+            "city_town": "Apple Valley",
+            "first_name": "James",
+            "longitude_api": -80.223605
         }
     },
     {
         "fields": {
-            "city_town": "Mountain View",
-            "longitude_api": -97.016947,
             "latitude_api": 39.338543,
             "last_name": "Burton",
+            "profile_image": "images/burton/avatar2.png",
             "state_province": "CA",
-            "first_name": "Katherine",
             "pk": 2,
-            "profile_image": "images/burton/avatar2.png"
+            "city_town": "Mountain View",
+            "first_name": "Katherine",
+            "longitude_api": -97.016947
         }
     },
     {
         "fields": {
-            "city_town": "Sugarcreek",
-            "longitude_api": -81.63339,
             "latitude_api": 40.462894,
             "last_name": "Foxtrot",
+            "profile_image": "images/foxtrot/avatar1.png",
             "state_province": "OH",
-            "first_name": "Brian",
             "pk": 11,
-            "profile_image": "images/foxtrot/avatar1.png"
+            "city_town": "Sugarcreek",
+            "first_name": "Brian",
+            "longitude_api": -81.63339
         }
     },
     {
         "fields": {
-            "city_town": "Akron",
-            "longitude_api": -81.499653,
+            "latitude_api": 30.306437,
+            "last_name": "Williams",
+            "profile_image": "images/mw/avatarMe.png",
+            "state_province": "FL",
+            "pk": 1,
+            "city_town": "Jacksonville",
+            "first_name": "Michael",
+            "longitude_api": -81.631496
+        }
+    },
+    {
+        "fields": {
             "latitude_api": 41.063187,
             "last_name": "Thomas",
+            "profile_image": "images/thomas/avatar1.png",
             "state_province": "OH",
-            "first_name": "Matthew",
             "pk": 12,
-            "profile_image": "images/thomas/avatar1.png"
+            "city_town": "Akron",
+            "first_name": "Matthew",
+            "longitude_api": -81.499653
         }
     },
     {
         "fields": {
-            "city_town": "Charlotte",
-            "longitude_api": -80.829682,
             "latitude_api": 35.253918,
             "last_name": "Metz",
+            "profile_image": "images/metz/avatar1.png",
             "state_province": "NC",
-            "first_name": "Roland",
             "pk": 10,
-            "profile_image": "images/metz/avatar1.png"
+            "city_town": "Charlotte",
+            "first_name": "Roland",
+            "longitude_api": -80.829682
         }
     },
     {
         "fields": {
-            "city_town": "Elmsford",
-            "longitude_api": -73.878427,
             "latitude_api": 41.1011,
             "last_name": "Alexander",
+            "profile_image": "images/Wrins/avatar1.png",
             "state_province": "NY",
-            "first_name": "Thomas",
             "pk": 9,
-            "profile_image": "images/Wrins/avatar1.png"
+            "city_town": "Elmsford",
+            "first_name": "Thomas",
+            "longitude_api": -73.878427
         }
     },
     {
         "fields": {
-            "city_town": "Sepulveda",
-            "longitude_api": -118.295409,
             "latitude_api": 34.158494,
             "last_name": "Mitchell",
+            "profile_image": "images/mitchell/avatar2.png",
             "state_province": "CA",
-            "first_name": "Carol",
             "pk": 8,
-            "profile_image": "images/mitchell/avatar2.png"
+            "city_town": "Sepulveda",
+            "first_name": "Carol",
+            "longitude_api": -118.295409
         }
     },
     {
         "fields": {
-            "city_town": "Gaithersburg",
-            "longitude_api": -77.2219096,
             "latitude_api": 39.1184171,
             "last_name": "Beta",
+            "profile_image": "images/beta/avatar2.png",
             "state_province": "MD",
-            "first_name": "Georgina",
             "pk": 7,
-            "profile_image": "images/beta/avatar2.png"
+            "city_town": "Gaithersburg",
+            "first_name": "Georgina",
+            "longitude_api": -77.2219096
         }
     },
     {
         "fields": {
-            "city_town": "Oakland",
-            "longitude_api": -122.382487,
             "latitude_api": 37.810064,
             "last_name": "Johnson",
+            "profile_image": "images/johnson/avatar2.png",
             "state_province": "CA",
-            "first_name": "Alesia",
             "pk": 6,
-            "profile_image": "images/johnson/avatar2.png"
+            "city_town": "Oakland",
+            "first_name": "Alesia",
+            "longitude_api": -122.382487
         }
     },
     {
         "fields": {
-            "city_town": "Verona",
-            "longitude_api": -98.036862,
             "latitude_api": 46.363996,
             "last_name": "Flores",
+            "profile_image": "images/machele/avatar2.png",
             "state_province": "ND",
-            "first_name": "Mary",
             "pk": 5,
-            "profile_image": "images/machele/avatar2.png"
+            "city_town": "Verona",
+            "first_name": "Mary",
+            "longitude_api": -98.036862
         }
     },
     {
         "fields": {
-            "city_town": "Norwich",
-            "longitude_api": -72.013087,
             "latitude_api": 41.587346,
             "last_name": "Hewitt",
+            "profile_image": "images/hewitt/avatar2.png",
             "state_province": "CT",
-            "first_name": "Elizabeth",
             "pk": 4,
-            "profile_image": "images/hewitt/avatar2.png"
+            "city_town": "Norwich",
+            "first_name": "Elizabeth",
+            "longitude_api": -72.013087
         }
     },
     {
         "fields": {
-            "city_town": "Portland",
-            "longitude_api": -122.686153,
             "latitude_api": 45.53055,
             "last_name": "Williams",
+            "profile_image": "images/mw/avatarMe.png",
             "state_province": "OR",
-            "first_name": "Michael",
             "pk": 1,
-            "profile_image": "images/mw/avatarMe.png"
+            "city_town": "Portland",
+            "first_name": "Michael",
+            "longitude_api": -122.686153
         }
     }
 ]

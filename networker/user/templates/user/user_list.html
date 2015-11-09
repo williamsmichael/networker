@@ -25,51 +25,51 @@
 
 {% block content %}
 
-<div>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th class="hidden-xs">Username</th>
-                    <th class="hidden-xs">Last Login</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for user in networkeruser_list %} 
 
-                {% if user.user_extension.is_active == True %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th class="hidden-xs">Username</th>
+                <th class="hidden-xs">Last Login</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in networkeruser_list %} 
 
-                <tr class='clickable-row' data-href='{% url 'user_profile' user.user_extension.pk %}'>
-                
-                {% block list_view_form %}
+            {% if user.user_extension.is_active == True %}
 
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ user.user_extension.first_name }}</td>
-                    <td>{{ user.user_extension.last_name }}</td>
-                    <td class="hidden-xs">{{ user.user_extension.username }}</td>
-                    <td class="hidden-xs">{{ user.user_extension.last_login | timesince }}</td>
+            <tr class='clickable-row' data-href='{% url 'user_profile' user.user_extension.pk %}'>
+            
+            {% block list_view_form %}
 
-                    {% if user.profile_image %}
-                    <td><img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded"></td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.user_extension.first_name }}</td>
+                <td>{{ user.user_extension.last_name }}</td>
+                <td class="hidden-xs">{{ user.user_extension.username }}</td>
+                <td class="hidden-xs">{{ user.user_extension.last_login | timesince }}</td>
 
-                    {% else %}
-                    <td><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
-                    {% endif %}
-                 
-                {% endblock list_view_form %}
-                
-                </tr>
+                {% if user.profile_image %}
+                <td><img src="{{ user.profile_image.url }}" alt="{{ user.user_extension.first_name }} {{ user.user_extension.last_name }} profile image" class="img-list img-responsive img-rounded"></td>
 
+                {% else %}
+                <td><img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="img-list img-responsive img-rounded"></td>
                 {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+             
+            {% endblock list_view_form %}
+            
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
+
 
 {% endblock content %}
 
