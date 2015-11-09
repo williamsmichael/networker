@@ -58,6 +58,14 @@ class GroupUpdateAbout(UpdateView):
         })
 
 
+# -------------------------------------------------------------------dashboard
+@login_required
+def dashboard(request):
+    """ Navigates to and displays dashboard """
+    profile = get_object_or_404(NetworkerGroup, pk=1)
+    return render(request, 'user/dashboard.html', {'profile': profile})
+
+
 # ----------------------------------------------------------------------unused
 # class GroupUpdateAdditional(UpdateView):
 #     """ Update networker details for a login user group """

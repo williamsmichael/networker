@@ -1,27 +1,81 @@
-{% extends "base.html" %}
-{% load static from staticfiles %}
+{% extends "base.html" %} 
 
-{% block title %} dashboard {% endblock %}
+{% load static from staticfiles %} 
 
-{% block heading %} Dashboard {% endblock %}
+{% block title %} dashboard {% endblock %} 
+
+{% block heading %} 
+
+{{ profile }}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+    
+    About
+</button>
+<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h4 class="modal-title" id="myModalLabel">{{ profile }}</h4>
+            </div>
+
+            <div class="modal-body">
+
+                {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile img-responsive img-rounded"> 
+
+                {% else %}
+                <img src="https://unsplash.it/150/150/?random" alt="alternate random image for group" class="profile img-responsive img-rounded"> {% endif %}
+                <h5>{{ profile.welcome_message }}</h5>
+                <h5>{{ profile.description | default:"none" }}</h5>
+                <h5>website: {{ profile.website | default:"none" }}</h5>
+                <h5>organizer: {{ profile.organizer.first_name }} {{ profile.organizer.last_name }}, {{ profile.organizer.email }}</h5>
+                <h5>Members <span class="badge">{{ profile.networkeruser_set.all | length }}</span></h5>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                {% if user.is_superuser %}
+                <a href="{% url 'group_profile' profile.pk %}">
+                  <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+                {% endif %}
+            
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock heading %} 
 
 {% block content %}
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
 <div id="piechart" style="width: 900px; height: 500px;"></div>
 
-{% endblock content %}
+{% endblock content %} 
 
 {% block script_addon %}
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
-
 <script type="text/javascript">
-
-$(function () {
+$(function() {
     $('#container').highcharts({
         chart: {
             plotBackgroundColor: null,
@@ -75,34 +129,28 @@ $(function () {
         }]
     });
 });
-
 </script>
-
 <script type="text/javascript">
-
 google.setOnLoadCallback(drawChart);
 
 function drawChart() {
 
-var data = google.visualization.arrayToDataTable([
-  ['Task', 'Hours per Day'],
-  ['Technical',     11],
-  ['Sales',      2],
-  ['Financial',  2],
-  ['Management', 2],
-  ['Administrative',    7]
-]);
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Technical', 11],
+        ['Sales', 2],
+        ['Financial', 2],
+        ['Management', 2],
+        ['Administrative', 7]
+    ]);
 
-var options = {
-  title: 'Networker Skill Profile'
-};
+    var options = {
+        title: 'Networker Skill Profile'
+    };
 
-var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-chart.draw(data, options);
+    chart.draw(data, options);
 }
-
 </script>
-
 {% endblock script_addon %}
-

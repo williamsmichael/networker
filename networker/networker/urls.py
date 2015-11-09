@@ -23,7 +23,7 @@ urlpatterns = [
 
 
     # ---------------------------------------------------------------dashboard
-    url(r'^dashboard/$', 'user.views.dashboard', name='dashboard'),
+    url(r'^dashboard/$', 'group.views.dashboard', name='dashboard'),
 
 
     # -------------------------------------------------------------------group
