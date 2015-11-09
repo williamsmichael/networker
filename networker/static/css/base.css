@@ -11,7 +11,7 @@ tbody tr {
   cursor: pointer;
 }
 
-/*button to update profiles*/
+/* button notification for profile updates */
 #updated {
   display: none;
   margin-top: 10px;
