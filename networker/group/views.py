@@ -25,9 +25,10 @@ def GroupProfile(request, pk):
 
 # ----------------------------------------------------------------------update
 class GroupUpdateAbout(UpdateView):
-    """ Update auth-group details for a login user group """
+    """ Update auth-group details for a login user group except image """
     model = NetworkerGroup
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['name', 'description', 'welcome_message', 'website', 'organizer']
     # success_url = '.'
     section = "About"
     title = 'update'
@@ -35,6 +36,21 @@ class GroupUpdateAbout(UpdateView):
 
     def get_success_url(self):
         return reverse('update_about_group', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class GroupUpdateImage(UpdateView):
+    """ Update auth-group image for a login user group """
+    model = NetworkerGroup
+    fields = ['profile_image']
+    # success_url = '.'
+    section = "Profile Image"
+    title = 'update'
+    button = 'Update'
+
+    def get_success_url(self):
+        return reverse('update_image_group', kwargs={
             'pk': self.object.pk,
         })
 

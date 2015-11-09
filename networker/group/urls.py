@@ -14,6 +14,8 @@ urlpatterns = [
     # --------------------------------------------------------------updateview
     url(r'^(?P<pk>[0-9]+)/about$', login_required(views.GroupUpdateAbout.as_view(template_name='group/create_update_form_group.html')), name='update_about_group'),
 
+    url(r'^(?P<pk>[0-9]+)/image$', login_required(views.GroupUpdateImage.as_view(template_name='group/create_update_form_group.html')), name='update_image_group'),
+
 
     # ------------------------------------------------------------------unused
     # url(r'^$', 'group.views.listing_group', name='listing_group'),
