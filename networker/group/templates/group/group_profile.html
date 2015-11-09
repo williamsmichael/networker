@@ -19,10 +19,9 @@
 
 {% block content %}
 
-
 	{% if profile.profile_image %}
 	<div class="profile-image">
-		<img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="profile-image img-responsive img-rounded">
+		<img src="{{ profile.profile_image.url }}" alt="{{ profile }} profile image" class="img-responsive img-rounded">
 
 		{% if profile.organizer.pk == user.pk %}
 		<a href="{% url 'update_image_group' pk=profile.pk %}" class="btn btn-success btn-xs" aria-label="Left Align">
@@ -62,7 +61,7 @@
 		{% for member in profile.networkeruser_set.all %}
 
 		<a href="{% url 'user_profile' member.pk %}">
-			<li>{{ member.user_extension.first_name }} {{ member.user_extension.last_name }}</li>	
+			<li>{{ member.user_extension.username }}</li>	
 		</a>
 		
 		{% endfor %}

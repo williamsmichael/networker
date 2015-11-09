@@ -22,7 +22,7 @@
 	{# ---------------------------------------------------------------image #}
 	{% if member.profile_image %}
 	<div class="profile-image">
-		<img src="{{ member.profile_image.url }}" alt="{{ member.user_extension.first_name }} {{ member.user_extension.last_name }} profile image" class="profile img-responsive img-rounded">
+		<img src="{{ member.profile_image.url }}" alt="{{ member.user_extension.first_name }} {{ member.user_extension.last_name }} profile image" class="img-responsive img-rounded">
 		
 		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
 		<a href="{% url 'update_main' member.user_extension.pk %}" class="btn btn-success btn-xs" aria-label="Left Align">
