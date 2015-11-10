@@ -101,12 +101,12 @@
 		{# {% endif %} #}
 	{# </h4> #}
 
-	{# <ul> #}
-		{# {% for group in member.membership_list.all %} #}
-		{# <li>{{ group.name }}</li>	 #}
+	<ul>
+		{% for group in member.membership_list.all %}
+		<li>{{ group.name }}</li>	
 
-		{# {% endfor %} #}
-	{# </ul> #}
+		{% endfor %}
+	</ul>
 
 	{# ---------------------------------------------------------------phone #}
 	<h4>
