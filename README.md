@@ -32,14 +32,15 @@
 
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project. 
 
-On GitHub, navigate to the [Networker](https://github.com/williamsmichael/networker) repository. See this [guide](https://help.github.com/articles/fork-a-repo/) for guidance.
+On GitHub, navigate to the [Networker](https://github.com/williamsmichael/networker) repository. See this [guide](https://help.github.com/articles/fork-a-repo/) for guidance to fork the repository.
 
 ## Usage
 
 Networker will provide the opportunities to login into a secure environment, build a phone book, track user locations of residency, observe analytics based on the user group profiles, communicate through a project-based message system. The project-based message system will allow for the users to collaborate on specific goals and communicate through posts and uploads.
 
-## Project User Group
-The user group for this project will be a “mock family network”. The idea is to reach within your network for assistance before seeking assistance outside of your network. This strengthens the network and reduces the existence of weak links.
+## Focus Group
+
+The user group for this project is a “mock family network”. The idea is to reach within your network for assistance before seeking assistance outside of your network. This strengthens the network and reduces the existence of weak links.
 
 ## Contributing
 
