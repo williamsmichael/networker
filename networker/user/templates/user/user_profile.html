@@ -25,19 +25,19 @@
 		<a href="{{ member.profile_image.url }}" data-featherlight="image">
 			<img src="{{ member.profile_image.url }}" alt="{{ member.user_extension.first_name }} {{ member.user_extension.last_name }} profile image" class="img-responsive img-rounded">
 		</a>
-		
-		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
-		<a href="{% url 'update_image' member.user_extension.pk %}" class="btn btn-success btn-xs" aria-label="Left Align">
-  			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-		</a>
-		{% endif %}
-	</div>
-	
+
 	{% else %}
 	<a href="https://unsplash.it/150/150/?random" data-featherlight="image">
 		<img src="https://unsplash.it/150/150/?random" alt="alternate random image for profile" class="profile-image img-responsive img-rounded">
 	</a>
 	{% endif %}
+		
+	{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+	<a href="{% url 'update_image' member.user_extension.pk %}" class="btn btn-success btn-xs" aria-label="Left Align">
+			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+	</a>
+	{% endif %}
+	</div>
 
 	{# ----------------------------------------------------------------main #}
 	<h4>
