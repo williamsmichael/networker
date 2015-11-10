@@ -14,7 +14,7 @@ from .models import *
 
 # ---------------------------------------------------------------------listing
 def forum_list(request):
-	""" Forum Listing """
+	""" Forum Listing for a single group """
 	forums = Forum.objects.get(pk=1)
 	return render(request, 'forum/forum_list.html', {'forum': forums})
 
@@ -30,6 +30,27 @@ def post_list(request, thread, post):
 	posts = Post.objects.filter(thread__slug=post).order_by("-created")
 	thread_title = Thread.objects.get(slug=post).title
 	return render(request, 'forum/post_list.html', {'posts': posts, 'thread_title': thread_title})
+
+
+# ----------------------------------------------------------------------update
+class ThreadUpdate(UpdateView):
+    """ Update a thread """
+
+    # gets the specific thread 
+    def get_object(self, queryset=None):
+        return Thread.objects.get(slug=self.kwargs['thread'])
+
+    model = Thread
+    fields = '__all__'
+    # success_url = '/users/'
+    section = "Topic"
+    title = 'update'
+    button = 'Update'
+
+    def get_success_url(self):
+        return reverse('thread_list', kwargs={
+            'thread': self.kwargs['forum'],
+        })
 
 
 # ----------------------------------------------------------------------create
