@@ -7,6 +7,10 @@ from . import views
 
 urlpatterns = [
 
+    # --------------------------------------------------------------createview
+    url(r'^(?P<creator>[-\w]+)/create$', login_required(views.CreateThread.as_view(
+        template_name='forum/create_update_form.html')), name='create_thread'),
+
     # --------------------------------------------------------------updateview
     url(r'^(?P<forum>[-\w]+)/(?P<thread>[-\w]+)/update$', login_required(views.ThreadUpdate.as_view(
         template_name='forum/create_update_form.html')), name='update_thread'),
@@ -15,11 +19,6 @@ urlpatterns = [
 	url(r'^$', 'forum.views.forum_list', name='forum_list'),
 	url(r'^(?P<thread>[-\w]+)/(?P<post>[-\w]+)', 'forum.views.post_list', name='post_list'),
 	url(r'^(?P<thread>[-\w]+)/', 'forum.views.thread_list', name='thread_list'),
-
-    # --------------------------------------------------------------createview
-    # url(r'^(\d+)/create$', login_required(views.CreateThread.as_view(
-        # template_name='forum/thread_form.html')), name='create_thread'),
-
 
     # ------------------------------------------------------------------unused
 	# url(r'^post/(new_thread|reply)/(\d+)/$', views.post, name='post'),

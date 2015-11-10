@@ -39,7 +39,18 @@
 	function showStatus() {
 	   document.getElementById('updated').style.display = "block";
 	}
+</script>
 
+<script type="text/javascript" src="{% static 'js/speakingurl.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slugify.min.js' %}"></script>
+
+<script>
+
+	document.getElementById('id_slug').readOnly = true;
+
+	jQuery(function($) {
+	  $('#id_slug').slugify('#id_title'); // Type as you slug
+	});
 </script>
 
 {% endblock script_addon %}

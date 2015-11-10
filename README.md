@@ -13,7 +13,8 @@
 * Bootswatch Flatly
 * Sublime Text 2
 * Google Maps API
-
+* jQuery Slugify by [madflow](https://github.com/madflow/jquery-slugify)
+* speakingurl by [pid](https://github.com/madflow/jquery-slugify)
 
 ## Prerequisites
 
@@ -58,7 +59,6 @@ TODO: Write history
 
 **Special thanks to [PDX Code Guild's Python-based Developer Accelerator](https://pdxcodeguild.com). Thank you to the leadership, classmates, and alumni for the support in getting this project to where it is today.**
 
-
 ####Other support:
 * User Authentication by [How to Tango with Django 1.7](http://www.tangowithdjango.com/book17/chapters/login.html)
 * README.md template for this project by [zenorocha](https://gist.github.com/zenorocha/4526327)
@@ -87,7 +87,6 @@ TODO: Write history
 
 Copyright (c) 2015 Networker by williamsmichael
 
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -95,12 +94,8 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-
-
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
-
-
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

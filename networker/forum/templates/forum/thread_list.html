@@ -8,6 +8,10 @@
     Topics
     <span class="badge">{{ threads | length }}</span>
 
+    <a href="{% url 'create_thread' user.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a> 
+
 {% endblock heading %}
 
 {% block content %}

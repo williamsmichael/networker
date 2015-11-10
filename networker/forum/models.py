@@ -20,7 +20,7 @@ class Forum(models.Model):
 
 class Thread(models.Model):
 	""" Threads for the Forum """
-	creator = models.ForeignKey(User, blank=True, null=True)
+	creator = models.ForeignKey(User)
 	forum = models.ForeignKey(Forum)
 
 	title = models.CharField(max_length=60)
@@ -43,7 +43,7 @@ class Thread(models.Model):
 
 class Post(models.Model):
 	""" Post for each Thread """
-	creator = models.ForeignKey(User, blank=True, null=True)
+	creator = models.ForeignKey(User)
 	thread = models.ForeignKey(Thread)
 
 	title = models.CharField(max_length=60)

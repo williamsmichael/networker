@@ -45,7 +45,7 @@ class ThreadUpdate(UpdateView):
 
     model = Thread
     # fields = '__all__'
-    fields = ['title']
+    fields = ['title', 'slug']
     # success_url = '/users/'
     section = "Topic"
     title = 'update'
@@ -59,18 +59,18 @@ class ThreadUpdate(UpdateView):
 
 # ----------------------------------------------------------------------create
 class CreateThread(CreateView):
-    """ Creates a thread for a forum """
+    """ Creates a thread  """
     model = Thread
     fields = '__all__'
+    # fields = ['']
     # success_url = '/'
     title = 'add'
-    section = 'Add New Topic'
+    section = 'Add Topic'
     button = 'Add'
 
     def get_initial(self):
         return {
-            'creator': self.request.user, 
-            'forum': Forum
+            'creator': self.request.user,
         }
 
     # def get_success_url(self):
