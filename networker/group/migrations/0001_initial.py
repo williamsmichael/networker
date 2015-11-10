@@ -10,21 +10,19 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('forum', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='NetworkerGroup',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
-                ('name', models.CharField(blank=True, max_length=255)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('name', models.CharField(max_length=255, blank=True)),
                 ('description', models.TextField(blank=True)),
                 ('welcome_message', models.TextField(blank=True)),
-                ('profile_image', models.ImageField(blank=True, upload_to=group.models.upload_to, null=True)),
+                ('profile_image', models.ImageField(null=True, upload_to=group.models.upload_to, blank=True)),
                 ('website', models.URLField(blank=True)),
                 ('created_dateTime', models.DateTimeField(auto_now_add=True)),
-                ('forum', models.OneToOneField(to='forum.Forum')),
                 ('organizer', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={

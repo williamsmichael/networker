@@ -50,7 +50,7 @@ class UserPhone(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category_id)
+        return "{}, {} ({})".format(self.user_id, self.phone_number, self.phone_category)
 
 
 class EmailCategory(models.Model):
@@ -70,7 +70,7 @@ class UserEmail(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category_id)
+        return "{}, {} ({}) ".format(self.user_id, self.email, self.email_category)
 
 
 class AddressCategory(models.Model):
@@ -97,7 +97,7 @@ class UserAddress(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {}, {}, {} ({})".format(self.user_id, self.street_address_1, self.postal_code, self.country, self.address_category_id)
+        return "{}, {}, {}, {} ({})".format(self.user_id, self.street_address_1, self.postal_code, self.country, self.address_category)
 
 
 class SocialMediaCategory(models.Model):
@@ -117,7 +117,7 @@ class UserSocialMedia(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {} ({})".format(self.user_id, self.social_media_url, self.social_media_category_id)
+        return "{}, {} ({})".format(self.user_id, self.social_media_url, self.social_media_category)
 
 
 class JobCategory(models.Model):
@@ -144,7 +144,7 @@ class UserJob(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {}, current={} [{}]".format(self.user_id, self.company_name, self.is_current, self.job_category_id)
+        return "{}, {}, current={} [{}]".format(self.user_id, self.company_name, self.is_current, self.job_category)
 
 
 class EducationCategory(models.Model):
@@ -169,7 +169,7 @@ class UserEducation(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {}, passed={} ({})".format(self.user_id, self.school_name, self.is_completed, self.education_category_id)
+        return "{}, {}, passed={} ({})".format(self.user_id, self.school_name, self.is_completed, self.education_category)
 
 
 class SkillCategory(models.Model):
@@ -189,4 +189,4 @@ class UserSkill(models.Model):
     remove = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}, {} ({})".format(self.user_id, self.skill_description, self.skill_category_id)
+        return "{}, {} ({})".format(self.user_id, self.description, self.skill_category)
