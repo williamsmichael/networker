@@ -4,16 +4,15 @@
 
 ## Built with
 
-* Python 3
-* Django 1.8.5
+* Python 3.5
+* Django 1.8
 * Postgres App
 * JavaScript
 * jQuery
 * Bootstrap 3
+* Bootswatch Flatly
 * Sublime Text 2
 * Google Maps API
-* Bootswatch Flatly
-* 
 
 
 ## Prerequisites
@@ -37,7 +36,7 @@ On GitHub, navigate to the [Networker](https://github.com/williamsmichael/networ
 
 ## Usage
 
-The application will provide the opportunities to login into a secure environment, build a phone book, track user locations of residency, observe analytics based on the user group profiles, communicate through a project-based message system. The project-based message system will allow for the users to collaborate on specific goals and communicate through posts and uploads.
+Networker will provide the opportunities to login into a secure environment, build a phone book, track user locations of residency, observe analytics based on the user group profiles, communicate through a project-based message system. The project-based message system will allow for the users to collaborate on specific goals and communicate through posts and uploads.
 
 ## Project User Group
 The user group for this project will be a “mock family network”. The idea is to reach within your network for assistance before seeking assistance outside of your network. This strengthens the network and reduces the existence of weak links.
