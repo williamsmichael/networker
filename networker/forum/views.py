@@ -13,18 +13,21 @@ from .models import *
 
 
 # ---------------------------------------------------------------------listing
+@login_required
 def forum_list(request):
 	""" Forum Listing for a single group """
 	forums = Forum.objects.get(pk=1)
 	return render(request, 'forum/forum_list.html', {'forum': forums})
 
 
+@login_required
 def thread_list(request, thread):
 	""" Listing of threads in a forum """
 	threads = Thread.objects.filter(forum__slug=thread)
 	return render(request, 'forum/thread_list.html', {'threads': threads})
 
 
+@login_required
 def post_list(request, thread, post):
 	""" Listing of posts in a forum """
 	posts = Post.objects.filter(thread__slug=post).order_by("-created")

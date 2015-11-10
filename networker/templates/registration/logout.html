@@ -3,8 +3,26 @@
 
 {% block title %} logout {% endblock %}
 
-{% block heading %} Bye. {% endblock %}
+{% block heading %}
+
+<div class="page-header col-xs-12 col-sm-8 col-sm-offset-2">
+
+Bye. 
+
+</div>
+
+{% endblock heading %}
 
 {% block content %}
-<p class='text-align-center'>You have successfully logged out.</p><p class='text-align-center lead'><a href="{% url 'auth_login' %}">Login</a></p></p>
-{% endblock %}
+
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+	<p class='text-align-center'>You have successfully logged out.</p>
+
+	<p class='text-align-center lead'>
+		<a href="{% url 'auth_login' %}">Login</a>
+	</p>
+
+</div>
+
+{% endblock content %}

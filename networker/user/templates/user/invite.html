@@ -6,6 +6,8 @@
 
 {% block heading %}
 
+<div class="page-header col-xs-12 col-sm-8 col-sm-offset-2">
+
 	Invite by Email
 
 	{% if user.is_authenticated and user.is_staff %}
@@ -15,9 +17,12 @@
 	
 	{% endif %}
 
+</div>
+
 {% endblock heading %}
 
 {% block content %}
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
 	{# successful_invite variable established in views.py #}
 	{% if successful_invite %}
@@ -33,5 +38,5 @@
 	</form>
 	{% endif %}
 	
-
+</div>
 {% endblock content%}

@@ -4,31 +4,33 @@
 
 {% block title %} login {% endblock %}
 
-{% block heading %} Login {% endblock %}
+{% block heading %} 
+
+<div class="page-header col-xs-12 col-sm-8 col-sm-offset-2">
+
+Login 
+
+</div>
+
+{% endblock %}
 
 {% block content %}
 
-{# <div class='row'> #}
-{# <div class='col-sm-6 col-sm-offset-3'> #}
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-<form method="post" action=".">
-  {% csrf_token %}
-  {{ form|crispy }}
+	<form method="post" action=".">
+	  {% csrf_token %}
+	  {{ form|crispy }}
 
-  <input class='btn btn-default' type="submit" value="{% trans 'Submit' %}" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
-{# </div> #}
+	  <input class='btn btn-default' type="submit" value="{% trans 'Submit' %}" />
+	  <input type="hidden" name="next" value="{{ next }}" />
+	</form>
 
-{# </div> #}
-<hr/>
-{# <div class='row'> #}
-{# <div class='col-sm-6 col-sm-offset-3 text-align-center'> #}
+	<hr>
 
-{# <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p> #}
-<p>{% trans "Not member" %}? <a href="{% url 'register' %}">{% trans "Register" %}</a>!</p>
+	{# <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p> #}
+	<p>{% trans "Not member" %}? <a href="{% url 'register' %}">{% trans "Sign up for free" %}</a>!</p>
 
-{# </div> #}
-{# </div> #}
+</div>
 
 {% endblock %}
