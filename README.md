@@ -13,6 +13,7 @@
 * Bootswatch Flatly
 * Sublime Text 2
 * Google Maps API
+* Highcharts
 * jQuery Slugify by [madflow](https://github.com/madflow/jquery-slugify)
 * speakingurl by [pid](https://github.com/madflow/jquery-slugify)
 
