@@ -41,7 +41,8 @@ class ThreadUpdate(UpdateView):
         return Thread.objects.get(slug=self.kwargs['thread'])
 
     model = Thread
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['title']
     # success_url = '/users/'
     section = "Topic"
     title = 'update'

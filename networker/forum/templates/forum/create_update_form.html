@@ -18,11 +18,7 @@
 
 		{% block details_column %}
 
-		<section class="col-xs-12 col-sm-8">
-
-			<p class="pull-right visible-xs">
-            	<button type="button" class="btn btn-success btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          	</p>	
+		<section class="col-xs-12 col-sm-8 col-sm-offset-2">
 
 			<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 
@@ -36,20 +32,12 @@
 
 		{% endblock details_column %}
 
-		{% block nav_column %}
-
-			{% include "user/nav_column.html" %}
-
-		{% endblock nav_column %}
-
 	</div><!--/row-->
 </div><!--/.container-->
 
 {% endblock content %}
 
 {% block script_addon %}
-
-<script src="{% static 'js/offcanvas.js' %}"></script>
 
 <script type="text/javascript">
 
