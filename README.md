@@ -1,6 +1,6 @@
 # Networker
 
-**Networker is a secure, responsive web application for constructing private groups.**
+**Networker is a responsive web application for constructing private groups.**
 
 ## Built with
 
@@ -38,7 +38,7 @@ On GitHub, navigate to the [Networker](https://github.com/williamsmichael/networ
 
 ## Usage
 
-Networker will provide the opportunities to login into a secure environment, build a phone book, track user locations of residency, observe analytics based on the user group profiles, communicate through a project-based message system. The project-based message system will allow for the users to collaborate on specific goals and communicate through posts and uploads.
+Networker provides opportunities to login into a secure environment, build a phone book, track user locations of residency, observe analytics based on the user group profiles, communicate through a project-based message system. The project-based message system will allow for the users to collaborate on specific goals and communicate through posts and uploads.
 
 ## Focus Group
 
