@@ -29,7 +29,6 @@ class GroupUpdateAbout(UpdateView):
     model = NetworkerGroup
     # fields = '__all__'
     fields = ['name', 'description', 'welcome_message', 'website', 'organizer']
-    # success_url = '.'
     section = "About"
     title = 'update'
     button = 'Update'
@@ -44,7 +43,6 @@ class GroupUpdateImage(UpdateView):
     """ Update auth-group image for a login user group """
     model = NetworkerGroup
     fields = ['profile_image']
-    # success_url = '.'
     section = "Profile Image"
     title = 'update'
     button = 'Update'

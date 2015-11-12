@@ -44,8 +44,8 @@ class ThreadUpdate(UpdateView):
         return Thread.objects.get(slug=self.kwargs['thread'])
 
     model = Thread
-    # fields = '__all__'
-    fields = ['title', 'slug']
+    fields = '__all__'
+    # fields = ['title', 'slug']
     # success_url = '/users/'
     section = "Topic"
     title = 'update'
@@ -62,7 +62,6 @@ class CreateThread(CreateView):
     """ Creates a thread  """
     model = Thread
     fields = '__all__'
-    # fields = ['']
     # success_url = '/'
     title = 'add'
     section = 'Add Topic'
