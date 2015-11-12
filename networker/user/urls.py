@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/address$', login_required(views.ListingAddress.as_view(template_name='user/useraddress_list.html')), name='listing_address'),
     url(r'^(?P<pk>[0-9]+)/socialmedia$', login_required(views.ListingSocialMedia.as_view(template_name='user/usersocialmedia_list.html')), name='listing_social_media'),
     url(r'^(?P<pk>[0-9]+)/job$', login_required(views.ListingJob.as_view(template_name='user/userjob_list.html')), name='listing_job'),
+    url(r'^(?P<pk>[0-9]+)/education$', login_required(views.ListingEducation.as_view(template_name='user/usereducation_list.html')), name='listing_education'),
     url(r'^(?P<pk>[0-9]+)/skill$', login_required(views.ListingSkill.as_view(template_name='user/userskill_list.html')), name='listing_skill'),
 
 
@@ -44,6 +45,8 @@ urlpatterns = [
         template_name='user/create_update_form.html')), name='update_social_media'),
     url(r'^(?P<pk>[0-9]+)/job/(?P<job>[0-9]+)$', login_required(views.UserUpdateJob.as_view(
         template_name='user/create_update_form.html')), name='update_job'),
+    url(r'^(?P<pk>[0-9]+)/education/(?P<education>[0-9]+)$', login_required(views.UserUpdateEducation.as_view(
+        template_name='user/create_update_form.html')), name='update_education'),
     url(r'^(?P<pk>[0-9]+)/skill/(?P<skill>[0-9]+)$', login_required(views.UserUpdateSkill.as_view(
         template_name='user/create_update_form.html')), name='update_skill'),
 
@@ -59,6 +62,8 @@ urlpatterns = [
         template_name='user/create_update_form.html')), name='create_social_media'),
     url(r'^(?P<pk>[0-9]+)/job/create$', login_required(views.CreateJob.as_view(
         template_name='user/create_update_form.html')), name='create_job'),
+    url(r'^(?P<pk>[0-9]+)/education/create$', login_required(views.CreateEducation.as_view(
+        template_name='user/create_update_form.html')), name='create_education'),
     url(r'^(?P<pk>[0-9]+)/skill/create$', login_required(views.CreateSkill.as_view(
         template_name='user/create_update_form.html')), name='create_skill'),
 

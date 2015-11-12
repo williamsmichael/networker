@@ -103,6 +103,18 @@ class ListingJob(ListView):
         return self.queryset.filter(user_id=self.request.user.networkeruser)
 
 
+class ListingEducation(ListView):
+    """ List of all user education """
+    model = UserEducation
+    title = 'education'
+    section = 'Education Profile'
+    queryset = UserEducation.objects.select_related('user_id').all()
+
+    def get_queryset(self):
+        # import pdb; pdb.set_trace()
+        return self.queryset.filter(user_id=self.request.user.networkeruser)
+
+
 class ListingSkill(ListView):
     """ List of all user skill """
     model = UserSkill
@@ -273,6 +285,25 @@ class UserUpdateJob(UpdateView):
         })
 
 
+class UserUpdateEducation(UpdateView):
+    """ Update education details for a user """
+
+    # gets the specific education
+    def get_object(self, queryset=None):
+        return UserEducation.objects.get(pk=self.kwargs['education'])
+
+    model = UserEducation
+    fields = '__all__'
+    section = "Education Profile"
+    title = 'update'
+    button = 'Update'
+
+    def get_success_url(self):
+        return reverse('listing_education', kwargs={
+            'pk': self.object.user_id.pk,
+        })
+
+
 class UserUpdateSkill(UpdateView):
     """ Update skill details for a user """
 
@@ -384,6 +415,25 @@ class CreateJob(CreateView):
 
     def get_success_url(self):
         return reverse('listing_job', kwargs={
+          'pk': self.object.user_id.pk,
+        })
+
+
+class CreateEducation(CreateView):
+    """ Creates education for user """
+    model = UserEducation
+    fields = '__all__'
+    section = 'Add Education'
+    title = 'add'
+    button = 'Add'
+
+    def get_initial(self):
+        return {
+            'user_id': self.request.user
+        }
+
+    def get_success_url(self):
+        return reverse('listing_education', kwargs={
           'pk': self.object.user_id.pk,
         })
 
