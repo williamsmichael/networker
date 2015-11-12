@@ -10,11 +10,11 @@
 
 	Invite by Email
 
-	{% if user.is_authenticated and user.is_staff %}
+	{% if profile.organizer.pk == user.pk %}
+
 	<a href="{% url 'invite' %}" class="btn btn-default btn-sm" aria-label="Left Align">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
-	
 	{% endif %}
 
 </div>
