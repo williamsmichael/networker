@@ -643,9 +643,13 @@ def invite(request):
 
         successful_invite = True
 
+    # get the group pk=1 to identify the organizer
+    login_user = NetworkerGroup.objects.get(pk=1)
+
     context = {
         "form": form,
         "successful_invite": successful_invite,
+        "profile": login_user,
     }
 
     return render(request, "user/invite.html", context)
