@@ -6,7 +6,7 @@
 
 * Python 3.5
 * Django 1.8
-* Postgres App
+* PostgreSQL
 * JavaScript
 * jQuery
 * Bootstrap 3
@@ -14,6 +14,9 @@
 * Sublime Text 2
 * Google Maps API
 * Highcharts
+* Django Registration Redux
+* Django Crispy Forms
+* Featherlight by [noelboss](http://noelboss.github.io/featherlight/)
 * jQuery Slugify by [madflow](https://github.com/madflow/jquery-slugify)
 * speakingurl by [pid](https://github.com/madflow/jquery-slugify)
 
