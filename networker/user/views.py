@@ -186,9 +186,7 @@ class UserUpdatePhone(UpdateView):
         return UserPhone.objects.get(pk=self.kwargs['phone'])
 
     model = UserPhone
-    # fields = '__all__'
-    fields = ['phone_category', 'country_code', 'phone_number', 'remove']
-    # success_url = '/users/'
+    fields = '__all__'
     section = "Phone"
     title = 'update'
     button = 'Update'
@@ -207,9 +205,7 @@ class UserUpdateEmail(UpdateView):
         return UserEmail.objects.get(pk=self.kwargs['email'])
 
     model = UserEmail
-    # fields = '__all__'
-    fields = ['email_category', 'email', 'remove']
-    # success_url = '/users/'
+    fields = '__all__'
     section = "Alternate Email"
     title = 'update'
     button = 'Update'
@@ -228,9 +224,7 @@ class UserUpdateAddress(UpdateView):
         return UserAddress.objects.get(pk=self.kwargs['address'])
 
     model = UserAddress
-    # fields = '__all__'
-    fields = ['address_category', 'street_address_1', 'street_address_2', 'city_town', 'state_province', 'postal_code', 'country', 'remove']
-    # success_url = '/users/'
+    fields = '__all__'
     section = "Address"
     title = 'update'
     button = 'Update'
@@ -249,9 +243,7 @@ class UserUpdateSocialMedia(UpdateView):
         return UserSocialMedia.objects.get(pk=self.kwargs['social_media'])
 
     model = UserSocialMedia
-    # fields = '__all__'
-    fields = ['social_media_category', 'social_media_url', 'remove']
-    # success_url = '/users/'
+    fields = '__all__'
     section = "Social Media"
     title = 'update'
     button = 'Update'
@@ -270,9 +262,7 @@ class UserUpdateJob(UpdateView):
         return UserJob.objects.get(pk=self.kwargs['job'])
 
     model = UserJob
-    # fields = '__all__'
-    fields = ['job_category', 'title', 'description', 'company_name', 'state_province', 'country', 'is_current', 'year_started', 'year_ended', 'remove']
-    # success_url = '/users/'
+    fields = '__all__'
     section = "Job Profile"
     title = 'update'
     button = 'Update'
@@ -291,9 +281,7 @@ class UserUpdateSkill(UpdateView):
         return UserSkill.objects.get(pk=self.kwargs['skill'])
 
     model = UserSkill
-    # fields = '__all__'
-    fields = ['skill_category', 'description', 'remove']
-    # success_url = '/users/'
+    fields = '__all__'
     section = "Skill Profile"
     title = 'update'
     button = 'Update'
@@ -308,11 +296,9 @@ class UserUpdateSkill(UpdateView):
 class CreatePhone(CreateView):
     """ Creates a phone number for user """
     model = UserPhone
-    # fields = '__all__'
-    fields = ['phone_category', 'country_code', 'phone_number']
-    # success_url = '/'
-    title = 'add'
+    fields = '__all__'
     section = 'Add Phone'
+    title = 'add'
     button = 'Add'
 
     def get_initial(self):
@@ -329,11 +315,9 @@ class CreatePhone(CreateView):
 class CreateEmail(CreateView):
     """ Creates a email for user """
     model = UserEmail
-    # fields = '__all__'
-    fields = ['email_category', 'email']
-    # success_url = '/users/'
-    title = 'add'
+    fields = '__all__'
     section = 'Add Email'
+    title = 'add'
     button = 'Add'
 
     def get_initial(self):
@@ -350,11 +334,9 @@ class CreateEmail(CreateView):
 class CreateAddress(CreateView):
     """ Creates a address for user """
     model = UserAddress
-    # fields = '__all__'
-    fields = ['address_category', 'street_address_1', 'street_address_2', 'city_town', 'state_province', 'postal_code', 'country']
-    # success_url = '/users/'
-    title = 'add'
+    fields = '__all__'
     section = 'Add Address'
+    title = 'add'
     button = 'Add'
 
     def get_initial(self):
@@ -371,11 +353,9 @@ class CreateAddress(CreateView):
 class CreateSocialMedia(CreateView):
     """ Creates a social media for user """
     model = UserSocialMedia
-    # fields = '__all__'
-    fields = ['social_media_category', 'social_media_url']
-    # success_url = '/users/'
-    title = 'add'
+    fields = '__all__'
     section = 'Add Social Media'
+    title = 'add'
     button = 'Add'
 
     def get_initial(self):
@@ -392,11 +372,9 @@ class CreateSocialMedia(CreateView):
 class CreateJob(CreateView):
     """ Creates a job for user """
     model = UserJob
-    # fields = '__all__'
-    fields = ['job_category', 'title', 'description', 'company_name', 'state_province', 'country', 'is_current', 'year_started', 'year_ended']
-    # success_url = '/users/'
-    title = 'add'
+    fields = '__all__'
     section = 'Add Job'
+    title = 'add'
     button = 'Add'
 
     def get_initial(self):
@@ -413,11 +391,9 @@ class CreateJob(CreateView):
 class CreateSkill(CreateView):
     """ Creates a skill for user """
     model = UserSkill
-    # fields = '__all__'
-    fields = ['skill_category', 'description']
-    # success_url = '/users/'
-    title = 'add'
+    fields = '__all__'
     section = 'Add Skill'
+    title = 'add'
     button = 'Add'
 
     def get_initial(self):
