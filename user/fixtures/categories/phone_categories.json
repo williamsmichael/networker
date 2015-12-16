@@ -1,0 +1,37 @@
+[
+{
+    "fields": {
+        "phone_category": "Mobile"
+    },
+    "pk": 1,
+    "model": "user.phonecategory"
+},
+{
+    "fields": {
+        "phone_category": "Work"
+    },
+    "pk": 2,
+    "model": "user.phonecategory"
+},
+{
+    "fields": {
+        "phone_category": "Home"
+    },
+    "pk": 3,
+    "model": "user.phonecategory"
+},
+{
+    "fields": {
+        "phone_category": "Fax"
+    },
+    "pk": 4,
+    "model": "user.phonecategory"
+},
+{
+    "fields": {
+        "phone_category": "Other"
+    },
+    "pk": 5,
+    "model": "user.phonecategory"
+}
+]

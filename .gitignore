@@ -15,10 +15,6 @@ __pycache__/
 local_settings.py
 
 
-*.json
-!spec/*.json
-
-
 ###################
 # HEROKU SETTINGS #
 ###################
