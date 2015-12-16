@@ -55,6 +55,11 @@ The user group for this project is a “mock family network”. The idea is to r
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
+## Current Limitations
+
+* Only a single pipeline is currently supported.
+* Probably many others...
+
 ## History
 
 TODO: Write history
