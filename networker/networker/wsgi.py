@@ -15,3 +15,11 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "networker.settings")
 
 application = get_wsgi_application()
 
+
+###################
+# HEROKU SETTINGS #
+###################
+
+from dj_static import Cling
+
+application = Cling(get_wsgi_application())

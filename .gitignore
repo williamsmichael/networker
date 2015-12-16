@@ -19,7 +19,9 @@ local_settings.py
 !spec/*.json
 
 
-### Heroku ###
-##############
+###################
+# HEROKU SETTINGS #
+###################
 venv
 *.pyc
+staticfiles
