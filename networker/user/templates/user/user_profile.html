@@ -257,6 +257,43 @@
 
 	<hr>
 
+	{# -----------------------------------------------------------education #}
+	<h4>
+		Education Profile
+
+		{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+		<a href="{% url 'create_education' member.user_extension.pk %}" class="btn btn-default btn-xs" aria-label="Left Align">
+  			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</a>
+
+		{% endif %} 
+	</h4>
+
+	<ul>
+	{% for education in member.usereducation_set.all %}
+
+		{% if education.remove == False %}
+		
+		<li>
+			{{ education.title }}, {{ education.company_name }}
+
+			{% if user.is_authenticated and user.get_username == member.user_extension.username %}
+			<a href="{% url 'update_education' pk=member.user_extension.id education=education.pk %}" class="btn btn-success btn-xs" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</a>
+
+			{% endif %}
+		</li>
+		{% endif %}	
+
+	{% empty %}
+		<p class="text-danger">none set</p>
+
+	{% endfor %}
+	</ul>
+
+	<hr>
+
 	{# -----------------------------------------------------------------job #}
 	<h4>
 		Job Profile

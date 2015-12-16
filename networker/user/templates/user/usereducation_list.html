@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %} {{ view.title }} {% endblock %}
+
+{% block heading %}
+
+	{{ view.section }}
+
+	<a href="{% url 'create_education' user.pk %}" class="btn btn-default btn-sm" aria-label="Left Align">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+
+{% endblock heading %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="row row-offcanvas row-offcanvas-right">
+
+	{% block details_column %}
+
+		<section class="col-xs-12 col-sm-8">
+
+			<p class="pull-right visible-xs">
+            	<button type="button" class="btn btn-success btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          	</p>	
+
+			{% block list_view_form %}
+
+				{% for education in usereducation_list %}
+
+					{% if education.remove == False %}
+
+					<a href="{% url 'update_education' pk=user.id education=education.pk %}" class="list-item">
+
+						<div class="well">
+							{{ education.title }}, {{ education.company_name }}</a>
+						</div>
+					</a>
+	
+					{% endif %}
+
+				{% empty %}
+				<div class="alert alert-dismissible alert-danger">
+					none set
+				</div>	
+
+				{% endfor %}
+
+			{% endblock list_view_form %}
+
+		</section><!--/.col-xs-12.col-sm-9-->
+
+		{% endblock details_column %}
+
+		{% block nav_column %}
+
+			{% include "user/nav_column.html" %}
+
+		{% endblock nav_column %}
+
+	</div><!--/row-->
+</div><!--/.container-->
+
+{% endblock content %}
+
+{% block script_addon %}
+
+<script src="{% static 'js/offcanvas.js' %}"></script>
+
+{% endblock script_addon %}
+

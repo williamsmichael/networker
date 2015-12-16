@@ -6,7 +6,7 @@
 
 * Python 3.5
 * Django 1.8
-* Postgres App
+* PostgreSQL
 * JavaScript
 * jQuery
 * Bootstrap 3
@@ -14,6 +14,9 @@
 * Sublime Text 2
 * Google Maps API
 * Highcharts
+* Django Registration Redux
+* Django Crispy Forms
+* Featherlight by [noelboss](http://noelboss.github.io/featherlight/)
 * jQuery Slugify by [madflow](https://github.com/madflow/jquery-slugify)
 * speakingurl by [pid](https://github.com/madflow/jquery-slugify)
 
@@ -51,6 +54,11 @@ The user group for this project is a “mock family network”. The idea is to r
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
+
+## Current Limitations
+
+* Only a single pipeline is currently supported.
+* Probably many others...
 
 ## History
 
